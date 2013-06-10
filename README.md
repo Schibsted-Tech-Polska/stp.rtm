@@ -1,10 +1,7 @@
-Stp.Rtm - real time monitor dashboard using Jenkins API and New Relic API
-===============================================================
+Stp.Rtm
+=======
 
-Introduction
-------------
-
-todo
+Real time monitor dashboard using Jenkins API and New Relic API
 
 
 Using Composer (recommended)

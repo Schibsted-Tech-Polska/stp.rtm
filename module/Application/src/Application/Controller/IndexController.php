@@ -11,11 +11,19 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Http\Client;
 
-class IndexController extends AbstractActionController
-{
-    public function indexAction()
-    {
+class IndexController extends AbstractActionController {
+
+    /**
+     * Index action for homepage
+     *
+     * @return array|ViewModel
+     */
+    public function indexAction() {
+
+        throw new \Exception("Whoops test!");
+
         return new ViewModel();
     }
 }

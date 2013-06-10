@@ -3,6 +3,7 @@
     "description": "Real time monitor dashboard using Jenkins API and New Relic API",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "2.*"
+        "zendframework/zendframework": "2.*",
+        "filp/whoops": "1.*"
     }
 }

@@ -7,6 +7,7 @@
  */
 return array(
     'modules' => array(
+        'Whoops',
         'Application',
         'Dashboard'
         ),
