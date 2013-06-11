@@ -4,7 +4,7 @@
  * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
  */
 
-namespace Dashboard\Model;
+namespace Dashboard\Model\Dao;
 
 
 use Zend\Http\Client;
