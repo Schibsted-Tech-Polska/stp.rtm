@@ -2,13 +2,14 @@
 namespace DashboardTest\Model;
 
 use Dashboard\Model\Dao\DaoFactory;
+use DashboardTest\Bootstrap;
 
 class JenkinsDaoTest extends \PHPUnit_Framework_TestCase {
     /**
      * Testing proper Jenkins API URL - should return JSON
      */
     public function testProperApiUrl() {
-        $response = DaoFactory::build('jenkins')->request('http://ci.vgnett.no/view/VGTV/job/VGTV_front-end/api/json?pretty=true');
+        $response = Bootstrap::getServiceManager()->get('JenkinsDao')->request('http://ci.vgnett.no/view/VGTV/job/VGTV_front-end/api/json?pretty=true');
 
         $this->assertTrue(is_array($response), 'Testing proper API URL');
     }
@@ -18,6 +19,6 @@ class JenkinsDaoTest extends \PHPUnit_Framework_TestCase {
      * @expectedException \Zend\Json\Exception\RuntimeException
      */
     public function testImproperApiUrl() {
-        DaoFactory::build('jenkins')->request('http://ci.vgnett.no/');
+        Bootstrap::getServiceManager()->get('JenkinsDao')->request('http://ci.vgnett.no/');
     }
 }
