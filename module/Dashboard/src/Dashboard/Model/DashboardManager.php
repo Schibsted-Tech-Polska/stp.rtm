@@ -79,7 +79,8 @@ class DashboardManager {
      * @param Widget\AbstractWidget $widget Concrete widget object
      */
     public function addWidget(Widget\AbstractWidget $widget) {
-        $this->widgetsCollection;
+//        $this->widgetsCollection;
+        // TODO: konradt -> implement adding to colleciton
     }
 
     /**
