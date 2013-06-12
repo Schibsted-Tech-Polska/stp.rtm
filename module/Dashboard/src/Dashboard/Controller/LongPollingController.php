@@ -37,6 +37,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return \Zend\View\Model\JsonModel
      */
     public function get($id) {
+        // TODO: konradt -> implement long polling response
         return new JsonModel(array('data' => $id));
     }
 

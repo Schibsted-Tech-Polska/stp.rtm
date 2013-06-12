@@ -9,6 +9,8 @@ namespace Dashboard\Model\Widget;
 use Dashboard\Model\Dao\AbstractDao;
 
 abstract class AbstractWidget {
+    // TODO: konradt ->  update properties list + implement base methods
+
     /**
      * Id of the widget
      *

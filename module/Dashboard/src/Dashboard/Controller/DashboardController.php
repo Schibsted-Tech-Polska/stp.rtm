@@ -22,6 +22,8 @@ class DashboardController extends AbstractActionController {
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
+        // TODO: konradt ->  prepare data for ViewModel
+
         return new ViewModel(array());
     }
 }

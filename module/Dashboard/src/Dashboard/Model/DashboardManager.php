@@ -35,7 +35,7 @@ class DashboardManager {
     /**
      * Constructor
      *
-     * @param string $rtmConfigName Config name retrieved from the url.
+     * @param string                  $rtmConfigName  Config name retrieved from the url.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
      * @internal param array $configName Dashboard's config
      */
@@ -68,7 +68,8 @@ class DashboardManager {
         $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
 
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
-            $widget = $widgetFactory->build($widgetData);
+//            $widget = $widgetFactory->build($widgetData);
+            // TODO: konradt -> (konradt) implement widgets initialization
         }
     }
 

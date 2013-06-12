@@ -30,7 +30,7 @@ class Module {
     public function getServiceConfig() {
         return array(
             'factories' => array(
-                'WidgetConfig' => function(ServiceManager $serviceManager) {
+                'WidgetConfig' => function (ServiceManager $serviceManager) {
                     return include('config/widget/widgets.config.php');
                 },
                 'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
@@ -45,7 +45,7 @@ class Module {
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
                     return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
                 },
-                'WidgetFactory' => function(ServiceManager $serviceManager) {
+                'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));
                 }
             ),
