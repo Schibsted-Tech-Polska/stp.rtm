@@ -28,11 +28,17 @@ class Module {
     public function getServiceConfig() {
         return array(
             'factories' => array(
+                'JenkinsDaoConfig' => function ($sm) {
+                    return include('config/dao/JenkinsDao.config.php');
+                },
                 'JenkinsDao' => function ($sm) {
-                    return new JenkinsDao();
+                    return new JenkinsDao($sm->get('JenkinsDaoConfig'));
+                },
+                'NewRelicDaoConfig' => function ($sm) {
+                    return include('config/dao/NewRelicDao.config.php');
                 },
                 'NewRelicDao' => function ($sm) {
-                    return new NewRelicDao();
+                    return new NewRelicDao($sm->get('NewRelicDaoConfig'));
                 },
             ),
         );
