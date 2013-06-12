@@ -3,7 +3,7 @@ namespace Dashboard;
 
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
-use Dashboard\Model\DashboardManager;
+use Dashboard\Model\Widget\WidgetFactory;
 use Zend\ServiceManager\ServiceManager;
 
 class Module {
@@ -33,9 +33,6 @@ class Module {
                 'WidgetConfig' => function(ServiceManager $serviceManager) {
                     return include('config/widget/widgets.config.php');
                 },
-                'DashboardManager' => function(ServiceManager $serviceManager) {
-                    return new DashboardManager($serviceManager->get('WidgetConfig'));
-                },
                 'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/JenkinsDao.config.php');
                 },
@@ -48,6 +45,9 @@ class Module {
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
                     return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
                 },
+                'WidgetFactory' => function(ServiceManager $serviceManager) {
+                    return new WidgetFactory($serviceManager->get('WidgetConfig'));
+                }
             ),
         );
     }
