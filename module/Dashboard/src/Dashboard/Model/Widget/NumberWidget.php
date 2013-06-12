@@ -5,4 +5,4 @@
  */
 namespace Dashboard\Model\Widget;
 
-class StatusWidget extends Widget {}
+class NumberWidget extends AbstractWidget {}

@@ -36,11 +36,17 @@ class Module {
                 'DashboardManager' => function(ServiceManager $serviceManager) {
                     return new DashboardManager($serviceManager->get('WidgetConfig'));
                 },
+                'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/JenkinsDao.config.php');
+                },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
-                    return new JenkinsDao();
+                    return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
+                },
+                'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/NewRelicDao.config.php');
                 },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
-                    return new NewRelicDao();
+                    return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
                 },
             ),
         );

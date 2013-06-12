@@ -13,7 +13,7 @@ class LongPollingController extends AbstractRestfulController {
     /**
      * Create a new resource
      *
-     * @param  mixed $data
+     * @param  mixed $data Request data
      * @return mixed
      */
     public function create($data) {
@@ -23,7 +23,7 @@ class LongPollingController extends AbstractRestfulController {
     /**
      * Delete an existing resource
      *
-     * @param  mixed $id
+     * @param  mixed $id Request id
      * @return mixed
      */
     public function delete($id) {
@@ -37,9 +37,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return \Zend\View\Model\JsonModel
      */
     public function get($id) {
-
         return new JsonModel(array('data' => $id));
-
     }
 
     /**
@@ -54,7 +52,7 @@ class LongPollingController extends AbstractRestfulController {
     /**
      * Update an existing resource
      *
-     * @param  mixed $id Resource id
+     * @param  mixed $id   Resource id
      * @param  mixed $data Resource data
      * @return mixed
      */

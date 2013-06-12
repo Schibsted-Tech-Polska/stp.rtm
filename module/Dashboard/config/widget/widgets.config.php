@@ -1,6 +1,6 @@
 <?php
 /**
- * Configs of all widgets
+ * Default config of all widgets
  */
 return array(
     'number' => array(

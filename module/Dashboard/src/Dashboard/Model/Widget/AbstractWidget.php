@@ -33,5 +33,4 @@ abstract class AbstractWidget {
      * @var AbstractDao
      */
     protected $apiDao;
-
 }

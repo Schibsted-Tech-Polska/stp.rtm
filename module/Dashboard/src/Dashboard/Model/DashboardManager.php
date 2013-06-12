@@ -1,20 +1,23 @@
 <?php
 /**
- * Provides
+ * Main class responsible for rtm widgets management
  *
  * @author Konrad Turczynski <konrad.turczynski@schibsted.pl>
  */
 namespace Dashboard\Model;
 
+use Zend\Di\ServiceLocator;
+use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\ServiceManager;
 
 class DashboardManager {
-
     /**
-     * Basic configuration of all available widget types
+     * Zend service locator
      *
-     * @var array
+     * @var \Zend\ServiceManager\ServiceLocatorInterface
      */
-    private $widgetsConfig;
+    private $serviceLocator;
     /**
      * Rtm custom config
      *
@@ -32,10 +35,14 @@ class DashboardManager {
     /**
      * Constructor
      *
-     * @param array $configName dashboard's config
+     * @param string $rtmConfigName Config name retrieved from the url.
+     * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
+     * @internal param array $configName Dashboard's config
      */
-    public function __construct($widgetsConfig) {
-        $this->widgetsConfig = $widgetsConfig;
+    public function __construct($rtmConfigName, ServiceLocatorInterface $serviceLocator) {
+        $this->serviceLocator = $serviceLocator;
+        $this->loadConfig($rtmConfigName);
+        $this->init();
     }
 
     /**
@@ -44,9 +51,7 @@ class DashboardManager {
      * @param string $configName Config file name retrieved from url
      * @throws \Exception
      */
-
     public function loadConfig($configName) {
-
         $configFilePath = 'config/rtm/' . $configName . '.config.php';
 
         if (file_exists($configFilePath)) {
@@ -57,11 +62,14 @@ class DashboardManager {
     }
 
     /**
-     * Initiates configuration from the given config
-     *
+     * Creates dashboard's widget collection based on the custom config file
      */
     public function init() {
+        $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
 
+        foreach ($this->rtmConfig['widgets'] as $widgetData) {
+            $widget = $widgetFactory->build($widgetData);
+        }
     }
 
     /**
@@ -71,5 +79,14 @@ class DashboardManager {
      */
     public function addWidget(Widget\AbstractWidget $widget) {
         $this->widgetsCollection;
+    }
+
+    /**
+     * Get service locator
+     *
+     * @return ServiceLocatorInterface
+     */
+    public function getServiceLocator() {
+        return $this->serviceLocator;
     }
 }
