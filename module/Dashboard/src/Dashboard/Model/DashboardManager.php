@@ -10,11 +10,17 @@ namespace Dashboard\Model;
 class DashboardManager {
 
     /**
-     * Dashboard's config
+     * Basic configuration of all available widget types
      *
      * @var array
      */
-    private $config = array();
+    private $widgetsConfig;
+    /**
+     * Rtm custom config
+     *
+     * @var array
+     */
+    private $rtmConfig = array();
 
     /**
      * Collection of dashboard's widget
@@ -28,9 +34,8 @@ class DashboardManager {
      *
      * @param array $configName dashboard's config
      */
-    public function __construct($configName) {
-        $this->loadConfig($configName);
-        $this->init();
+    public function __construct($widgetsConfig) {
+        $this->widgetsConfig = $widgetsConfig;
     }
 
     /**
@@ -40,12 +45,12 @@ class DashboardManager {
      * @throws \Exception
      */
 
-    private function loadConfig($configName) {
+    public function loadConfig($configName) {
 
-        $configFilePath = 'config/' . $configName . '.config.php';
+        $configFilePath = 'config/rtm/' . $configName . '.config.php';
 
         if (file_exists($configFilePath)) {
-            $this->config = include($configFilePath);
+            $this->rtmConfig = include($configFilePath);
         } else {
             throw new \Exception('Cannot find config file');
         }
@@ -56,9 +61,7 @@ class DashboardManager {
      *
      */
     public function init() {
-        foreach ($this->config['resources'] as $resourceType => $resourceData) {
-                $widgetObject = Widget\WidgetFactory::build($widgetParams['type']);
-        }
+
     }
 
     /**

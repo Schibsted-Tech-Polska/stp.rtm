@@ -5,9 +5,10 @@
  */
 namespace Dashboard\Controller;
 
+use Dashboard\Model\DashboardManager;
 use Whoops\Example\Exception;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Zend\View\Helper\ViewModel;
 
 class DashboardController extends AbstractActionController {
     /**
@@ -21,7 +22,14 @@ class DashboardController extends AbstractActionController {
     public function dashboardAction() {
         $configName = $this->params()-> fromRoute('configName');
 
-        $configFilePath = 'config/' . $configName . '.config.php';
+        /**
+         * @var DashboardManager $dashboardManager
+         */
+        $dashboardManager = $this->serviceLocator->get('DashboardManager');
+        $dashboardManager->loadConfig($configName);
+        $dashboardManager->init();
+
+        return new ViewModel(array());
 
     }
 }
