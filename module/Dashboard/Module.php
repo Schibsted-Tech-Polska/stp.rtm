@@ -3,6 +3,7 @@ namespace Dashboard;
 
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
+use Zend\ServiceManager\ServiceManager;
 
 class Module {
     public function getConfig() {
@@ -28,17 +29,17 @@ class Module {
     public function getServiceConfig() {
         return array(
             'factories' => array(
-                'JenkinsDaoConfig' => function ($sm) {
+                'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/JenkinsDao.config.php');
                 },
-                'JenkinsDao' => function ($sm) {
-                    return new JenkinsDao($sm->get('JenkinsDaoConfig'));
+                'JenkinsDao' => function (ServiceManager $serviceManager) {
+                    return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
                 },
-                'NewRelicDaoConfig' => function ($sm) {
+                'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/NewRelicDao.config.php');
                 },
-                'NewRelicDao' => function ($sm) {
-                    return new NewRelicDao($sm->get('NewRelicDaoConfig'));
+                'NewRelicDao' => function (ServiceManager $serviceManager) {
+                    return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
                 },
             ),
         );
