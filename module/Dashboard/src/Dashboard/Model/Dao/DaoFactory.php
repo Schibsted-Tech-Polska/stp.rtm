@@ -8,7 +8,8 @@ namespace Dashboard\Model\Dao;
 
 class DaoFactory {
     /**
-     * @param string $type
+     * Returns a desired DAO object
+     * @param string $type DAO class name prefix
      * @throws \Exception
      * @return AbstractDao
      */
@@ -19,8 +20,7 @@ class DaoFactory {
              * DAO class exists - returning its instance.
              */
             return $dao::getInstance();
-        }
-        else {
+        } else {
             /**
              * DAO of needed type does not exist - throwing exception.
              */
