@@ -35,7 +35,7 @@ class DashboardManager {
     /**
      * Constructor
      *
-     * @param string                  $rtmConfigName  Config name retrieved from the url.
+     * @param string $rtmConfigName  Config name retrieved from the url.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
      * @internal param array $configName Dashboard's config
      */
