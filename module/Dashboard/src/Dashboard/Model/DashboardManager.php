@@ -35,7 +35,7 @@ class DashboardManager {
     /**
      * Constructor
      *
-     * @param string                  $rtmConfigName  Config name retrieved from the url.
+     * @param string                  $rtmConfigName  Config name retrieved from URL.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
      * @internal param array $configName Dashboard's config
      */
@@ -68,8 +68,13 @@ class DashboardManager {
         $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
 
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
-            $daoParams = $widgetData['params']['dao'];
-            $widget = $widgetFactory->build($daoParams, $widgetData);
+
+            $daoParams = null;
+            if (isset($this->rtmConfig[$widgetData['params']['dao']])) {
+                $daoParams = $this->rtmConfig[$widgetData['params']['dao']];
+            }
+
+            $widget = $widgetFactory->build($widgetData, $daoParams);
             $this->addWidget($widget);
         }
     }
@@ -94,7 +99,7 @@ class DashboardManager {
         if (isset($this->widgetsCollection[$id])) {
             return $this->widgetsCollection[$id];
         } else {
-            throw new \Exception('Widget with ' . $id . 'id is not specified in rtm config');
+            throw new \Exception('Widget with ' . $id . ' id is not specified in rtm config');
         }
     }
 
