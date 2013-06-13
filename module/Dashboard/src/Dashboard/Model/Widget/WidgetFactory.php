@@ -6,6 +6,7 @@
  */
 namespace Dashboard\Model\Widget;
 
+use Dashboard\Model\Widget\Exception\InvalidWidgetTypeException;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -35,12 +36,12 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
     /**
      * Creates instance of the widget
      *
-     * @param mixed $daoParams
-     * @param array $widgetData
-     * @throws \Exception
+     * @param array      $widgetData Widget data from rtm config
+     * @param array|null $daoParams  Dao parameters array or null if not specified
+     * @throws InvalidWidgetTypeException
      * @return AbstractWidget
      */
-    public function build($daoParams,array $widgetData) {
+    public function build(array $widgetData, $daoParams) {
         $widgetClass = __NAMESPACE__ . '\\' . ucfirst($widgetData['type']) . 'Widget';
 
         if (class_exists($widgetClass)) {
@@ -52,14 +53,14 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
 
             $daoClassName = ucfirst($widget->getParam('dao') . 'Dao');
             $dao = $this->getServiceLocator()->get($daoClassName);
-            $dao->setParams($daoParams);
+            $dao->setDaoOptions($daoParams);
 
             $widget->setDao($dao);
             $widget->setId($widgetData['id']);
 
             return $widget;
         } else {
-            throw new \Exception('Invalid widget type given.');
+            throw new InvalidWidgetTypeException('Invalid widget type given: ' . $widgetClass);
         }
     }
 
