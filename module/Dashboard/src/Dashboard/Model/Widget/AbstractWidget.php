@@ -9,30 +9,95 @@ namespace Dashboard\Model\Widget;
 use Dashboard\Model\Dao\AbstractDao;
 
 abstract class AbstractWidget {
-    // TODO: konradt ->  update properties list + implement base methods
+    /**
+     * Widget's identifier
+     *
+     * @var
+     */
+    protected $id;
 
     /**
-     * Id of the widget
+     * Widget's custom parameters
      *
-     * @var string
+     * @var array
      */
-    protected $id = "";
+    protected $params;
+
     /**
-     * Endpoint string for metric
+     * Dao object for concrete widget
      *
-     * @var string
+     * @var
      */
-    protected $endpoint;
+    protected $dao;
+
     /**
-     * Refresh interval (seconds)
+     * Constructor
      *
-     * @var int
+     * @param array $params Merged parameters from custom and default widget config
      */
-    protected $refreshRate;
+    public function __construct(array $params) {
+        $this->params = $params;
+    }
+
     /**
-     * Api dao
+     * Returns data for metric specified in rtm config
      *
-     * @var AbstractDao
+     * @return mixed
      */
-    protected $apiDao;
+    public function fetchData() {
+        $methodName = 'fetch' . $this->getParam('metric') . 'For' . get_class($this);
+
+        return $this->getDao()->$methodName();
+    }
+
+    /**
+     * Returns widget specific parameter
+     *
+     * @param string $paramName Parameter name.
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getParam($paramName) {
+        if (isset($this->params[$paramName])) {
+            return $this->params[$paramName];
+        } else {
+            throw new \Exception('Invalid widget parameter: ' . $paramName);
+        }
+    }
+
+    /**
+     * Sets widget's dao
+     *
+     * @param AbstractDao $dao Concrete dao object
+     */
+    public function setDao(AbstractDao $dao) {
+        $this->dao = $dao;
+    }
+
+    /**
+     * Returns dao
+     *
+     * @return mixed
+     */
+    public function getDao() {
+        return $this->dao;
+    }
+
+    /**
+     * Sets widget identifier
+     *
+     * @param mixed $id Widget identifier
+     */
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    /**
+     * Returns widget identifier
+     *
+     * @return mixed
+     */
+    public function getId() {
+        return $this->id;
+    }
 }

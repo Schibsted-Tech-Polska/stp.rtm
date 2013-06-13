@@ -6,7 +6,17 @@
  */
 namespace Dashboard\Model\Widget;
 
-class WidgetFactory {
+use Dashboard\Model\Widget\Exception\InvalidWidgetTypeException;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+
+class WidgetFactory implements ServiceLocatorAwareInterface {
+    /**
+     * Service locator
+     *
+     * @var ServiceLocatorInterface
+     */
+    private $serviceLocator;
     /**
      * Array of default widget configuration
      *
@@ -17,7 +27,7 @@ class WidgetFactory {
     /**
      * Constructor
      *
-     * @param array $widgetConfig Default widget configuration array.
+     * @param array $widgetConfig Default widget configuration.
      */
     public function __construct(array $widgetConfig) {
         $this->widgetConfig = $widgetConfig;
@@ -26,24 +36,52 @@ class WidgetFactory {
     /**
      * Creates instance of the widget
      *
-     * @param array $widgetData Widget's data from the custom config file.
-     * @throws \Exception
+     * @param array      $widgetData Widget data from rtm config
+     * @param array|null $daoParams  Dao parameters array or null if not specified
+     * @throws InvalidWidgetTypeException
      * @return AbstractWidget
      */
-    public function build(array $widgetData) {
-        $type = $widgetData['type'];
+    public function build(array $widgetData, $daoParams) {
+        $widgetClass = __NAMESPACE__ . '\\' . ucfirst($widgetData['type']) . 'Widget';
 
-        $widgetClass = __NAMESPACE__ . '\\' . ucfirst($type) . 'Widget';
         if (class_exists($widgetClass)) {
-            var_dump($this->widgetConfig[$type]);
+            // Merging default widget params with params defined in rtm custom config
+            $params = array_merge($this->widgetConfig[$widgetData['type']], $widgetData['params']);
 
-            $params = array_merge($this->widgetConfig[$type]['params'], $widgetData['params']);
+            /* @var AbstractWidget $widget */
+            $widget = new $widgetClass($params);
 
-            var_dump($params);
+            $daoClassName = ucfirst($widget->getParam('dao') . 'Dao');
+            $dao = $this->getServiceLocator()->get($daoClassName);
+            $dao->setDaoOptions($daoParams);
 
-            return new $widgetClass();
+            $widget->setDao($dao);
+            $widget->setId($widgetData['id']);
+
+            return $widget;
         } else {
-            throw new \Exception('Invalid widget type given.');
+            throw new InvalidWidgetTypeException('Invalid widget type given: ' . $widgetClass);
         }
+    }
+
+    /**
+     * Set service locator
+     *
+     * @param ServiceLocatorInterface $serviceLocator Service locator interface.
+     * @return $this
+     */
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator) {
+        $this->serviceLocator = $serviceLocator;
+
+        return $this;
+    }
+
+    /**
+     * Get service locator
+     *
+     * @return ServiceLocatorInterface
+     */
+    public function getServiceLocator() {
+        return $this->serviceLocator;
     }
 }
