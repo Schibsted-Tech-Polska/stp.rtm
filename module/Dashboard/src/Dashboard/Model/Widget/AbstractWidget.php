@@ -15,6 +15,7 @@ abstract class AbstractWidget {
      * @var
      */
     protected $id;
+
     /**
      * Widget's custom parameters
      *
@@ -36,6 +37,17 @@ abstract class AbstractWidget {
      */
     public function __construct(array $params) {
         $this->params = $params;
+    }
+
+    /**
+     * Returns data for metric specified in rtm config
+     *
+     * @return mixed
+     */
+    public function fetchData() {
+        $methodName = 'fetch' . $this->getParam('metric') . 'For' . get_class($this);
+
+        return $this->getDao()->$methodName();
     }
 
     /**
