@@ -6,6 +6,8 @@
  */
 namespace Dashboard\Controller;
 
+use Dashboard\Model\DashboardManager;
+use Dashboard\Model\Widget\AbstractWidget;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
@@ -37,8 +39,14 @@ class LongPollingController extends AbstractRestfulController {
      * @return \Zend\View\Model\JsonModel
      */
     public function get($id) {
-        // TODO: konradt -> implement long polling response
-        return new JsonModel(array('data' => $id));
+        $configName = $this->params()->fromRoute('configName');
+
+        $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
+
+        /* @var AbstractWidget $widget */
+        $widget = $dashboardManager->getWidget($id);
+
+        return new JsonModel(array($widget->fetchData()));
     }
 
     /**
