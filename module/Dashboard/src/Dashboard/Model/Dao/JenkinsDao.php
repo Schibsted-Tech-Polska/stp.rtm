@@ -12,7 +12,7 @@ class JenkinsDao extends AbstractDao {
      * @param array $params parameters for assembling proper endpoint URL
      * @return array
      */
-    public function fetchStatus(array $params) {
+    public function fetchStatusForBuildWidget(array $params) {
         $responseParsed = array();
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
