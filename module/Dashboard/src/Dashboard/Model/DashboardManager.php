@@ -35,7 +35,7 @@ class DashboardManager {
     /**
      * Constructor
      *
-     * @param string $rtmConfigName  Config name retrieved from the url.
+     * @param string                  $rtmConfigName  Config name retrieved from the url.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
      * @internal param array $configName Dashboard's config
      */
@@ -68,8 +68,9 @@ class DashboardManager {
         $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
 
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
-//            $widget = $widgetFactory->build($widgetData);
-            // TODO: konradt -> (konradt) implement widgets initialization
+            $daoParams = $widgetData['params']['dao'];
+            $widget = $widgetFactory->build($daoParams, $widgetData);
+            $this->addWidget($widget);
         }
     }
 
@@ -79,8 +80,22 @@ class DashboardManager {
      * @param Widget\AbstractWidget $widget Concrete widget object
      */
     public function addWidget(Widget\AbstractWidget $widget) {
-//        $this->widgetsCollection;
-        // TODO: konradt -> implement adding to colleciton
+        $this->widgetsCollection[$widget->getId()] = $widget;
+    }
+
+    /**
+     * Returns concrete instance of the widget with the given identifier
+     *
+     * @param string $id Widget's id
+     * @throws \Exception
+     * @return mixed
+     */
+    public function getWidget($id) {
+        if (isset($this->widgetsCollection[$id])) {
+            return $this->widgetsCollection[$id];
+        } else {
+            throw new \Exception('Widget with ' . $id . 'id is not specified in rtm config');
+        }
     }
 
     /**

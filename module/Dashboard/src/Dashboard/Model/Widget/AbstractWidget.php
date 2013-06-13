@@ -9,30 +9,83 @@ namespace Dashboard\Model\Widget;
 use Dashboard\Model\Dao\AbstractDao;
 
 abstract class AbstractWidget {
-    // TODO: konradt ->  update properties list + implement base methods
+    /**
+     * Widget's identifier
+     *
+     * @var
+     */
+    protected $id;
+    /**
+     * Widget's custom parameters
+     *
+     * @var array
+     */
+    protected $params;
 
     /**
-     * Id of the widget
+     * Dao object for concrete widget
      *
-     * @var string
+     * @var
      */
-    protected $id = "";
+    protected $dao;
+
     /**
-     * Endpoint string for metric
+     * Constructor
      *
-     * @var string
+     * @param array $params Merged parameters from custom and default widget config
      */
-    protected $endpoint;
+    public function __construct(array $params) {
+        $this->params = $params;
+    }
+
     /**
-     * Refresh interval (seconds)
+     * Returns widget specific parameter
      *
-     * @var int
+     * @param string $paramName Parameter name.
+     * @return mixed
+     * @throws \Exception
      */
-    protected $refreshRate;
+    public function getParam($paramName) {
+        if (isset($this->params[$paramName])) {
+            return $this->params[$paramName];
+        } else {
+            throw new \Exception('Invalid widget parameter: ' . $paramName);
+        }
+    }
+
     /**
-     * Api dao
+     * Sets widget's dao
      *
-     * @var AbstractDao
+     * @param AbstractDao $dao Concrete dao object
      */
-    protected $apiDao;
+    public function setDao(AbstractDao $dao) {
+        $this->dao = $dao;
+    }
+
+    /**
+     * Returns dao
+     *
+     * @return mixed
+     */
+    public function getDao() {
+        return $this->dao;
+    }
+
+    /**
+     * Sets widget identifier
+     *
+     * @param mixed $id Widget identifier
+     */
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    /**
+     * Returns widget identifier
+     *
+     * @return mixed
+     */
+    public function getId() {
+        return $this->id;
+    }
 }
