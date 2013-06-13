@@ -45,7 +45,7 @@ abstract class AbstractWidget {
      * @return mixed
      */
     public function fetchData() {
-        $methodName = 'fetch' . $this->getParam('metric') . 'For' . get_class($this);
+        $methodName = 'fetch' . $this->getParam('metric') . 'For' . $this->getClassName();
 
         return $this->getDao()->$methodName();
     }
@@ -63,6 +63,17 @@ abstract class AbstractWidget {
         } else {
             throw new \Exception('Invalid widget parameter: ' . $paramName);
         }
+    }
+
+    /**
+     * Returns name of the class without namespace
+     *
+     * @return string
+     */
+    public function getClassName() {
+        $class = explode('\\', get_class($this));
+
+        return end($class);
     }
 
     /**
