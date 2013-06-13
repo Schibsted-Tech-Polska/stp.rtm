@@ -45,7 +45,7 @@ abstract class AbstractWidget {
      * @return mixed
      */
     public function fetchData() {
-        $methodName = 'fetch' . $this->getParam('metric') . 'For' . $this->getClassName();
+        $methodName = 'fetch' . ucfirst($this->getParam('metric')) . 'For' . $this->getClassName();
 
         return $this->getDao()->$methodName($this->params);
     }

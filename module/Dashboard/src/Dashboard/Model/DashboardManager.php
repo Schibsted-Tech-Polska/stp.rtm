@@ -42,7 +42,7 @@ class DashboardManager {
     public function __construct($rtmConfigName, ServiceLocatorInterface $serviceLocator) {
         $this->serviceLocator = $serviceLocator;
         $this->loadConfig($rtmConfigName);
-        $this->init();
+        $this->initWidgetCollection();
     }
 
     /**
@@ -64,7 +64,7 @@ class DashboardManager {
     /**
      * Creates dashboard's widget collection based on the custom config file
      */
-    public function init() {
+    public function initWidgetCollection() {
         $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
 
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
