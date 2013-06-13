@@ -24,30 +24,86 @@ abstract class AbstractDao {
     protected $dataProvider;
 
     /**
-     * Dao configuration
+     * Dao configuration e.g. list of available endpoints
      *
      * @var array
      */
     protected $config;
 
     /**
+     * Dao usage options e.g. accountId, optional headers
+     * required while performing every request through AbstractDao::dataProvider
+     *
+     * @var array
+     */
+    protected $daoOptions;
+
+    /**
      * Dao constructor
      * Data provider can be injected, otherwise we use \Zend\Http\Client
      * @param array $config Dao configuration
-     * @param StdClass $dataProvider data provider object
+     * @param object $dataProvider data provider object
      */
     public function __construct($config, $dataProvider = null) {
         $this->config = $config;
 
         if (is_null($dataProvider)) {
-            $dataProvider = new Client();
-            $dataProvider->setOptions(array(
-                'maxredirects' => 1,
-                'timeout'      => 30
-            ));
+            $dataProvider = $this->setDefaultDataProvider();
         }
 
         $this->setDataProvider($dataProvider);
+    }
+
+    /**
+     * Creates a dataProvider object (\Zend\Http\Client)
+     * @return Client
+     */
+    protected function setDefaultDataProvider() {
+        $dataProvider = new Client();
+
+        $adapter = new Client\Adapter\Curl();
+        $adapter->setOptions(array(
+            'curloptions' => array(
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_SSL_VERIFYHOST => 0,
+            )
+        ));
+
+        $dataProvider->setAdapter($adapter);
+
+        $dataProvider->setOptions(array(
+            'maxredirects' => 1,
+            'timeout'      => 30
+        ));
+
+        return $dataProvider;
+    }
+
+    /**
+     * Configures Dao instance for performing requests
+     * @param array $daoOptions - Dao usage parameters e.g. accountId, optional headers
+     * @return $this
+     */
+    public function setDaoOptions(array $daoOptions) {
+        $this->daoOptions = $daoOptions;
+
+        return $this;
+    }
+
+    /**
+     * Returns ONLY URL parameters from self::$daoOptions
+     * @return array
+     */
+    public function getDaoParams() {
+        return isset($this->daoOptions['params']) ? $this->daoOptions['params'] : array();
+    }
+
+    /**
+     * Returns ONLY Http headers from self::$daoOptions
+     * @return array
+     */
+    public function getDaoHeaders() {
+        return isset($this->daoOptions['headers']) ? $this->daoOptions['headers'] : array();
     }
 
     /**
@@ -62,15 +118,20 @@ abstract class AbstractDao {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
 
+        $client = $this->getDataProvider();
+
+        $headers = $request->getHeaders();
+        $headers->addHeaders($this->getDaoHeaders());
+
         /**
          * @var \Zend\Http\Response
          */
-        $response = $this->getDataProvider()->dispatch($request);
+        $response = $client->dispatch($request);
 
         if ($response->isSuccess()) {
             return Json::decode($response->getBody(), $hydration);
         } else {
-            throw new Client\Exception\RuntimeException('Request failed with status: ' . $response->renderStatusLine());
+            throw new Client\Exception\RuntimeException('Request failed with status: ' . $response->renderStatusLine() . ' ' . $response->getBody());
         }
     }
 
@@ -90,6 +151,13 @@ abstract class AbstractDao {
         return $this->dataProvider;
     }
 
+    /**
+     * Returns endpoint URL associated with a supplied method name.
+     * Throws an exception if no URL found.
+     * @param string $methodName name of method used for fetching data
+     * @return string
+     * @throws Exception\EndpointUrlNotDefined
+     */
     protected function getEndpointUrl($methodName) {
         if (!isset($this->config['urls'][$methodName])) {
             throw new EndpointUrlNotDefined('Endpoint URL for method "' . $methodName . '" is not defined in ' . get_class($this));
@@ -105,18 +173,31 @@ abstract class AbstractDao {
      * @throws Exception\EndpointUrlNotAssembled
      * @return mixed
      */
-    protected function assembleUrl($url, $params = null) {
-        if (is_array($params)) {
-            foreach ($params as $key => $value) {
-                $url = str_replace(':' . $key . ':', $value, $url);
-            }
-        }
+    protected function assembleUrl($url, $params = array()) {
+        /**
+         * Merging parameters common for all dashboard widget and widget-specific
+         */
+        $params = array_merge($this->getDaoParams(), $params);
 
-        if (preg_match('/\:[\w]+\:/', $url, $matches) === 1) {
-            throw new EndpointUrlNotAssembled('Endpoint URL not assembled - not all required params were given (missing ' . implode(', ', $matches) . ')');
+        $this->validateUrlParamValues($url, $params);
+
+        foreach ($params as $key => $value) {
+            $url = str_replace(':' . $key . ':', $value, $url);
         }
 
         return $url;
+    }
+
+    protected function validateUrlParamValues($url, $params) {
+        preg_match_all('/\:[\w]+\:/', $url, $matches);
+
+        if (isset($matches[0]) && is_array($matches[0])) {
+            foreach ($matches[0] as $placeholderName) {
+                if (!isset($params[str_replace(':', '', $placeholderName)])) {
+                    throw new EndpointUrlNotAssembled('Endpoint URL cannot be assembled - not all required params were given (missing ' . $placeholderName . ')');
+                }
+            }
+        }
     }
 
     /**
