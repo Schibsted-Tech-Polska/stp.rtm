@@ -114,7 +114,7 @@ abstract class AbstractDao {
      * @return mixed
      * @throws \Zend\Http\Client\Exception\RuntimeException
      */
-    public function request($url, $params = null, $hydration = Json::TYPE_ARRAY) {
+    public function request($url, $params = array(), $hydration = Json::TYPE_ARRAY) {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
 
