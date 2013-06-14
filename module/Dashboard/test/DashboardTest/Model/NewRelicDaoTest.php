@@ -9,6 +9,9 @@ use DashboardTest\Bootstrap;
 
 class NewRelicDaoTest extends \PHPUnit_Framework_TestCase {
 
+    /**
+     * @return \Dashboard\Model\Dao\NewRelicDao
+     */
     protected function getConfiguredDao() {
         $dao = Bootstrap::getServiceManager()->get('NewRelicDao');
         $dao->setDaoOptions(array(
