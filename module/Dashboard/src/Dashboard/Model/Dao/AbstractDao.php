@@ -17,6 +17,20 @@ use Zend\Json\Json;
 
 abstract class AbstractDao {
     /**
+     * Request returns XML
+     *
+     * @var string
+     */
+    const RESPONSE_IN_XML = 'xml';
+
+    /**
+     * Requests returns JSON
+     *
+     * @var string
+     */
+    const RESPONSE_IN_JSON = 'json';
+
+    /**
      * Data provider object, may be overloaded
      *
      * @var \Zend\Http\Client
@@ -114,7 +128,7 @@ abstract class AbstractDao {
      * @return mixed
      * @throws \Zend\Http\Client\Exception\RuntimeException
      */
-    public function request($url, $params = array(), $responseFormat = 'json') {
+    public function request($url, $params = array(), $responseFormat = self::RESPONSE_IN_JSON) {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
 
@@ -130,12 +144,12 @@ abstract class AbstractDao {
 
         if ($response->isSuccess()) {
             switch ($responseFormat) {
-                case 'json':
+                case self::RESPONSE_IN_JSON:
                     $responseParsed = Json::decode($response->getBody(), Json::TYPE_ARRAY);
                     break;
-                case 'xml':
+                case self::RESPONSE_IN_XML:
                     try {
-                        $responseParsed = (array) simplexml_load_string($response->getBody());
+                        $responseParsed = simplexml_load_string($response->getBody());
                     } catch (Exception $e) {
                         throw new Client\Exception\RuntimeException('Parsing XML from request response failed');
                     }
@@ -203,6 +217,12 @@ abstract class AbstractDao {
         return $url;
     }
 
+    /**
+     * Checks if all placeholders in $url have their corresponding values in $params
+     * @param string $url - bare URL with placeholders
+     * @param array $params - array with optional parameter values
+     * @throws Exception\EndpointUrlNotAssembled
+     */
     protected function validateUrlParamValues($url, $params) {
         preg_match_all('/\:[\w]+\:/', $url, $matches);
 
