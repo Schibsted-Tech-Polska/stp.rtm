@@ -1,5 +1,6 @@
 <?php
 /**
+ * All methods used for obtaining data through Jenkins JSON API
  * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
  */
 

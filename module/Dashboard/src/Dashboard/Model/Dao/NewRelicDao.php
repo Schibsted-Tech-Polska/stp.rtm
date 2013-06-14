@@ -1,10 +1,10 @@
 <?php
 /**
+ * All methods used for obtaining data through NewRelic REST API
  * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
  */
 
 namespace Dashboard\Model\Dao;
-
 
 class NewRelicDao extends AbstractDao {
 
@@ -16,7 +16,7 @@ class NewRelicDao extends AbstractDao {
     public function fetchRpmForNumberWidget(array $params = array()) {
         $rpm = 0;
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-1 minute')) . 'T' . date('H:i:s', strtotime('-1 minute')) . 'Z';
+        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
         $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
 
         $response = $this->fetchRpmForGraphWidget($params);
@@ -38,25 +38,22 @@ class NewRelicDao extends AbstractDao {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
 
+    /**
+     * Number of errors per minute compared to total number of requests to the application
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return mixed
+     */
     public function fetchErrorRateForNumberWidget(array $params = array()) {
-        $result = 0;
+        $thresholdValues = $this->fetchThresholdValues($params);
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-1 minute')) . 'T' . date('H:i:s', strtotime('-1 minute')) . 'Z';
-        $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
-
-        $response = $this->fetchErrorRateForGraphWidget($params);
-
-        if (is_array($response) && isset($response[0])) {
-            $rpm = $response[0]['errors_per_minute'];
-        }
-
-        return $result;
+        return $thresholdValues['Error Rate']['formatted_metric_value'];
     }
 
-    public function fetchErrorRateForGraphWidget(array $params = array()) {
-        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
-    }
-
+    /**
+     * CPU shows the percentage of time spent in User space by the CPU as an average of reporting apps (agents).
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return int
+     */
     public function fetchCpuUsageForNumberWidget(array $params = array()) {
         $result = 0;
 
@@ -72,14 +69,25 @@ class NewRelicDao extends AbstractDao {
         return $result;
     }
 
+    /**
+     * Fetch array of CPU usage values from beginDateTime to endDateTime
+     * with constant intervals.
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
     public function fetchCpuUsageForGraphWidget(array $params = array()) {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
 
+    /**
+     * Returns average response time from the last minute in seconds
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
     public function fetchAverageResponseTimeForNumberWidget(array $params = array()) {
         $result = 0;
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-1 minute')) . 'T' . date('H:i:s', strtotime('-1 minute')) . 'Z';
+        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
         $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
 
         $response = $this->fetchAverageResponseTimeForGraphWidget($params);
@@ -91,27 +99,46 @@ class NewRelicDao extends AbstractDao {
         return $result;
     }
 
+    /**
+     * Fetch array of average response time values from beginDateTime to endDateTime
+     * with constant intervals.
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
     public function fetchAverageResponseTimeForGraphWidget(array $params = array()) {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
 
+    /**
+     * Fetches memory usage by your app
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
     public function fetchMemoryForNumberWidget(array $params = array()) {
-        $result = 0;
+        $thresholdValues = $this->fetchThresholdValues($params);
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-1 minute')) . 'T' . date('H:i:s', strtotime('-1 minute')) . 'Z';
+        return $thresholdValues['Memory']['formatted_metric_value'];
+    }
+
+    /**
+     * Fetches all threshold values for the application.
+     * Because it can only be obtained in XML I manually parse it into an array.
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
+    public function fetchThresholdValues(array $params = array()) {
+        $result = array();
+
+        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
         $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
 
-        $response = $this->fetchMemoryForGraphWidget($params);
-var_dump(__FILE__, __LINE__, $response);exit();
-        if (is_array($response) && isset($response[0])) {
-            $result = $response[0]['used_mb_by_host'];
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
+
+        foreach ($response->threshold_value as $thresholdValue) {
+            $thresholdValue = (array) $thresholdValue;
+            $result[$thresholdValue['@attributes']['name']] = $thresholdValue['@attributes'];
         }
 
         return $result;
     }
-
-    public function fetchMemoryForGraphWidget(array $params = array()) {
-        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
-    }
-
 }
