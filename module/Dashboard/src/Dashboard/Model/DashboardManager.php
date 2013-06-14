@@ -104,6 +104,14 @@ class DashboardManager {
     }
 
     /**
+     * Returns a collection of Widgets added to this Dashboard.
+     * @return array
+     */
+    public function getWidgets() {
+        return $this->widgetsCollection;
+    }
+
+    /**
      * Get service locator
      *
      * @return ServiceLocatorInterface

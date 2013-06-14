@@ -110,11 +110,11 @@ abstract class AbstractDao {
      * Executes a request to a given URL using injected Data Provider
      * @param string|\Zend\Uri\HttpUri $url endpoint destination URL
      * @param array|null $params request params values
-     * @param int $hydration hydration mode for \Zend\Json\Json
+     * @param int $responseFormat Format of the response - needed to execute a proper parser
      * @return mixed
      * @throws \Zend\Http\Client\Exception\RuntimeException
      */
-    public function request($url, $params = array(), $hydration = Json::TYPE_ARRAY) {
+    public function request($url, $params = array(), $responseFormat = 'json') {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
 
@@ -129,7 +129,22 @@ abstract class AbstractDao {
         $response = $client->dispatch($request);
 
         if ($response->isSuccess()) {
-            return Json::decode($response->getBody(), $hydration);
+            switch ($responseFormat) {
+                case 'json':
+                    $responseParsed = Json::decode($response->getBody(), Json::TYPE_ARRAY);
+                    break;
+                case 'xml':
+                    try {
+                        $responseParsed = (array) simplexml_load_string($response->getBody());
+                    } catch (Exception $e) {
+                        throw new Client\Exception\RuntimeException('Parsing XML from request response failed');
+                    }
+                    break;
+                default:
+                    throw new Client\Exception\RuntimeException('Parser for request response not found.');
+                    break;
+            }
+            return $responseParsed;
         } else {
             throw new Client\Exception\RuntimeException('Request failed with status: ' . $response->renderStatusLine() . ' ' . $response->getBody());
         }

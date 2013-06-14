@@ -22,11 +22,9 @@ class DashboardController extends AbstractActionController {
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
-        $widget = $dashboardManager->getWidget('notifaveRpm');
-        $widget2 = $dashboardManager->getWidget('buildStatus');
-
-        var_dump($widget->fetchData());
-        var_dump($widget2->fetchData());
+        foreach ($dashboardManager->getWidgets() as $widget) {
+            var_dump($widget->fetchData());
+        }
 
         return new ViewModel(array());
     }
