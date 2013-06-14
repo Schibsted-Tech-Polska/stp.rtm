@@ -22,9 +22,6 @@ class DashboardController extends AbstractActionController {
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
-        foreach ($dashboardManager->getWidgets() as $widget) {
-            var_dump($widget->fetchData());
-        }
 
         return new ViewModel(array());
     }

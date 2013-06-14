@@ -18,7 +18,7 @@ return array(
             'lpServer' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/resources/:configName/:id',
+                    'route'    => '/resources/:configName/:id[/:oldHash]',
                     'constraints' => array(
                         'configName' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[a-zA-Z][a-zA-Z0-9_-]*',

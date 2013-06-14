@@ -35,18 +35,26 @@ class LongPollingController extends AbstractRestfulController {
     /**
      * Return current data for widgets
      *
-     * @param  string $id wdiget's id
+     * @param  string $widgetId wdiget's id
      * @return \Zend\View\Model\JsonModel
      */
-    public function get($id) {
+    public function get($widgetId) {
         $configName = $this->params()->fromRoute('configName');
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
         /* @var AbstractWidget $widget */
-        $widget = $dashboardManager->getWidget($id);
+        $widget = $dashboardManager->getWidget($widgetId);
 
-        return new JsonModel(array($widget->fetchData()));
+        $oldHash = $this->params()->fromRoute('oldHash');
+        $responseData = $widget->fetchData();
+
+        while ($oldHash == $widget->getResponseHash()) {
+            sleep(10);
+            $responseData = $widget->fetchData();
+        }
+
+        return new JsonModel(array('data' => $responseData, 'hash' => $widget->getResponseHash()));
     }
 
     /**
@@ -55,7 +63,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return mixed
      */
     public function getList() {
-        // TODO: Implement getList() method.
+        // TODO: Implement getList(Ō) method.
     }
 
     /**

@@ -31,6 +31,13 @@ abstract class AbstractWidget {
     protected $dao;
 
     /**
+     * Response hash made from metric values
+     *
+     * @var
+     */
+    protected $responseHash;
+
+    /**
      * Constructor
      *
      * @param array $params Merged parameters from custom and default widget config
@@ -47,7 +54,10 @@ abstract class AbstractWidget {
     public function fetchData() {
         $methodName = 'fetch' . ucfirst($this->getParam('metric')) . 'For' . $this->getClassName();
 
-        return $this->getDao()->$methodName($this->params);
+        $response = $this->getDao()->$methodName($this->params);
+        $this->setResponseHash($response);
+
+        return $response;
     }
 
     /**
@@ -63,6 +73,25 @@ abstract class AbstractWidget {
         } else {
             throw new \Exception('Invalid widget parameter: ' . $paramName);
         }
+    }
+
+    /**
+     * Prepares response hash using sha1 algorithm
+     *
+     * @param array $responseHash Array of response values
+     */
+    public function setResponseHash($responseHash) {
+        $hash = sha1(serialize($responseHash));
+        $this->responseHash = $hash;
+    }
+
+    /**
+     * Returns response hash prepared from metric values
+     *
+     * @return mixed
+     */
+    public function getResponseHash() {
+        return $this->responseHash;
     }
 
     /**

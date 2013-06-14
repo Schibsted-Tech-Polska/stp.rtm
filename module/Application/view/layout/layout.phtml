@@ -24,6 +24,29 @@
         </div>
         <div class="container">
             <?php echo $this->content; ?>
+
+            <div id="testDiv"></div>
+
+            <script>
+                var testDiv = $('#testDiv');
+                var oldValueHash = '';
+
+                (function poll() {
+                    $.ajax({
+                    url: "/resources/rtm/vgtvCpuUsage" + oldValueHash,
+                    success: function (data) {
+                        testDiv.html(data.data);
+                        oldValueHash = "/" + data.hash;
+                        console.log(data);
+                    },
+                    dataType: "json",
+                    complete: poll,
+                    timeout: 100000 });
+
+                })();
+            </script>
+
+
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
     </body>
