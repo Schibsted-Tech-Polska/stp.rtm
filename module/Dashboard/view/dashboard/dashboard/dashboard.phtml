@@ -1,0 +1,13 @@
+<ul id="widgetsList">
+    <?php
+
+    /* @var $widget Dashboard\Model\Widget\AbstractWidget */
+    foreach ($this->widgets as $widget) {
+        echo $this->partial($widget->getTplName(), array(
+                'widgetId' => $widget->getId(),
+                'widgetType' => $widget->getClassName(),
+                'params' => $widget->getParams())
+        );
+    }
+    ?>
+</ul>
