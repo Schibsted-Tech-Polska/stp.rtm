@@ -6,10 +6,10 @@ use DashboardTest\Bootstrap;
 
 class JenkinsDaoTest extends \PHPUnit_Framework_TestCase {
     /**
-     * Testing proper Jenkins API URL - should return JSON
+     * Testing proper Jenkins API method - should return JSON parsed into array
      */
     public function testProperApiUrl() {
-        $response = Bootstrap::getServiceManager()->get('JenkinsDao')->fetchStatus(array(
+        $response = Bootstrap::getServiceManager()->get('JenkinsDao')->fetchStatusForBuildWidget(array(
             'view' => 'VGTV',
             'job'  => 'VGTV_front-end',
         ));
@@ -18,10 +18,23 @@ class JenkinsDaoTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Testing wrong API URL - will not return JSON
-     * @expectedException \Zend\Json\Exception\RuntimeException
+     * Executing fetch* method that is not defined in JenkinsDao - should throw an Exception
+     * @expectedException \Dashboard\Model\Dao\Exception\FetchNotImplemented
      */
-    public function testImproperApiUrl() {
-        Bootstrap::getServiceManager()->get('JenkinsDao')->request('http://ci.vgnett.no/');
+    public function testImproperApiMethod() {
+        Bootstrap::getServiceManager()->get('JenkinsDao')->fetchImproperDataName(array(
+            'view' => 'VGTV',
+            'job'  => 'VGTV_front-end',
+        ));
+    }
+
+    /**
+     * Proper API method, not all required params given - should throw an Exception
+     * @expectedException \Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled
+     */
+    public function testNotAllRequiredParamsGiven() {
+        Bootstrap::getServiceManager()->get('JenkinsDao')->fetchStatusForBuildWidget(array(
+            'view' => 'VGTV',
+        ));
     }
 }
