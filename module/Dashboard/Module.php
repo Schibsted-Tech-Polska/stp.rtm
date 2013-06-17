@@ -34,13 +34,13 @@ class Module {
                     return include('config/widget/widgets.config.php');
                 },
                 'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/JenkinsDao.config.php');
+                    return include('config/dao/jenkinsDao.config.php');
                 },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
                     return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
                 },
                 'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/NewRelicDao.config.php');
+                    return include('config/dao/newRelicDao.config.php');
                 },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
                     return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));

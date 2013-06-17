@@ -18,11 +18,11 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
      */
     private $serviceLocator;
     /**
-     * Array of default widget configuration
+     * Array of default widget configuration (widgets.config.php)
      *
      * @var array
      */
-    private $widgetConfig;
+    private $widgetDefaultConfig;
 
     /**
      * Constructor
@@ -30,14 +30,14 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
      * @param array $widgetConfig Default widget configuration.
      */
     public function __construct(array $widgetConfig) {
-        $this->widgetConfig = $widgetConfig;
+        $this->widgetDefaultConfig = $widgetConfig;
     }
 
     /**
      * Creates instance of the widget
      *
      * @param array      $widgetData Widget data from rtm config
-     * @param array|null $daoParams  Dao parameters array or null if not specified
+     * @param array|null $daoParams  Dao parameters array
      * @throws InvalidWidgetTypeException
      * @return AbstractWidget
      */
@@ -46,7 +46,7 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
 
         if (class_exists($widgetClass)) {
             // Merging default widget params with params defined in rtm custom config
-            $params = array_merge($this->widgetConfig[$widgetData['type']], $widgetData['params']);
+            $params = array_merge($this->widgetDefaultConfig[$widgetData['type']], $widgetData['params']);
 
             /* @var AbstractWidget $widget */
             $widget = new $widgetClass($params);

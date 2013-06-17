@@ -33,16 +33,15 @@
 
                 (function poll() {
                     $.ajax({
-                    url: "/resources/rtm/vgtvCpuUsage" + oldValueHash,
+                    url: "/resources/rtm/vgtvRpm" + oldValueHash,
                     success: function (data) {
-                        testDiv.html(data.data);
+                        testDiv.text(data.data);
                         oldValueHash = "/" + data.hash;
                         console.log(data);
                     },
                     dataType: "json",
                     complete: poll,
                     timeout: 100000 });
-
                 })();
             </script>
 
