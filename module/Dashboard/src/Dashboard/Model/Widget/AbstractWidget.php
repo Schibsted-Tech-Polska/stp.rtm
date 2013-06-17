@@ -7,6 +7,9 @@
 namespace Dashboard\Model\Widget;
 
 use Dashboard\Model\Dao\AbstractDao;
+use Dashboard\Model\Widget\Exception\InvalidWidgetParameterException;
+use Zend\Filter\Inflector;
+use Zend\View\Model\ViewModel;
 
 abstract class AbstractWidget {
     /**
@@ -47,7 +50,15 @@ abstract class AbstractWidget {
     }
 
     /**
-     * Returns data for metric specified in rtm config
+     * Checks whether all required parameters are specified
+     * for a concrete type of widget.
+     *
+     * @return boolean
+     */
+    abstract function isReadyToRender();
+
+    /**
+     * Returns data for a metric specified in the rtm config
      *
      * @return mixed
      */
@@ -65,13 +76,13 @@ abstract class AbstractWidget {
      *
      * @param string $paramName Parameter name.
      * @return mixed
-     * @throws \Exception
+     * @throws InvalidWidgetParameterException
      */
     public function getParam($paramName) {
         if (isset($this->params[$paramName])) {
             return $this->params[$paramName];
         } else {
-            throw new \Exception('Invalid widget parameter: ' . $paramName);
+            throw new InvalidWidgetParameterException('Invalid widget parameter: ' . $paramName);
         }
     }
 
@@ -92,6 +103,46 @@ abstract class AbstractWidget {
      */
     public function getResponseHash() {
         return $this->responseHash;
+    }
+
+    /**
+     * Returns template name of a widget
+     *
+     * @return ViewModel
+     */
+    public function getTplName() {
+        try {
+            $tplName = $this->getParam('tplName');
+        } catch (InvalidWidgetParameterException $e) {
+            $tplName = $this->prepareTplName();
+        }
+
+        $tplName = 'dashboard/dashboard/widget/' . strtolower($tplName) . '.phtml';
+
+        return $tplName;
+    }
+
+    /**
+     * Returns template name
+     *
+     * If a template name is not specified as a widget's param
+     * it is auto created from widget type name
+     * (Note: each word of the widget type name will be separated with a dash ('-').
+     *
+     * @return string
+     */
+    public function prepareTplName() {
+        // We're separating each word of a widget class name using a dash (‘-‘).
+        $inflector = new Inflector(':tplName');
+        $inflector->setRules(array(
+            ':tplName' => array('Word\CamelCaseToDash')
+        ));
+
+        $className = $this->getClassName();
+
+        $tplName = $inflector->filter(array('tplName' => $className));
+
+        return $tplName;
     }
 
     /**
@@ -139,5 +190,14 @@ abstract class AbstractWidget {
      */
     public function getId() {
         return $this->id;
+    }
+
+    /**
+     * Returns array of widget's parameters
+     *
+     * @return array
+     */
+    public function getParams() {
+        return $this->params;
     }
 }

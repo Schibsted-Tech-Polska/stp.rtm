@@ -1,5 +1,6 @@
 <?php
 /**
+ * Default controller for displaying rtm dashboard.
  *
  * @author Konrad Turczynski <konrad.turczynski@schibsted.pl>
  */
@@ -8,7 +9,7 @@ namespace Dashboard\Controller;
 use Dashboard\Model\DashboardManager;
 use Whoops\Example\Exception;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Helper\ViewModel;
+use Zend\View\Model\ViewModel;
 
 class DashboardController extends AbstractActionController {
     /**
@@ -22,6 +23,6 @@ class DashboardController extends AbstractActionController {
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
-        return new ViewModel(array());
+        return new ViewModel(array('widgets' => $dashboardManager->getWidgets()));
     }
 }

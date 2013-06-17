@@ -24,26 +24,25 @@
         </div>
         <div class="container">
             <?php echo $this->content; ?>
+<!--            <div id="testDiv"></div>-->
 
-            <div id="testDiv"></div>
-
-            <script>
-                var testDiv = $('#testDiv');
-                var oldValueHash = '';
-
-                (function poll() {
-                    $.ajax({
-                    url: "/resources/rtm/vgtvRpm" + oldValueHash,
-                    success: function (data) {
-                        testDiv.text(data.data);
-                        oldValueHash = "/" + data.hash;
-                        console.log(data);
-                    },
-                    dataType: "json",
-                    complete: poll,
-                    timeout: 100000 });
-                })();
-            </script>
+<!--            <script>-->
+<!--                var testDiv = $('#testDiv');-->
+<!--                var oldValueHash = '';-->
+<!---->
+<!--                (function poll() {-->
+<!--                    $.ajax({-->
+<!--                    url: "/resources/rtm/vgtvRpm" + oldValueHash,-->
+<!--                    success: function (data) {-->
+<!--                        testDiv.text(data.data);-->
+<!--                        oldValueHash = "/" + data.hash;-->
+<!--                        console.log(data);-->
+<!--                    },-->
+<!--                    dataType: "json",-->
+<!--                    complete: poll,-->
+<!--                    timeout: 100000 });-->
+<!--                })();-->
+<!--            </script>-->
 
 
         </div> <!-- /container -->
