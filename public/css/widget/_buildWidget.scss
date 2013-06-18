@@ -1,0 +1,90 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #4b5f24;
+
+$title-color:       rgba(255, 255, 255, 1);
+$moreinfo-color:    rgba(255, 255, 255, 0.3);
+
+$meter-background:  rgba(20, 20, 20, 1);
+
+// ----------------------------------------------------------------------------
+// Build widget styles
+// ----------------------------------------------------------------------------
+.BuildWidget {
+  padding: 0;
+
+  h2 {font-size: 16px}
+
+
+  input.jenkins-build {
+    color: #fff;
+  }
+
+  .title {
+    color: $title-color;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    display: none;
+  }
+
+  .progress-bar {
+    display: none;
+    margin-top: 22px;
+  }
+
+  .building-failure {
+    .face {
+      background: #cf0d4d;
+    }
+  }
+
+  .face {
+    padding: 25px 12px;
+    background: #1693a7;
+  }
+
+  .face.front {
+    z-index: 20;
+  }
+
+  .face.back {
+    background: #a7169e;
+  }
+
+  .flipped-effect .face.back {
+    z-index: 21;
+  }
+
+  .average-health-score {
+    font-family: "Icons";
+    font-size: 210px;
+    line-height: 0.9;
+    margin-bottom: 25px;
+  }
+
+  .last-built {
+    font-size: 14px;
+  }
+
+  .last-committer {
+    font-size: 26px;
+    margin-bottom: 3px;
+  }
+
+  .build-icon {
+    width: 100%;
+    height: 230px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}

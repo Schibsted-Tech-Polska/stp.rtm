@@ -1,0 +1,109 @@
+.row-fluid .widget.TextWidget {
+  background-color: #4d4c4c; }
+
+.BuildWidget {
+  padding: 0; }
+  .BuildWidget h2 {
+    font-size: 16px; }
+  .BuildWidget input.jenkins-build {
+    color: #fff; }
+  .BuildWidget .title {
+    color: white; }
+  .BuildWidget .more-info {
+    color: rgba(255, 255, 255, 0.3); }
+  .BuildWidget .updated-at {
+    display: none; }
+  .BuildWidget .progress-bar {
+    display: none;
+    margin-top: 22px; }
+  .BuildWidget .building-failure .face {
+    background: #cf0d4d; }
+  .BuildWidget .face {
+    padding: 25px 12px;
+    background: #1693a7; }
+  .BuildWidget .face.front {
+    z-index: 20; }
+  .BuildWidget .face.back {
+    background: #a7169e; }
+  .BuildWidget .flipped-effect .face.back {
+    z-index: 21; }
+  .BuildWidget .average-health-score {
+    font-family: "Icons";
+    font-size: 210px;
+    line-height: 0.9;
+    margin-bottom: 25px; }
+  .BuildWidget .last-built {
+    font-size: 14px; }
+  .BuildWidget .last-committer {
+    font-size: 26px;
+    margin-bottom: 3px; }
+  .BuildWidget .build-icon {
+    width: 100%;
+    height: 230px; }
+    .BuildWidget .build-icon svg {
+      width: 100%;
+      height: 100%; }
+
+.NumberWidget {
+  background-color: #47bbb3; }
+  .NumberWidget .value {
+    color: white; }
+  .NumberWidget .change-rate {
+    font-weight: 500;
+    font-size: 30px;
+    color: white; }
+  .NumberWidget .more-info {
+    color: rgba(255, 255, 255, 0.7); }
+  .NumberWidget .updated-at {
+    color: rgba(0, 0, 0, 0.3);
+    display: none; }
+
+.widget-error-rate .widget-number.widget {
+  background: url(/assets/sock.png) no-repeat 191px 225px;
+  background-color: #CC0C39;
+  padding-top: 0;
+  background-size: 21%; }
+  .widget-error-rate .widget-number.widget h1 {
+    margin-top: -10px; }
+
+body {
+  color: white;
+  padding: 0 0.625em;
+  background-color: #242a33;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.25em; }
+
+.row-fluid .widget {
+  padding: 0.625em;
+  min-height: 20em;
+  background-color: #1693a7;
+  text-align: center;
+  vertical-align: middle; }
+
+.row-fluid [class*=span] {
+  margin-top: 0.625em; }
+
+h1, h2, h3, h4, h5, p {
+  padding: 0;
+  margin: 0; }
+
+h1 {
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400; }
+
+h2 {
+  text-transform: uppercase;
+  font-size: 76px;
+  font-weight: 700;
+  color: white; }
+
+h3 {
+  font-size: 25px;
+  font-weight: 600;
+  color: white; }
+
+@media screen and (min-width: 767px) {
+  .container {
+    width: 100%; } }
