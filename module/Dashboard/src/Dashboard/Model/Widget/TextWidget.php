@@ -1,12 +1,20 @@
 <?php
 /**
- * Class of a widget representing build status
  *
  * @author Konrad Turczynski <konrad.turczynski@schibsted.pl>
  */
 namespace Dashboard\Model\Widget;
 
-class BuildWidget extends AbstractWidget {
+class TextWidget extends AbstractWidget {
+
+    /**
+     * Returns data for a metric specified in the rtm config
+     *
+     * @return mixed
+     */
+    public function fetchData() {
+        return array();
+    }
 
     /**
      * Checks whether all required parameters are specified

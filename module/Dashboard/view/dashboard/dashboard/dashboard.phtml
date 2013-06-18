@@ -1,13 +1,18 @@
-<ul id="widgetsList">
-    <?php
+<?php
+$span = 0;
+$i = 0;
 
-    /* @var $widget Dashboard\Model\Widget\AbstractWidget */
-    foreach ($this->widgets as $widget) {
-        echo $this->partial($widget->getTplName(), array(
-                'widgetId' => $widget->getId(),
-                'widgetType' => $widget->getClassName(),
-                'params' => $widget->getParams())
-        );
+/* @var $widget Dashboard\Model\Widget\AbstractWidget */
+foreach ($this->widgets as $widget) {
+    $span += $widget->getParam('span');
+    if ($span > 12) {
+        echo '</div><div class="row-fluid">';
+        $span = $widget->getParam('span');;
     }
-    ?>
-</ul>
+
+    echo $this->partial($widget->getTplName(), array(
+            'widgetId' => $widget->getId(),
+            'widgetType' => $widget->getClassName(),
+            'params' => $widget->getParams())
+    );
+}

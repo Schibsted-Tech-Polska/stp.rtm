@@ -70,7 +70,7 @@ class DashboardManager {
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
 
             $daoParams = array();
-            if (isset($this->rtmConfig[$widgetData['params']['dao']])) {
+            if (isset($widgetData['params']['dao']) && isset($this->rtmConfig[$widgetData['params']['dao']])) {
                 $daoParams = $this->rtmConfig[$widgetData['params']['dao']];
             }
 

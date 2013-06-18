@@ -1,12 +1,11 @@
 <?php
 /**
- * Class of a widget representing build status
  *
  * @author Konrad Turczynski <konrad.turczynski@schibsted.pl>
  */
 namespace Dashboard\Model\Widget;
 
-class BuildWidget extends AbstractWidget {
+class ErrorWidget extends AbstractWidget {
 
     /**
      * Checks whether all required parameters are specified
