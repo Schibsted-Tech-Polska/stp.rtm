@@ -10,6 +10,11 @@ return array(
             'valuePrefix' => '',
             'span' => 3,
     ),
+    'error' => array(
+            'refreshRate' => 60,
+            'title' => '',
+            'span' => 3,
+    ),
     'build' => array(
             'refreshRate' => 30,
             'span' => 3,

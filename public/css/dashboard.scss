@@ -1,14 +1,18 @@
+@import "widget/errorWidget";
 @import "widget/textWidget";
 @import "widget/buildWidget";
 @import "widget/numberWidget";
 
-// :::::: COLORS ::::::::
-
+// ----------------------------------------------------------------------------
+// Colors
+// ----------------------------------------------------------------------------
 $default-font-color: #fff;
 $default-widget-bg-color: #1693a7;
 $body-bg-color: #242A33;
 
-// :::::: SIZES ::::::
+// ----------------------------------------------------------------------------
+// Sizes
+// ----------------------------------------------------------------------------
 $widgets-margin: 0.625em;
 $widgets-padding: 0.625em;
 $widget-min-height: 20em;
@@ -20,46 +24,55 @@ body {
   background-color: $body-bg-color;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: $default-font-size;
-
 }
 
-.row-fluid .widget {
-  padding: $widgets-padding;
-  min-height: $widget-min-height;
-  background-color: $default-widget-bg-color;
-  text-align: center;
-  vertical-align: middle;
-}
+#dashboardBody {
+  .widget {
+    padding: $widgets-padding;
+    min-height: $widget-min-height;
+    background-color: $default-widget-bg-color;
+    text-align: center;
+    vertical-align: middle;
+  }
 
-.row-fluid [class*=span] {
-  margin: {
-    top: $widgets-margin;
+  .row-fluid [class*=span] {
+    margin: {
+      top: $widgets-margin;
+    }
+  }
+
+  h1, h2, h3, h4, h5, p {
+    padding: 0;
+    margin: 0;
+    line-height: normal;
+  }
+  h1 {
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+  }
+  h2 {
+    text-transform: uppercase;
+    font-size: 76px;
+    font-weight: 700;
+    color: $default-font-color;
+  }
+  h3 {
+    font-size: 25px;
+    font-weight: 600;
+    color: $default-font-color;
+  }
+
+  [class^="icon-"] {
+    background-image: none;
+    display: inline-block;
+    text-align: center;
+    width: 1.25em;
+    line-height: normal;
   }
 
 }
-
-h1, h2, h3, h4, h5, p {
-  padding: 0;
-  margin: 0;
-}
-h1 {
-  margin-bottom: 12px;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 400;
-}
-h2 {
-  text-transform: uppercase;
-  font-size: 76px;
-  font-weight: 700;
-  color: $default-font-color;
-}
-h3 {
-  font-size: 25px;
-  font-weight: 600;
-  color: $default-font-color;
-}
-
 
 @media screen and (min-width: 767px) {
   .container {

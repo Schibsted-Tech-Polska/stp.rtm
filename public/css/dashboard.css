@@ -1,60 +1,63 @@
-.row-fluid .widget.TextWidget {
+#dashboardBody .widget.ErrorWidget {
+  background-color: #cc0c39; }
+
+#dashboardBody .widget.TextWidget {
   background-color: #4d4c4c; }
 
-.BuildWidget {
+#dashboardBody .widget.BuildWidget {
   padding: 0; }
-  .BuildWidget h2 {
+  #dashboardBody .widget.BuildWidget h2 {
     font-size: 16px; }
-  .BuildWidget input.jenkins-build {
+  #dashboardBody .widget.BuildWidget input.jenkins-build {
     color: #fff; }
-  .BuildWidget .title {
+  #dashboardBody .widget.BuildWidget .title {
     color: white; }
-  .BuildWidget .more-info {
+  #dashboardBody .widget.BuildWidget .more-info {
     color: rgba(255, 255, 255, 0.3); }
-  .BuildWidget .updated-at {
+  #dashboardBody .widget.BuildWidget .updated-at {
     display: none; }
-  .BuildWidget .progress-bar {
+  #dashboardBody .widget.BuildWidget .progress-bar {
     display: none;
     margin-top: 22px; }
-  .BuildWidget .building-failure .face {
+  #dashboardBody .widget.BuildWidget .building-failure .face {
     background: #cf0d4d; }
-  .BuildWidget .face {
+  #dashboardBody .widget.BuildWidget .face {
     padding: 25px 12px;
     background: #1693a7; }
-  .BuildWidget .face.front {
+  #dashboardBody .widget.BuildWidget .face.front {
     z-index: 20; }
-  .BuildWidget .face.back {
+  #dashboardBody .widget.BuildWidget .face.back {
     background: #a7169e; }
-  .BuildWidget .flipped-effect .face.back {
+  #dashboardBody .widget.BuildWidget .flipped-effect .face.back {
     z-index: 21; }
-  .BuildWidget .average-health-score {
+  #dashboardBody .widget.BuildWidget .average-health-score {
     font-family: "Icons";
     font-size: 210px;
     line-height: 0.9;
     margin-bottom: 25px; }
-  .BuildWidget .last-built {
+  #dashboardBody .widget.BuildWidget .last-built {
     font-size: 14px; }
-  .BuildWidget .last-committer {
+  #dashboardBody .widget.BuildWidget .last-committer {
     font-size: 26px;
     margin-bottom: 3px; }
-  .BuildWidget .build-icon {
+  #dashboardBody .widget.BuildWidget .build-icon {
     width: 100%;
     height: 230px; }
-    .BuildWidget .build-icon svg {
+    #dashboardBody .widget.BuildWidget .build-icon svg {
       width: 100%;
       height: 100%; }
 
-.NumberWidget {
+#dashboardBody .widget.NumberWidget {
   background-color: #47bbb3; }
-  .NumberWidget .value {
+  #dashboardBody .widget.NumberWidget .value {
     color: white; }
-  .NumberWidget .change-rate {
+  #dashboardBody .widget.NumberWidget .change-rate {
     font-weight: 500;
     font-size: 30px;
     color: white; }
-  .NumberWidget .more-info {
+  #dashboardBody .widget.NumberWidget .more-info {
     color: rgba(255, 255, 255, 0.7); }
-  .NumberWidget .updated-at {
+  #dashboardBody .widget.NumberWidget .updated-at {
     color: rgba(0, 0, 0, 0.3);
     display: none; }
 
@@ -73,36 +76,38 @@ body {
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em; }
 
-.row-fluid .widget {
+#dashboardBody .widget {
   padding: 0.625em;
   min-height: 20em;
   background-color: #1693a7;
   text-align: center;
   vertical-align: middle; }
-
-.row-fluid [class*=span] {
+#dashboardBody .row-fluid [class*=span] {
   margin-top: 0.625em; }
-
-h1, h2, h3, h4, h5, p {
+#dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
-  margin: 0; }
-
-h1 {
+  margin: 0;
+  line-height: normal; }
+#dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400; }
-
-h2 {
+#dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: white; }
-
-h3 {
+#dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: white; }
+#dashboardBody [class^="icon-"] {
+  background-image: none;
+  display: inline-block;
+  text-align: center;
+  width: 1.25em;
+  line-height: normal; }
 
 @media screen and (min-width: 767px) {
   .container {
