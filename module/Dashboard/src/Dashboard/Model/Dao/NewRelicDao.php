@@ -93,7 +93,7 @@ class NewRelicDao extends AbstractDao {
         $response = $this->fetchAverageResponseTimeForGraphWidget($params);
 
         if (is_array($response) && isset($response[0])) {
-            $result = $response[0]['average_response_time'];
+            $result = round($response[0]['average_response_time'],3);
         }
 
         return $result;
