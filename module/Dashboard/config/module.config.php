@@ -15,6 +15,20 @@ return array(
                     ),
                 ),
             ),
+            'addMessage' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/:configName/:widgetId',
+                    'constraints' => array(
+                        'configName' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'widgetId' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Dashboard\Controller\Dashboard',
+                        'action'     => 'addMessage',
+                    ),
+                ),
+            ),
             'lpServer' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -51,7 +65,7 @@ return array(
     ),
     'dashboardCache' => array(
         'ttl' => 3600*24*7, // 7 days
-        'namespace' => 'dashboard',
+        'namespace' => 'rtm_dashboard_1',
         'key_pattern' => null,
         'readable'  => true,
         'writable' => true,

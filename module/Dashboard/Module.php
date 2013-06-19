@@ -1,7 +1,7 @@
 <?php
 namespace Dashboard;
 
-use Dashboard\Model\Dao\IndependentDao;
+use Dashboard\Model\Dao\MessagesDao;
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
 use Dashboard\Model\Widget\WidgetFactory;
@@ -48,11 +48,11 @@ class Module {
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
                     return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'), null, $serviceManager->get('Memcached'));
                 },
-                'IndependentDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/IndependentDao.config.php');
+                'MessagesDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/MessagesDao.config.php');
                 },
-                'IndependentDao' => function (ServiceManager $serviceManager) {
-                    return new IndependentDao($serviceManager->get('IndependentDaoConfig'), null, $serviceManager->get('Memcached'));
+                'MessagesDao' => function (ServiceManager $serviceManager) {
+                    return new MessagesDao($serviceManager->get('MessagesDaoConfig'), null, $serviceManager->get('Memcached'));
                 },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));
