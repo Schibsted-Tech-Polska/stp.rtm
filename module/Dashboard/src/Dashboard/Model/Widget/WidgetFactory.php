@@ -34,7 +34,7 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
     }
 
     /**
-     * Creates instance of the widget
+     * Creates instance of a widget
      *
      * @param array      $widgetData Widget data from rtm config
      * @param array|null $daoParams  Dao parameters array
@@ -50,8 +50,6 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
 
             /* @var AbstractWidget $widget */
             $widget = new $widgetClass($params);
-
-            // TODO: konradt add condition for widgets without dao
 
             $daoType = $widget->getParam('dao');
 
