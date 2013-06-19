@@ -27,4 +27,9 @@ return array(
             'span' => 3,
             'title' => '',
     ),
+    'messages' => array(
+        'refreshRate' => 30,
+        'span' => 3,
+        'title' => '',
+    ),
 );

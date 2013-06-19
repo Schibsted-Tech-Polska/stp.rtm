@@ -87,6 +87,19 @@ abstract class AbstractWidget {
     }
 
     /**
+     * Sets a param for a specific widget
+     *
+     * @param string $paramName parameter name
+     * @param mixed $value parameter value
+     * @return $this
+     */
+    public function setParam($paramName, $value) {
+        $this->params[$paramName] = $value;
+
+        return $this;
+    }
+
+    /**
      * Prepares response hash using sha1 algorithm
      *
      * @param array $responseHash Array of response values
@@ -199,5 +212,21 @@ abstract class AbstractWidget {
      */
     public function getParams() {
         return $this->params;
+    }
+
+    /**
+     * Cache identifier setter
+     * @param string $cacheIdentifier string index key
+     */
+    public function setCacheIdentifier($cacheIdentifier) {
+        $this->params['cacheIdentifier'] = $cacheIdentifier;
+    }
+
+    /**
+     * Cache identifier getter
+     * @return string
+     */
+    public function getCacheIdentifier() {
+        return $this->params['cacheIdentifier'];
     }
 }

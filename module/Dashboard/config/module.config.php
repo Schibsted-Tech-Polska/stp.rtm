@@ -44,4 +44,12 @@ return array(
             'ViewJsonStrategy',
         ),
     ),
+    'dashboardCache' => array(
+        'ttl' => 3600*24*7, // 7 days
+        'namespace' => 'dashboard',
+        'key_pattern' => null,
+        'readable'  => true,
+        'writable' => true,
+        'servers' => 'localhost',
+    ),
 );

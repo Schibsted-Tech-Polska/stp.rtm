@@ -33,15 +33,23 @@ class DashboardManager {
     private $widgetsCollection = array();
 
     /**
+     * Name of the Dashboard instance
+     *
+     * @var string
+     */
+    private $resourceName;
+
+    /**
      * Constructor
      *
-     * @param string                  $rtmConfigName  Config name retrieved from URL.
+     * @param string                  $resourceName  Config name retrieved from URL.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
      * @internal param array $configName Dashboard's config
      */
-    public function __construct($rtmConfigName, ServiceLocatorInterface $serviceLocator) {
+    public function __construct($resourceName, ServiceLocatorInterface $serviceLocator) {
         $this->serviceLocator = $serviceLocator;
-        $this->loadConfig($rtmConfigName);
+        $this->setResourceName($resourceName);
+        $this->loadConfig($resourceName);
         $this->initWidgetCollection();
     }
 
@@ -51,8 +59,8 @@ class DashboardManager {
      * @param string $configName Config file name retrieved from url
      * @throws \Exception
      */
-    public function loadConfig($configName) {
-        $configFilePath = 'config/rtm/' . $configName . '.config.php';
+    public function loadConfig($resourceName) {
+        $configFilePath = 'config/rtm/' . $resourceName . '.config.php';
 
         if (file_exists($configFilePath)) {
             $this->rtmConfig = include($configFilePath);
@@ -74,7 +82,7 @@ class DashboardManager {
                 $daoParams = $this->rtmConfig[$widgetData['params']['dao']];
             }
 
-            $widget = $widgetFactory->build($widgetData, $daoParams);
+            $widget = $widgetFactory->build($widgetData, $daoParams, $this->getResourceName());
             $this->addWidget($widget);
         }
     }
@@ -118,5 +126,23 @@ class DashboardManager {
      */
     public function getServiceLocator() {
         return $this->serviceLocator;
+    }
+
+    /**
+     * Resource name setter
+     *
+     * @param string $resourceName Resource name
+     */
+    public function setResourceName($resourceName) {
+        $this->resourceName = $resourceName;
+    }
+
+    /**
+     * Resource name getter
+     *
+     * @return string
+     */
+    public function getResourceName() {
+        return $this->resourceName;
     }
 }
