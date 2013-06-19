@@ -44,6 +44,11 @@ return array(
             'ViewJsonStrategy',
         ),
     ),
+    'view_helpers' => array(
+        'invokables'=> array(
+            'createBootstrapRows' => 'Dashboard\View\Helper\BootstrapRowHelper',
+        )
+    ),
     'dashboardCache' => array(
         'ttl' => 3600*24*7, // 7 days
         'namespace' => 'dashboard',

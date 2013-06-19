@@ -38,6 +38,7 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
      *
      * @param array      $widgetData Widget data from rtm config
      * @param array|null $daoParams  Dao parameters array
+     * @param string $resourceName Resource name
      * @throws InvalidWidgetTypeException
      * @return AbstractWidget
      */
@@ -51,11 +52,18 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
             /* @var AbstractWidget $widget */
             $widget = new $widgetClass($params);
 
-            $daoClassName = ucfirst($widget->getParam('dao') . 'Dao');
-            $dao = $this->getServiceLocator()->get($daoClassName);
-            $dao->setDaoOptions($daoParams);
+            // TODO: konradt add condition for widgets without dao
 
-            $widget->setDao($dao);
+            $daoType = $widget->getParam('dao');
+
+            if (!is_null($daoType)) {
+                $daoClassName = ucfirst($daoType . 'Dao');
+                $dao = $this->getServiceLocator()->get($daoClassName);
+                $dao->setDaoOptions($daoParams);
+
+                $widget->setDao($dao);
+            }
+
             $widget->setId($widgetData['id']);
             $widget->setParam('cacheIdentifier', $resourceName . '_' . $widgetData['id']);
 

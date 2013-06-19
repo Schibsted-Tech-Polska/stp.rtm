@@ -58,7 +58,10 @@ abstract class AbstractWidget {
     abstract function isReadyToRender();
 
     /**
-     * Returns data for a metric specified in the rtm config
+     * Returns data for a metric specified in the rtm config.
+     *
+     * This method is called mainly by LongPollingController within "get" method.
+     * In this way we can update state of each widget using daos connected with them.
      *
      * @return mixed
      */
@@ -75,14 +78,13 @@ abstract class AbstractWidget {
      * Returns widget specific parameter
      *
      * @param string $paramName Parameter name.
-     * @return mixed
-     * @throws InvalidWidgetParameterException
+     * @return mixed Value of a provided parameter name or null if the parameter is not specified.
      */
     public function getParam($paramName) {
         if (isset($this->params[$paramName])) {
             return $this->params[$paramName];
         } else {
-            throw new InvalidWidgetParameterException('Invalid widget parameter: ' . $paramName);
+            return null;
         }
     }
 
@@ -124,9 +126,9 @@ abstract class AbstractWidget {
      * @return ViewModel
      */
     public function getTplName() {
-        try {
-            $tplName = $this->getParam('tplName');
-        } catch (InvalidWidgetParameterException $e) {
+        $tplName = $this->getParam('tplName');
+
+        if (is_null($tplName)) {
             $tplName = $this->prepareTplName();
         }
 
