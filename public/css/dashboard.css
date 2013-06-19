@@ -54,7 +54,8 @@
   #dashboardBody .widget.NumberWidget .change-rate {
     font-weight: 500;
     font-size: 30px;
-    color: white; }
+    color: white;
+    display: none; }
   #dashboardBody .widget.NumberWidget .more-info {
     color: rgba(255, 255, 255, 0.7); }
   #dashboardBody .widget.NumberWidget .updated-at {
