@@ -44,4 +44,9 @@ return array(
             'ViewJsonStrategy',
         ),
     ),
+    'view_helpers' => array(
+        'invokables'=> array(
+            'createBootstrapRows' => 'Dashboard\View\Helper\BootstrapRowHelper',
+        )
+    ),
 );

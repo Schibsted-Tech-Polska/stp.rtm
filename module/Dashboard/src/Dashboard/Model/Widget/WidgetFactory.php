@@ -51,12 +51,18 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
             /* @var AbstractWidget $widget */
             $widget = new $widgetClass($params);
 
-            $daoClassName = ucfirst($widget->getParam('dao') . 'Dao');
-            $dao = $this->getServiceLocator()->get($daoClassName);
-            $dao->setDaoOptions($daoParams);
+            // TODO: konradt add condition for widgets without dao
 
-            $widget->setDao($dao);
-            $widget->setId($widgetData['id']);
+            $daoType = $widget->getParam('dao');
+
+            if (!is_null($daoType)) {
+                $daoClassName = ucfirst($daoType . 'Dao');
+                $dao = $this->getServiceLocator()->get($daoClassName);
+                $dao->setDaoOptions($daoParams);
+
+                $widget->setDao($dao);
+                $widget->setId($widgetData['id']);
+            }
 
             return $widget;
         } else {

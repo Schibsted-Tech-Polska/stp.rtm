@@ -1,27 +1,5 @@
 <div class="container" data-config-name="<?php echo $this->configName; ?>">
     <div class="row-fluid">
-<?php
-$span = 0;
-$i = 0;
-
-/* @var $widget Dashboard\Model\Widget\AbstractWidget */
-foreach ($this->widgets as $widget) {
-    $span += $widget->getParam('span');
-    if ($span > 12) {
-        echo '</div><div class="row-fluid">';
-        $span = $widget->getParam('span');;
-    }
-
-    echo '<div id="' . $widget->getId() . '" class="span' . $widget->getParam('span') . ' widget ' . $widget->getClassName() . '" >';
-    echo '<div class="widgetContainer">';
-    echo $this->partial($widget->getTplName(), array(
-            'widgetId' => $widget->getId(),
-            'widgetType' => $widget->getClassName(),
-            'params' => $widget->getParams())
-    );
-    echo '</div>';
-    echo '</div>';
-}
-?>
+        <?php echo $this->createBootstrapRows($this->widgets); ?>
     </div>
 </div>
