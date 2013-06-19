@@ -38,10 +38,11 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
      *
      * @param array      $widgetData Widget data from rtm config
      * @param array|null $daoParams  Dao parameters array
+     * @param string $resourceName Resource name
      * @throws InvalidWidgetTypeException
      * @return AbstractWidget
      */
-    public function build(array $widgetData, $daoParams) {
+    public function build(array $widgetData, $daoParams, $resourceName) {
         $widgetClass = __NAMESPACE__ . '\\' . ucfirst($widgetData['type']) . 'Widget';
 
         if (class_exists($widgetClass)) {
@@ -59,8 +60,10 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
                 $dao->setDaoOptions($daoParams);
 
                 $widget->setDao($dao);
-                $widget->setId($widgetData['id']);
             }
+
+            $widget->setId($widgetData['id']);
+            $widget->setParam('cacheIdentifier', $resourceName . '_' . $widgetData['id']);
 
             return $widget;
         } else {
