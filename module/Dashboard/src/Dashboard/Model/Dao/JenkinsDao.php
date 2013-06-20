@@ -21,8 +21,19 @@ class JenkinsDao extends AbstractDao {
         $responseParsed['lastBuilt'] = $response['lastBuild']['timestamp'];
         $responseParsed['lastCommitter'] = $this->getLastCommitter($response['lastBuild']);
         $responseParsed['averageHealthScore'] = $this->getAverageHealthScore($response);
+        $responseParsed['building'] = $response['lastBuild']['building'];
+        $responseParsed['percentDone'] = 0;
+
+        if ($response['lastBuild']['building'] == true) {
+            $buildStatus = $this->fetchBuildStatus(array_merge($params, array('buildNumber' => $response['lastBuild']['number'])));
+            $responseParsed['percentDone'] = $buildStatus['executor']['progress'];
+        }
 
         return $responseParsed;
+    }
+
+    public function fetchBuildStatus(array $params) {
+        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
 
     /**

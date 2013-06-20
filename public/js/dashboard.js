@@ -5,5 +5,9 @@ $(document).ready(function () {
         new NumberWidget(this).startListening();
     });
 
+    $('.BuildWidget').each(function(){
+        new BuildWidget(this).startListening();
+    });
+
 
 });

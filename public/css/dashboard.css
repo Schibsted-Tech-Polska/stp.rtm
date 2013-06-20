@@ -94,6 +94,20 @@
       font-size: 0.7em;
       color: #ddd; }
 
+#dashboardBody .widget.GraphWidget {
+  background-color: #4d4c4c; }
+  #dashboardBody .widget.GraphWidget .graph_container {
+    position: relative; }
+  #dashboardBody .widget.GraphWidget .graph {
+    position: relative;
+    left: 30px; }
+  #dashboardBody .widget.GraphWidget .y_axis {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    color: yellow; }
+
 body {
   color: white;
   padding: 0 0.625em;

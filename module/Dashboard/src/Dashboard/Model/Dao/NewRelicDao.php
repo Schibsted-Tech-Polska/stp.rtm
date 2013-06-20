@@ -62,8 +62,9 @@ class NewRelicDao extends AbstractDao {
 
         $response = $this->fetchCpuUsageForGraphWidget($params);
 
-        if (is_array($response) && isset($response[0])) {
-            $result = $response[0]['percent'];
+        if (is_array($response) && count($response)) {
+            $result = array_pop($response);
+            $result = $result['y'];
         }
 
         return $result;
@@ -76,7 +77,15 @@ class NewRelicDao extends AbstractDao {
      * @return array
      */
     public function fetchCpuUsageForGraphWidget(array $params = array()) {
-        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $responseParsed = array();
+        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        if (is_array($response)) {
+            foreach ($response as $key => $singleStat) {
+                $responseParsed[] = array('x' => strtotime($singleStat['begin']) + 7200, 'y' => $singleStat['percent']);
+            }
+        }
+
+        return $responseParsed;
     }
 
     /**
@@ -92,8 +101,9 @@ class NewRelicDao extends AbstractDao {
 
         $response = $this->fetchAverageResponseTimeForGraphWidget($params);
 
-        if (is_array($response) && isset($response[0])) {
-            $result = round($response[0]['average_response_time'],3);
+        if (is_array($response) && count($response)) {
+            $result = array_pop($response);
+            $result = $result['y'];
         }
 
         return $result;
@@ -106,7 +116,15 @@ class NewRelicDao extends AbstractDao {
      * @return array
      */
     public function fetchAverageResponseTimeForGraphWidget(array $params = array()) {
-        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $responseParsed = array();
+        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        if (is_array($response)) {
+            foreach ($response as $key => $singleStat) {
+                $responseParsed[] = array('x' => strtotime($singleStat['begin']) + 7200, 'y' => round($singleStat['average_response_time']*1000));
+            }
+        }
+
+        return $responseParsed;
     }
 
     /**

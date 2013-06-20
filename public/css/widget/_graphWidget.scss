@@ -1,0 +1,27 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #4D4C4C;
+
+
+// ----------------------------------------------------------------------------
+// Widget-text styles
+// ----------------------------------------------------------------------------
+#dashboardBody .widget.GraphWidget {
+  background-color: $background-color;
+
+  .graph_container {
+    position: relative;
+  }
+  .graph {
+    position: relative;
+    left: 30px;
+  }
+  .y_axis {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    color: yellow;
+  }
+}
