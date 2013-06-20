@@ -7,16 +7,26 @@ function NumberWidget(widget) {
     this.valueField = this.$widget.find('.value');
     this.diffContainer = this.$widget.find('.change-rate');
     this.arrowContainer = this.$widget.find('.change-rate i');
-
 }
 
 NumberWidget.prototype = new Widget();
 NumberWidget.prototype.constructor = NumberWidget;
 
 $.extend(NumberWidget.prototype, {
-
+    /**
+     * Invoked after each response from long polling server
+     *
+     * @param response Response from long polling server
+     */
     handleResponse: function (response) {
+        this.updateValue(response);
+        this.updateDiff(response);
+    },
 
+    /**
+     * Updates main valoue
+     */
+    updateValue: function(response) {
         this.valueField.text(response.data);
 
         var oldValue = this.$widget.data("oldValue");
@@ -39,14 +49,8 @@ $.extend(NumberWidget.prototype, {
         }
 
         this.$widget.data("oldValue", response.data);
-    }});
+    },
+    updateDiff: function() {
 
-$(document).ready(function () {
-    var widget = $("#vgtvCpuUsage");
-
-    $('.NumberWidget').each(function(){
-        new NumberWidget(this).startListening();
-    });
-
-
+    }
 });

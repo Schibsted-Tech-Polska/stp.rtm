@@ -88,6 +88,11 @@ return array(
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
+        'json_exceptions' => array(
+            'display' => true,
+            'ajax_only' => true,
+            'show_trace' => true
+        ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
