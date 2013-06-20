@@ -46,13 +46,13 @@ $(document).ready(function () {
 
                 var oldValue = widgetNode.data("oldValue");
 
-                $('.message:not(.hidden)').remove();
+                $('.message:not(.hide)').remove();
 
                 $(response.data).each(function(){
-                    var newMessage = $('.message.hidden', widgetNode).clone();
+                    var newMessage = $('.message.hide', widgetNode).clone();
                     newMessage.find('.createdAt').html(this.createdAt);
                     newMessage.find('.content').html(this.content);
-                    newMessage.removeClass('hidden');
+                    newMessage.removeClass('hide');
                     newMessage.insertAfter($('.message:last', widgetNode));
                 });
 
