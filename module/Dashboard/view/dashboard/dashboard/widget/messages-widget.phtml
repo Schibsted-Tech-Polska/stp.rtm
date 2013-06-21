@@ -1,6 +1,12 @@
-<h1 class="title"><?php echo $params['title']; ?></h1>
+<div id="<?php echo $widgetId; ?>"
+     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>">
+    <div class="widgetContainer">
+        <h1 class="title"><?php echo $params['title']; ?></h1>
 
-<div class="message hidden">
-    <p class="createdAt"></p>
-    <p class="content"></p>
+        <div class="message hidden">
+            <p class="createdAt"></p>
+
+            <p class="content"></p>
+        </div>
+    </div>
 </div>

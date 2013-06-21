@@ -1,12 +1,18 @@
-<h1 class="title"><?php echo $params['title']; ?></h1>
+<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>">
+</div>
+<script type="text/template" id="<?php echo $widgetId; ?>Tpl">
+    <div class="widgetContainer">
+        <h1 class="title"><?php echo $params['title']; ?></h1>
 
-<h2 class="value" data-sufix="<?php echo $params['valueSufix']; ?>"
-    data-prefix="<?php echo $params['valuePrefix']; ?>"></h2>
+        <h2 class="value" data-sufix="<?php echo $params['valueSufix']; ?>"
+            data-prefix="<?php echo $params['valuePrefix']; ?>"><%= value %></h2>
 
-<p class="change-rate">
-    <i class="icon-arrow-up"></i>
-    <span class="difference">234</span>
-</p>
+        <p class="change-rate">
+            <i class="<%= arrowClass %>"></i>
+            <span class="difference"><%= difference %></span>
+        </p>
 
 
-<p class="updated-at">Last update 123 2134</p>
+        <p class="updated-at">Last update <%= lastUpdate %></p>
+    </div>
+</script>

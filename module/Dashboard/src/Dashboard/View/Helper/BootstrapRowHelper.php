@@ -33,18 +33,12 @@ class BootstrapRowHelper extends AbstractHelper {
                 $span = $widget->getParam('span');;
             }
 
-            $html .= '<div id="' . $widget->getId() . '" class="span';
-            $html .= $widget->getParam('span') . ' widget ' . $widget->getClassName() . '" >';
-            $html .= '<div class="widgetContainer">';
-
             // Using partial helper for retrieving view of each widget
             $html .= $this->view->partial($widget->getTplName(), array(
                     'widgetId' => $widget->getId(),
                     'widgetType' => $widget->getClassName(),
                     'params' => $widget->getParams())
             );
-            $html .= '</div>';
-            $html .= '</div>';
         }
 
         return $html;

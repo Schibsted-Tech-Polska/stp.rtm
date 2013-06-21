@@ -1,12 +1,13 @@
-function NumberWidget(widget) {
-    this.$widget = $(widget);
+function NumberWidget(widget, configName) {
 
-    this.options.configName = $('.container').data('config-name');
-    this.options.widgetId = this.$widget.attr('id');
+    this.widget = widget;
+    this.configName = configName
 
-    this.valueField = this.$widget.find('.value');
-    this.diffContainer = this.$widget.find('.change-rate');
-    this.arrowContainer = this.$widget.find('.change-rate i');
+    this.dataToBind = {
+        'value': '',
+        'arrowClass': '',
+        'difference': ''
+    }
 }
 
 NumberWidget.prototype = new Widget();
@@ -19,38 +20,51 @@ $.extend(NumberWidget.prototype, {
      * @param response Response from long polling server
      */
     handleResponse: function (response) {
-        this.updateValue(response);
-        this.updateDiff(response);
+        this.prepareData(response);
     },
 
     /**
-     * Updates main valoue
+     * Updates widget's state
      */
-    updateValue: function(response) {
-        this.valueField.text(response.data);
+    prepareData: function (response) {
 
-        var oldValue = this.$widget.data("oldValue");
+        var oldValue = this.oldValue;
+
+        this.dataToBind.value = response.data;
 
         if ($.isNumeric(oldValue) && $.isNumeric(response.data)) {
             var diff = response.data - oldValue;
 
             var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100) + "%";
 
-            this.$widget.find(".difference").text(percentageDiff + "(" + oldValue + ") ");
-            this.$widget.find(".change-rate").show();
+            this.dataToBind.difference = percentageDiff + "(" + oldValue + ") ";
 
             if (diff > 0) {
-                this.arrowContainer.attr("class", "icon-arrow-up");
+                this.dataToBind.arrowClass = "icon-arrow-up";
             } else {
-                this.arrowContainer.attr("class", "icon-arrow-down");
+                this.dataToBind.arrowClass = "icon-arrow-down";
             }
-        } else {
-            this.diffContainer.hide();
         }
 
-        this.$widget.data("oldValue", response.data);
-    },
-    updateDiff: function() {
+        this.oldValue = response.data;
 
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        this.dataToBind.lastUpdate = this.getFormattedDate();
+
+        this.renderTemplate(this.dataToBind);
+
+        if (this.dataToBind.difference.length > 0) {
+            this.$widget.find('.change-rate').show();
+        } else {
+            this.$widget.find('.change-rate').hide();
+        }
+
+    },
+
+    getFormattedDate: function () {
+        var date = new Date();
+        return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     }
 });
