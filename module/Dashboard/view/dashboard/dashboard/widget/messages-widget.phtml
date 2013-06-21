@@ -1,17 +1,11 @@
-<div id="<?php echo $widgetId; ?>"
-     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>">
+<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>">
+</div>
+<script type="text/template" id="<?php echo $widgetId; ?>Tpl">
     <div class="widgetContainer">
         <h1 class="title"><?php echo $params['title']; ?></h1>
 
+        <h5>Latest activities:</h5>
+        <% _.each(value, function(item) { %>  <div class="message"><p class="createdAt"><%= item.createdAt %></p><p class="content"><%= item.content %></p></div><% }); %>
 
-<h5>Latest activities:</h5>
-<div class="message hide">
-    <p class="createdAt"></p>
-    <p class="content"></p>
-</div>        <div class="message hidden">
-            <p class="createdAt"></p>
-
-            <p class="content"></p>
-        </div>
     </div>
-</div>
+</script>

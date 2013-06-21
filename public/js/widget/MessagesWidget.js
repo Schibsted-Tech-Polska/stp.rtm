@@ -1,68 +1,36 @@
-$(document).ready(function () {
+function MessagesWidget(widget, configName) {
 
-    var MessagesWidget = (function () {
+    this.widget = widget;
+    this.configName = configName
 
-        var $widgets = $(".MessagesWidget");
-        var $config = $(".container").data('config-name');
-        var urlBase = "/stp-rtm/resources/" + $config + "/";
+    this.dataToBind = {
+        'value': '',
+    }
+}
 
-        var init = function () {
-                $.ajaxSetup({
-                    dataType: "json",
-                    timeout: 100000 });
-            },
+MessagesWidget.prototype = new Widget();
+MessagesWidget.prototype.constructor = MessagesWidget;
 
-            startListening = function () {
+$.extend(MessagesWidget.prototype, {
+    /**
+     * Invoked after each response from long polling server
+     *
+     * @param response Response from long polling server
+     */
+    handleResponse: function (response) {
+        this.prepareData(response);
+    },
 
-                init();
+    /**
+     * Updates widget's state
+     */
+    prepareData: function (response) {
 
-                $widgets.each(function () {
+        var oldValue = this.oldValue;
 
-                    var oldValueHash = '';
-                    var nodeName = this.id;
-                    var widgetNode = $(this);
-                    var valueField = widgetNode.find('.value');
+        this.dataToBind.value = response.data;
+        this.oldValue = response.data;
 
-                    (function poll() {
-                        $.ajax({
-                            complete: poll,
-                            url: urlBase + nodeName + oldValueHash,
-                            success: function (response) {
-                                oldValueHash = "/" + response.hash;
-                                valueField.text(response.data);
-
-                                updateDiff(response, widgetNode);
-
-                            }
-                        });
-                    })();
-                });
-            },
-
-            /**
-             * Updates field with difference info
-             */
-            updateDiff = function (response, widgetNode) {
-
-                var oldValue = widgetNode.data("oldValue");
-
-                $('.message:not(.hide)').remove();
-
-                $(response.data).each(function(){
-                    var newMessage = $('.message.hide', widgetNode).clone();
-                    newMessage.find('.createdAt').html(this.createdAt);
-                    newMessage.find('.content').html(this.content);
-                    newMessage.removeClass('hide');
-                    newMessage.insertAfter($('.message:last', widgetNode));
-                });
-
-                widgetNode.data("oldValue", response.data);
-            };
-
-        return {
-            startListening: startListening
-        };
-    })();
-
-    MessagesWidget.startListening();
+        this.renderTemplate(this.dataToBind);
+    }
 });
