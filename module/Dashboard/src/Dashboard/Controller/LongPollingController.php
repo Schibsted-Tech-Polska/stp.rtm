@@ -50,7 +50,7 @@ class LongPollingController extends AbstractRestfulController {
         $responseData = $widget->fetchData();
 
         while ($oldValueHash == $widget->getResponseHash()) {
-            sleep(10);
+            sleep(5);
             $responseData = $widget->fetchData();
         }
 

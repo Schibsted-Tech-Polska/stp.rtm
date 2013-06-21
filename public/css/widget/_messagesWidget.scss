@@ -1,0 +1,43 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #4D4C4C;
+
+
+// ----------------------------------------------------------------------------
+// Widget-text styles
+// ----------------------------------------------------------------------------
+#dashboardBody .widget.MessagesWidget {
+  background-color: $background-color;
+  height: 20em;
+  overflow: hidden;
+
+  h1 {
+    font-size: 45px;
+    margin-bottom: 10px;
+  }
+
+  h5 {
+    color: #ddd;
+    text-align: left;
+    margin: 6px 0;
+  }
+
+  .message {
+    text-align: left;
+    border-bottom: 1px solid #777;
+    margin-bottom: 0.5em;
+    padding-bottom: 0.4em;
+
+    .createdAt {
+      color: #aaa;
+      font-size: 0.6em;
+      margin-bottom: 2px;
+    }
+
+    .content {
+      font-size: 0.7em;
+      color: #ddd;
+    }
+  }
+}

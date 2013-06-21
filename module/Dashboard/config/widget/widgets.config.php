@@ -16,7 +16,7 @@ return array(
             'span' => 3,
     ),
     'build' => array(
-            'refreshRate' => 30,
+            'refreshRate' => 5,
             'span' => 3,
             'title' => '',
             'valueSufix' => '',
@@ -31,5 +31,12 @@ return array(
         'refreshRate' => 30,
         'span' => 3,
         'title' => '',
+    ),
+    'graph' => array(
+        'refreshRate' => 30,
+        'title' => '',
+        'valueSufix' => '',
+        'valuePrefix' => '',
+        'span' => 3,
     ),
 );

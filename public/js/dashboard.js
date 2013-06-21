@@ -6,5 +6,9 @@ $(document).ready(function () {
         new NumberWidget(this,configName).startListening();
     });
 
+    $('.BuildWidget').each(function(){
+        new BuildWidget(this).startListening();
+    });
+
 
 });

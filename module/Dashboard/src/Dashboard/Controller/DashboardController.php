@@ -6,9 +6,9 @@
  */
 namespace Dashboard\Controller;
 
+use Dashboard\Model\Dao\MessagesDao;
 use Dashboard\Model\DashboardManager;
 use Dashboard\Model\Widget\MessagesWidget;
-use Whoops\Example\Exception;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -35,9 +35,17 @@ class DashboardController extends AbstractActionController {
 
         /* @var AbstractWidget $widget */
         $widget = $dashboardManager->getWidget($widgetId);
-        if ($widget instanceof MessagesWidget) {
-            $widget->getDao()->addMessage($widget->getCacheIdentifier(), $this->params()->fromPost('message'));
+        if (!$widget instanceof MessagesWidget) {
+            throw new \Exception('Posting content to a widget is only available for MessagesWidget objects');
         }
+
+        $dao = $widget->getDao();
+
+        if (!$dao instanceof MessagesDao) {
+            throw new \Exception('Selected MessagesWidget needs to use MessagesDao');
+        }
+
+        $widget->getDao()->addMessage($widget->getCacheIdentifier(), $this->params()->fromPost('message'));
 
         return $this->getResponse();
     }
