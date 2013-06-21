@@ -1,115 +1,91 @@
-$(document).ready(function () {
+function GraphWidget(widget, configName) {
 
-    var GraphWidget = (function () {
+    this.widget = widget;
+    this.configName = configName
 
-        var $widgets = $(".GraphWidget");
-        var $config = $(".container").data('config-name');
-        var urlBase = "/stp-rtm/resources/" + $config + "/";
+    this.dataToBind = {
+        'value': '',
+        'arrowClass': '',
+        'percentageDiff': '',
+        'oldValue': ''
+    }
+}
 
-        var init = function () {
-                $.ajaxSetup({
-                    dataType: "json",
-                    timeout: 100000 });
-            },
+GraphWidget.prototype = new Widget();
+GraphWidget.prototype.constructor = GraphWidget;
 
-            startListening = function () {
+$.extend(GraphWidget.prototype, {
+    /**
+     * Invoked after each response from long polling server
+     *
+     * @param response Response from long polling server
+     */
+    handleResponse: function (response) {
+        this.prepareData(response);
+    },
 
-                init();
+    /**
+     * Updates widget's state
+     */
+    prepareData: function (response) {
 
-                $widgets.each(function () {
+        var oldValue = this.oldValue;
 
-                    var oldValueHash = '';
-                    var nodeName = this.id;
-                    var widgetNode = $(this);
-                    var valueField = widgetNode.find('.value');
+        /**
+         * Calculating diff from last collected value
+         */
 
-                    (function poll() {
-                        $.ajax({
-                            complete: poll,
-                            url: urlBase + nodeName + oldValueHash,
-                            success: function (response) {
-                                oldValueHash = "/" + response.hash;
-                                valueField.text(response.data[response.data.length - 1].y + valueField.attr('data-sufix'));
+        var currentValue = response.data[response.data.length - 1].y;
+        if ($.isNumeric(oldValue) && $.isNumeric(response.data[response.data.length - 1].y)) {
+            var diff = currentValue - oldValue;
 
-                                updateDiff(response, widgetNode);
+            var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100);
 
-                            }
-                        });
-                    })();
-                });
-            },
+            this.dataToBind.percentageDiff = percentageDiff;
+            this.dataToBind.oldValue = oldValue;
 
-            /**
-             * Updates field with difference info
-             */
-              updateDiff = function (response, widgetNode) {
+            if (diff > 0) {
+                this.dataToBind.arrowClass = "icon-arrow-up";
+            } else {
+                this.dataToBind.arrowClass = "icon-arrow-down";
+            }
+        }
 
-                var oldValue = widgetNode.data("oldValue");
+        this.dataToBind.value = currentValue;
+        this.oldValue = currentValue;
 
-                console.log(oldValue, $.isNumeric(oldValue), response.data[response.data.length - 1].y, $.isNumeric(response.data[response.data.length - 1].y));
+        this.renderTemplate(this.dataToBind);
 
-                if ($.isNumeric(oldValue) && $.isNumeric(response.data[response.data.length - 1].y)) {
-                    var currentValue = response.data[response.data.length - 1].y;
-                    var diff = currentValue - oldValue;
+        /**
+         * Graph part of the widget
+         */
 
-                    var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100) + "%";
+        $('.graph, .y_axis', this.widget).empty();
 
-                    widgetNode.find(".difference").text(percentageDiff + " (" + oldValue + ") ");
-                    widgetNode.find(".change-rate").show();
+        var graph = new Rickshaw.Graph( {
+            element: $('.graph', this.widget).get(0),
+            width: 275,
+            height: 200,
+            series: [{
+                color: 'steelblue',
+                data: response.data
+            }]
+        });
 
-                    if (diff > 0) {
-                        widgetNode.find("i").attr("class", "icon-arrow-up");
-                    } else {
-                        widgetNode.find("i").attr("class", "icon-arrow-down");
-                    }
-                } else {
-                    $(widgetNode).find(".change-rate").hide();
-                }
+        graph.render();
 
-                $('.graph, .y_axis', widgetNode).empty();
+        var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
 
-                var graph = new Rickshaw.Graph( {
-                    element: $('.graph', widgetNode).get(0),
-                    width: 275,
-                    height: 200,
-                    series: [{
-                    color: 'steelblue',
-                    data: response.data
-                }]
-                });
+        x_axis.render();
 
-                graph.render();
+        var y_axis = new Rickshaw.Graph.Axis.Y( {
+            graph: graph,
+            orientation: 'left',
+            tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+            element: $('.y_axis', this.widget).get(0)
+        } );
 
-                var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+        y_axis.render();
 
-                x_axis.render();
-
-                var y_axis = new Rickshaw.Graph.Axis.Y( {
-                    graph: graph,
-                    orientation: 'left',
-                    tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-                    element: $('.y_axis', widgetNode).get(0)
-                } );
-
-                y_axis.render();
-
-//                $('.message:not(.hide)').remove();
-
-//                $(response.data).each(function(){
-//                    var newMessage = $('.message.hide', widgetNode).clone();
-//                    newMessage.find('.createdAt').html(this.createdAt);
-//                    newMessage.find('.content').html(this.content);
-//                    newMessage.removeClass('hide');
-//                    newMessage.insertAfter($('.message:last', widgetNode));
-//                });
-
-                widgetNode.data("oldValue", response.data[response.data.length - 1].y);
-            };
-
-        return {
-            startListening: startListening
-        };
-    })();
-
-    GraphWidget.startListening();
+    }
 });

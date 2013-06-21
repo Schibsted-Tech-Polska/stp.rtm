@@ -10,6 +10,10 @@ $(document).ready(function () {
         new MessagesWidget(this, configName).startListening();
     });
 
+    $('.GraphWidget').each(function(){
+        new GraphWidget(this, configName).startListening();
+    });
+
     $('.BuildWidget').each(function(){
         new BuildWidget(this, configName).startListening();
     });

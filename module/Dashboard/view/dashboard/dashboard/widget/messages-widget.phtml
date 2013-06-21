@@ -5,7 +5,12 @@
         <h1 class="title"><?php echo $params['title']; ?></h1>
 
         <h5>Latest activities:</h5>
-        <% _.each(value, function(item) { %>  <div class="message"><p class="createdAt"><%= item.createdAt %></p><p class="content"><%= item.content %></p></div><% }); %>
+        <% _.each(value, function(item) { %>
+            <div class="message">
+                <p class="createdAt"><%= item.createdAt %></p>
+                <p class="content"><%= item.content %></p>
+            </div>
+        <% }); %>
 
     </div>
 </script>
