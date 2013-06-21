@@ -1,7 +1,14 @@
-<h1 class="buildName"><?php echo $params['title']; ?></h1>
+<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>">
+</div>
+<script type="text/template" id="<?php echo $widgetId; ?>Tpl">
+    <div class="widgetContainer">
+        <h1 class="title"><?php echo $params['title']; ?></h1>
 
-<span class="currentStatus"></span>
-<div class="averageHealthScore"></div>
-<span class="lastCommitter"></span>
-<span class="percentDone"></span>
-Last build at <span class="lastBuilt"></span>
+        <p><%= currentStatus %></p>
+        <p><%= averageHealthScore %></div>
+        <p><%= lastCommitter %></p>
+        <p><%= percentDone %></p>
+        <p><%= lastBuilt %></p>
+
+    </div>
+</script>

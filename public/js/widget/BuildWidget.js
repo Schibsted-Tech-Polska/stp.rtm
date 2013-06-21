@@ -1,14 +1,16 @@
-function BuildWidget(widget) {
-    this.$widget = $(widget);
+function BuildWidget(widget, configName) {
 
-    this.options.configName = $('.container').data('config-name');
-    this.options.widgetId = this.$widget.attr('id');
+    this.widget = widget;
+    this.configName = configName
 
-    this.currentStatus = this.$widget.find('.currentStatus');
-    this.averageHealthScore = this.$widget.find('.averageHealthScore');
-    this.lastCommitter = this.$widget.find('.lastCommitter');
-    this.lastBuilt = this.$widget.find('.lastBuilt');
-    this.percentDone = this.$widget.find('.percentDone');
+    this.dataToBind = {
+        'value': '',
+        'currentStatus': '',
+        'averageHealthScore': '',
+        'lastCommitter': '',
+        'lastBuilt': '',
+        'percentDone': ''
+    }
 }
 
 BuildWidget.prototype = new Widget();
@@ -21,23 +23,29 @@ $.extend(BuildWidget.prototype, {
      * @param response Response from long polling server
      */
     handleResponse: function (response) {
-        this.updateValue(response);
+        this.prepareData(response);
     },
 
     /**
-     * Updates main valoue
+     * Updates widget's state
      */
-    updateValue: function(response) {
+    prepareData: function (response) {
 
-        this.currentStatus.html(response.data.currentStatus);
-        this.averageHealthScore.html(response.data.averageHealthScore);
-        this.lastCommitter.html(response.data.lastCommitter);
-        this.lastBuilt.html(response.data.lastBuilt);
-        this.percentDone.html(response.data.percentDone);
+        var oldValue = this.oldValue;
+
+        this.dataToBind.value = response.data;
+
+        this.dataToBind.currentStatus = response.data.currentStatus;
+        this.dataToBind.averageHealthScore = response.data.averageHealthScore;
+        this.dataToBind.lastCommitter = response.data.lastCommitter;
+        this.dataToBind.lastBuilt = response.data.lastBuilt;
+        this.dataToBind.percentDone = response.data.percentDone;
 
         this.$widget.data("oldValue", response.data);
-    },
-    updateDiff: function() {
 
+
+        this.oldValue = response.data;
+
+        this.renderTemplate(this.dataToBind);
     }
 });
