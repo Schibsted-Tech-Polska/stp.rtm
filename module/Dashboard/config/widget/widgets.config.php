@@ -40,5 +40,7 @@ return array(
         'valueSufix' => '',
         'valuePrefix' => '',
         'span' => 3,
+        'graphWidth' => 210,
+        'graphHeight' => 170,
     ),
 );

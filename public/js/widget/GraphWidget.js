@@ -30,6 +30,7 @@ $.extend(GraphWidget.prototype, {
     prepareData: function (response) {
 
         var oldValue = this.oldValue;
+        var self = this;
 
         /**
          * Calculating diff from last collected value
@@ -64,8 +65,8 @@ $.extend(GraphWidget.prototype, {
 
         var graph = new Rickshaw.Graph( {
             element: $('.graph', this.widget).get(0),
-            width: 210,
-            height: 170,
+            width: self.params.graphWidth,
+            height: self.params.graphHeight,
             series: [{
                 color: 'steelblue',
                 data: response.data
@@ -77,15 +78,5 @@ $.extend(GraphWidget.prototype, {
         var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
 
         x_axis.render();
-
-        var y_axis = new Rickshaw.Graph.Axis.Y( {
-            graph: graph,
-            orientation: 'left',
-            tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-            element: $('.y_axis', this.widget).get(0)
-        } );
-
-        y_axis.render();
-
     }
 });

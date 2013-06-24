@@ -1,4 +1,4 @@
-<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-refresh-rate="<?php echo $params['refreshRate']?>">
+<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-params='<?php echo $this->json($params)?>'>
 </div>
 <script type="text/template" id="<?php echo $widgetId; ?>Tpl">
     <div class="widgetContainer flip-container <% if (currentStatus == null && lastStatus == null) { %>flipped-effect<%} %>">
