@@ -1,10 +1,10 @@
 function MessagesWidget(widget, configName) {
 
     this.widget = widget;
-    this.configName = configName
+    this.configName = configName;
 
     this.dataToBind = {
-        'value': '',
+        'value': ''
     }
 }
 
