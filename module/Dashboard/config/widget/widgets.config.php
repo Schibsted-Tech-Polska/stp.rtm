@@ -19,7 +19,6 @@ return array(
     ),
     'build' => array(
             'refreshRate' => 5,
-            'span' => 3,
             'title' => '',
             'valueSufix' => '',
             'valuePrefix' => '',
@@ -32,7 +31,6 @@ return array(
     ),
     'messages' => array(
         'refreshRate' => 30,
-        'span' => 3,
         'title' => '',
         'span' => 6,
     ),

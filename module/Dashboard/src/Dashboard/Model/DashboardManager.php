@@ -42,7 +42,7 @@ class DashboardManager {
     /**
      * Constructor
      *
-     * @param string                  $resourceName  Config name retrieved from URL.
+     * @param string                  $resourceName   Config name retrieved from URL.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
      * @internal param array $configName Dashboard's config
      */
@@ -56,7 +56,7 @@ class DashboardManager {
     /**
      * Loads configuration array from rtm config file
      *
-     * @param string $configName Config file name retrieved from url
+     * @param string $resourceName Config file name retrieved from url
      * @throws \Exception
      */
     public function loadConfig($resourceName) {
@@ -97,7 +97,7 @@ class DashboardManager {
     }
 
     /**
-     * Returns concrete instance of the widget with the given identifier
+     * Returns concrete instance of widget with the given identifier
      *
      * @param string $id Widget's id
      * @throws \Exception
@@ -113,6 +113,7 @@ class DashboardManager {
 
     /**
      * Returns a collection of Widgets added to this Dashboard.
+     *
      * @return array
      */
     public function getWidgets() {

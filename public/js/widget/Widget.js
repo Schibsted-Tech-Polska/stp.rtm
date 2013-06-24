@@ -85,19 +85,9 @@ Widget.prototype = {
             });
     },
 
-    responseSuccess: function (response) {
-        if (response.hash === undefined) {
-            throw 'Widget ' + self.widgetId + ' did not return value hash';
-        }
-        self.oldValueHash = "/" + response.hash;
-        self.handleResponse(response);
-    },
-
-    responseError: function(jqXHR, status, errorThrown) {
-        var response = $.parseJSON(jqXHR.responseText).error;
-        throw new Error(response.message + " (type: " + response.type + ")");
-    },
-
+    /**
+     * An abstract method invoked after each response from long polling server
+     */
     handleResponse: function () {
         throw new Error('Method "handleResponse" must be implemented by concrete widget constructors');
     }

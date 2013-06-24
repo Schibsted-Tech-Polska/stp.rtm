@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    var widget = $("#vgtvCpuUsage");
     var configName = $('.container').data('config-name');
 
     $('.NumberWidget').each(function(){

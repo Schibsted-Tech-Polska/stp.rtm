@@ -104,7 +104,7 @@
 
 body {
   color: white;
-  padding: 0 10px 10px;
+  padding: 0 13px 13px;
   background-color: #242a33;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em; }
@@ -112,7 +112,7 @@ body {
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
-  height: 372px;
+  height: 366px;
   background-color: #47bbb3;
   text-align: center;
   vertical-align: middle;
@@ -131,7 +131,7 @@ body {
   #dashboardBody .widget .sufix {
     font-size: 0.5em; }
 #dashboardBody .row-fluid [class*=span] {
-  margin-top: 10px; }
+  margin-top: 13px; }
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
