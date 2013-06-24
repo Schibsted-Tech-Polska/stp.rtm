@@ -4,7 +4,17 @@
  * @constructor
  */
 function Widget() {
+    /**
+     * Url base of a long polling endpoint
+     * @property urlBase
+     * @type {string}
+     */
     this.urlBase = "/resources";
+    /**
+     * Hash string representing previous values of a response.
+     * @property oldValueHash
+     * @type {string}
+     */
     this.oldValueHash = '';
 }
 
@@ -13,10 +23,14 @@ function Widget() {
  */
 Widget.prototype = {
 
+    /**
+     * Prepares required properties
+     */
     init: function () {
+        var tpl;
 
         this.$widget = $(this.widget);
-        var tpl =  $("#" + this.widget.id + "Tpl");
+        tpl = $("#" + this.widget.id + "Tpl");
         this.template = tpl.html();
         tpl.remove();
 
@@ -27,7 +41,7 @@ Widget.prototype = {
     /**
      * Renders template of a widget
      *
-     * @param dataToBind Data object with all value placeholders from template
+     * @param {Object} dataToBind Data object with all values for placeholders from a template
      */
     renderTemplate: function (dataToBind) {
         if (dataToBind !== undefined) {
@@ -38,46 +52,41 @@ Widget.prototype = {
     },
 
     /**
-     * Starts long polling request
-      */
+     * Starts long polling session
+     */
     startListening: function () {
 
-        this.init();
         var self = this;
+        this.init();
 
         (function poll() {
-            $.ajax({
+            var request = $.ajax({
                 dataType: "json",
                 timeout: 100000,
                 complete: poll,
                 url: self.urlBase + self.configName + self.widgetId + self.oldValueHash
-            }).success(function (response) {
-                    if (response.hash === undefined) {
-                        throw 'Widget ' + self.widgetId + ' did not return value hash';
-                    }
-                    self.oldValueHash = "/" + response.hash;
-                    self.handleResponse(response);
-            }).error(function (jqXHR, status, errorThrown) {
-                var response = $.parseJSON(jqXHR.responseText).error;
-                throw new Error(response.message + " (type: " + response.type + ")");
             });
 
-        })()
+            request.done(function (response) {
+                if (response.hash === undefined) {
+                    throw 'Widget ' + self.widgetId + ' did not return value hash';
+                }
+                self.oldValueHash = "/" + response.hash;
+
+                self.handleResponse(response);
+            });
+
+            request.fail(function (jqXHR, status, errorThrown) {
+                var response = $.parseJSON(jqXHR.responseText).error;
+                console.log(response.message + " (type: " + response.type + ")");
+            });
+
+        })();
     },
 
-    responseSuccess: function (response) {
-        if (response.hash === undefined) {
-            throw 'Widget ' + self.widgetId + ' did not return value hash';
-        }
-        self.oldValueHash = "/" + response.hash;
-        self.handleResponse(response);
-    },
-
-    responseError: function(jqXHR, status, errorThrown) {
-        var response = $.parseJSON(jqXHR.responseText).error;
-        throw new Error(response.message + " (type: " + response.type + ")");
-    },
-
+    /**
+     * An abstract method invoked after each response from long polling server
+     */
     handleResponse: function () {
         throw new Error('Method "handleResponse" must be implemented by concrete widget constructors');
     }

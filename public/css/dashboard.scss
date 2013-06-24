@@ -9,14 +9,14 @@
 // Colors
 // ----------------------------------------------------------------------------
 $default-font-color: #fff;
-$default-widget-bg-color: #1693a7;
+$default-widget-bg-color: #47bbb3;
 $body-bg-color: #242A33;
 
 // ----------------------------------------------------------------------------
 // Sizes
 // ----------------------------------------------------------------------------
 $widgets-margin: 0.625em;
-$widgets-padding: 0.625em;
+$widgets-padding: 1.1em;
 $widget-min-height: 20em;
 $default-font-size: 1.25em;
 
@@ -35,6 +35,29 @@ body {
     background-color: $default-widget-bg-color;
     text-align: center;
     vertical-align: middle;
+    position: relative;
+
+    .value {
+      margin-top: 40px;
+    }
+
+    .updated-at {
+      color: rgba(0, 0, 0, 0.3);
+      display: block;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+    }
+
+    .prefix {
+      font-size: 0.5em;
+    }
+
+    .sufix {
+      font-size: 0.5em;
+    }
+
   }
 
   .row-fluid [class*=span] {

@@ -6,9 +6,8 @@ $(document).ready(function () {
         new NumberWidget(this,configName).startListening();
     });
 
-    $('.BuildWidget').each(function(){
-        new BuildWidget(this).startListening();
+    $('.ErrorWidget').each(function(){
+        new ErrorWidget(this,configName).startListening();
     });
-
 
 });

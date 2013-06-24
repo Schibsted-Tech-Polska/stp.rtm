@@ -1,12 +1,20 @@
+/**
+ * Constructor of NumberWidget
+ *
+ * @param {Object} widget Object representing DOM node of a widget.
+ * @param {String} configName Name of a config file.
+ * @constructor
+ */
 function NumberWidget(widget, configName) {
 
     this.widget = widget;
-    this.configName = configName
+    this.configName = configName;
 
     this.dataToBind = {
         'value': '',
         'arrowClass': '',
-        'difference': ''
+        'difference': '',
+        'lastUpdate': ''
     }
 }
 
@@ -25,19 +33,19 @@ $.extend(NumberWidget.prototype, {
 
     /**
      * Updates widget's state
+     *
+     * @param {Object} response Response object from long polling controller
      */
     prepareData: function (response) {
 
-        var oldValue = this.oldValue;
-
         this.dataToBind.value = response.data;
 
-        if ($.isNumeric(oldValue) && $.isNumeric(response.data)) {
-            var diff = response.data - oldValue;
+        if ($.isNumeric(this.oldValue) && $.isNumeric(response.data.value)) {
+            var diff = response.data - this.oldValue;
 
-            var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100) + "%";
+            var percentageDiff = Math.round(Math.abs(diff) / this.oldValue * 100) + "%";
 
-            this.dataToBind.difference = percentageDiff + "(" + oldValue + ") ";
+            this.dataToBind.difference = percentageDiff + "(" + this.oldValue + ") ";
 
             if (diff > 0) {
                 this.dataToBind.arrowClass = "icon-arrow-up";
@@ -48,10 +56,7 @@ $.extend(NumberWidget.prototype, {
 
         this.oldValue = response.data;
 
-        var date = new Date();
-        var hour = date.getHours();
-        var min = date.getMinutes();
-        this.dataToBind.lastUpdate = this.getFormattedDate();
+        this.dataToBind.lastUpdate = response.updateTime;
 
         this.renderTemplate(this.dataToBind);
 
@@ -60,11 +65,5 @@ $.extend(NumberWidget.prototype, {
         } else {
             this.$widget.find('.change-rate').hide();
         }
-
-    },
-
-    getFormattedDate: function () {
-        var date = new Date();
-        return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     }
 });
