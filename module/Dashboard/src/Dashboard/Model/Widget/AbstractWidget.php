@@ -50,14 +50,6 @@ abstract class AbstractWidget {
     }
 
     /**
-     * Checks whether all required parameters are specified
-     * for a concrete type of widget.
-     *
-     * @return boolean
-     */
-    abstract function isReadyToRender();
-
-    /**
      * Returns data for a metric specified in the rtm config.
      *
      * This method is called mainly by LongPollingController within "get" method.

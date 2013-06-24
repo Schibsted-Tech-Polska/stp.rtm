@@ -5,15 +5,4 @@
  */
 namespace Dashboard\Model\Widget;
 
-class NumberWidget extends AbstractWidget {
-
-    /**
-     * Checks whether all required parameters are specified
-     * for a concrete type of widget.
-     *
-     * @return boolean
-     */
-    public function isReadyToRender() {
-        // TODO: Implement isReadyToRender() method.
-    }
-}
+class NumberWidget extends AbstractWidget {}
