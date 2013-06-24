@@ -8,27 +8,23 @@
                 <h1 class="title"><?php echo $params['title']; ?></h1>
 
                 <p class="average-health-score"><%= averageHealthScoreClass %></p>
-                <!--<p class="build-icon">-->
 
-                <!--<object data="/assets/sun.svg" type="image/svg+xml">-->
-                <!--</object>-->
-
-                <!--</p>-->
-
-                <p class="last-committer"><%= lastCommitter %></p>
-
-                <p class="last-built"><%= lastBuilt %></p>
-
-                <p class="updated-at"></p>
+                <div class="details">
+                    <p class="last-committer"><small>Last commit by:</small><br/><%= lastCommitter %></p>
+                    <p class="last-built">Last built at: <%= lastBuilt %></p>
+                    <p class="updated-at"></p>
+                </div>
             </div>
 
             <div class="back face center">
                 <h1 class="title" data-bind="title"><?php echo $params['title']; ?></h1>
 
-                    <input type="text" class="jenkins-build" data-fgColor="#d288ce" data-bgColor="#e3b4e0" data-angleOffset=-125 data-angleArc=250 data-width=200 data-readOnly=true value="<%= percentDone %>" data-min="0" data-max="100">
+                <input type="text" class="jenkins-build" data-fgColor="#d288ce" data-bgColor="#e3b4e0" data-angleOffset=-125 data-angleArc=250 data-width=200 data-readOnly=true value="<%= percentDone %>" data-min="0" data-max="100">
 
-                <p class="last-committer"><%= lastCommitter %></p>
-                <p class="last-built">Last built at: <%= lastBuilt %></p>
+                <div class="details">
+                    <p class="last-committer"><small>Last commit by:</small><br/><%= lastCommitter %></p>
+                    <p class="last-built">Last built at: <%= lastBuilt %></p>
+                </div>
             </div>
         </div>
     </div>
