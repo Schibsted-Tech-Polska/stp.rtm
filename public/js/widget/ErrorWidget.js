@@ -29,8 +29,7 @@ $.extend(ErrorWidget.prototype, {
     prepareData: function (response) {
 
         this.dataToBind.value = response.data;
-
-        if(parseInt(response.data) > 0) {
+        if(parseFloat(response.data) > 0) {
             this.$widget.addClass('warning');
         } else {
             this.$widget.removeClass('warning');

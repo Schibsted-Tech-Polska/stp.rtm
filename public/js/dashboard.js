@@ -7,7 +7,7 @@ $(document).ready(function () {
     });
 
     $('.BuildWidget').each(function(){
-        new BuildWidget(this).startListening();
+        new BuildWidget(this,configName).startListening();
     });
 
     $('.MessagesWidget').each(function(){

@@ -40,7 +40,7 @@ $.extend(NumberWidget.prototype, {
 
         this.dataToBind.value = response.data;
 
-        if ($.isNumeric(this.oldValue) && $.isNumeric(response.data.value)) {
+        if ($.isNumeric(this.oldValue) && $.isNumeric(response.data)) {
             var diff = response.data - this.oldValue;
 
             var percentageDiff = Math.round(Math.abs(diff) / this.oldValue * 100) + "%";

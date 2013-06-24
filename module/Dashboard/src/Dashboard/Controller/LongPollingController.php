@@ -49,7 +49,13 @@ class LongPollingController extends AbstractRestfulController {
         $oldValueHash = $this->params()->fromRoute('oldHash');
         $responseData = $widget->fetchData();
 
-        return new JsonModel(array('data' => $responseData, 'hash' => $widget->getResponseHash()));
+        $result = new JsonModel(array(
+            'data' => $responseData,
+            'hash' => $widget->getResponseHash(),
+            'updateTime' => date("H:i"),
+        ));
+
+        return $result;
     }
 
     /**
