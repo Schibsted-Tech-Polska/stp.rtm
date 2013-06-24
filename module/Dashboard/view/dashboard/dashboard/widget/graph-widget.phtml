@@ -1,14 +1,22 @@
-<h1 class="title"><?php echo $params['title']; ?></h1>
-
-<h2 class="value" data-sufix="<?php echo $params['valueSufix']; ?>"
-    data-prefix="<?php echo $params['valuePrefix']; ?>"></h2>
-
-<p class="change-rate">
-    <i class="icon-arrow-up"></i>
-    <span class="difference">234</span>
-</p>
-
-<div class="graph_container">
-    <div class="y_axis"></div>
-    <div class="graph"></div>
+<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-refresh-rate="<?php echo $params['refreshRate']?>">
 </div>
+<script type="text/template" id="<?php echo $widgetId; ?>Tpl">
+    <div class="widgetContainer">
+        <h1 class="title"><?php echo $params['title']; ?></h1>
+
+        <h2 class="value" data-sufix="<?php echo $params['valueSufix']; ?>"
+            data-prefix="<?php echo $params['valuePrefix']; ?>"><%= value %><?php echo $params['valueSufix']; ?></h2>
+
+        <% if (oldValue != '') { %>
+        <p class="change-rate">
+            <i class="<%= arrowClass %>"></i>
+            <span class="difference"><%= percentageDiff %>% (<%= oldValue %><?php echo $params['valueSufix']; ?>)</span>
+        </p>
+        <% } %>
+
+        <div class="graph_container">
+            <div class="y_axis"></div>
+            <div class="graph"></div>
+        </div
+    </div>
+</script>

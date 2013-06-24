@@ -36,6 +36,7 @@ Widget.prototype = {
 
         this.configName = "/" + this.configName;
         this.widgetId = "/" + this.widget.id;
+        this.refreshRate = this.$widget.attr('data-refresh-rate');
     },
 
     /**
@@ -56,37 +57,47 @@ Widget.prototype = {
      */
     startListening: function () {
 
-        var self = this;
         this.init();
+        var self = this;
 
-        (function poll() {
-            var request = $.ajax({
-                dataType: "json",
-                timeout: 100000,
-                complete: poll,
-                url: self.urlBase + self.configName + self.widgetId + self.oldValueHash
-            });
+        self.fetchData();
+        setInterval(function() {self.fetchData()}, self.refreshRate * 1000);
+    },
 
-            request.done(function (response) {
+    fetchData: function() {
+        var self = this;
+
+        $.ajax({
+            dataType: "json",
+            url: self.urlBase + self.configName + self.widgetId + self.oldValueHash
+        }).success(function (response) {
                 if (response.hash === undefined) {
                     throw 'Widget ' + self.widgetId + ' did not return value hash';
                 }
-                self.oldValueHash = "/" + response.hash;
 
-                self.handleResponse(response);
-            });
-
-            request.fail(function (jqXHR, status, errorThrown) {
+                if (self.oldValueHash != "/" + response.hash || self.oldValueHash == '') {
+                    self.oldValueHash = "/" + response.hash;
+                    self.handleResponse(response);
+                }
+            }).error(function (jqXHR, status, errorThrown) {
                 var response = $.parseJSON(jqXHR.responseText).error;
-                console.log(response.message + " (type: " + response.type + ")");
+                throw new Error(response.message + " (type: " + response.type + ")");
             });
-
-        })();
     },
 
-    /**
-     * An abstract method invoked after each response from long polling server
-     */
+    responseSuccess: function (response) {
+        if (response.hash === undefined) {
+            throw 'Widget ' + self.widgetId + ' did not return value hash';
+        }
+        self.oldValueHash = "/" + response.hash;
+        self.handleResponse(response);
+    },
+
+    responseError: function(jqXHR, status, errorThrown) {
+        var response = $.parseJSON(jqXHR.responseText).error;
+        throw new Error(response.message + " (type: " + response.type + ")");
+    },
+
     handleResponse: function () {
         throw new Error('Method "handleResponse" must be implemented by concrete widget constructors');
     }
