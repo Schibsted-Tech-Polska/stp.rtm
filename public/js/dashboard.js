@@ -6,6 +6,10 @@ $(document).ready(function () {
         new NumberWidget(this, configName).startListening();
     });
 
+    $('.BuildWidget').each(function(){
+        new BuildWidget(this,configName).startListening();
+    });
+
     $('.MessagesWidget').each(function(){
         new MessagesWidget(this, configName).startListening();
     });
@@ -14,9 +18,7 @@ $(document).ready(function () {
         new GraphWidget(this, configName).startListening();
     });
 
-    $('.BuildWidget').each(function(){
-        new BuildWidget(this, configName).startListening();
-    });
-
-
+    $('.ErrorWidget').each(function(){
+        new ErrorWidget(this,configName).startListening();
+    });        
 });

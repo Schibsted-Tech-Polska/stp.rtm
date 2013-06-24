@@ -45,9 +45,17 @@ class LongPollingController extends AbstractRestfulController {
 
         /* @var AbstractWidget $widget */
         $widget = $dashboardManager->getWidget($widgetId);
+
+        $oldValueHash = $this->params()->fromRoute('oldHash');
         $responseData = $widget->fetchData();
 
-        return new JsonModel(array('data' => $responseData, 'hash' => $widget->getResponseHash()));
+        $result = new JsonModel(array(
+            'data' => $responseData,
+            'hash' => $widget->getResponseHash(),
+            'updateTime' => date("H:i"),
+        ));
+
+        return $result;
     }
 
     /**
@@ -56,7 +64,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return mixed
      */
     public function getList() {
-        // TODO: Implement getList() method.
+        // TODO: Implement getList(Ō) method.
     }
 
     /**

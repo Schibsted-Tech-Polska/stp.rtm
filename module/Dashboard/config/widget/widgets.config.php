@@ -11,8 +11,10 @@ return array(
             'span' => 3,
     ),
     'error' => array(
-            'refreshRate' => 60,
+            'refreshRate' => 10,
             'title' => '',
+            'valueSufix' => '',
+            'valuePrefix' => '',
             'span' => 3,
     ),
     'build' => array(

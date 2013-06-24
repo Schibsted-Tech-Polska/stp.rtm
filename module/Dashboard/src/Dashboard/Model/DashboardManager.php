@@ -65,7 +65,7 @@ class DashboardManager {
         if (file_exists($configFilePath)) {
             $this->rtmConfig = include($configFilePath);
         } else {
-            throw new \Exception('Cannot find config file');
+            throw new \Exception('Cannot find config file ' . $resourceName);
         }
     }
 

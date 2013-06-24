@@ -29,6 +29,26 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Fetches CURRENT requests per minute for a given application (FE) - a single integer value
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return int
+     */
+    public function fetchFeRpmForNumberWidget(array $params = array()) {
+        $rpm = 0;
+
+        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
+        $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
+
+        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+
+        if (is_array($response) && isset($response[0])) {
+            $rpm = $response[0]['requests_per_minute'];
+        }
+
+        return $rpm;
+    }
+
+    /**
      * Fetch array of requests per minute values from beginDateTime to endDateTime
      * with constant intervals.
      * @param array $params - array with appId and other optional parameters for endpoint URL
@@ -43,10 +63,10 @@ class NewRelicDao extends AbstractDao {
      * @param array $params - array with appId and other optional parameters for endpoint URL
      * @return mixed
      */
-    public function fetchErrorRateForNumberWidget(array $params = array()) {
+    public function fetchErrorRateForErrorWidget(array $params = array()) {
         $thresholdValues = $this->fetchThresholdValues($params);
 
-        return $thresholdValues['Error Rate']['formatted_metric_value'];
+        return $thresholdValues['Error Rate']['metric_value'];
     }
 
     /**
@@ -135,7 +155,7 @@ class NewRelicDao extends AbstractDao {
     public function fetchMemoryForNumberWidget(array $params = array()) {
         $thresholdValues = $this->fetchThresholdValues($params);
 
-        return $thresholdValues['Memory']['formatted_metric_value'];
+        return $thresholdValues['Memory']['metric_value'];
     }
 
     /**

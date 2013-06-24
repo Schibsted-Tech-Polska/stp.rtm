@@ -4,15 +4,15 @@
     <div class="widgetContainer">
         <h1 class="title"><?php echo $params['title']; ?></h1>
 
-        <h2 class="value" data-sufix="<?php echo $params['valueSufix']; ?>"
-            data-prefix="<?php echo $params['valuePrefix']; ?>"><%= value %></h2>
+        <h2 class="value">
+            <span class="prefix"><?php echo $params['valuePrefix']; ?></span><%= value %><span
+                class="sufix"><?php echo $params['valueSufix']; ?></span></h2>
 
         <p class="change-rate">
             <i class="<%= arrowClass %>"></i>
             <span class="difference"><%= difference %></span>
         </p>
 
-
-        <p class="updated-at">Last update <%= lastUpdate %></p>
+        <p class="updated-at">Last update: <%= lastUpdate %></p>
     </div>
 </script>

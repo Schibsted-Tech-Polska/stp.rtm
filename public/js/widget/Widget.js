@@ -4,7 +4,17 @@
  * @constructor
  */
 function Widget() {
-    this.urlBase = "/stp-rtm/resources";
+    /**
+     * Url base of a long polling endpoint
+     * @property urlBase
+     * @type {string}
+     */
+    this.urlBase = "/resources";
+    /**
+     * Hash string representing previous values of a response.
+     * @property oldValueHash
+     * @type {string}
+     */
     this.oldValueHash = '';
 }
 
@@ -13,12 +23,17 @@ function Widget() {
  */
 Widget.prototype = {
 
+    /**
+     * Prepares required properties
+     */
     init: function () {
+        var tpl;
 
         this.$widget = $(this.widget);
-        var tpl =  $("#" + this.widget.id + "Tpl");
+        tpl = $("#" + this.widget.id + "Tpl");
         this.template = tpl.html();
         tpl.remove();
+
         this.configName = "/" + this.configName;
         this.widgetId = "/" + this.widget.id;
 
@@ -33,7 +48,7 @@ Widget.prototype = {
     /**
      * Renders template of a widget
      *
-     * @param dataToBind Data object with all value placeholders from template
+     * @param {Object} dataToBind Data object with all values for placeholders from a template
      */
     renderTemplate: function (dataToBind) {
         if (dataToBind !== undefined) {
@@ -44,8 +59,8 @@ Widget.prototype = {
     },
 
     /**
-     * Starts long polling request
-      */
+     * Starts long polling session
+     */
     startListening: function () {
 
         this.init();

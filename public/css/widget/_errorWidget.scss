@@ -1,14 +1,20 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color:  #CC0C39;
-
+$background-color: #CC0C39;
 
 // ----------------------------------------------------------------------------
 // Widget-text styles
 // ----------------------------------------------------------------------------
 #dashboardBody .widget.ErrorWidget {
 
-  background-color: $background-color;
+  &.warning {
+    background: {
+      color: $background-color;
+      image: url(/img/sock.png);
+      repeat: no-repeat;
+      position:  191px 195px;
+    }
+  }
 
 }
