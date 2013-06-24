@@ -62,7 +62,7 @@
   background-color: #4d4c4c;
   overflow: hidden; }
   #dashboardBody .widget.MessagesWidget h1 {
-    font-size: 45px;
+    font-size: 100px;
     margin-bottom: 10px; }
   #dashboardBody .widget.MessagesWidget h5 {
     color: #ddd;
@@ -84,16 +84,20 @@
 #dashboardBody .widget.GraphWidget {
   background-color: #4d4c4c; }
   #dashboardBody .widget.GraphWidget .graph_container {
-    position: relative; }
-  #dashboardBody .widget.GraphWidget .graph {
-    position: relative;
-    left: 30px; }
+    position: absolute;
+    bottom: 0;
+    left: -14px;
+    opacity: 0.75; }
   #dashboardBody .widget.GraphWidget .y_axis {
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 7px;
     width: 30px;
     color: yellow; }
+  #dashboardBody .widget.GraphWidget .text {
+    z-index: 255;
+    position: relative; }
 
 @font-face {
   font-family: 'Icons';

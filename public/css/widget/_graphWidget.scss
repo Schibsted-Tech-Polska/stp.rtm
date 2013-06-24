@@ -11,17 +11,24 @@ $background-color:  #4D4C4C;
   background-color: $background-color;
 
   .graph_container {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: -14px;
+    opacity: 0.75;
   }
-  .graph {
-    position: relative;
-    left: 30px;
-  }
+
   .y_axis {
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 7px;
     width: 30px;
     color: yellow;
   }
+
+  .text {
+    z-index: 255;
+    position: relative;
+  }
+
 }

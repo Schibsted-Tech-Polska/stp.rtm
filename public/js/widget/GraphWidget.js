@@ -78,5 +78,15 @@ $.extend(GraphWidget.prototype, {
         var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
 
         x_axis.render();
+
+        var y_axis = new Rickshaw.Graph.Axis.Y( {
+            graph: graph,
+            orientation: 'right',
+            tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+            element: $('.y_axis', this.widget).get(0)
+        } );
+
+        y_axis.render();
+
     }
 });
