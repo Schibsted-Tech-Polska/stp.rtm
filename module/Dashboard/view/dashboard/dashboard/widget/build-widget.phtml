@@ -1,14 +1,35 @@
-<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>">
+<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-refresh-rate="<?php echo $params['refreshRate']?>">
 </div>
 <script type="text/template" id="<?php echo $widgetId; ?>Tpl">
-    <div class="widgetContainer">
-        <h1 class="title"><?php echo $params['title']; ?></h1>
+    <div class="widgetContainer flip-container <% if (currentStatus == null && lastStatus == null) { %>flipped-effect<%} %>">
+        <div class="flip-content">
 
-        <p><%= currentStatus %></p>
-        <p><%= averageHealthScore %></div>
-        <p><%= lastCommitter %></p>
-        <p><%= percentDone %></p>
-        <p><%= lastBuilt %></p>
+            <div class="front face">
+                <h1 class="title"><?php echo $params['title']; ?></h1>
 
+                <p class="average-health-score"><%= averageHealthScoreClass %></p>
+                <!--<p class="build-icon">-->
+
+                <!--<object data="/assets/sun.svg" type="image/svg+xml">-->
+                <!--</object>-->
+
+                <!--</p>-->
+
+                <p class="last-committer"><%= lastCommitter %></p>
+
+                <p class="last-built"><%= lastBuilt %></p>
+
+                <p class="updated-at"></p>
+            </div>
+
+            <div class="back face center">
+                <h1 class="title" data-bind="title"><?php echo $params['title']; ?></h1>
+
+                    <input type="text" class="jenkins-build" data-fgColor="#d288ce" data-bgColor="#e3b4e0" data-angleOffset=-125 data-angleArc=250 data-width=200 data-readOnly=true value="<%= percentDone %>" data-min="0" data-max="100">
+
+                <p class="last-committer"><%= lastCommitter %></p>
+                <p class="last-built">Last built at: <%= lastBuilt %></p>
+            </div>
+        </div>
     </div>
 </script>

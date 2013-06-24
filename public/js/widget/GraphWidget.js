@@ -64,8 +64,8 @@ $.extend(GraphWidget.prototype, {
 
         var graph = new Rickshaw.Graph( {
             element: $('.graph', this.widget).get(0),
-            width: 275,
-            height: 200,
+            width: 210,
+            height: 170,
             series: [{
                 color: 'steelblue',
                 data: response.data

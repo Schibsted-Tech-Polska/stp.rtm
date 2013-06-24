@@ -4,7 +4,7 @@
  * @constructor
  */
 function Widget() {
-    this.urlBase = "/resources";
+    this.urlBase = "/stp-rtm/resources";
     this.oldValueHash = '';
 }
 
@@ -19,9 +19,9 @@ Widget.prototype = {
         var tpl =  $("#" + this.widget.id + "Tpl");
         this.template = tpl.html();
         tpl.remove();
-
         this.configName = "/" + this.configName;
         this.widgetId = "/" + this.widget.id;
+        this.refreshRate = this.$widget.attr('data-refresh-rate');
     },
 
     /**
@@ -45,24 +45,29 @@ Widget.prototype = {
         this.init();
         var self = this;
 
-        (function poll() {
-            $.ajax({
-                dataType: "json",
-                timeout: 100000,
-                complete: poll,
-                url: self.urlBase + self.configName + self.widgetId + self.oldValueHash
-            }).success(function (response) {
-                    if (response.hash === undefined) {
-                        throw 'Widget ' + self.widgetId + ' did not return value hash';
-                    }
+        self.fetchData();
+        setInterval(function() {self.fetchData()}, self.refreshRate * 1000);
+    },
+
+    fetchData: function() {
+        var self = this;
+
+        $.ajax({
+            dataType: "json",
+            url: self.urlBase + self.configName + self.widgetId + self.oldValueHash
+        }).success(function (response) {
+                if (response.hash === undefined) {
+                    throw 'Widget ' + self.widgetId + ' did not return value hash';
+                }
+
+                if (self.oldValueHash != "/" + response.hash || self.oldValueHash == '') {
                     self.oldValueHash = "/" + response.hash;
                     self.handleResponse(response);
+                }
             }).error(function (jqXHR, status, errorThrown) {
                 var response = $.parseJSON(jqXHR.responseText).error;
                 throw new Error(response.message + " (type: " + response.type + ")");
             });
-
-        })()
     },
 
     responseSuccess: function (response) {

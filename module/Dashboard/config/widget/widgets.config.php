@@ -21,6 +21,7 @@ return array(
             'title' => '',
             'valueSufix' => '',
             'valuePrefix' => '',
+            'span' => 3,
     ),
     'text' => array(
             'refreshRate' => 30,
@@ -31,6 +32,7 @@ return array(
         'refreshRate' => 30,
         'span' => 3,
         'title' => '',
+        'span' => 6,
     ),
     'graph' => array(
         'refreshRate' => 30,
