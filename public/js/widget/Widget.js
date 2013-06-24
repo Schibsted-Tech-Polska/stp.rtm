@@ -9,7 +9,7 @@ function Widget() {
      * @property urlBase
      * @type {string}
      */
-    this.urlBase = "/resources";
+    this.urlBase = "/stp-rtm/resources";
     /**
      * Hash string representing previous values of a response.
      * @property oldValueHash
@@ -36,7 +36,13 @@ Widget.prototype = {
 
         this.configName = "/" + this.configName;
         this.widgetId = "/" + this.widget.id;
-        this.refreshRate = this.$widget.attr('data-refresh-rate');
+
+        var paramsJson = this.$widget.attr('data-params');
+        if (typeof(paramsJson) == 'undefined') {
+            throw new Error('Widget params not passed from PHTML to JS.');
+        } else {
+            this.params = jQuery.parseJSON(paramsJson);
+        }
     },
 
     /**
@@ -61,7 +67,7 @@ Widget.prototype = {
         var self = this;
 
         self.fetchData();
-        setInterval(function() {self.fetchData()}, self.refreshRate * 1000);
+        setInterval(function() {self.fetchData()}, self.params.refreshRate * 1000);
     },
 
     fetchData: function() {

@@ -21,6 +21,12 @@ $meter-background:  rgba(20, 20, 20, 1);
     color: #fff;
   }
 
+  .details {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+  }
+
   .title {
     color: $title-color;
   }

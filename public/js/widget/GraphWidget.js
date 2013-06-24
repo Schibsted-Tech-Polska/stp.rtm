@@ -30,6 +30,7 @@ $.extend(GraphWidget.prototype, {
     prepareData: function (response) {
 
         var oldValue = this.oldValue;
+        var self = this;
 
         /**
          * Calculating diff from last collected value
@@ -56,36 +57,56 @@ $.extend(GraphWidget.prototype, {
 
         this.renderTemplate(this.dataToBind);
 
+
         /**
-         * Graph part of the widget
+         * @TODO Wojtek Iskra: add dynamic adding data instead of restarting the whole chart
          */
 
-        $('.graph, .y_axis', this.widget).empty();
-
-        var graph = new Rickshaw.Graph( {
-            element: $('.graph', this.widget).get(0),
-            width: 210,
-            height: 170,
+        $('.graph', this.widget).highcharts({
+            chart: {
+                type: 'area'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                title: '',
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: ''
+            },
+            tooltip: {
+                pointFormat: 'Value of <b>{point.y}</b> noted.'
+            },
+            plotOptions: {
+                area: {
+                    pointStart: 1940,
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
             series: [{
-                color: 'steelblue',
+                title: {
+                    text: ''
+                },
                 data: response.data
             }]
         });
-
-        graph.render();
-
-        var x_axis = new Rickshaw.Graph.Axis.Time( { graph: graph } );
-
-        x_axis.render();
-
-        var y_axis = new Rickshaw.Graph.Axis.Y( {
-            graph: graph,
-            orientation: 'left',
-            tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
-            element: $('.y_axis', this.widget).get(0)
-        } );
-
-        y_axis.render();
-
     }
 });

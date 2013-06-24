@@ -1,5 +1,5 @@
 <div id="<?php echo $widgetId; ?>"
-     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-refresh-rate="<?php echo $params['refreshRate']?>">
+     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-params='<?php echo $this->json($params)?>'>
     <div class="widgetContainer">
         <h1 class="title"><?php echo $params['title']; ?></h1>
     </div>

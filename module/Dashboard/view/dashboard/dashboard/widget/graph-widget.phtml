@@ -1,26 +1,24 @@
-<div id="<?php echo $widgetId; ?>"
-     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
-     data-refresh-rate="<?php echo $params['refreshRate'] ?>">
+<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-params='<?php echo $this->json($params)?>'>
 </div>
 <script type="text/template" id="<?php echo $widgetId; ?>Tpl">
     <div class="widgetContainer">
-        <h1 class="title"><?php echo $params['title']; ?></h1>
+        <div class="text">
+            <h1 class="title"><?php echo $params['title']; ?></h1>
 
-        <h2 class="value">
-            <span class="prefix"><?php echo $params['valuePrefix']; ?></span><%= value %><span
-                class="sufix"><?php echo $params['valueSufix']; ?></span></h2>
-
-        <% if (oldValue != '') { %>
+            <h2 class="value">
+                <span class="prefix"><?php echo $params['valuePrefix']; ?></span><%= value %><span
+                    class="sufix"><?php echo $params['valueSufix']; ?></span></h2>
+            
+            <% if (oldValue != '') { %>
             <p class="change-rate">
                 <i class="<%= arrowClass %>"></i>
-                <span class="difference"><%= percentageDiff %>
-                    % (<%= oldValue %><?php echo $params['valueSufix']; ?>)</span>
+                <span class="difference"><%= percentageDiff %>% (<%= oldValue %><?php echo $params['valueSufix']; ?>)</span>
             </p>
-        <% } %>
+            <% } %>
+        </div>
 
         <div class="graph_container">
-            <div class="y_axis"></div>
             <div class="graph"></div>
-        </div
+        </div>
     </div>
 </script>
