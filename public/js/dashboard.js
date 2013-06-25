@@ -1,23 +1,38 @@
-$(document).ready(function () {
-    var configName = $('.container').data('config-name');
+/**
+ * Main object of a dashboard
+ *
+ * @class Dashborad
+ */
+var Dashboard = {
 
-    $('.NumberWidget').each(function(){
-        new NumberWidget(this, configName).startListening();
-    });
+    /**
+     * Initiates widgets instances.
+     */
+    init: function () {
+        var configName = $('.container').data('config-name');
 
-    $('.BuildWidget').each(function(){
-        new BuildWidget(this,configName).startListening();
-    });
+        $('.NumberWidget').each(function(){
+            new NumberWidget(this, configName).startListening();
+        });
 
-    $('.MessagesWidget').each(function(){
-        new MessagesWidget(this, configName).startListening();
-    });
+        $('.BuildWidget').each(function(){
+            new BuildWidget(this,configName).startListening();
+        });
 
-    $('.GraphWidget').each(function(){
-        new GraphWidget(this, configName).startListening();
-    });
+        $('.MessagesWidget').each(function(){
+            new MessagesWidget(this, configName).startListening();
+        });
 
-    $('.ErrorWidget').each(function(){
-        new ErrorWidget(this,configName).startListening();
-    });        
+        $('.GraphWidget').each(function(){
+            new GraphWidget(this, configName).startListening();
+        });
+
+        $('.ErrorWidget').each(function(){
+            new ErrorWidget(this,configName).startListening();
+        });
+    }
+};
+
+$(document).ready(function(){
+    Dashboard.init();
 });
