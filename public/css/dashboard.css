@@ -127,10 +127,10 @@
     padding-bottom: 0.4em; }
     #dashboardBody .widget.MessagesWidget .message .createdAt {
       color: #aaa;
-      font-size: 0.6em;
+      font-size: 0.75em;
       margin-bottom: 2px; }
     #dashboardBody .widget.MessagesWidget .message .content {
-      font-size: 0.7em;
+      font-size: 0.9em;
       color: #ddd; }
 
 #dashboardBody .widget.GraphWidget {
