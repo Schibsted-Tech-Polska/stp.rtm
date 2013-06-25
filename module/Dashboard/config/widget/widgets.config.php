@@ -11,21 +11,21 @@ return array(
             'span' => 3,
     ),
     'error' => array(
-            'refreshRate' => 10,
+            'refreshRate' => 60,
             'title' => '',
             'valueSufix' => '',
             'valuePrefix' => '',
             'span' => 3,
     ),
     'build' => array(
-            'refreshRate' => 5,
+            'refreshRate' => 10,
             'title' => '',
             'valueSufix' => '',
             'valuePrefix' => '',
             'span' => 3,
     ),
     'text' => array(
-            'refreshRate' => 30,
+            'refreshRate' => 60,
             'span' => 3,
             'title' => '',
     ),
@@ -35,12 +35,10 @@ return array(
         'span' => 6,
     ),
     'graph' => array(
-        'refreshRate' => 30,
+        'refreshRate' => 60,
         'title' => '',
         'valueSufix' => '',
         'valuePrefix' => '',
         'span' => 3,
-        'graphWidth' => 210,
-        'graphHeight' => 170,
     ),
 );
