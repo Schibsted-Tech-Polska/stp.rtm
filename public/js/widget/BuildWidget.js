@@ -72,20 +72,20 @@ $.extend(BuildWidget.prototype, {
          * Hacks for the flipping effect - totally optional
          */
         if (response.data.currentStatus == 'FAILURE') {
-            $(this.widget).find('.flip-container').removeClass("flipped-effect");
-            $(this.widget).find('.progress-bar').hide();
-            $(this.widget).find('.flip-container').addClass("FAILURE");
+            this.$widget.find('.flip-container').removeClass("flipped-effect");
+            this.$widget.find('.progress-bar').hide();
+            this.$widget.find('.flip-container').addClass("FAILURE");
         }
         else if (response.data.currentStatus == null) {
-            if (!$(this.widget).find('.flip-container').hasClass("flipped-effect")) {
-                $(this.widget).find('.progress-bar').show();
-                $(this.widget).find('.flip-container').addClass("flipped-effect");
+            if (!this.$widget.find('.flip-container').hasClass("flipped-effect")) {
+                this.$widget.find('.progress-bar').show();
+                this.$widget.find('.flip-container').addClass("flipped-effect");
             }
         }
         else if (response.data.currentStatus != null && response.data.currentStatus != 'PREBUILD' && typeof(this.oldValue) != 'undefined' && this.oldValue.currentStatus == null) {
-            $(this.widget).find('.progress-bar').hide();
-            $(this.widget).find('.flip-container').removeClass("flipped-effect");
-            $(this.widget).find('.flip-container').removeClass("building-failure");
+            this.$widget.find('.progress-bar').hide();
+            this.$widget.find('.flip-container').removeClass("flipped-effect");
+            this.$widget.find('.flip-container').removeClass("building-failure");
         }
 
         this.$widget.data("oldValue", response.data);
@@ -93,7 +93,7 @@ $.extend(BuildWidget.prototype, {
 
         this.oldValue = response.data;
 
-        meter = $(this.widget).find(".jenkins-build");
+        meter = this.$widget.find(".jenkins-build");
         meter.knob();
     }
 });
