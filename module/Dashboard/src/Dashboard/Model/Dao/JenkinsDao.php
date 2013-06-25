@@ -21,7 +21,7 @@ class JenkinsDao extends AbstractDao {
         $responseParsed['currentStatus'] = $response['lastBuild']['result'];
         $responseParsed['lastBuilt'] = date('Y-m-d H:i:s', $response['lastBuild']['timestamp'] / 1000);
         $responseParsed['lastCommitter'] = $this->getLastCommitter($response['lastBuild']);
-        $responseParsed['healthReport'] = $response['healthReport'];
+        $responseParsed['codeCoverage'] = $this->getCodeCoverage($response['healthReport']);
         $responseParsed['averageHealthScore'] = $this->getAverageHealthScore($response);
         $responseParsed['building'] = $response['lastBuild']['building'];
         $responseParsed['percentDone'] = 0;
@@ -76,5 +76,23 @@ class JenkinsDao extends AbstractDao {
         }
 
         return $averageHealthScore;
+    }
+
+    /**
+     * Returns code coverage for concrete build or null if not specified.
+     *
+     * @param array $healthReport Health report data
+     * @return null|int
+     */
+    protected function getCodeCoverage($healthReport) {
+        $score = null;
+        foreach ($healthReport as $data) {
+            if (strpos($data['description'], 'Clover Coverage') !== false) {
+                $score = $data['score'];
+                break;
+            }
+        }
+
+        return $score;
     }
 }
