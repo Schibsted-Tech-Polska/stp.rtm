@@ -29,6 +29,12 @@ class DashboardController extends AbstractActionController {
         return new ViewModel(array('widgets' => $dashboardManager->getWidgets(), 'configName' => $configName));
     }
 
+    /**
+     * Method for adding messages to Messages Widgets
+     *
+     * @return \Zend\Stdlib\ResponseInterface
+     * @throws \Exception
+     */
     public function addMessageAction() {
         $configName = $this->params()->fromRoute('configName');
         $widgetId = $this->params()->fromRoute('widgetId');
@@ -47,6 +53,26 @@ class DashboardController extends AbstractActionController {
         }
 
         $widget->getDao()->addMessage($widget->getCacheIdentifier(), $this->params()->fromPost('message'));
+
+        /**
+         * After adding a message to a project-specific dashboard add it also to a global one!
+         * @TODO Wojtek Iskra: this would be much better with a DB storage.
+         */
+
+        $dashboardManager = new DashboardManager('general', $this->serviceLocator);
+
+        $widget = $dashboardManager->getWidget('generalMessages');
+        if (!$widget instanceof MessagesWidget) {
+            throw new \Exception('Posting content to a widget is only available for MessagesWidget objects');
+        }
+
+        $dao = $widget->getDao();
+
+        if (!$dao instanceof MessagesDao) {
+            throw new \Exception('Selected MessagesWidget needs to use MessagesDao');
+        }
+
+        $widget->getDao()->addMessage($widget->getCacheIdentifier(), $this->params()->fromPost('message'), $configName);
 
         return $this->getResponse();
     }

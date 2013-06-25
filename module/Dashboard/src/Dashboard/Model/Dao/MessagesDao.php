@@ -33,8 +33,9 @@ class MessagesDao extends AbstractDao {
      * Adds a new message to a given MessagesWidget
      * @param string $cacheIdentifier cache identifier key
      * @param string $message message to be added
+     * @param string|null $projectName name of the project to tag the post on General tab
      */
-    public function addMessage($cacheIdentifier, $message) {
+    public function addMessage($cacheIdentifier, $message, $projectName = null) {
         $result = $this->getCacheAdapter()->getItem($cacheIdentifier, $success);
 
         if (!$success) {
@@ -44,6 +45,7 @@ class MessagesDao extends AbstractDao {
         array_unshift($result, array(
                 'createdAt' => date('Y-m-d H:i:s'),
                 'content' => $message,
+                'projectName' => $projectName
             )
         );
 

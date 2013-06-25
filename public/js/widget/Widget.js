@@ -9,7 +9,7 @@ function Widget() {
      * @property urlBase
      * @type {string}
      */
-    this.urlBase = "/resources";
+    this.urlBase = "/stp-rtm/resources";
     /**
      * Hash string representing previous values of a response.
      * @property oldValueHash
