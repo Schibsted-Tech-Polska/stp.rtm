@@ -97,6 +97,9 @@
   #dashboardBody .widget.GraphWidget .graph {
     width: 100%;
     height: 200px; }
+  #dashboardBody .widget.GraphWidget .text {
+    position: relative;
+    z-index: 255; }
 
 @font-face {
   font-family: 'Icons';

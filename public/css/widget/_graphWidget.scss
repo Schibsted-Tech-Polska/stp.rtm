@@ -24,4 +24,9 @@ $background-color:  #4D4C4C;
     height: 200px;
   }
 
+  .text {
+    position: relative;
+    z-index: 255;
+  }
+
 }
