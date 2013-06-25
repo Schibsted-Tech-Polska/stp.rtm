@@ -43,7 +43,7 @@ class NewRelicDao extends AbstractDao {
         $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
         $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
 
-        $response = $this->fetchRpmForGraphWidget($params);
+        $response = $this->fetchFeRpmForGraphWidget($params);
 
         if (is_array($response) && count($response)) {
             $result = array_pop($response);
