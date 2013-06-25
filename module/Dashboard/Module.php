@@ -40,28 +40,28 @@ class Module {
                     return include('config/dao/JenkinsDao.config.php');
                 },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
-                    return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'), null, $serviceManager->get('Memcached'));
+                    return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'), null, $serviceManager->get('CacheAdapter'));
                 },
                 'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/NewRelicDao.config.php');
                 },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
-                    return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'), null, $serviceManager->get('Memcached'));
+                    return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'), null, $serviceManager->get('CacheAdapter'));
                 },
                 'MessagesDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/MessagesDao.config.php');
                 },
                 'MessagesDao' => function (ServiceManager $serviceManager) {
-                    return new MessagesDao($serviceManager->get('MessagesDaoConfig'), null, $serviceManager->get('Memcached'));
+                    return new MessagesDao($serviceManager->get('MessagesDaoConfig'), null, $serviceManager->get('CacheAdapter'));
                 },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));
                 },
-                'Memcached' => function ($serviceManager) {
-                    $memcached = new Memcached($serviceManager->get('MemcachedOptions'));
+                'CacheAdapter' => function ($serviceManager) {
+                    $memcached = new Memcached($serviceManager->get('CacheAdapterOptions'));
                     return $memcached;
                 },
-                'MemcachedOptions' => function ($serviceManager) {
+                'CacheAdapterOptions' => function ($serviceManager) {
                     $config = $serviceManager->get('Config');
                     return new MemcachedOptions($config['dashboardCache']);
                 },
