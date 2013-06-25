@@ -1,15 +1,16 @@
 <?php
 /**
  * All methods used for obtaining data through Jenkins JSON API
+ *
  * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
  */
 
 namespace Dashboard\Model\Dao;
 
-
 class JenkinsDao extends AbstractDao {
     /**
      * Fetches all data necessary for displaying build status widget
+     *
      * @param array $params parameters for assembling proper endpoint URL
      * @return array
      */
@@ -18,7 +19,7 @@ class JenkinsDao extends AbstractDao {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
         $responseParsed['currentStatus'] = $response['lastBuild']['result'];
-        $responseParsed['lastBuilt'] = date('Y-m-d H:i:s', $response['lastBuild']['timestamp']/1000);
+        $responseParsed['lastBuilt'] = date('Y-m-d H:i:s', $response['lastBuild']['timestamp'] / 1000);
         $responseParsed['lastCommitter'] = $this->getLastCommitter($response['lastBuild']);
         $responseParsed['healthReport'] = $response['healthReport'];
         $responseParsed['averageHealthScore'] = $this->getAverageHealthScore($response);
@@ -42,21 +43,25 @@ class JenkinsDao extends AbstractDao {
      * the last build. If the last build was executed without any commits (triggered manually),
      * it returns the build executor's name.
      * In all other cases (theoretically not possible) it returns 'UNKNOWN' string.
+     *
      * @param array $buildInfo - part of the JenkinsDao::fetchStatus() response
      * @return string
      */
     protected function getLastCommitter(array $buildInfo) {
         if (isset($buildInfo['culprits']) && count($buildInfo['culprits'])) {
             return $buildInfo['culprits'][0]['fullName'];
-        } else if (isset($buildInfo['actions'][0]['causes'][0])) {
-            return $buildInfo['actions'][0]['causes'][0]['userName'];
         } else {
-            return 'UNKNOWN';
+            if (isset($buildInfo['actions'][0]['causes'][0])) {
+                return $buildInfo['actions'][0]['causes'][0]['userName'];
+            } else {
+                return 'UNKNOWN';
+            }
         }
     }
 
     /**
      * Calculates the average of all available job health status indicators.
+     *
      * @param array $jobInfo - JenkinsDao::fetchStatus() response
      * @return float
      */
