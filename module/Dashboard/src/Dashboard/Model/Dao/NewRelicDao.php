@@ -23,8 +23,9 @@ class NewRelicDao extends AbstractDao {
 
         $response = $this->fetchRpmForGraphWidget($params);
 
-        if (is_array($response) && isset($response[0])) {
-            $rpm = $response[0]['requests_per_minute'];
+        if (is_array($response) && count($response)) {
+            $result = array_pop($response);
+            $rpm = $result['y'];
         }
 
         return $rpm;
@@ -42,13 +43,26 @@ class NewRelicDao extends AbstractDao {
         $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
         $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
 
-        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $response = $this->fetchRpmForGraphWidget($params);
 
-        if (is_array($response) && isset($response[0])) {
-            $rpm = $response[0]['requests_per_minute'];
+        if (is_array($response) && count($response)) {
+            $result = array_pop($response);
+            $rpm = $result['y'];
         }
 
         return $rpm;
+    }
+
+    public function fetchFeRpmForGraphWidget(array $params = array()) {
+        $responseParsed = array();
+        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        if (is_array($response)) {
+            foreach ($response as $key => $singleStat) {
+                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => $singleStat['requests_per_minute']);
+            }
+        }
+
+        return $responseParsed;
     }
 
     /**
@@ -59,7 +73,15 @@ class NewRelicDao extends AbstractDao {
      * @return array
      */
     public function fetchRpmForGraphWidget(array $params = array()) {
-        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $responseParsed = array();
+        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        if (is_array($response)) {
+            foreach ($response as $key => $singleStat) {
+                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => $singleStat['requests_per_minute']);
+            }
+        }
+
+        return $responseParsed;
     }
 
     /**
@@ -105,7 +127,7 @@ class NewRelicDao extends AbstractDao {
      */
     public function fetchCpuUsageForGraphWidget(array $params = array()) {
         $responseParsed = array();
-        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
             foreach ($response as $key => $singleStat) {
                 $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => $singleStat['percent']);
@@ -140,7 +162,6 @@ class NewRelicDao extends AbstractDao {
     /**
      * Fetch array of average response time values from beginDateTime to endDateTime
      * with constant intervals.
-     *
      * @param array $params - array with appId and other optional parameters for endpoint URL
      * @return array
      */
@@ -149,7 +170,7 @@ class NewRelicDao extends AbstractDao {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
             foreach ($response as $key => $singleStat) {
-                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['average_response_time'] * 1000));
+                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['average_response_time']*1000));
             }
         }
 

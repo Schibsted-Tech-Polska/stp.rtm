@@ -5,7 +5,7 @@
         <div class="flip-content">
 
             <div class="front face">
-                <h1 class="title"><?php echo $params['title']; ?></h1>
+                <h1 class="title"><?php echo $params['title']; ?> <?php if ($params['subtitle']):?><br/><small><?php echo $params['subtitle']; ?></small><?php endif?></h1>
 
                 <p class="average-health-score"><%= averageHealthScoreClass %></p>
 

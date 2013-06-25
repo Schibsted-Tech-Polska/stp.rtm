@@ -51,6 +51,6 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase {
      * @expectedException \Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled
      */
     public function testNotAllRequiredParamsGiven() {
-        $this->getConfiguredDao()->fetchErrorRateForNumberWidget();
+        $this->getConfiguredDao()->fetchErrorRateForErrorWidget();
     }
 }

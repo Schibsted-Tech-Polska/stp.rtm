@@ -53,6 +53,54 @@
     #dashboardBody .widget.BuildWidget .build-icon svg {
       width: 100%;
       height: 100%; }
+  #dashboardBody .widget.BuildWidget .flip-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    -o-perspective: 1000px;
+    perspective: 1000px; }
+  #dashboardBody .widget.BuildWidget .flip-content {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: all 1.0s linear;
+    -moz-transform-style: preserve-3d;
+    -moz-transition: all 1.0s linear;
+    -o-transform-style: preserve-3d;
+    -o-transition: all 1.0s linear;
+    transform-style: preserve-3d;
+    transition: all 1.0s linear; }
+  #dashboardBody .widget.BuildWidget .flip-container.flipped-effect .flip-content {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg); }
+  #dashboardBody .widget.BuildWidget .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box; }
+  #dashboardBody .widget.BuildWidget .face.back {
+    display: block;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    padding: 10px;
+    color: white;
+    text-align: center; }
+  #dashboardBody .widget.BuildWidget .widget-clock h2 {
+    font-size: 66px; }
 
 #dashboardBody .widget.NumberWidget .change-rate {
   font-weight: 500;
@@ -79,24 +127,34 @@
     padding-bottom: 0.4em; }
     #dashboardBody .widget.MessagesWidget .message .createdAt {
       color: #aaa;
-      font-size: 0.6em;
+      font-size: 0.75em;
       margin-bottom: 2px; }
     #dashboardBody .widget.MessagesWidget .message .content {
-      font-size: 0.7em;
+      font-size: 0.9em;
       color: #ddd; }
 
 #dashboardBody .widget.GraphWidget {
   background-color: #4d4c4c; }
   #dashboardBody .widget.GraphWidget .graph_container {
     width: 100%;
-    height: 200px;
+    height: 180px;
     position: absolute;
     bottom: 0;
-    left: 0;
-    opacity: 0.75; }
+    left: 0; }
   #dashboardBody .widget.GraphWidget .graph {
     width: 100%;
-    height: 200px; }
+    height: 190px;
+    opacity: 0.6; }
+  #dashboardBody .widget.GraphWidget .text {
+    position: relative;
+    z-index: 255; }
+  #dashboardBody .widget.GraphWidget h1 {
+    margin-bottom: 8px;
+    line-height: 25px; }
+  #dashboardBody .widget.GraphWidget h1 small {
+    font-size: 18px; }
+  #dashboardBody .widget.GraphWidget .value {
+    margin-top: 0; }
 
 @font-face {
   font-family: 'Icons';
@@ -116,7 +174,7 @@ body {
   padding: 14px;
   overflow: hidden;
   height: 366px;
-  background-color: #47bbb3;
+  background-color: #335a0c;
   text-align: center;
   vertical-align: middle;
   position: relative; }
@@ -174,60 +232,3 @@ body {
 
 .clearfix {
   zoom: 1; }
-
-.flip-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  -webkit-perspective: 1000px;
-  -moz-perspective: 1000px;
-  -o-perspective: 1000px;
-  perspective: 1000px; }
-
-.flip-content {
-  width: 100%;
-  height: 100%;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 1.0s linear;
-  -moz-transform-style: preserve-3d;
-  -moz-transition: all 1.0s linear;
-  -o-transform-style: preserve-3d;
-  -o-transition: all 1.0s linear;
-  transform-style: preserve-3d;
-  transition: all 1.0s linear; }
-
-/*.flip-container:hover .flip-content, */
-.flip-container.flipped-effect .flip-content {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg); }
-
-.face {
-  position: absolute;
-  background: #000;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.face.back {
-  display: block;
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-  padding: 10px;
-  color: white;
-  text-align: center;
-  background-color: #aaa; }
-
-.widget-clock h2 {
-  font-size: 66px; }
