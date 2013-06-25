@@ -40,6 +40,13 @@ class DashboardManager {
     private $resourceName;
 
     /**
+     * Stores all types of widgets used by a dashboard
+     *
+     * @var
+     */
+    private $widgetTypes = array();
+
+    /**
      * Constructor
      *
      * @param string                  $resourceName   Config name retrieved from URL.
@@ -51,6 +58,15 @@ class DashboardManager {
         $this->setResourceName($resourceName);
         $this->loadConfig($resourceName);
         $this->initWidgetCollection();
+    }
+
+    /**
+     * Returns all types of widgets used by a dashboard
+     *
+     * @return array
+     */
+    public function getWidgetTypes() {
+        return $this->widgetTypes;
     }
 
     /**
@@ -94,6 +110,7 @@ class DashboardManager {
      */
     public function addWidget(Widget\AbstractWidget $widget) {
         $this->widgetsCollection[$widget->getId()] = $widget;
+        $this->widgetTypes[$widget->getClassName()] = $widget->getClassName();
     }
 
     /**
@@ -121,7 +138,7 @@ class DashboardManager {
     }
 
     /**
-     * Get service locator
+     * Returns service locator
      *
      * @return ServiceLocatorInterface
      */

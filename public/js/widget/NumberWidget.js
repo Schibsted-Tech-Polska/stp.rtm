@@ -45,7 +45,7 @@ $.extend(NumberWidget.prototype, {
 
             var percentageDiff = Math.round(Math.abs(diff) / this.oldValue * 100) + "%";
 
-            this.dataToBind.difference = percentageDiff + "(" + this.oldValue + ") ";
+            this.dataToBind.difference = percentageDiff + " (" + this.oldValue + ") ";
 
             if (diff > 0) {
                 this.dataToBind.arrowClass = "icon-arrow-up";

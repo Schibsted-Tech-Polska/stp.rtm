@@ -24,6 +24,8 @@ class DashboardController extends AbstractActionController {
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
+        $this->layout()->setVariable('widgetTypes', $dashboardManager->getWidgetTypes());
+
         return new ViewModel(array('widgets' => $dashboardManager->getWidgets(), 'configName' => $configName));
     }
 
@@ -33,7 +35,6 @@ class DashboardController extends AbstractActionController {
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
-        /* @var AbstractWidget $widget */
         $widget = $dashboardManager->getWidget($widgetId);
         if (!$widget instanceof MessagesWidget) {
             throw new \Exception('Posting content to a widget is only available for MessagesWidget objects');

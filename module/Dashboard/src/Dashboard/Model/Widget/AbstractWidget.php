@@ -7,7 +7,6 @@
 namespace Dashboard\Model\Widget;
 
 use Dashboard\Model\Dao\AbstractDao;
-use Dashboard\Model\Widget\Exception\InvalidWidgetParameterException;
 use Zend\Filter\Inflector;
 use Zend\View\Model\ViewModel;
 
