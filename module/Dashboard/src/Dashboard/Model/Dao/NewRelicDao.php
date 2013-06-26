@@ -58,7 +58,7 @@ class NewRelicDao extends AbstractDao {
         $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
             foreach ($response as $key => $singleStat) {
-                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => $singleStat['requests_per_minute']);
+                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['requests_per_minute']));
             }
         }
 
@@ -77,7 +77,7 @@ class NewRelicDao extends AbstractDao {
         $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
             foreach ($response as $key => $singleStat) {
-                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => $singleStat['requests_per_minute']);
+                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['requests_per_minute']));
             }
         }
 
