@@ -110,7 +110,7 @@ class DashboardManager {
      */
     public function addWidget(Widget\AbstractWidget $widget) {
         $this->widgetsCollection[$widget->getId()] = $widget;
-        $this->widgetTypes[$widget->getClassName()] = $widget->getClassName();
+        $this->widgetTypes[$widget->getWidgetTypeName()] = $widget->getWidgetTypeName();
     }
 
     /**

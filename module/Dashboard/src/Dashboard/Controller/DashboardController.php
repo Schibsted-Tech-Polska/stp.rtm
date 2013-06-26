@@ -65,20 +65,24 @@ class DashboardController extends AbstractActionController {
          * @TODO Wojtek Iskra: this would be much better with a DB storage.
          */
 
-        $dashboardManager = new DashboardManager('general', $this->serviceLocator);
+        try {
+            $dashboardManager = new DashboardManager('general', $this->serviceLocator);
 
-        $widget = $dashboardManager->getWidget('generalMessages');
-        if (!$widget instanceof MessagesWidget) {
-            throw new \Exception('Posting content to a widget is only available for MessagesWidget objects');
+            $widget = $dashboardManager->getWidget('generalMessages');
+            if (!$widget instanceof MessagesWidget) {
+                throw new \Exception('Posting content to a widget is only available for MessagesWidget objects');
+            }
+
+            $dao = $widget->getDao();
+
+            if (!$dao instanceof MessagesDao) {
+                throw new \Exception('Selected MessagesWidget needs to use MessagesDao');
+            }
+
+            $widget->getDao()->addMessage($widget->getCacheIdentifier(), $this->params()->fromPost('message'), $configName);
+        } catch (\Exception $e) {
+            return $this->getResponse();
         }
-
-        $dao = $widget->getDao();
-
-        if (!$dao instanceof MessagesDao) {
-            throw new \Exception('Selected MessagesWidget needs to use MessagesDao');
-        }
-
-        $widget->getDao()->addMessage($widget->getCacheIdentifier(), $this->params()->fromPost('message'), $configName);
 
         return $this->getResponse();
     }

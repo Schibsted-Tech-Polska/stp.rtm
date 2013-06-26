@@ -39,6 +39,12 @@ return array(
         'subtitle' => '',
         'span' => 6,
     ),
+    'generalMessages' => array(
+        'refreshRate' => 30,
+        'title' => '',
+        'subtitle' => '',
+        'span' => 6,
+    ),
     'graph' => array(
         'refreshRate' => 60,
         'title' => '',
