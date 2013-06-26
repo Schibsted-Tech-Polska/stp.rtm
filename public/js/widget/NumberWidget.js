@@ -13,9 +13,8 @@ function NumberWidget(widget, configName) {
     this.dataToBind = {
         'value': '',
         'arrowClass': '',
-        'percentageDiff': '',
+        'percentageDiff': 0,
         'oldValue': '',
-        'visibilityClass': ' hidden',
         'lastUpdate': ''
     }
 }

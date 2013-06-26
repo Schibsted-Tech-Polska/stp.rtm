@@ -190,7 +190,7 @@ body {
     right: 0; }
   #dashboardBody .widget .prefix {
     font-size: 0.5em; }
-  #dashboardBody .widget .sufix {
+  #dashboardBody .widget .suffix {
     font-size: 0.5em; }
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px; }

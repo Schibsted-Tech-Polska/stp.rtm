@@ -6,7 +6,7 @@ function GraphWidget(widget, configName) {
     this.dataToBind = {
         'value': '',
         'arrowClass': '',
-        'percentageDiff': '',
+        'percentageDiff': 0,
         'oldValue': ''
     }
 }

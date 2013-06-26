@@ -7,12 +7,12 @@
 
             <h2 class="value">
                 <span class="prefix"><?php echo $params['valuePrefix']; ?></span><%= value %><span
-                    class="sufix"><?php echo $params['valueSufix']; ?></span></h2>
+                    class="suffix"><?php echo $params['valueSuffix']; ?></span></h2>
 
-            <% if (oldValue != '') { %>
+            <% if (percentageDiff > 0) { %>
             <p class="change-rate">
                 <i class="<%= arrowClass %>"></i>
-                <span class="difference"><%= percentageDiff %>% (<%= oldValue %><?php echo $params['valueSufix']; ?>)</span>
+                <span class="difference"><%= percentageDiff %>% (<%= oldValue %><?php echo $params['valueSuffix']; ?>)</span>
             </p>
             <% } %>
         </div>
