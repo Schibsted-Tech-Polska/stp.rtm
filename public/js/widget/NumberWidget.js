@@ -13,7 +13,8 @@ function NumberWidget(widget, configName) {
     this.dataToBind = {
         'value': '',
         'arrowClass': '',
-        'difference': '',
+        'percentageDiff': '',
+        'oldValue': '',
         'visibilityClass': ' hidden',
         'lastUpdate': ''
     }
@@ -48,11 +49,5 @@ $.extend(NumberWidget.prototype, {
         this.dataToBind.lastUpdate = response.updateTime;
 
         this.renderTemplate(this.dataToBind);
-
-        if (this.dataToBind.difference.length > 0) {
-            this.$widget.find('.change-rate').show();
-        } else {
-            this.$widget.find('.change-rate').hide();
-        }
     }
 });

@@ -29,28 +29,15 @@ $.extend(GraphWidget.prototype, {
      */
     prepareData: function (response) {
 
+        var currentValue = response.data[response.data.length - 1].y;
         var oldValue = this.oldValue;
+
         var self = this;
 
         /**
          * Calculating diff from last collected value
          */
-
-        var currentValue = response.data[response.data.length - 1].y;
-        if ($.isNumeric(oldValue) && $.isNumeric(response.data[response.data.length - 1].y)) {
-            var diff = currentValue - oldValue;
-
-            var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100);
-
-            this.dataToBind.percentageDiff = percentageDiff;
-            this.dataToBind.oldValue = oldValue;
-
-            if (diff > 0) {
-                this.dataToBind.arrowClass = "icon-arrow-up";
-            } else {
-                this.dataToBind.arrowClass = "icon-arrow-down";
-            }
-        }
+        $.extend(this.dataToBind, this.setDifference(this.oldValue, currentValue));
 
         this.dataToBind.value = currentValue;
         this.oldValue = currentValue;

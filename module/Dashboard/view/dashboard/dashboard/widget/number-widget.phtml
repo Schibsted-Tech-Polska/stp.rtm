@@ -8,10 +8,12 @@
             <span class="prefix"><?php echo $params['valuePrefix']; ?></span><%= value %><span
                 class="sufix"><?php echo $params['valueSufix']; ?></span></h2>
 
-        <p class="change-rate<%= visibilityClass %>">
-            <i class="<%= arrowClass %>"></i>
-            <span class="difference"><%= difference %></span>
-        </p>
+        <% if (oldValue != '') { %>
+            <p class="change-rate">
+                <i class="<%= arrowClass %>"></i>
+                <span class="difference"><%= percentageDiff %>% (<%= oldValue %><?php echo $params['valueSufix']; ?>)</span>
+            </p>
+        <% } %>
 
         <p class="updated-at">Last update: <%= lastUpdate %></p>
     </div>

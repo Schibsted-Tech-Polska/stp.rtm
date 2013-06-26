@@ -9,7 +9,7 @@ function Widget() {
      * @property urlBase
      * @type {string}
      */
-    this.urlBase = "/resources";
+    this.urlBase = "/stp-rtm/resources";
     /**
      * Hash string representing previous values of a response.
      * @property oldValueHash
@@ -108,9 +108,10 @@ Widget.prototype = {
 
             var diff = newValue - oldValue;
 
-            var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100) + "%";
+            var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100);
 
-            dataToBind.difference = percentageDiff + " (" + oldValue + ") ";
+            dataToBind.oldValue = oldValue;
+            dataToBind.percentageDiff = percentageDiff;
 
             if (diff === 0) {
                 dataToBind.visibilityClass = ' hidden';
