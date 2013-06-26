@@ -27,6 +27,7 @@ class DashboardController extends AbstractActionController {
 
         $this->layout()->setVariable('widgetTypes', $dashboardManager->getWidgetTypes());
 
+        $theme = 'dark';
         if (isset($theme)) {
             $this->layout()->setVariable('theme', $theme);
         }
