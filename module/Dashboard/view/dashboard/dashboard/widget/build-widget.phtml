@@ -10,12 +10,16 @@
                 <p class="average-health-score"><%= averageHealthScoreClass %></p>
 
                 <div class="details">
-                    <p>Code coverage: <%= codeCoverage %></p>
-                    <p class="change-rate<%= visibilityClass %>">
-                        <i class="<%= arrowClass %>"></i>
-                        <span class="difference"><%= difference %></span>
-                    </p>
                     <p class="last-committer"><%= lastCommitter %></p>
+                    <% if(codeCoverage > 0) { %>
+                        <p class="code-coverage">Code coverage: <%= codeCoverage %>%</p>
+                    <% } %>
+                    <% if (percentageDiff > 0) { %>
+                        <p class="change-rate">
+                            <i class="<%= arrowClass %>"></i>
+                            <span class="difference"><%= percentageDiff %>% (<%= oldValue %>%)</span>
+                        </p>
+                    <% } %>
                     <p class="last-built">Last built at: <%= lastBuilt %></p>
                     <p class="updated-at"></p>
                 </div>
@@ -28,6 +32,15 @@
 
                 <div class="details">
                     <p class="last-committer"><%= lastCommitter %></p>
+                    <% if(codeCoverage > 0) { %>
+                        <p class="code-coverage">Code coverage: <%= codeCoverage %>%</p>
+                    <% } %>
+                    <% if (percentageDiff > 0) { %>
+                        <p class="change-rate">
+                            <i class="<%= arrowClass %>"></i>
+                            <span class="difference"><%= percentageDiff %>% (<%= oldValue %>%)</span>
+                        </p>
+                    <% } %>
                     <p class="last-built">Last built at: <%= lastBuilt %></p>
                 </div>
             </div>

@@ -12,7 +12,7 @@ $background-color:  #4D4C4C;
   overflow: hidden;
 
   h1 {
-    font-size: 100px;
+    font-size: 30px;
     margin-bottom: 10px;
   }
 
@@ -24,7 +24,7 @@ $background-color:  #4D4C4C;
 
   .message {
     text-align: left;
-    border-bottom: 1px solid #777;
+    border-bottom: 1px dotted #666;
     margin-bottom: 0.5em;
     padding-bottom: 0.4em;
 
@@ -35,7 +35,7 @@ $background-color:  #4D4C4C;
     }
 
     .content {
-      font-size: 0.9em;
+      font-size: 1.2em;
       color: #ddd;
     }
   }

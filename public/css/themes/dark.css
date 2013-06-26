@@ -1,0 +1,22 @@
+#dashboardBody {
+  background-color: #282c2e; }
+  #dashboardBody p.change-rate {
+    color: #70c536; }
+  #dashboardBody .widget.MessagesWidget {
+    background-color: #373c3f; }
+    #dashboardBody .widget.MessagesWidget .message .content {
+      color: #f3704f; }
+  #dashboardBody .widget.ErrorWidget {
+    background-color: #41484d; }
+    #dashboardBody .widget.ErrorWidget.warning {
+      background-color: #ed303c; }
+  #dashboardBody .widget.GraphWidget {
+    background-color: #373c3f; }
+  #dashboardBody .widget.NumberWidget {
+    background-color: #41484d; }
+  #dashboardBody .widget.BuildWidget .face {
+    background-color: #248f8d; }
+  #dashboardBody .widget.BuildWidget .FAILURE .face {
+    background-color: #ed303c; }
+  #dashboardBody .widget.BuildWidget p.change-rate {
+    color: white; }

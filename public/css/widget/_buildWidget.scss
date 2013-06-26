@@ -52,7 +52,7 @@ $meter-background:  rgba(20, 20, 20, 1);
   }
 
   .face {
-    padding: 25px 12px;
+    padding: 14px 12px;
     background: #1693a7;
   }
 
@@ -82,6 +82,14 @@ $meter-background:  rgba(20, 20, 20, 1);
   .last-committer {
     font-size: 26px;
     margin-bottom: 3px;
+  }
+
+  .change-rate {
+    line-height: 220%;
+  }
+
+  .code-coverage {
+    line-height: 140%;
   }
 
   .build-icon {

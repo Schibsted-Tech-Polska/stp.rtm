@@ -9,7 +9,7 @@ function Widget() {
      * @property urlBase
      * @type {string}
      */
-    this.urlBase = "/stp-rtm/resources";
+    this.urlBase = "/resources";
     /**
      * Hash string representing previous values of a response.
      * @property oldValueHash
@@ -113,15 +113,10 @@ Widget.prototype = {
             dataToBind.oldValue = oldValue;
             dataToBind.percentageDiff = percentageDiff;
 
-            if (diff === 0) {
-                dataToBind.visibilityClass = ' hidden';
+            if (diff > 0) {
+                dataToBind.arrowClass = "icon-arrow-up";
             } else {
-                dataToBind.visibilityClass = '';
-                if (diff > 0) {
-                    dataToBind.arrowClass = "icon-arrow-up";
-                } else {
-                    dataToBind.arrowClass = "icon-arrow-down";
-                }
+                dataToBind.arrowClass = "icon-arrow-down";
             }
         }
 

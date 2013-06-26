@@ -21,10 +21,15 @@ class DashboardController extends AbstractActionController {
      */
     public function dashboardAction() {
         $configName = $this->params()->fromRoute('configName');
+        $theme = $this->params()->fromRoute('theme');
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
         $this->layout()->setVariable('widgetTypes', $dashboardManager->getWidgetTypes());
+
+        if (isset($theme)) {
+            $this->layout()->setVariable('theme', $theme);
+        }
 
         return new ViewModel(array('widgets' => $dashboardManager->getWidgets(), 'configName' => $configName));
     }
@@ -56,6 +61,7 @@ class DashboardController extends AbstractActionController {
 
         /**
          * After adding a message to a project-specific dashboard add it also to a global one!
+         *
          * @TODO Wojtek Iskra: this would be much better with a DB storage.
          */
 
