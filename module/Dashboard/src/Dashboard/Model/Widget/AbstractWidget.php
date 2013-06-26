@@ -40,12 +40,21 @@ abstract class AbstractWidget {
     protected $responseHash;
 
     /**
+     * Widget type name - defaults to a class name, but can be overloaded
+     *
+     * @var string
+     */
+    protected $widgetTypeName;
+
+    /**
      * Constructor
      *
      * @param array $params Merged parameters from custom and default widget config
      */
     public function __construct(array $params) {
         $this->params = $params;
+
+        $this->setWidgetTypeName($this->getClassName());
     }
 
     /**
@@ -57,7 +66,7 @@ abstract class AbstractWidget {
      * @return mixed
      */
     public function fetchData() {
-        $methodName = 'fetch' . ucfirst($this->getParam('metric')) . 'For' . $this->getClassName();
+        $methodName = 'fetch' . ucfirst($this->getParam('metric')) . 'For' . $this->getWidgetTypeName();
 
         $response = $this->getDao()->$methodName($this->params);
         $this->setResponseHash($response);
@@ -144,7 +153,7 @@ abstract class AbstractWidget {
             ':tplName' => array('Word\CamelCaseToDash')
         ));
 
-        $className = $this->getClassName();
+        $className = $this->getWidgetTypeName();
 
         $tplName = $inflector->filter(array('tplName' => $className));
 
@@ -223,5 +232,19 @@ abstract class AbstractWidget {
      */
     public function getCacheIdentifier() {
         return $this->params['cacheIdentifier'];
+    }
+
+    /**
+     * @param string $widgetTypeName
+     */
+    public function setWidgetTypeName($widgetTypeName) {
+        $this->widgetTypeName = $widgetTypeName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWidgetTypeName() {
+        return $this->widgetTypeName;
     }
 }

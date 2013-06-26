@@ -58,8 +58,8 @@ class Module {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));
                 },
                 'CacheAdapter' => function ($serviceManager) {
-                    $memcached = new Memcached($serviceManager->get('CacheAdapterOptions'));
-                    return $memcached;
+                    $cacheAdapter = new Memcached($serviceManager->get('CacheAdapterOptions'));
+                    return $cacheAdapter;
                 },
                 'CacheAdapterOptions' => function ($serviceManager) {
                     $config = $serviceManager->get('Config');
