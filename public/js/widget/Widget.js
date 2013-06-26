@@ -111,7 +111,10 @@ Widget.prototype = {
             var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100);
 
             dataToBind.oldValue = oldValue;
-            dataToBind.percentageDiff = percentageDiff;
+
+            if(percentageDiff > 0) {
+                dataToBind.percentageDiff = percentageDiff;
+            }
 
             if (diff > 0) {
                 dataToBind.arrowClass = "icon-arrow-up";
