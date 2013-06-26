@@ -10,6 +10,11 @@
                 <p class="average-health-score"><%= averageHealthScoreClass %></p>
 
                 <div class="details">
+                    <p>Code coverage: <%= codeCoverage %></p>
+                    <p class="change-rate<%= visibilityClass %>">
+                        <i class="<%= arrowClass %>"></i>
+                        <span class="difference"><%= difference %></span>
+                    </p>
                     <p class="last-committer"><%= lastCommitter %></p>
                     <p class="last-built">Last built at: <%= lastBuilt %></p>
                     <p class="updated-at"></p>

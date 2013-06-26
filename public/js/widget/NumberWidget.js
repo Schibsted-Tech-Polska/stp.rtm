@@ -14,6 +14,7 @@ function NumberWidget(widget, configName) {
         'value': '',
         'arrowClass': '',
         'difference': '',
+        'visibilityClass': ' hidden',
         'lastUpdate': ''
     }
 }
@@ -40,19 +41,7 @@ $.extend(NumberWidget.prototype, {
 
         this.dataToBind.value = response.data;
 
-        if ($.isNumeric(this.oldValue) && $.isNumeric(response.data)) {
-            var diff = response.data - this.oldValue;
-
-            var percentageDiff = Math.round(Math.abs(diff) / this.oldValue * 100) + "%";
-
-            this.dataToBind.difference = percentageDiff + " (" + this.oldValue + ") ";
-
-            if (diff > 0) {
-                this.dataToBind.arrowClass = "icon-arrow-up";
-            } else {
-                this.dataToBind.arrowClass = "icon-arrow-down";
-            }
-        }
+        $.extend(this.dataToBind,this.setDifference(this.oldValue,response.data));
 
         this.oldValue = response.data;
 

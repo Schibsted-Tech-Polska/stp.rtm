@@ -2,6 +2,7 @@ function BuildWidget(widget, configName) {
 
     this.widget = widget;
     this.configName = configName;
+    this.oldCodeCoverage = 0;
 
     this.dataToBind = {
         'value': '',
@@ -10,7 +11,12 @@ function BuildWidget(widget, configName) {
         'lastCommitter': '',
         'lastBuilt': '',
         'percentDone': '',
-        'lastStatus': null
+        'lastStatus': null,
+        'arrowClass': '',
+        'visibilityClass': ' hidden',
+        'difference': '',
+        'codeCoverage': ''
+
     }
 }
 
@@ -65,6 +71,15 @@ $.extend(BuildWidget.prototype, {
         else if (response.data.averageHealthScore <= 20) {
             this.dataToBind.averageHealthScoreClass = 'y';
         }
+
+        this.dataToBind.codeCoverage = response.data.codeCoverage;
+        if(this.dataToBind.codeCoverage === null) {
+            this.dataToBind.codeCoverage = 0;
+        }
+
+        $.extend(this.dataToBind,this.setDifference(this.oldCodeCoverage,response.data.codeCoverage));
+
+        this.oldCodeCoverage = response.data.codeCoverage;
 
         this.renderTemplate(this.dataToBind);
 

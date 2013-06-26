@@ -9,7 +9,7 @@ function Widget() {
      * @property urlBase
      * @type {string}
      */
-    this.urlBase = "/stp-rtm/resources";
+    this.urlBase = "/resources";
     /**
      * Hash string representing previous values of a response.
      * @property oldValueHash
@@ -67,10 +67,12 @@ Widget.prototype = {
         var self = this;
 
         self.fetchData();
-        setInterval(function() {self.fetchData()}, self.params.refreshRate * 1000);
+        setInterval(function () {
+            self.fetchData()
+        }, self.params.refreshRate * 1000);
     },
 
-    fetchData: function() {
+    fetchData: function () {
         var self = this;
 
         $.ajax({
@@ -91,6 +93,39 @@ Widget.prototype = {
             });
     },
 
+    /**
+     * Prepares values to bind for percentage difference
+     *
+     * @param {number} oldValue
+     * @param {number} newValue
+     * @returns {object}
+     */
+    setDifference: function (oldValue, newValue) {
+
+        dataToBind = {};
+
+        if ($.isNumeric(oldValue) && oldValue > 0 && $.isNumeric(newValue)) {
+
+            var diff = newValue - oldValue;
+
+            var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100) + "%";
+
+            dataToBind.difference = percentageDiff + " (" + oldValue + ") ";
+
+            if (diff === 0) {
+                dataToBind.visibilityClass = ' hidden';
+            } else {
+                dataToBind.visibilityClass = '';
+                if (diff > 0) {
+                    dataToBind.arrowClass = "icon-arrow-up";
+                } else {
+                    dataToBind.arrowClass = "icon-arrow-down";
+                }
+            }
+        }
+
+        return dataToBind;
+    },
     /**
      * An abstract method invoked after each response from long polling server
      */
