@@ -83,7 +83,7 @@ abstract class AbstractWidget {
      * Sets a param for a specific widget
      *
      * @param string $paramName parameter name
-     * @param mixed $value parameter value
+     * @param mixed  $value     parameter value
      * @return $this
      */
     public function setParam($paramName, $value) {
@@ -137,7 +137,7 @@ abstract class AbstractWidget {
      *
      * @return string
      */
-    public function prepareTplName() {
+    protected function prepareTplName() {
         // We're separating each word of a widget class name using a dash (‘-‘).
         $inflector = new Inflector(':tplName');
         $inflector->setRules(array(
@@ -209,6 +209,7 @@ abstract class AbstractWidget {
 
     /**
      * Cache identifier setter
+     *
      * @param string $cacheIdentifier string index key
      */
     public function setCacheIdentifier($cacheIdentifier) {
@@ -217,6 +218,7 @@ abstract class AbstractWidget {
 
     /**
      * Cache identifier getter
+     *
      * @return string
      */
     public function getCacheIdentifier() {
