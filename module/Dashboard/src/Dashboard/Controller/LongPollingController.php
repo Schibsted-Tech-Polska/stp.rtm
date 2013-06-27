@@ -46,7 +46,6 @@ class LongPollingController extends AbstractRestfulController {
         /* @var AbstractWidget $widget */
         $widget = $dashboardManager->getWidget($widgetId);
 
-        $oldValueHash = $this->params()->fromRoute('oldHash');
         $responseData = $widget->fetchData();
 
         $result = new JsonModel(array(

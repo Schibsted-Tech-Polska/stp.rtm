@@ -21,14 +21,13 @@ return array(
             'addMessage' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/:configName/:widgetId',
+                    'route'    => '/api/:configName/:widgetId',
                     'constraints' => array(
                         'configName' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'widgetId' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'Dashboard\Controller\Dashboard',
-                        'action'     => 'addMessage',
+                        'controller' => 'Dashboard\Controller\ApiController',
                     ),
                 ),
             ),
@@ -50,7 +49,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Dashboard\Controller\Dashboard' => 'Dashboard\Controller\DashboardController',
-            'Dashboard\Controller\LongPollingController' => 'Dashboard\Controller\LongPollingController'
+            'Dashboard\Controller\LongPollingController' => 'Dashboard\Controller\LongPollingController',
+            'Dashboard\Controller\ApiController' => 'Dashboard\Controller\ApiController'
         ),
     ),
     'view_manager' => array(
