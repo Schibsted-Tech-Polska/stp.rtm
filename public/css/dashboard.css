@@ -111,8 +111,6 @@
   font-weight: 500;
   font-size: 30px;
   margin-top: 30px; }
-#dashboardBody .widget.NumberWidget .more-info {
-  color: rgba(255, 255, 255, 0.7); }
 
 #dashboardBody .widget.MessagesWidget {
   background-color: #4d4c4c;
