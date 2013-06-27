@@ -11,11 +11,19 @@ use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 use Dashboard\Model\Dao\Exception\EndpointUrlNotDefined;
 use Dashboard\Model\Dao\Exception\FetchNotImplemented;
 use Zend\Http\Client;
-use Zend\Http\Exception\InvalidArgumentException;
 use Zend\Http\Request;
 use Zend\Json\Json;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
-abstract class AbstractDao {
+abstract class AbstractDao implements ServiceLocatorAwareInterface {
+    /**
+     * Service locator
+     *
+     * @var ServiceLocatorInterface
+     */
+    protected $serviceLocator;
+
     /**
      * Request returns XML
      *
@@ -58,6 +66,27 @@ abstract class AbstractDao {
      * @var \Zend\Cache\Storage\Adapter\AbstractAdapter
      */
     protected $cacheAdapter;
+
+    /**
+     * Set service locator
+     *
+     * @param ServiceLocatorInterface $serviceLocator Service locator interface.
+     * @return $this
+     */
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator) {
+        $this->serviceLocator = $serviceLocator;
+
+        return $this;
+    }
+
+    /**
+     * Get service locator
+     *
+     * @return ServiceLocatorInterface
+     */
+    public function getServiceLocator() {
+        return $this->serviceLocator;
+    }
 
     /**
      * Dao constructor

@@ -63,7 +63,8 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
             }
 
             $widget->setId($widgetData['id']);
-            $widget->setParam('cacheIdentifier', $resourceName . '_' . $widgetData['id']);
+            $widget->setParam('dashboardName', $resourceName);
+            $widget->setParam('widgetId', $widgetData['id']);
 
             return $widget;
         } else {
