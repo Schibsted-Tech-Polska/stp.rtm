@@ -5,6 +5,7 @@
 
 namespace Dashboard\Model\Dao;
 
+use Dashboard\Document\Message;
 
 class MessagesDao extends AbstractDao {
     /**
@@ -14,49 +15,67 @@ class MessagesDao extends AbstractDao {
      * @return array|mixed
      */
     public function fetchMessagesForMessagesWidget(array $params) {
-        $key    = $params['cacheIdentifier'];
+        $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
+        $qb = $dm->createQueryBuilder('Dashboard\Document\Message');
 
-        $result = $this->getCacheAdapter()->getItem($key, $success);
-        if (!$success) {
-            $result = array();
-            $this->getCacheAdapter()->setItem($key, $result);
+        if ($params['dashboardName'] != 'general') {
+            $qb->field('projectName')->equals($params['dashboardName']);
+            $qb->field('widgetId')->equals($params['widgetId']);
         }
 
         if (isset($params['limit'])) {
-            $result = array_slice($result, 0, $params['limit']);
+            $qb->limit($params['limit']);
         }
 
-        return $result;
+        $result = $qb
+            ->sort('createdAt', 'desc')
+            ->hydrate(false)
+            ->getQuery()
+            ->execute();
+        $resultArray = $result->toArray();
+
+        foreach ($resultArray as $key => $message) {
+            $resultArray[$key]['createdAt'] = date('Y-m-d H:i:s', $message['createdAt']->sec);
+        }
+
+        return $resultArray;
     }
 
     /**
-     * Adds a new message to a given MessagesWidget
-     * @param string $cacheIdentifier cache identifier key
-     * @param string $message message to be added
-     * @param string|null $projectName name of the project to tag the post on General tab
+     * Saves a new message to the persistent storage
+     *
+     * @param string $configName     Dashboard configuration name
+     * @param string $widgetId       widget id
+     * @param string $messageContent new message content
      */
-    public function addMessage($cacheIdentifier, $message, $projectName = null) {
-        $result = $this->getCacheAdapter()->getItem($cacheIdentifier, $success);
+    public function addMessage($configName, $widgetId, $messageContent) {
+        $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
 
-        if (!$success) {
-            $result = array();
-        }
+        $message = new Message();
+        $message->setProjectName($configName);
+        $message->setWidgetId($widgetId);
+        $message->setContent($messageContent);
 
-        array_unshift($result, array(
-                'createdAt' => date('Y-m-d H:i:s'),
-                'content' => $message,
-                'projectName' => $projectName
-            )
-        );
-
-        $this->getCacheAdapter()->setItem($cacheIdentifier, $result);
+        $dm->persist($message);
+        $dm->flush();
     }
 
     /**
      * Clears all messages stored for a given MessagesWidget
-     * @param string $cacheIdentifier cache identifier key
+     *
+     * @param string $configName Dashboard configuration name
+     * @param string $widgetId   widget id
      */
-    public function clearMessages($cacheIdentifier) {
-        $this->getCacheAdapter()->removeItem($cacheIdentifier);
+    public function clearMessages($configName, $widgetId) {
+        $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
+
+        $qb = $dm->createQueryBuilder('Dashboard\Document\Message');
+
+        $qb
+            ->remove()
+            ->field('projectName')->equals($configName)
+            ->field('widgetId')->equals($widgetId)
+            ->getQuery()
+            ->execute();
     }
 }

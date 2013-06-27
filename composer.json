@@ -1,9 +1,11 @@
 {
     "name": "Stp.Rtm",
     "description": "Real time monitor dashboard using Jenkins API and New Relic API",
+    "minimum-stability": "alpha",
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.0",
+        "doctrine/doctrine-mongo-odm-module": "dev-master",
         "filp/whoops": "1.0.7"
     },
     "require-dev": {
