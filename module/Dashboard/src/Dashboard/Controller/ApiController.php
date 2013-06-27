@@ -6,20 +6,54 @@
  */
 namespace Dashboard\Controller;
 
+use Dashboard\Model\Dao\MessagesDao;
 use Dashboard\Model\DashboardManager;
-use Dashboard\Model\Widget\AbstractWidget;
+use Dashboard\Model\Widget\MessagesWidget;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
 class ApiController extends AbstractRestfulController {
     /**
-     * Create a new resource
+     * Creates new messages
      *
      * @param  mixed $data Request data
      * @return mixed
      */
     public function create($data) {
-        // TODO: Implement create() method.
+        $configName = $this->params()->fromRoute('configName');
+        $widgetId = $this->params()->fromRoute('widgetId');
+
+        try {
+            $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
+
+            $widget = null;
+            $widget = $dashboardManager->getWidget($widgetId);
+
+            if (!$widget instanceof MessagesWidget) {
+                $this->getResponse()->setStatusCode(400);
+                $response = array('code' => '400', 'message' => 'Posting content to a widget is only available for MessagesWidget objects');
+
+                return new JsonModel($response);
+            }
+
+            $dao = $widget->getDao();
+
+            if (!$dao instanceof MessagesDao) {
+                $this->getResponse()->setStatusCode(400);
+                $response = array('code' => '400', 'message' => 'Selected MessagesWidget needs to use MessagesDao');
+
+                return new JsonModel($response);
+            }
+
+            $widget->getDao()->addMessage($configName, $widgetId, $data['message']);
+        } catch (\Exception $e) {
+            $this->getResponse()->setStatusCode(400);
+            $response = array('code' => '400', 'message' => $e->getMessage());
+
+            return new JsonModel($response);
+        }
+
+        return $this->getResponse()->setStatusCode(201);
     }
 
     /**
@@ -38,8 +72,8 @@ class ApiController extends AbstractRestfulController {
      * @param  string $widgetId widget's id
      * @return \Zend\View\Model\JsonModel
      */
-    public function get($widgetId) {
-        // TODO: Implement create() method.
+    public function get($id) {
+        return $this->getResponse()->setStatusCode(405);
     }
 
     /**
