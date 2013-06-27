@@ -7,9 +7,10 @@ return array(
             'dashboard' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/:configName',
+                    'route'    => '/:configName[/theme/:theme]',
                     'constraints' => array(
                         'configName' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'theme' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
                         'controller' => 'Dashboard\Controller\Dashboard',

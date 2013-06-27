@@ -1,0 +1,80 @@
+//----------------------------
+//  CYAN THEME
+//----------------------------
+
+//------- COLOR PALETTE ------
+$color-white: #ffffff;
+$color-green: #70C536;
+$color-cyan: #00BAD8;
+$color-orange: #F3704F;
+$color-red: #ED303C;
+$color-yellow: #FFF46B;
+$color-blue-dark: #248F8D;
+
+//------- COLORS USAGE ------
+$bg-color: #282C2E;
+$bg-graph-widget: #373C3F;
+$bg-message-widget: #373C3F;
+$bg-number-widget: #41484D;
+$bg-build-widget: #484D50;
+$bg-build-sleep: $color-blue-dark;
+$bg-warning: $color-red;
+
+$font-color--message-title: $color-orange;
+
+#dashboardBody {
+
+  p.change-rate {
+    color: $color-green;
+  }
+
+  background-color: $bg-color;
+
+  .widget {
+
+    &.MessagesWidget {
+
+      background-color: $bg-message-widget;
+
+      .message {
+        .content {
+          color: $font-color--message-title;
+        }
+      }
+    }
+
+    &.ErrorWidget {
+      background-color: $bg-number-widget;
+      &.warning {
+        background-color: $bg-warning;
+      }
+    }
+
+    &.GraphWidget {
+      background-color: $bg-graph-widget;
+    }
+
+    &.NumberWidget {
+      background-color: $bg-number-widget;
+    }
+
+    &.BuildWidget {
+      .face {
+        background-color: $bg-build-sleep;
+      }
+
+      .FAILURE {
+        .face {
+          background-color: $bg-warning;
+        }
+      }
+
+      p.change-rate {
+        color: $color-white;
+      }
+
+    }
+
+  }
+
+}

@@ -11,7 +11,7 @@
         <% if (percentageDiff > 0) { %>
             <p class="change-rate">
                 <i class="<%= arrowClass %>"></i>
-                <span class="difference"><%= percentageDiff %>% (<%= oldValue %><?php echo $params['valueSuffix']; ?>)</span>
+                <span class="difference"><%= percentageDiff %>% (<?php echo $params['valuePrefix']; ?><%= oldValue %><?php echo $params['valueSuffix']; ?>)</span>
             </p>
         <% } %>
 

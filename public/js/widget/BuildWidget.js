@@ -13,10 +13,9 @@ function BuildWidget(widget, configName) {
         'percentDone': '',
         'lastStatus': null,
         'arrowClass': '',
-        'visibilityClass': ' hidden',
-        'difference': '',
-        'codeCoverage': ''
-
+        'percentageDiff': '',
+        'codeCoverage': '',
+        'oldValue': ''
     }
 }
 

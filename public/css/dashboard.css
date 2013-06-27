@@ -30,7 +30,7 @@
   #dashboardBody .widget.BuildWidget .FAILURE .face {
     background: #cf0d4d; }
   #dashboardBody .widget.BuildWidget .face {
-    padding: 25px 12px;
+    padding: 14px 12px;
     background: #1693a7; }
   #dashboardBody .widget.BuildWidget .face.front {
     z-index: 20; }
@@ -48,6 +48,10 @@
   #dashboardBody .widget.BuildWidget .last-committer {
     font-size: 26px;
     margin-bottom: 3px; }
+  #dashboardBody .widget.BuildWidget .change-rate {
+    line-height: 220%; }
+  #dashboardBody .widget.BuildWidget .code-coverage {
+    line-height: 140%; }
   #dashboardBody .widget.BuildWidget .build-icon {
     width: 100%;
     height: 230px; }
@@ -106,7 +110,6 @@
 #dashboardBody .widget.NumberWidget .change-rate {
   font-weight: 500;
   font-size: 30px;
-  display: none;
   margin-top: 30px; }
 #dashboardBody .widget.NumberWidget .more-info {
   color: rgba(255, 255, 255, 0.7); }
@@ -115,7 +118,7 @@
   background-color: #4d4c4c;
   overflow: hidden; }
   #dashboardBody .widget.MessagesWidget h1 {
-    font-size: 100px;
+    font-size: 30px;
     margin-bottom: 10px; }
   #dashboardBody .widget.MessagesWidget h5 {
     color: #ddd;
@@ -123,7 +126,7 @@
     margin: 6px 0; }
   #dashboardBody .widget.MessagesWidget .message {
     text-align: left;
-    border-bottom: 1px solid #777;
+    border-bottom: 1px dotted #666;
     margin-bottom: 0.5em;
     padding-bottom: 0.4em; }
     #dashboardBody .widget.MessagesWidget .message .createdAt {
@@ -131,7 +134,7 @@
       font-size: 0.75em;
       margin-bottom: 2px; }
     #dashboardBody .widget.MessagesWidget .message .content {
-      font-size: 0.9em;
+      font-size: 1.2em;
       color: #ddd; }
 
 #dashboardBody .widget.GraphWidget {
@@ -182,7 +185,6 @@ body {
   #dashboardBody .widget .value {
     margin-top: 40px; }
   #dashboardBody .widget .updated-at {
-    color: rgba(0, 0, 0, 0.3);
     display: block;
     position: absolute;
     bottom: 10px;
