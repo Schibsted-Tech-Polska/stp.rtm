@@ -48,7 +48,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Dashboard\Controller\Dashboard' => 'Dashboard\Controller\DashboardController',
-            'Dashboard\Controller\LongPollingController' => 'Dashboard\Controller\LongPollingController'
+            'Dashboard\Controller\LongPollingController' => 'Dashboard\Controller\LongPollingController',
+            'Dashboard\Controller\ApiController' => 'Dashboard\Controller\ApiController'
         ),
     ),
     'view_manager' => array(

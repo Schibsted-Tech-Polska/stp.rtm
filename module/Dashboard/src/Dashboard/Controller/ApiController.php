@@ -11,7 +11,7 @@ use Dashboard\Model\Widget\AbstractWidget;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
-class LongPollingController extends AbstractRestfulController {
+class ApiController extends AbstractRestfulController {
     /**
      * Create a new resource
      *
@@ -29,7 +29,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return mixed
      */
     public function delete($id) {
-        // TODO: Implement delete() method.
+        return $this->getResponse()->setStatusCode(405);
     }
 
     /**
@@ -39,22 +39,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return \Zend\View\Model\JsonModel
      */
     public function get($widgetId) {
-        $configName = $this->params()->fromRoute('configName');
-
-        $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
-
-        /* @var AbstractWidget $widget */
-        $widget = $dashboardManager->getWidget($widgetId);
-
-        $responseData = $widget->fetchData();
-
-        $result = new JsonModel(array(
-            'data' => $responseData,
-            'hash' => $widget->getResponseHash(),
-            'updateTime' => date("H:i"),
-        ));
-
-        return $result;
+        // TODO: Implement create() method.
     }
 
     /**
@@ -63,7 +48,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return mixed
      */
     public function getList() {
-        // TODO: Implement getList(Ō) method.
+        return $this->getResponse()->setStatusCode(405);
     }
 
     /**
@@ -74,6 +59,6 @@ class LongPollingController extends AbstractRestfulController {
      * @return mixed
      */
     public function update($id, $data) {
-        // TODO: Implement update() method.
+        return $this->getResponse()->setStatusCode(405);
     }
 }
