@@ -128,14 +128,29 @@
     text-align: left;
     border-bottom: 1px dotted #666;
     margin-bottom: 0.5em;
-    padding-bottom: 0.4em; }
+    padding-bottom: 0.4em;
+    overflow: hidden; }
     #dashboardBody .widget.MessagesWidget .message .createdAt {
       color: #aaa;
       font-size: 0.75em;
-      margin-bottom: 2px; }
+      margin-bottom: 2px;
+      text-align: right; }
     #dashboardBody .widget.MessagesWidget .message .content {
       font-size: 1.2em;
       color: #ddd; }
+    #dashboardBody .widget.MessagesWidget .message .targetAvatar {
+      position: relative; }
+      #dashboardBody .widget.MessagesWidget .message .targetAvatar img {
+        margin-left: 33px; }
+      #dashboardBody .widget.MessagesWidget .message .targetAvatar i {
+        background: url("img/crosshair.png");
+        position: absolute;
+        top: -63px;
+        left: 0;
+        width: auto;
+        font-size: 154px;
+        font-weight: normal;
+        color: #f3704f; }
 
 #dashboardBody .widget.GraphWidget {
   background-color: #4d4c4c; }

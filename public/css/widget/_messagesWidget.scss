@@ -27,16 +27,37 @@ $background-color:  #4D4C4C;
     border-bottom: 1px dotted #666;
     margin-bottom: 0.5em;
     padding-bottom: 0.4em;
+    overflow: hidden;
 
     .createdAt {
       color: #aaa;
       font-size: 0.75em;
       margin-bottom: 2px;
+      text-align: right;
     }
 
     .content {
       font-size: 1.2em;
       color: #ddd;
+    }
+
+    .targetAvatar {
+      position: relative;
+
+      img {
+        margin-left: 33px;
+      }
+
+      i {
+        background: url('img/crosshair.png');
+        position: absolute;
+        top: -63px;
+        left: 0;
+        width: auto;
+        font-size: 154px;
+        font-weight: normal;
+        color: #f3704f;
+      }
     }
   }
 }

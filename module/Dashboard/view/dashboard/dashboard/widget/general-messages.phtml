@@ -5,8 +5,8 @@
         <h3><?php echo $params['title']?></h3>
         <% _.each(value, function(item) { %>
             <div class="message">
-                <p class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></p>
-                <p class="content"><%= item.content %></p>
+                <div class="content row-fluid"><%= item.content %></div>
+                <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
             </div>
         <% }); %>
 
