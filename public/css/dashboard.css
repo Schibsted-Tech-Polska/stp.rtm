@@ -140,9 +140,9 @@
       position: relative; }
       #dashboardBody .widget.MessagesWidget .message .targetAvatar i {
         background: url("img/crosshair.png");
-        position: relative;
-        top: 14px;
-        left: -12px;
+        position: absolute;
+        top: 24px;
+        left: 36px;
         text-shadow: 0px 0px 4px #000;
         width: auto;
         font-size: 34px;

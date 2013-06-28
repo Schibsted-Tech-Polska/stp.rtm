@@ -12,7 +12,7 @@ use Dashboard\Model\Widget\MessagesWidget;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
-class ApiController extends AbstractRestfulController {
+class EventsApiController extends AbstractRestfulController {
     /**
      * Creates new messages
      *

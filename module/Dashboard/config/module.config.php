@@ -27,7 +27,20 @@ return array(
                         'widgetId' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'Dashboard\Controller\ApiController',
+                        'controller' => 'Dashboard\Controller\MessagesApiController',
+                    ),
+                ),
+            ),
+            'addEvent' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/api/:configName/:widgetId',
+                    'constraints' => array(
+                        'configName' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'widgetId' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Dashboard\Controller\EventsApiController',
                     ),
                 ),
             ),
@@ -50,7 +63,8 @@ return array(
         'invokables' => array(
             'Dashboard\Controller\Dashboard' => 'Dashboard\Controller\DashboardController',
             'Dashboard\Controller\LongPollingController' => 'Dashboard\Controller\LongPollingController',
-            'Dashboard\Controller\ApiController' => 'Dashboard\Controller\ApiController'
+            'Dashboard\Controller\MessagesApiController' => 'Dashboard\Controller\MessagesApiController',
+            'Dashboard\Controller\EventsApiController' => 'Dashboard\Controller\EventsApiController',
         ),
     ),
     'view_manager' => array(
