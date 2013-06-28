@@ -45,7 +45,7 @@ class ApiController extends AbstractRestfulController {
                 return new JsonModel($response);
             }
 
-            $widget->getDao()->addMessage($configName, $widgetId, $data['message']);
+            $widget->getDao()->addMessage($configName, $widgetId, $data['message'], isset($data['avatar']) ? $data['avatar'] : null);
         } catch (\Exception $e) {
             $this->getResponse()->setStatusCode(400);
             $response = array('code' => '400', 'message' => $e->getMessage());

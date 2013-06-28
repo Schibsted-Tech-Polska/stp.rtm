@@ -26,12 +26,12 @@ class Message extends AbstractDocument {
     protected $createdAt;
 
     /**
-     * URL to person's avatar - optional
+     * HTML with person's avatar - optional
      *
      * @var string
      * @ODM\String
      */
-    protected $avatarURl;
+    protected $avatar;
 
     /**
      * Message content
@@ -129,18 +129,18 @@ class Message extends AbstractDocument {
     }
 
     /**
-     * Sets URL to a person's avatar image
-     * @param string $avatarURl - full url to the image
+     * Sets HTML with a person's avatar image
+     * @param string $avatar - full url to the image
      */
-    public function setAvatarURl($avatarURl) {
-        $this->avatarURl = $avatarURl;
+    public function setAvatar($avatar) {
+        $this->avatar = $avatar;
     }
 
     /**
      * Returns person's avatar image URL
      * @return string
      */
-    public function getAvatarURl() {
-        return $this->avatarURl;
+    public function getAvatar() {
+        return $this->avatar;
     }
 }

@@ -47,14 +47,19 @@ class MessagesDao extends AbstractDao {
      * @param string $configName     Dashboard configuration name
      * @param string $widgetId       widget id
      * @param string $messageContent new message content
+     * @param string $avatar      person's avatar html (optional)
      */
-    public function addMessage($configName, $widgetId, $messageContent) {
+    public function addMessage($configName, $widgetId, $messageContent, $avatar = null) {
         $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
 
         $message = new Message();
         $message->setProjectName($configName);
         $message->setWidgetId($widgetId);
         $message->setContent($messageContent);
+
+        if (!is_null($avatar)) {
+            $message->setAvatar($avatar);
+        }
 
         $dm->persist($message);
         $dm->flush();

@@ -4,7 +4,8 @@ function MessagesWidget(widget, configName) {
     this.configName = configName;
 
     this.dataToBind = {
-        'value': ''
+        'value': '',
+        'avatar' : ''
     }
 }
 
@@ -27,7 +28,7 @@ $.extend(MessagesWidget.prototype, {
     prepareData: function (response) {
 
         var oldValue = this.oldValue;
-
+console.log(response.data);
         this.dataToBind.value = response.data;
         this.oldValue = response.data;
 

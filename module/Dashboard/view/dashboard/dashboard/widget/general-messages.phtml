@@ -4,9 +4,21 @@
     <div class="widgetContainer">
         <h3><?php echo $params['title']?></h3>
         <% _.each(value, function(item) { %>
-            <div class="message">
-                <div class="content row-fluid"><%= item.content %></div>
-                <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
+            <div class="message row-fluid">
+                <% if (item.avatar) {%>
+                    <div class="span3 targetAvatar">
+                        <%= item.avatar %>
+                    </div>
+                    <div class="span9 last">
+                        <div class="content"><%= item.content %></div>
+                        <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
+                    </div>
+                <%} else {%>
+                    <div class="span12 last">
+                        <div class="content"><%= item.content %></div>
+                        <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
+                    </div>
+                <% } %>
             </div>
         <% }); %>
 
