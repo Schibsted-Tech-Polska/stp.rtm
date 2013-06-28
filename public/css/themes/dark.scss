@@ -39,6 +39,14 @@ $font-color--message-title: $color-orange;
       .message {
         .content {
           color: $font-color--message-title;
+
+          .failure {
+            color: $color-red;
+          }
+          .success {
+            color: $color-green;
+          }
+
         }
 
         .icon-thumbs-up {

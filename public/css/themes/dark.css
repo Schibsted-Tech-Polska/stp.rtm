@@ -6,6 +6,10 @@
     background-color: #373c3f; }
     #dashboardBody .widget.MessagesWidget .message .content {
       color: #f3704f; }
+      #dashboardBody .widget.MessagesWidget .message .content .failure {
+        color: #ed303c; }
+      #dashboardBody .widget.MessagesWidget .message .content .success {
+        color: #70c536; }
     #dashboardBody .widget.MessagesWidget .message .icon-thumbs-up {
       color: #70c536; }
     #dashboardBody .widget.MessagesWidget .message .icon-screenshot {
