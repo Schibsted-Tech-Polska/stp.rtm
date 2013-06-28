@@ -21,7 +21,7 @@ return array(
             'addMessage' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/api/:configName/:widgetId',
+                    'route'    => '/api/message/:configName/:widgetId',
                     'constraints' => array(
                         'configName' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'widgetId' => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -34,7 +34,7 @@ return array(
             'addEvent' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/api/:configName/:widgetId',
+                    'route'    => '/api/event/:configName/:widgetId',
                     'constraints' => array(
                         'configName' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'widgetId' => '[a-zA-Z][a-zA-Z0-9_-]*',
