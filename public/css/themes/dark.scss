@@ -40,6 +40,14 @@ $font-color--message-title: $color-orange;
         .content {
           color: $font-color--message-title;
         }
+
+        .icon-thumbs-up {
+          color: $color-green;
+        }
+
+        .icon-screenshot {
+          color: $color-red;
+        }
       }
     }
 

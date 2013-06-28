@@ -6,6 +6,10 @@
     background-color: #373c3f; }
     #dashboardBody .widget.MessagesWidget .message .content {
       color: #f3704f; }
+    #dashboardBody .widget.MessagesWidget .message .icon-thumbs-up {
+      color: #70c536; }
+    #dashboardBody .widget.MessagesWidget .message .icon-screenshot {
+      color: #ed303c; }
   #dashboardBody .widget.ErrorWidget {
     background-color: #41484d; }
     #dashboardBody .widget.ErrorWidget.warning {

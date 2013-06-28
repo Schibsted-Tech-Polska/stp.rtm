@@ -6,10 +6,10 @@
         <% _.each(value, function(item) { %>
             <div class="message row-fluid">
                 <% if (item.avatar) {%>
-                    <div class="span3 targetAvatar">
+                    <div class="span2 targetAvatar">
                         <%= item.avatar %>
                     </div>
-                    <div class="span9 last">
+                    <div class="span10 last">
                         <div class="content"><%= item.content %></div>
                         <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
                     </div>

@@ -2,7 +2,8 @@
   background-color: #cc0c39;
   background-image: url(/img/sock.png);
   background-repeat: no-repeat;
-  background-position: 191px 195px; }
+  background-position: 191px 215px;
+  background-size: 19%; }
 
 #dashboardBody .widget.TextWidget {
   background-color: #4d4c4c; }
@@ -137,17 +138,15 @@
       color: #ddd; }
     #dashboardBody .widget.MessagesWidget .message .targetAvatar {
       position: relative; }
-      #dashboardBody .widget.MessagesWidget .message .targetAvatar img {
-        margin-left: 33px; }
       #dashboardBody .widget.MessagesWidget .message .targetAvatar i {
         background: url("img/crosshair.png");
-        position: absolute;
-        top: -63px;
-        left: 0;
+        position: relative;
+        top: 14px;
+        left: -12px;
+        text-shadow: 0px 0px 4px #000;
         width: auto;
-        font-size: 154px;
-        font-weight: normal;
-        color: #f3704f; }
+        font-size: 34px;
+        font-weight: normal; }
 
 #dashboardBody .widget.GraphWidget {
   background-color: #4d4c4c; }

@@ -1,8 +1,7 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color:  #4D4C4C;
-
+$background-color: #4D4C4C;
 
 // ----------------------------------------------------------------------------
 // Widget-text styles
@@ -43,19 +42,15 @@ $background-color:  #4D4C4C;
     .targetAvatar {
       position: relative;
 
-      img {
-        margin-left: 33px;
-      }
-
       i {
         background: url('img/crosshair.png');
-        position: absolute;
-        top: -63px;
-        left: 0;
+        position: relative;
+        top: 14px;
+        left: -12px;
+        text-shadow: 0px 0px 4px #000;
         width: auto;
-        font-size: 154px;
+        font-size: 34px;
         font-weight: normal;
-        color: #f3704f;
       }
     }
   }

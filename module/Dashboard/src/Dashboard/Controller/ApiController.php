@@ -26,7 +26,6 @@ class ApiController extends AbstractRestfulController {
         try {
             $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
-            $widget = null;
             $widget = $dashboardManager->getWidget($widgetId);
 
             if (!$widget instanceof MessagesWidget) {
@@ -46,6 +45,7 @@ class ApiController extends AbstractRestfulController {
             }
 
             $widget->getDao()->addMessage($configName, $widgetId, $data['message'], isset($data['avatar']) ? $data['avatar'] : null);
+
         } catch (\Exception $e) {
             $this->getResponse()->setStatusCode(400);
             $response = array('code' => '400', 'message' => $e->getMessage());
