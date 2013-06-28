@@ -5,11 +5,10 @@
 
 namespace Dashboard\Document;
 
-use Doctrine\Common\Persistence\PersistentObject;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /** @ODM\Document */
-class Message extends PersistentObject {
+class Message extends AbstractDocument {
     /**
      * Message id
      *
@@ -25,6 +24,14 @@ class Message extends PersistentObject {
      * @ODM\Date
      */
     protected $createdAt;
+
+    /**
+     * URL to person's avatar - optional
+     *
+     * @var string
+     * @ODM\String
+     */
+    protected $avatarURl;
 
     /**
      * Message content
@@ -44,23 +51,29 @@ class Message extends PersistentObject {
 
     /**
      * Widget id
+     *
      * @var string
      * @ODM\String
      */
     protected $widgetId;
 
+    /**
+     * Message document constructor
+     */
     public function __construct() {
         $this->setCreatedAt(new \Datetime());
     }
 
     /**
-     * @param string $createdAt
+     * createdAt datetime setter
+     * @param \Datetime $createdAt - date of message creation
      */
     public function setCreatedAt($createdAt) {
         $this->createdAt = $createdAt;
     }
 
     /**
+     * createdAt datetime getter
      * @return string
      */
     public function getCreatedAt() {
@@ -68,13 +81,15 @@ class Message extends PersistentObject {
     }
 
     /**
-     * @param string $content
+     * Message contents
+     * @param string $content - message contents
      */
     public function setContent($content) {
         $this->content = $content;
     }
 
     /**
+     * Message contents getter
      * @return string
      */
     public function getContent() {
@@ -82,13 +97,15 @@ class Message extends PersistentObject {
     }
 
     /**
-     * @param string $projectName
+     * projectName setter
+     * @param string $projectName - project/dashboard name
      */
     public function setProjectName($projectName) {
         $this->projectName = $projectName;
     }
 
     /**
+     * projectName getter
      * @return string
      */
     public function getProjectName() {
@@ -96,20 +113,34 @@ class Message extends PersistentObject {
     }
 
     /**
-     * @param string $widgetId
+     * widgetId setter
+     * @param string $widgetId - unique to a dashboard widget id
      */
     public function setWidgetId($widgetId) {
         $this->widgetId = $widgetId;
     }
 
     /**
+     * widgetId getter
      * @return string
      */
     public function getWidgetId() {
         return $this->widgetId;
     }
 
-    public function toJson() {
-        return "{'dupa':'jas'}";
+    /**
+     * Sets URL to a person's avatar image
+     * @param string $avatarURl - full url to the image
+     */
+    public function setAvatarURl($avatarURl) {
+        $this->avatarURl = $avatarURl;
+    }
+
+    /**
+     * Returns person's avatar image URL
+     * @return string
+     */
+    public function getAvatarURl() {
+        return $this->avatarURl;
     }
 }
