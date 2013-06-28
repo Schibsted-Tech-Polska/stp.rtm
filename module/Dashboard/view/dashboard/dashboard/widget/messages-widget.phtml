@@ -5,9 +5,21 @@
         <h1 class="title"><?php echo $params['title']; ?> Latest Activities<?php if ($params['subtitle']):?><br/><small><?php echo $params['subtitle']; ?></small><?php endif?></h1>
 
         <% _.each(value, function(item) { %>
-            <div class="message">
-                <div class="content"><%= item.content %></div>
-                <div class="createdAt"><%= item.createdAt %></div>
+            <div class="message row-fluid">
+                <% if (item.avatar) {%>
+                    <div class="span3 targetAvatar">
+                        <%= item.avatar %>
+                    </div>
+                    <div class="span9 last">
+                        <div class="content"><%= item.content %></div>
+                        <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
+                    </div>
+                <%} else {%>
+                    <div class="span12 last">
+                        <div class="content"><%= item.content %></div>
+                        <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
+                    </div>
+                <% } %>
             </div>
         <% }); %>
     </div>

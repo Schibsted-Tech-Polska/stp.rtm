@@ -8,4 +8,4 @@ namespace Dashboard\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /** @ODM\Document */
-class Message extends Event {}
+class Deploy extends Event {}

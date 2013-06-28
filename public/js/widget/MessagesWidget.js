@@ -28,7 +28,6 @@ $.extend(MessagesWidget.prototype, {
     prepareData: function (response) {
 
         var oldValue = this.oldValue;
-console.log(response.data);
         this.dataToBind.value = response.data;
         this.oldValue = response.data;
 
