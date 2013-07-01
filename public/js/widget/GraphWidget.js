@@ -1,14 +1,15 @@
 function GraphWidget(widget, configName) {
 
     this.widget = widget;
-    this.configName = configName
+    this.configName = configName;
+    this.chart = null;
 
     this.dataToBind = {
         'value': '',
         'arrowClass': '',
         'percentageDiff': 0,
         'oldValue': ''
-    }
+    };
 }
 
 GraphWidget.prototype = new Widget();
@@ -49,7 +50,11 @@ $.extend(GraphWidget.prototype, {
          * @TODO Wojtek Iskra: add dynamic adding data instead of restarting the whole chart
          */
 
-        $('.graph', this.widget).highcharts({
+        if (this.chart != null) {
+            this.chart.highcharts().destroy();
+        }
+
+        this.chart = $('.graph', this.widget).highcharts({
             chart: {
                 type: 'area'
             },

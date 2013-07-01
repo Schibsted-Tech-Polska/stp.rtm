@@ -46,7 +46,7 @@ return array(
         'span' => 6,
     ),
     'graph' => array(
-        'refreshRate' => 60,
+        'refreshRate' => 10,
         'title' => '',
         'subtitle' => '',
         'valueSuffix' => '',

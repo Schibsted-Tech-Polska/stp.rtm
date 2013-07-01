@@ -16,6 +16,8 @@ function Widget() {
      * @type {string}
      */
     this.oldValueHash = '';
+
+    this._dataReceiverInteval = null;
 }
 
 /**
@@ -38,6 +40,7 @@ Widget.prototype = {
         this.widgetId = "/" + this.widget.id;
 
         var paramsJson = this.$widget.attr('data-params');
+
         if (typeof(paramsJson) == 'undefined') {
             throw new Error('Widget params not passed from PHTML to JS.');
         } else {
@@ -62,35 +65,41 @@ Widget.prototype = {
      * Starts long polling session
      */
     startListening: function () {
-
         this.init();
-        var self = this;
 
-        self.fetchData();
-        setInterval(function () {
-            self.fetchData()
-        }, self.params.refreshRate * 1000);
+        this.fetchData();
+
+        this._dataReciverInteval = setInterval(function () {
+            this.fetchData()
+        }.bind(this), this.params.refreshRate * 1000);
     },
 
     fetchData: function () {
-        var self = this;
-
-        $.ajax({
+        var resp = $.ajax({
             dataType: "json",
-            url: self.urlBase + self.configName + self.widgetId + self.oldValueHash
-        }).success(function (response) {
-                if (response.hash === undefined) {
-                    throw 'Widget ' + self.widgetId + ' did not return value hash';
-                }
+            url: this.urlBase + this.configName + this.widgetId + this.oldValueHash
+        });
 
-                if (self.oldValueHash != "/" + response.hash || self.oldValueHash == '') {
-                    self.oldValueHash = "/" + response.hash;
-                    self.handleResponse(response);
-                }
-            }).error(function (jqXHR, status, errorThrown) {
-                var response = $.parseJSON(jqXHR.responseText).error;
-                throw new Error(response.message + " (type: " + response.type + ")");
-            });
+        resp.success(function (response) {
+            if (response.hash === undefined) {
+                throw 'Widget ' + this.widgetId + ' did not return value hash';
+            }
+
+            if (this.oldValueHash != "/" + response.hash || this.oldValueHash == '') {
+                this.oldValueHash = "/" + response.hash;
+                this.handleResponse(response);
+            }
+        }.bind(this));
+
+        resp.error(function() {
+            clearInterval(this._dataReceiverInteval);
+            var response = $.parseJSON(jqXHR.responseText).error;
+
+            throw new Error(response.message + " (type: " + response.type + ")");
+        }.bind(this));
+
+
+        resp = null;
     },
 
     /**
