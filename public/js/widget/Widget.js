@@ -69,7 +69,7 @@ Widget.prototype = {
 
         this.fetchData();
 
-        this._dataReciverInteval = setInterval(function () {
+        this._dataReceiverInteval = setInterval(function () {
             this.fetchData()
         }.bind(this), this.params.refreshRate * 1000);
     },
@@ -80,26 +80,30 @@ Widget.prototype = {
             url: this.urlBase + this.configName + this.widgetId + this.oldValueHash
         });
 
-        resp.success(function (response) {
-            if (response.hash === undefined) {
-                throw 'Widget ' + this.widgetId + ' did not return value hash';
-            }
+        resp.success( this.fetchDataOnSuccess.bind(this) );
+        resp.error( this.fetchDataOnError.bind(this) );
 
-            if (this.oldValueHash != "/" + response.hash || this.oldValueHash == '') {
-                this.oldValueHash = "/" + response.hash;
-                this.handleResponse(response);
-            }
-        }.bind(this));
-
-        resp.error(function() {
-            clearInterval(this._dataReceiverInteval);
-            var response = $.parseJSON(jqXHR.responseText).error;
-
-            throw new Error(response.message + " (type: " + response.type + ")");
-        }.bind(this));
-
-
+        resp.onreadystatechange = null;
+        resp.abort = null;
         resp = null;
+    },
+
+    fetchDataOnSuccess: function(response) {
+        if (response.hash === undefined) {
+            throw 'Widget ' + this.widgetId + ' did not return value hash';
+        }
+
+        if (this.oldValueHash != "/" + response.hash || this.oldValueHash == '') {
+            this.oldValueHash = "/" + response.hash;
+            this.handleResponse(response);
+        }
+    },
+
+    fetchDataOnError: function(jqXHR, status, errorThrown) {
+        clearInterval(this._dataReceiverInteval);
+        var response = $.parseJSON(jqXHR.responseText).error;
+
+        throw new Error(response.message + " (type: " + response.type + ")");
     },
 
     /**
