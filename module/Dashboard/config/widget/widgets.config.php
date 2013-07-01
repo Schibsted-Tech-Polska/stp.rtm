@@ -34,13 +34,13 @@ return array(
             'subtitle' => '',
     ),
     'messages' => array(
-        'refreshRate' => 30,
+        'refreshRate' => 5,
         'title' => '',
         'subtitle' => '',
         'span' => 6,
     ),
     'generalMessages' => array(
-        'refreshRate' => 30,
+        'refreshRate' => 5,
         'title' => '',
         'subtitle' => '',
         'span' => 6,
