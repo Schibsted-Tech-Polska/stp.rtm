@@ -33,8 +33,6 @@ $.extend(GraphWidget.prototype, {
         var currentValue = response.data[response.data.length - 1].y;
         var oldValue = this.oldValue;
 
-        var self = this;
-
         /**
          * Calculating diff from last collected value
          */
