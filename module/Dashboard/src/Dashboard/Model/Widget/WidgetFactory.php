@@ -65,6 +65,7 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
             $widget->setId($widgetData['id']);
             $widget->setParam('dashboardName', $resourceName);
             $widget->setParam('widgetId', $widgetData['id']);
+            $widget->setThreshold();
 
             return $widget;
         } else {

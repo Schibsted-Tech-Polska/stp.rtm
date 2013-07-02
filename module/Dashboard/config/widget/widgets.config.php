@@ -12,6 +12,14 @@ return array(
             'span' => 3,
             'useThreshold' => 0,
     ),
+    'numberWithNewRelicThreshold' => array(
+        'refreshRate' => 60,
+        'title' => '',
+        'subtitle' => '',
+        'valueSuffix' => '',
+        'valuePrefix' => '',
+        'span' => 3,
+    ),
     'error' => array(
             'refreshRate' => 60,
             'title' => '',

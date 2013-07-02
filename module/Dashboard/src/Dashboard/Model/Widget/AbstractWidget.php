@@ -47,6 +47,13 @@ abstract class AbstractWidget {
     protected $widgetTypeName;
 
     /**
+     * Threshold values for this metric
+     *
+     * @var array
+     */
+    protected $threshold = array();
+
+    /**
      * Constructor
      *
      * @param array $params Merged parameters from custom and default widget config
@@ -131,7 +138,6 @@ abstract class AbstractWidget {
         if (is_null($tplName)) {
             $tplName = $this->prepareTplName();
         }
-
         $tplName = 'dashboard/dashboard/widget/' . strtolower($tplName) . '.phtml';
 
         return $tplName;
@@ -246,5 +252,19 @@ abstract class AbstractWidget {
      */
     public function getWidgetTypeName() {
         return $this->widgetTypeName;
+    }
+
+    /**
+     * Empty method for fetching threshold values.
+     * To be extended if necessary.
+     */
+    public function setThreshold() {}
+
+    /**
+     * Returns metrics threshold values
+     * @return array
+     */
+    public function getThreshold() {
+        return $this->threshold;
     }
 }

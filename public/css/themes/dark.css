@@ -16,8 +16,6 @@
       color: #ed303c; }
   #dashboardBody .widget.ErrorWidget {
     background-color: #41484d; }
-    #dashboardBody .widget.ErrorWidget.warning {
-      background-color: #ed303c; }
   #dashboardBody .widget.GraphWidget {
     background-color: #373c3f; }
   #dashboardBody .widget.NumberWidget {

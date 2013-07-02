@@ -223,4 +223,23 @@ class NewRelicDao extends AbstractDao {
 
         return $result;
     }
+
+    /**
+     * Fetches threshold values set for this metric (if they are set)
+     * @param array $params widget params
+     * @return array
+     */
+    public function fetchThreshold(array $params = array()) {
+        $result = array();
+
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
+        foreach ($response->threshold as $thresholdValue) {
+            if (strtolower($params['metric']) == strtolower((string) $thresholdValue->type)) {
+                $result = (array) $thresholdValue;
+                break;
+            }
+        }
+
+        return $result;
+    }
 }

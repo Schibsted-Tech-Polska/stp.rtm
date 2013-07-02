@@ -1,7 +1,8 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color: #CC0C39;
+$critical-background-color: #CC0C39;
+$caution-background-color: #978C06;
 
 // ----------------------------------------------------------------------------
 // Widget-text styles
@@ -10,11 +11,26 @@ $background-color: #CC0C39;
 
   &.warning {
     background: {
-      color: $background-color;
-      image: url(/img/sock.png);
+      image: url(../img/sock.png);
       repeat: no-repeat;
       position:  191px 215px;
       size: 19%;
+    }
+  }
+
+  &.thresholdCriticalValue {
+    background-color: $critical-background-color;
+
+    .value {
+      color: $default-font-color;
+    }
+  }
+
+  &.thresholdCautionValue {
+    background-color: $caution-background-color;
+
+    .value {
+      color: $default-font-color;
     }
   }
 

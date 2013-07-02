@@ -15,7 +15,8 @@ function NumberWidget(widget, configName) {
         'arrowClass': '',
         'percentageDiff': 0,
         'oldValue': '',
-        'lastUpdate': ''
+        'lastUpdate': '',
+        'thresholdValue': 0
     }
 }
 
@@ -39,14 +40,21 @@ $.extend(NumberWidget.prototype, {
      */
     prepareData: function (response) {
 
-        this.dataToBind.value = response.data;
+        if ($.isNumeric(response.data)) {
+            this.dataToBind.value = response.data;
+        } else if (typeof(response.data.value) != 'undefined' && $.isNumeric(response.data.value)) {
+            this.dataToBind.value = response.data.value;
+            this.dataToBind.thresholdValue = response.data.thresholdValue;
+        }
 
-        $.extend(this.dataToBind,this.setDifference(this.oldValue,response.data));
+        $.extend(this.dataToBind,this.setDifference(this.oldValue, this.dataToBind.value));
 
-        this.oldValue = response.data;
+        this.oldValue = this.dataToBind.value;
 
         this.dataToBind.lastUpdate = response.updateTime;
 
         this.renderTemplate(this.dataToBind);
+
+        this.checkThresholds(this.dataToBind.value);
     }
 });

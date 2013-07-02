@@ -148,5 +148,26 @@ Widget.prototype = {
      */
     handleResponse: function () {
         throw new Error('Method "handleResponse" must be implemented by concrete widget constructors');
+    },
+
+    checkThresholds: function(currentValue) {
+        this.$widget.removeClass('thresholdCautionValue').removeClass('thresholdCriticalValue');
+
+        if (typeof(this.params.thresholdComparator) != 'undefined') {
+            if (this.params.thresholdComparator == 'lowerIsBetter') {
+                if (this.$widget.attr('data-threshold-critical-value') && currentValue >= this.$widget.attr('data-threshold-critical-value')) {
+                    this.$widget.addClass('thresholdCriticalValue');
+                } else if (this.$widget.attr('data-threshold-caution-value') && currentValue >= this.$widget.attr('data-threshold-caution-value')) {
+                    this.$widget.addClass('thresholdCautionValue');
+                }
+            }
+            else {
+                if (this.$widget.attr('data-threshold-critical-value') && currentValue < this.$widget.attr('data-threshold-critical-value')) {
+                    this.$widget.addClass('thresholdCriticalValue');
+                } else if (this.$widget.attr('data-threshold-caution-value') && currentValue < this.$widget.attr('data-threshold-caution-value')) {
+                    this.$widget.addClass('thresholdCautionValue');
+                }
+            }
+        }
     }
 };

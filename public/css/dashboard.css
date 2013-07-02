@@ -1,9 +1,16 @@
 #dashboardBody .widget.ErrorWidget.warning {
-  background-color: #cc0c39;
-  background-image: url(/img/sock.png);
+  background-image: url(../img/sock.png);
   background-repeat: no-repeat;
   background-position: 191px 215px;
   background-size: 19%; }
+#dashboardBody .widget.ErrorWidget.thresholdCriticalValue {
+  background-color: #cc0c39; }
+  #dashboardBody .widget.ErrorWidget.thresholdCriticalValue .value {
+    color: white; }
+#dashboardBody .widget.ErrorWidget.thresholdCautionValue {
+  background-color: #978c06; }
+  #dashboardBody .widget.ErrorWidget.thresholdCautionValue .value {
+    color: white; }
 
 #dashboardBody .widget.TextWidget {
   background-color: #4d4c4c; }
@@ -193,6 +200,10 @@ body {
   text-align: center;
   vertical-align: middle;
   position: relative; }
+  #dashboardBody .widget.thresholdCriticalValue .value {
+    color: #ed303c; }
+  #dashboardBody .widget.thresholdCautionValue .value {
+    color: #fff46b; }
   #dashboardBody .widget .value {
     margin-top: 40px; }
   #dashboardBody .widget .updated-at {

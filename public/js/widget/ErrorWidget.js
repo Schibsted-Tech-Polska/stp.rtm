@@ -29,6 +29,7 @@ $.extend(ErrorWidget.prototype, {
     prepareData: function (response) {
 
         this.dataToBind.value = response.data;
+
         if (parseFloat(response.data) > 0) {
             this.$widget.addClass('warning');
         } else {
@@ -40,5 +41,7 @@ $.extend(ErrorWidget.prototype, {
         this.dataToBind.lastUpdate = response.updateTime;
 
         this.renderTemplate(this.dataToBind);
+
+        this.checkThresholds(this.dataToBind.value);
     }
 });

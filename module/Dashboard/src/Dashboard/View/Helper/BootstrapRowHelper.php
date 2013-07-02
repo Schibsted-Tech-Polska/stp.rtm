@@ -37,7 +37,9 @@ class BootstrapRowHelper extends AbstractHelper {
             $html .= $this->view->partial($widget->getTplName(), array(
                     'widgetId' => $widget->getId(),
                     'widgetType' => $widget->getWidgetTypeName(),
-                    'params' => $widget->getParams())
+                    'params' => $widget->getParams(),
+                    'threshold' => $widget->getThreshold(),
+                )
             );
         }
 

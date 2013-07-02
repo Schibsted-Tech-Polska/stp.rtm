@@ -61,9 +61,6 @@ $font-color--message-title: $color-orange;
 
     &.ErrorWidget {
       background-color: $bg-number-widget;
-      &.warning {
-        background-color: $bg-warning;
-      }
     }
 
     &.GraphWidget {

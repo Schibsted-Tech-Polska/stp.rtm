@@ -1,16 +1,11 @@
-@import "widget/errorWidget";
-@import "widget/textWidget";
-@import "widget/buildWidget";
-@import "widget/numberWidget";
-@import "widget/messagesWidget";
-@import "widget/graphWidget";
-
 // ----------------------------------------------------------------------------
 // Colors
 // ----------------------------------------------------------------------------
 $default-font-color: #fff;
 $default-widget-bg-color: #335A0C;
 $body-bg-color: #242A33;
+$color-red: #ED303C;
+$color-yellow: #FFF46B;
 
 // ----------------------------------------------------------------------------
 // Sizes
@@ -19,6 +14,13 @@ $widgets-margin: 13px;
 $widgets-padding: 14px;
 $widget-height: 366px;
 $default-font-size: 1.25em;
+
+@import "widget/errorWidget";
+@import "widget/textWidget";
+@import "widget/buildWidget";
+@import "widget/numberWidget";
+@import "widget/messagesWidget";
+@import "widget/graphWidget";
 
 @font-face {
 
@@ -46,6 +48,14 @@ body {
     text-align: center;
     vertical-align: middle;
     position: relative;
+
+    &.thresholdCriticalValue .value {
+      color: $color-red;
+    }
+
+    &.thresholdCautionValue .value {
+      color: $color-yellow;
+    }
 
     .value {
       margin-top: 40px;
