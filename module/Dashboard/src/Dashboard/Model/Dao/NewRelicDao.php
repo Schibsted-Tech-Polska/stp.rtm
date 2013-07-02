@@ -97,6 +97,18 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Apdex value
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return mixed
+     */
+    public function fetchApdexForNumberWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['Apdex']['metric_value'];
+    }
+
+    /**
      * CPU shows the percentage of time spent in User space by the CPU as an average of reporting apps (agents).
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL

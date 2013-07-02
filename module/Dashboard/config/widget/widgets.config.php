@@ -10,6 +10,7 @@ return array(
             'valueSuffix' => '',
             'valuePrefix' => '',
             'span' => 3,
+            'useThreshold' => 0,
     ),
     'error' => array(
             'refreshRate' => 60,
@@ -18,6 +19,7 @@ return array(
             'valueSuffix' => '',
             'valuePrefix' => '',
             'span' => 3,
+            'useThreshold' => 0,
     ),
     'build' => array(
             'refreshRate' => 10,
@@ -52,5 +54,6 @@ return array(
         'valueSuffix' => '',
         'valuePrefix' => '',
         'span' => 3,
+        'useThreshold' => 0,
     ),
 );
