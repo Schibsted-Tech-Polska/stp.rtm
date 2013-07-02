@@ -34,19 +34,19 @@ return array(
             'subtitle' => '',
     ),
     'messages' => array(
-        'refreshRate' => 5,
+        'refreshRate' => 10,
         'title' => '',
         'subtitle' => '',
         'span' => 6,
     ),
     'generalMessages' => array(
-        'refreshRate' => 5,
+        'refreshRate' => 10,
         'title' => '',
         'subtitle' => '',
         'span' => 6,
     ),
     'graph' => array(
-        'refreshRate' => 10,
+        'refreshRate' => 60,
         'title' => '',
         'subtitle' => '',
         'valueSuffix' => '',

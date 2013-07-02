@@ -43,11 +43,6 @@ $.extend(GraphWidget.prototype, {
 
         this.renderTemplate(this.dataToBind);
 
-
-        /**
-         * @TODO Wojtek Iskra: add dynamic adding data instead of restarting the whole chart
-         */
-
         if (this.chart != null) {
             this.chart.highcharts().destroy();
         }
