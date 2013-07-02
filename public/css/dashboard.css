@@ -126,7 +126,7 @@
   #dashboardBody .widget.MessagesWidget .message {
     text-align: left;
     border-bottom: 1px dotted #666;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.1em;
     padding-bottom: 0.4em;
     overflow: hidden; }
     #dashboardBody .widget.MessagesWidget .message .createdAt {
@@ -135,7 +135,10 @@
       margin-bottom: 2px; }
     #dashboardBody .widget.MessagesWidget .message .content {
       font-size: 1.2em;
-      color: #ddd; }
+      color: #ddd;
+      line-height: 110%; }
+      #dashboardBody .widget.MessagesWidget .message .content small {
+        color: #fff; }
     #dashboardBody .widget.MessagesWidget .message .targetAvatar {
       position: relative; }
       #dashboardBody .widget.MessagesWidget .message .targetAvatar i {

@@ -24,7 +24,7 @@ $background-color: #4D4C4C;
   .message {
     text-align: left;
     border-bottom: 1px dotted #666;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.1em;
     padding-bottom: 0.4em;
     overflow: hidden;
 
@@ -37,6 +37,12 @@ $background-color: #4D4C4C;
     .content {
       font-size: 1.2em;
       color: #ddd;
+      line-height: 110%;
+
+      small {
+        color: #fff;
+      }
+
     }
 
     .targetAvatar {
