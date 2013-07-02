@@ -30,6 +30,19 @@ var Dashboard = {
         $('.ErrorWidget').each(function(){
             new ErrorWidget(this,configName).startListening();
         });
+
+        /**
+         * Added auto-refreshing whole page every hour.
+         * Chrome seems to be not entirely stable with dashboard running
+         * for several hours...
+         */
+        setInterval(function () {
+            this.autoReload()
+        }, 3600 * 1000);
+    },
+
+    autoReload: function() {
+        location.reload();
     }
 };
 

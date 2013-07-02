@@ -16,8 +16,6 @@ function Widget() {
      * @type {string}
      */
     this.oldValueHash = '';
-
-    this._dataReceiverInteval = null;
 }
 
 /**
@@ -68,10 +66,6 @@ Widget.prototype = {
         this.init();
 
         this.fetchData();
-
-        this._dataReceiverInteval = setInterval(function () {
-            this.fetchData()
-        }.bind(this), this.params.refreshRate * 1000);
     },
 
     fetchData: function () {
@@ -97,10 +91,21 @@ Widget.prototype = {
             this.oldValueHash = "/" + response.hash;
             this.handleResponse(response);
         }
+
+        setTimeout(function () {
+            this.fetchData()
+        }.bind(this), this.params.refreshRate * 1000);
     },
 
     fetchDataOnError: function(jqXHR, status, errorThrown) {
-        clearInterval(this._dataReceiverInteval);
+        /**
+         * Scheduling next request for 10 times the normal refreshRate
+         * to minimize the number of failed requests.
+         */
+        setTimeout(function () {
+            this.fetchData()
+        }.bind(this), this.params.refreshRate * 1000 * 10);
+
         var response = $.parseJSON(jqXHR.responseText).error;
 
         throw new Error(response.message + " (type: " + response.type + ")");
