@@ -6,7 +6,7 @@
  */
 namespace Dashboard\Controller;
 
-use Dashboard\Model\Dao\MessagesDao;
+use Dashboard\Model\Dao\EventsDao;
 use Dashboard\Model\DashboardManager;
 use Dashboard\Model\Widget\MessagesWidget;
 use Zend\Mvc\Controller\AbstractRestfulController;
@@ -14,7 +14,7 @@ use Zend\View\Model\JsonModel;
 
 class EventsApiController extends AbstractRestfulController {
     /**
-     * Creates new messages
+     * Creates new events
      *
      * @param  mixed $data Request data
      * @return mixed
@@ -30,25 +30,24 @@ class EventsApiController extends AbstractRestfulController {
 
             if (!$widget instanceof MessagesWidget) {
                 $this->getResponse()->setStatusCode(400);
-                $response = array('code' => '400', 'message' => 'Posting content to a widget is only available for MessagesWidget objects');
+                $response = array('code' => '400', 'event' => 'Posting content to a widget is only available for EventsWidget objects');
 
                 return new JsonModel($response);
             }
 
             $dao = $widget->getDao();
 
-            if (!$dao instanceof MessagesDao) {
+            if (!$dao instanceof EventsDao) {
                 $this->getResponse()->setStatusCode(400);
-                $response = array('code' => '400', 'message' => 'Selected MessagesWidget needs to use MessagesDao');
+                $response = array('code' => '400', 'event' => 'Selected EventsWidget needs to use EventsDao');
 
                 return new JsonModel($response);
             }
 
-            $widget->getDao()->addMessage($configName, $widgetId, $data['message'], isset($data['avatar']) ? $data['avatar'] : null);
-
+            $widget->getDao()->addEvent($data['type'], $configName, $widgetId, $data);
         } catch (\Exception $e) {
             $this->getResponse()->setStatusCode(400);
-            $response = array('code' => '400', 'message' => $e->getMessage());
+            $response = array('code' => '400', 'event' => $e->getEvent());
 
             return new JsonModel($response);
         }
