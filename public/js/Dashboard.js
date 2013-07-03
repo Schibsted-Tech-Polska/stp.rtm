@@ -38,7 +38,7 @@ var Dashboard = {
          */
         setInterval(function () {
             this.autoReload()
-        }, 3600 * 1000);
+        }.bind(this), 3600 * 1000);
     },
 
     autoReload: function() {
