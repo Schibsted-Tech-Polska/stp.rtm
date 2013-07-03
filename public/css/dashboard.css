@@ -149,7 +149,6 @@
     #dashboardBody .widget.MessagesWidget .message .targetAvatar {
       position: relative; }
       #dashboardBody .widget.MessagesWidget .message .targetAvatar i {
-        background: url("img/crosshair.png");
         position: absolute;
         top: 24px;
         left: 36px;
@@ -199,7 +198,7 @@ body {
   padding: 14px;
   overflow: hidden;
   height: 366px;
-  background-color: #335a0c;
+  background-color: #4d4c4c;
   text-align: center;
   vertical-align: middle;
   position: relative; }
