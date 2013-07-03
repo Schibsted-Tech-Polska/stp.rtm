@@ -1,7 +1,7 @@
 <?php
 namespace Dashboard;
 
-use Dashboard\Model\Dao\MessagesDao;
+use Dashboard\Model\Dao\EventsDao;
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
 use Dashboard\Model\Widget\WidgetFactory;
@@ -48,11 +48,11 @@ class Module {
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
                     return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'), null, $serviceManager->get('CacheAdapter'));
                 },
-                'MessagesDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/MessagesDao.config.php');
+                'EventsDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/EventsDao.config.php');
                 },
-                'MessagesDao' => function (ServiceManager $serviceManager) {
-                    return new MessagesDao($serviceManager->get('MessagesDaoConfig'), null, $serviceManager->get('CacheAdapter'));
+                'EventsDao' => function (ServiceManager $serviceManager) {
+                    return new EventsDao($serviceManager->get('EventsDaoConfig'), null, $serviceManager->get('CacheAdapter'));
                 },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));

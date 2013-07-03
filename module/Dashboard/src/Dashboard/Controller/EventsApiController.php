@@ -47,7 +47,7 @@ class EventsApiController extends AbstractRestfulController {
             $widget->getDao()->addEvent($data['type'], $configName, $widgetId, $data);
         } catch (\Exception $e) {
             $this->getResponse()->setStatusCode(400);
-            $response = array('code' => '400', 'event' => $e->getEvent());
+            $response = array('code' => '400', 'event' => $e->getMessage());
 
             return new JsonModel($response);
         }

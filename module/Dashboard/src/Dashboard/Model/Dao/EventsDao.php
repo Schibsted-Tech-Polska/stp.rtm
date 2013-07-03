@@ -5,9 +5,11 @@
 
 namespace Dashboard\Model\Dao;
 
+use Dashboard\Document\Event;
 use Dashboard\Document\Message;
+use Dashboard\Model\Dao\Exception\EventTypeNotDefined;
 
-class MessagesDao extends AbstractDao {
+class EventsDao extends AbstractDao {
     /**
      * Returns messages for a given widget currently stored in Cache Adapter
      *
@@ -42,26 +44,28 @@ class MessagesDao extends AbstractDao {
     }
 
     /**
-     * Saves a new message to the persistent storage
+     * Saves a new event information to the persistent storage
      *
+     * @param string $eventType Event type (to save as a certain Document)
      * @param string $configName     Dashboard configuration name
      * @param string $widgetId       widget id
-     * @param string $messageContent new message content
-     * @param string $avatar      person's avatar html (optional)
+     * @param array $data data to put into Event Document
+     * @throws Exception\EventTypeNotDefined
      */
-    public function addMessage($configName, $widgetId, $messageContent, $avatar = null) {
+    public function addEvent($eventType, $configName, $widgetId, $data) {
         $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
 
-        $message = new Message();
-        $message->setProjectName($configName);
-        $message->setWidgetId($widgetId);
-        $message->setContent($messageContent);
-
-        if (!is_null($avatar)) {
-            $message->setAvatar($avatar);
+        $eventDocumentClassname = '\Dashboard\Document\\' . ucfirst($eventType);
+        if (!class_exists($eventDocumentClassname)) {
+            throw new EventTypeNotDefined('Desired event type has no Document class defined.');
         }
 
-        $dm->persist($message);
+        $event = new $eventDocumentClassname();
+        $event->fromArray($data);
+        $event->setProjectName($configName);
+        $event->setWidgetId($widgetId);
+
+        $dm->persist($event);
         $dm->flush();
     }
 

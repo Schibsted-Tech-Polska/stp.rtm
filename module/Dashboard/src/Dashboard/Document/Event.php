@@ -14,6 +14,9 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  * @ODM\DiscriminatorMap({"message"="Message", "deploy"="Deploy"})
  */
 class Event extends AbstractDocument {
+    const TYPE_MESSAGE = 'message';
+    const TYPE_DEPLOY = 'deploy';
+
     /**
      * Event id
      *
