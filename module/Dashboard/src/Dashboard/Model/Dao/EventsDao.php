@@ -72,13 +72,19 @@ class EventsDao extends AbstractDao {
     /**
      * Clears all messages stored for a given MessagesWidget
      *
+     * @param string $eventType event type
      * @param string $configName Dashboard configuration name
      * @param string $widgetId   widget id
      */
-    public function clearMessages($configName, $widgetId) {
+    public function clearEvents($eventType, $configName, $widgetId) {
         $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
 
-        $qb = $dm->createQueryBuilder('Dashboard\Document\Message');
+        $eventDocumentClassname = '\Dashboard\Document\\' . ucfirst($eventType);
+        if (!class_exists($eventDocumentClassname)) {
+            throw new EventTypeNotDefined('Desired event type has no Document class defined.');
+        }
+
+        $qb = $dm->createQueryBuilder('Dashboard\Document\\' . ucfirst($eventType));
 
         $qb
             ->remove()
