@@ -83,18 +83,19 @@ Widget.prototype = {
     },
 
     fetchDataOnSuccess: function(response) {
+        setTimeout(function () {
+            this.fetchData()
+        }.bind(this), this.params.refreshRate * 1000);
+
         if (response.hash === undefined) {
-            throw 'Widget ' + this.widgetId + ' did not return value hash';
+            throw new Error('Widget ' + this.widgetId + ' did not return value hash');
         }
+
 
         if (this.oldValueHash != "/" + response.hash || this.oldValueHash == '') {
             this.oldValueHash = "/" + response.hash;
             this.handleResponse(response);
         }
-
-        setTimeout(function () {
-            this.fetchData()
-        }.bind(this), this.params.refreshRate * 1000);
     },
 
     fetchDataOnError: function(jqXHR, status, errorThrown) {
