@@ -32,13 +32,13 @@ var Dashboard = {
         });
 
         /**
-         * Added auto-refreshing whole page every hour.
+         * Added auto-refreshing whole page every 4 hours.
          * Chrome seems to be not entirely stable with dashboard running
          * for several hours...
          */
         setInterval(function () {
             this.autoReload()
-        }.bind(this), 3600 * 1000);
+        }.bind(this), 4 * 3600 * 1000);
     },
 
     autoReload: function() {

@@ -5,8 +5,6 @@
 
 namespace Dashboard\Model\Dao;
 
-use Dashboard\Document\Event;
-use Dashboard\Document\Message;
 use Dashboard\Model\Dao\Exception\EventTypeNotDefined;
 
 class EventsDao extends AbstractDao {
