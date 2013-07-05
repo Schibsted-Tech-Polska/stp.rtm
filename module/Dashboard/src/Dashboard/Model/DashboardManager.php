@@ -151,7 +151,7 @@ class DashboardManager {
      *
      * @param string $resourceName Resource name
      */
-    public function setResourceName($resourceName) {
+    protected function setResourceName($resourceName) {
         $this->resourceName = $resourceName;
     }
 

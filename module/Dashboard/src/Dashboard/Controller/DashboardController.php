@@ -30,32 +30,4 @@ class DashboardController extends AbstractActionController {
 
         return new ViewModel(array('widgets' => $dashboardManager->getWidgets(), 'configName' => $configName));
     }
-
-    /**
-     * Method for adding messages to Messages Widgets
-     *
-     * @return \Zend\Stdlib\ResponseInterface
-     * @throws \Exception
-     */
-    public function addMessageAction() {
-        $configName = $this->params()->fromRoute('configName');
-        $widgetId = $this->params()->fromRoute('widgetId');
-
-        $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
-
-        $widget = $dashboardManager->getWidget($widgetId);
-        if (!$widget instanceof MessagesWidget) {
-            throw new \Exception('Posting content to a widget is only available for MessagesWidget objects');
-        }
-
-        $dao = $widget->getDao();
-
-        if (!$dao instanceof MessagesDao) {
-            throw new \Exception('Selected MessagesWidget needs to use MessagesDao');
-        }
-
-        $widget->getDao()->addMessage($configName, $widgetId, $this->params()->fromPost('message'));
-
-        return $this->getResponse();
-    }
 }
