@@ -42,7 +42,7 @@ class LongPollingController extends AbstractRestfulController {
         $responseData = null;
         $configName = $this->params()->fromRoute('configName');
 
-        $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
+        $dashboardManager = new DashboardManager($configName, $this->serviceLocator, $widgetId);
 
         /* @var AbstractWidget $widget */
         $widget = $dashboardManager->getWidget($widgetId);
