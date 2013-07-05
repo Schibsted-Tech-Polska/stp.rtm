@@ -39,20 +39,34 @@ class LongPollingController extends AbstractRestfulController {
      * @return \Zend\View\Model\JsonModel
      */
     public function get($widgetId) {
+        $responseData = null;
         $configName = $this->params()->fromRoute('configName');
 
-        $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
+        $dashboardManager = new DashboardManager($configName, $this->serviceLocator, $widgetId);
 
         /* @var AbstractWidget $widget */
         $widget = $dashboardManager->getWidget($widgetId);
 
-        $responseData = $widget->fetchData();
+        try {
+            $responseData = $widget->fetchData();
 
-        $result = new JsonModel(array(
-            'data' => $responseData,
-            'hash' => $widget->getResponseHash(),
-            'updateTime' => date("H:i"),
-        ));
+            $result = new JsonModel(array(
+                'data' => $responseData,
+                'hash' => $widget->getResponseHash(),
+                'updateTime' => date("H:i"),
+            ));
+        } catch (\Exception $e) {
+            $this->getResponse()->setStatusCode(400);
+            $result = new JsonModel(array(
+                'error' => array(
+                    'message' => $e->getMessage(),
+                    'type' => $e->getCode(),
+                ),
+                'data' => '',
+                'hash' => $widget->getResponseHash(),
+                'updateTime' => date("H:i"),
+            ));
+        }
 
         return $result;
     }
@@ -63,7 +77,7 @@ class LongPollingController extends AbstractRestfulController {
      * @return mixed
      */
     public function getList() {
-        // TODO: Implement getList(Ō) method.
+        // TODO: Implement getList() method.
     }
 
     /**

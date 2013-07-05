@@ -65,13 +65,14 @@ class DashboardManager {
      *
      * @param string                  $resourceName   Config name retrieved from URL.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
+     * @param string $widgetId Id of a single widget to create for this dashboard (not all of them)
      * @internal param array $configName Dashboard's config
      */
-    public function __construct($resourceName, ServiceLocatorInterface $serviceLocator) {
+    public function __construct($resourceName, ServiceLocatorInterface $serviceLocator, $widgetId = null) {
         $this->serviceLocator = $serviceLocator;
         $this->setResourceName($resourceName);
         $this->loadConfig($resourceName);
-        $this->initWidgetCollection();
+        $this->initWidgetCollection($widgetId);
     }
 
     /**
@@ -102,18 +103,19 @@ class DashboardManager {
     /**
      * Creates dashboard's widget collection based on the custom config file
      */
-    public function initWidgetCollection() {
+    public function initWidgetCollection($widgetId = null) {
         $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
 
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
+            if (is_null($widgetId) || $widgetData['id'] == $widgetId) {
+                $daoParams = array();
+                if (isset($widgetData['params']['dao']) && isset($this->rtmConfig[$widgetData['params']['dao']])) {
+                    $daoParams = $this->rtmConfig[$widgetData['params']['dao']];
+                }
 
-            $daoParams = array();
-            if (isset($widgetData['params']['dao']) && isset($this->rtmConfig[$widgetData['params']['dao']])) {
-                $daoParams = $this->rtmConfig[$widgetData['params']['dao']];
+                $widget = $widgetFactory->build($widgetData, $daoParams, $this->getResourceName());
+                $this->addWidget($widget);
             }
-
-            $widget = $widgetFactory->build($widgetData, $daoParams, $this->getResourceName());
-            $this->addWidget($widget);
         }
     }
 
