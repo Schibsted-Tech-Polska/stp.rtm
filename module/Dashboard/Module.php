@@ -40,19 +40,19 @@ class Module {
                     return include('config/dao/JenkinsDao.config.php');
                 },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
-                    return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'), null, $serviceManager->get('CacheAdapter'));
+                    return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
                 },
                 'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/NewRelicDao.config.php');
                 },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
-                    return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'), null, $serviceManager->get('CacheAdapter'));
+                    return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
                 },
                 'EventsDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/EventsDao.config.php');
                 },
                 'EventsDao' => function (ServiceManager $serviceManager) {
-                    return new EventsDao($serviceManager->get('EventsDaoConfig'), null, $serviceManager->get('CacheAdapter'));
+                    return new EventsDao($serviceManager->get('EventsDaoConfig'));
                 },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));
