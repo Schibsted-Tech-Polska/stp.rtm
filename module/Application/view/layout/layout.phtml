@@ -9,13 +9,8 @@
 
     <!-- Le styles -->
     <?php
-    $cssAssets = $this->headLink();
-
-    if (isset($this->theme)) {
-        $cssAssets->prependStylesheet($this->basePath() . '/css/themes/'.$this->theme.'.css');
-    }
-
-    echo $cssAssets
+    echo $this->headLink()
+        ->prependStylesheet($this->basePath() . '/css/themes/' . $this->theme . '.css')
         ->prependStylesheet($this->basePath() . '/css/dashboard.css')
         ->prependStylesheet($this->basePath() . '/css/font-awesome.css')
         ->prependStylesheet($this->basePath() . '/css/style.css')
