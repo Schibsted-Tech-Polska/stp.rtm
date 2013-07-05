@@ -1,4 +1,7 @@
-<div id="<?php echo $widgetId; ?>" class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>" data-params='<?php echo $this->json($params)?>'>
+<div id="<?php echo $widgetId; ?>"
+     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
+     data-widget-type="<?php echo $widgetType; ?>"
+     data-params='<?php echo $this->json($params)?>'>
 </div>
 <script type="text/template" id="<?php echo $widgetId; ?>Tpl">
     <div class="widgetContainer">

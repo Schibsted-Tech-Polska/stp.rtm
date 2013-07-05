@@ -37,13 +37,7 @@ Widget.prototype = {
         this.configName = "/" + this.configName;
         this.widgetId = "/" + this.widget.id;
 
-        var paramsJson = this.$widget.attr('data-params');
-
-        if (typeof(paramsJson) == 'undefined') {
-            throw new Error('Widget params not passed from PHTML to JS.');
-        } else {
-            this.params = jQuery.parseJSON(paramsJson);
-        }
+        this.params = this.$widget.data('params');
     },
 
     /**

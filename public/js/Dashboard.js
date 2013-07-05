@@ -9,14 +9,10 @@ var Dashboard = {
      * Initiates widgets instances.
      */
     init: function () {
-        var configName = $('.container').data('config-name'),
-            widgets = ['NumberWidget', 'BuildWidget', 'MessagesWidget', 'GraphWidget', 'ErrorWidget'];
+        var configName = $('.container').data('config-name');
 
-
-        widgets.forEach(function(widget){
-            $('.' + widget).each(function(){
-                new window[widget](this, configName).startListening();
-            });
+        $('.widget').each(function(){
+            new window[$(this).data('widget-type')](this, configName).startListening();
         });
 
         /**
