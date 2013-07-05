@@ -51,7 +51,7 @@ class DashboardManager {
      *
      * @param string                  $resourceName   Config name retrieved from URL.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
-     * @param string $widgetId Id of a single widget to create for this dashboard (not all of them)
+     * @param string                  $widgetId       Id of a single widget to create for this dashboard (not all of them)
      * @internal param array $configName Dashboard's config
      */
     public function __construct($resourceName, ServiceLocatorInterface $serviceLocator, $widgetId = null) {
@@ -88,6 +88,8 @@ class DashboardManager {
 
     /**
      * Creates dashboard's widget collection based on the custom config file
+     *
+     * @param string|null $widgetId Id of a single widget we want to create
      */
     public function initWidgetCollection($widgetId = null) {
         $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
