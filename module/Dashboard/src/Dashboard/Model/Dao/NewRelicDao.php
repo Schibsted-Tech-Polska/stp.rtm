@@ -10,6 +10,24 @@ namespace Dashboard\Model\Dao;
 class NewRelicDao extends AbstractDao {
 
     /**
+     * Adding datetimes parsing before assembling URL using parent method.
+     * {@inheritdoc}
+     */
+    protected function assembleUrl($url, $params = array()) {
+        if (isset($params['beginDateTime'])) {
+            $params['beginDateTime'] = date('Y-m-d', strtotime($params['beginDateTime'])) . 'T' . date('H:i:s', strtotime($params['beginDateTime'])) . 'Z';
+        }
+
+        if (isset($params['endDateTime'])) {
+            $params['endDateTime'] = date('Y-m-d', strtotime($params['endDateTime'])) . 'T' . date('H:i:s', strtotime($params['endDateTime'])) . 'Z';
+        }
+
+        $url = parent::assembleUrl($url, $params);
+
+        return $url;
+    }
+
+    /**
      * Fetches CURRENT requests per minute for a given application - a single integer value
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL
