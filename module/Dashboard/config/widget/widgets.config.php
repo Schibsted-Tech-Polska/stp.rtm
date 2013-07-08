@@ -64,4 +64,10 @@ return array(
         'span' => 3,
         'useThreshold' => 0,
     ),
+    'alert' => array(
+        'refreshRate' => 60,
+        'title' => '',
+        'subtitle' => '',
+        'span' => 3,
+    ),
 );
