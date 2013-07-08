@@ -61,13 +61,6 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
     protected $daoOptions;
 
     /**
-     * Cache adapter that can be used with this DAO
-     *
-     * @var \Zend\Cache\Storage\Adapter\AbstractAdapter
-     */
-    protected $cacheAdapter;
-
-    /**
      * Set service locator
      *
      * @param ServiceLocatorInterface $serviceLocator Service locator interface.
@@ -93,9 +86,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      * Data provider can be injected, otherwise we use \Zend\Http\Client
      * @param array $config Dao configuration
      * @param object $dataProvider data provider object
-     * @param \Zend\Cache\Storage\Adapter\AbstractAdapter $cacheAdapter cache adapter used with this DAO
      */
-    public function __construct($config, $dataProvider = null, $cacheAdapter = null) {
+    public function __construct($config, $dataProvider = null) {
         $this->config = $config;
 
         if (is_null($dataProvider)) {
@@ -103,7 +95,6 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
         }
 
         $this->setDataProvider($dataProvider);
-        $this->setCacheAdapter($cacheAdapter);
     }
 
     /**
@@ -271,21 +262,6 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
                 }
             }
         }
-    }
-
-    /**
-     * Setter for cache adapter to be used with this DAO
-     * @param \Zend\Cache\Storage\Adapter\AbstractAdapter $cacheAdapter
-     */
-    public function setCacheAdapter($cacheAdapter) {
-        $this->cacheAdapter = $cacheAdapter;
-    }
-
-    /**
-     * @return \Zend\Cache\Storage\Adapter\AbstractAdapter
-     */
-    public function getCacheAdapter() {
-        return $this->cacheAdapter;
     }
 
     /**

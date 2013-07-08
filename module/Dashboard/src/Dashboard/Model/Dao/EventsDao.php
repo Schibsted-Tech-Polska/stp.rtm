@@ -9,9 +9,9 @@ use Dashboard\Model\Dao\Exception\EventTypeNotDefined;
 
 class EventsDao extends AbstractDao {
     /**
-     * Returns messages for a given widget currently stored in Cache Adapter
+     * Returns messages for a given widget currently stored in persistent storage
      *
-     * @param array $params array storing cache identifier
+     * @param array $params array storing dashboard and widget names and other options
      * @return array|mixed
      */
     public function fetchMessagesForMessagesWidget(array $params) {
@@ -73,6 +73,7 @@ class EventsDao extends AbstractDao {
      * @param string $eventType event type
      * @param string $configName Dashboard configuration name
      * @param string $widgetId   widget id
+     * @throws Exception\EventTypeNotDefined
      */
     public function clearEvents($eventType, $configName, $widgetId) {
         $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
