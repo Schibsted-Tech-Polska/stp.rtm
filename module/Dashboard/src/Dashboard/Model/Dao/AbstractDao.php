@@ -99,17 +99,29 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
 
     /**
      * Creates a dataProvider object (\Zend\Http\Client)
+     *
+     * @param string|null $auth Auth data login:password
      * @return Client
      */
-    protected function setDefaultDataProvider() {
+    protected function setDefaultDataProvider($auth = null) {
         $dataProvider = new Client();
 
         $adapter = new Client\Adapter\Curl();
+
+        $curlOptions = array(
+            CURLOPT_FOLLOWLOCATION => 1,
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_SSL_VERIFYHOST => 0,
+        );
+
+        // Auth option
+        if ($auth) {
+            $curlOptions[CURLOPT_USERPWD] = $auth;
+        }
+
         $adapter->setOptions(array(
-            'curloptions' => array(
-                CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => 0,
-            )
+            'curloptions' => $curlOptions
         ));
 
         $dataProvider->setAdapter($adapter);
@@ -151,15 +163,29 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
 
     /**
      * Executes a request to a given URL using injected Data Provider
+     *
      * @param string|\Zend\Uri\HttpUri $url endpoint destination URL
      * @param array|null $params request params values
      * @param int $responseFormat Format of the response - needed to execute a proper parser
+     * @param string|null $auth Auth data login:password
+     * @param array|null $postData POST data
      * @return mixed
      * @throws \Zend\Http\Client\Exception\RuntimeException
      */
-    public function request($url, $params = array(), $responseFormat = self::RESPONSE_IN_JSON) {
+    public function request($url, $params = array(), $responseFormat = self::RESPONSE_IN_JSON, $auth = null, $postData = null) {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
+
+        // Auth data
+        if ($auth) {
+            $this->setDataProvider($this->setDefaultDataProvider($auth));
+        }
+
+        // Use POST method
+        if ($postData) {
+            $request->setMethod('POST');
+            $request->setContent(http_build_query($postData));
+        }
 
         $client = $this->getDataProvider();
 

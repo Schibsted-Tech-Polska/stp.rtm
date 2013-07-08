@@ -4,6 +4,7 @@ namespace Dashboard;
 use Dashboard\Model\Dao\EventsDao;
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
+use Dashboard\Model\Dao\SplunkDao;
 use Dashboard\Model\Widget\WidgetFactory;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
@@ -65,6 +66,12 @@ class Module {
                     $config = $serviceManager->get('Config');
                     return new MemcachedOptions($config['dashboardCache']);
                 },
+                'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/SplunkDao.config.php');
+                },
+                'SplunkDao' => function (ServiceManager $serviceManager) {
+                    return new SplunkDao($serviceManager->get('SplunkDaoConfig'));
+                }
             ),
         );
     }
