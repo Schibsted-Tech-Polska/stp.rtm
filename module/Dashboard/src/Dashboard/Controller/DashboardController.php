@@ -21,12 +21,11 @@ class DashboardController extends AbstractActionController {
      */
     public function dashboardAction() {
         $configName = $this->params()->fromRoute('configName');
-        $theme = $this->params()->fromRoute('theme');
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);
 
         $this->layout()->setVariable('widgetTypes', $dashboardManager->getWidgetTypes());
-        $this->layout()->setVariable('theme', isset($theme) ? $theme:'dark');
+        $this->layout()->setVariable('theme', $dashboardManager->getThemeName());
 
         return new ViewModel(array('widgets' => $dashboardManager->getWidgets(), 'configName' => $configName));
     }

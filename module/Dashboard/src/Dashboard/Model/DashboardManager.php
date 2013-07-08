@@ -13,6 +13,20 @@ use Zend\ServiceManager\ServiceManager;
 
 class DashboardManager {
     /**
+     * Default dashboard's theme name
+     *
+     * @var
+     */
+    const DEFAULT_THEME = 'dark';
+
+    /**
+     * Path to dir with rtm configs (relative to app root)
+     *
+     * @var string
+     */
+    const RTM_CONFIG_DIR = 'config/rtm';
+
+    /**
      * Zend service locator
      *
      * @var \Zend\ServiceManager\ServiceLocatorInterface
@@ -77,7 +91,7 @@ class DashboardManager {
      * @throws \Exception
      */
     public function loadConfig($resourceName) {
-        $configFilePath = 'config/rtm/' . $resourceName . '.config.php';
+        $configFilePath = self::RTM_CONFIG_DIR . '/' . $resourceName . '.config.php';
 
         if (file_exists($configFilePath)) {
             $this->rtmConfig = include($configFilePath);
@@ -166,5 +180,18 @@ class DashboardManager {
      */
     public function getResourceName() {
         return $this->resourceName;
+    }
+
+    /**
+     * Returns name of a theme file used to style dashboard
+     *
+     * @return string
+     */
+    public function getThemeName() {
+        if (isset($this->rtmConfig['theme'])) {
+            return $this->rtmConfig['theme'];
+        }
+
+        return self::DEFAULT_THEME;
     }
 }
