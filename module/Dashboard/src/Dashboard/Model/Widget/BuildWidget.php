@@ -6,4 +6,9 @@
  */
 namespace Dashboard\Model\Widget;
 
+/**
+ * Class BuildWidget
+ *
+ * @package Dashboard\Model\Widget
+ */
 class BuildWidget extends AbstractWidget {}

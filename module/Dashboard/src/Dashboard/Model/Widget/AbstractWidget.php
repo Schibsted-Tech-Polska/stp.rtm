@@ -241,13 +241,17 @@ abstract class AbstractWidget {
     }
 
     /**
-     * @param string $widgetTypeName
+     * Set widget type name
+     *
+     * @param string $widgetTypeName Widget type name
      */
     public function setWidgetTypeName($widgetTypeName) {
         $this->widgetTypeName = $widgetTypeName;
     }
 
     /**
+     * Get widget type name
+     *
      * @return string
      */
     public function getWidgetTypeName() {
