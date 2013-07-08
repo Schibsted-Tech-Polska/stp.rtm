@@ -1,16 +1,15 @@
-Stp.Rtm
-=======
+# Stp.Rtm
 
 Real time monitor dashboard using Jenkins API and New Relic API
 
 ![ScreenShot](screenshot.png "Dashboard")
 
-Features
-========
+## Features
 
 
-Installation
-------------
+
+## Installation
+
 The recommended way to get a working copy of this project is to clone the repository
 and use `composer` to install dependencies
 
@@ -21,12 +20,12 @@ and use `composer` to install dependencies
 available.)
 
 
-Dependencies
-============
+## Dependencies
 
 
 
-Usage
------
+
+## Usage
+
 
 ### Defining configuration file
