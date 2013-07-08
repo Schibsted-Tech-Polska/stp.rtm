@@ -4,28 +4,46 @@ Real time monitor dashboard using Jenkins API and New Relic API
 
 ![ScreenShot](screenshot.png "Dashboard")
 
-## Features
+Stp.Rtm is a handy tool which allows you to track condition of your application during the
 
-
+## Dependencies
+- php >="5.3.3"
+- cURL
+- Zend Framework "2.2.0"
+- Doctrine-mongo-odm-module
+- MongoDB PHP driver
+- [Whoops](https://github.com/filp/whoops) error handler
+- MongoDB server (required only by Message widget)
 
 ## Installation
 
 The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies
+and use `composer` to install dependencies. If you want to install packages listed in
+require-dev, skip "--no-dev" option.
 
     php composer.phar self-update
-    php composer.phar install
+    php composer.phar install --no-dev
 
 (The `self-update` directive is to ensure you have an up-to-date `composer.phar`
 available.)
 
 
-## Dependencies
+## Available types of widgets
 
-
-
+- <strong>Number</strong> - displays numeric value with percentage difference between current and previous value
+- <strong>Graph</strong> - similar to Number widget but with additional graph displaying history of values
+- <strong>Message</strong> -
+- <strong>Build</strong> - displays current status of a build with additional info about build author and code coverage (if provided).
+During a build process it shows progress bar
+- <strong>Error</strong> - similar to Number widget but with different behaviour when some errors appear
+- <strong>Alert</strong> -
 
 ## Usage
 
-
 ### Defining configuration file
+
+In order
+
+#License
+
+Distributed under the MIT license

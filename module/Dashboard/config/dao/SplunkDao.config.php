@@ -1,6 +1,6 @@
 <?php
 return array(
-    'url' => 'https://localhost:8089/services/search/jobs/export',
+    'url' => 'https://mother.int.vgnett.no:8089/services/search/jobs/export',
     'auth' => 'login:password',
     'jobs' => array(
         'vgtvStatus500' => array(
