@@ -1,3 +1,5 @@
+/*global Widget */
+
 function MessagesWidget(widget, configName) {
 
     this.widget = widget;
@@ -5,8 +7,8 @@ function MessagesWidget(widget, configName) {
 
     this.dataToBind = {
         'value': '',
-        'avatar' : ''
-    }
+        'avatar': ''
+    };
 }
 
 MessagesWidget.prototype = new Widget();
@@ -27,7 +29,6 @@ $.extend(MessagesWidget.prototype, {
      */
     prepareData: function (response) {
 
-        var oldValue = this.oldValue;
         this.dataToBind.value = response.data;
         this.oldValue = response.data;
 

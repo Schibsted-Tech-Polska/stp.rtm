@@ -1,3 +1,5 @@
+/*global Widget */
+
 function GraphWidget(widget, configName) {
 
     this.widget = widget;
@@ -31,7 +33,6 @@ $.extend(GraphWidget.prototype, {
     prepareData: function (response) {
 
         var currentValue = response.data[response.data.length - 1].y;
-        var oldValue = this.oldValue;
 
         /**
          * Calculating diff from last collected value
@@ -43,7 +44,7 @@ $.extend(GraphWidget.prototype, {
 
         this.renderTemplate(this.dataToBind);
 
-        if (this.chart != null) {
+        if (this.chart !== null) {
             this.chart.highcharts().destroy();
         }
 
@@ -86,12 +87,14 @@ $.extend(GraphWidget.prototype, {
             exporting: {
                 enabled: false
             },
-            series: [{
-                title: {
-                    text: ''
-                },
-                data: response.data
-            }]
+            series: [
+                {
+                    title: {
+                        text: ''
+                    },
+                    data: response.data
+                }
+            ]
         });
     }
 });

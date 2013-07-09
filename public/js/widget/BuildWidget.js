@@ -1,3 +1,5 @@
+/*global Widget */
+
 function BuildWidget(widget, configName) {
 
     this.widget = widget;
@@ -16,7 +18,7 @@ function BuildWidget(widget, configName) {
         'percentageDiff': '',
         'codeCoverage': '',
         'oldValue': ''
-    }
+    };
 }
 
 BuildWidget.prototype = new Widget();
@@ -37,12 +39,10 @@ $.extend(BuildWidget.prototype, {
      */
     prepareData: function (response) {
 
-        var oldValue = this.oldValue;
-
         this.dataToBind.value = response.data;
 
         this.dataToBind.currentStatus = response.data.currentStatus;
-        if (typeof(this.oldValue) != 'undefined') {
+        if (typeof(this.oldValue) !== 'undefined') {
             this.dataToBind.lastStatus = this.oldValue.currentStatus;
         }
         this.dataToBind.averageHealthScore = response.data.averageHealthScore;
@@ -72,11 +72,11 @@ $.extend(BuildWidget.prototype, {
         }
 
         this.dataToBind.codeCoverage = response.data.codeCoverage;
-        if(this.dataToBind.codeCoverage === null) {
+        if (this.dataToBind.codeCoverage === null) {
             this.dataToBind.codeCoverage = 0;
         }
 
-        $.extend(this.dataToBind,this.setDifference(this.oldCodeCoverage,response.data.codeCoverage));
+        $.extend(this.dataToBind, this.setDifference(this.oldCodeCoverage, response.data.codeCoverage));
 
         this.oldCodeCoverage = response.data.codeCoverage;
 
@@ -85,18 +85,18 @@ $.extend(BuildWidget.prototype, {
         /**
          * Hacks for the flipping effect - totally optional
          */
-        if (response.data.currentStatus == 'FAILURE') {
+        if (response.data.currentStatus === 'FAILURE') {
             this.$widget.find('.flip-container').removeClass("flipped-effect");
             this.$widget.find('.progress-bar').hide();
             this.$widget.find('.flip-container').addClass("FAILURE");
         }
-        else if (response.data.currentStatus == null) {
+        else if (response.data.currentStatus === null) {
             if (!this.$widget.find('.flip-container').hasClass("flipped-effect")) {
                 this.$widget.find('.progress-bar').show();
                 this.$widget.find('.flip-container').addClass("flipped-effect");
             }
         }
-        else if (response.data.currentStatus != null && response.data.currentStatus != 'PREBUILD' && typeof(this.oldValue) != 'undefined' && this.oldValue.currentStatus == null) {
+        else if (response.data.currentStatus !== null && response.data.currentStatus !== 'PREBUILD' && typeof(this.oldValue) !== 'undefined' && this.oldValue.currentStatus == null) {
             this.$widget.find('.progress-bar').hide();
             this.$widget.find('.flip-container').removeClass("flipped-effect");
             this.$widget.find('.flip-container').removeClass("building-failure");
@@ -107,7 +107,7 @@ $.extend(BuildWidget.prototype, {
 
         this.oldValue = response.data;
 
-        meter = this.$widget.find(".jenkins-build");
+        var meter = this.$widget.find(".jenkins-build");
         meter.knob();
     }
 });

@@ -1,3 +1,5 @@
+/*global Widget */
+
 function ErrorWidget(widget, configName) {
 
     this.widget = widget;
@@ -5,7 +7,7 @@ function ErrorWidget(widget, configName) {
 
     this.dataToBind = {
         'value': ''
-    }
+    };
 }
 
 ErrorWidget.prototype = new Widget();

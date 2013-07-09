@@ -11,7 +11,7 @@ var Dashboard = {
     init: function () {
         var configName = $('.container').data('config-name');
 
-        $('.widget').each(function(){
+        $('.widget').each(function () {
             new window[$(this).data('widget-type')](this, configName).startListening();
         });
 
@@ -21,15 +21,15 @@ var Dashboard = {
          * for several hours...
          */
         setInterval(function () {
-            this.autoReload()
+            this.autoReload();
         }.bind(this), 4 * 3600 * 1000);
     },
 
-    autoReload: function() {
+    autoReload: function () {
         location.reload();
     }
 };
 
-$(document).ready(function(){
+$(document).ready(function () {
     Dashboard.init();
 });

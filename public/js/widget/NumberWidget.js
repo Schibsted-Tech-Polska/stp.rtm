@@ -1,3 +1,5 @@
+/*global Widget */
+
 /**
  * Constructor of NumberWidget
  *
@@ -17,7 +19,7 @@ function NumberWidget(widget, configName) {
         'oldValue': '',
         'lastUpdate': '',
         'thresholdValue': 0
-    }
+    };
 }
 
 NumberWidget.prototype = new Widget();
@@ -42,12 +44,12 @@ $.extend(NumberWidget.prototype, {
 
         if ($.isNumeric(response.data)) {
             this.dataToBind.value = response.data;
-        } else if (typeof(response.data.value) != 'undefined' && $.isNumeric(response.data.value)) {
+        } else if (typeof(response.data.value) !== 'undefined' && $.isNumeric(response.data.value)) {
             this.dataToBind.value = response.data.value;
             this.dataToBind.thresholdValue = response.data.thresholdValue;
         }
 
-        $.extend(this.dataToBind,this.setDifference(this.oldValue, this.dataToBind.value));
+        $.extend(this.dataToBind, this.setDifference(this.oldValue, this.dataToBind.value));
 
         this.oldValue = this.dataToBind.value;
 
