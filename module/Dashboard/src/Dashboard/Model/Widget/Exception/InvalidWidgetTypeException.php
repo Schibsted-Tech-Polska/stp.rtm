@@ -5,4 +5,9 @@
  */
 namespace Dashboard\Model\Widget\Exception;
 
+/**
+ * Class InvalidWidgetTypeException
+ *
+ * @package Dashboard\Model\Widget\Exception
+ */
 class InvalidWidgetTypeException extends \Exception {}

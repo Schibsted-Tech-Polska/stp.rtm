@@ -11,6 +11,11 @@ use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\ServiceManager;
 
+/**
+ * Class DashboardManager
+ *
+ * @package Dashboard\Model
+ */
 class DashboardManager {
     /**
      * Default dashboard's theme name

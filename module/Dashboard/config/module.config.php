@@ -66,7 +66,7 @@ return array(
         )
     ),
     'dashboardCache' => array(
-        'ttl' => 3600 * 24 * 7, // 7 days
+        'ttl' => 604800, // 7 days = 3600 * 24 * 7
         'namespace' => 'rtm_dashboard',
         'key_pattern' => null,
         'readable'  => true,

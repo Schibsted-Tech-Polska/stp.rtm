@@ -10,6 +10,11 @@ use Dashboard\Model\Widget\Exception\InvalidWidgetTypeException;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
+/**
+ * Class WidgetFactory
+ *
+ * @package Dashboard\Model\Widget
+ */
 class WidgetFactory implements ServiceLocatorAwareInterface {
     /**
      * Service locator

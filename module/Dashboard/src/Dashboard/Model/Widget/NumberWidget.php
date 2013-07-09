@@ -5,4 +5,9 @@
  */
 namespace Dashboard\Model\Widget;
 
+/**
+ * Class NumberWidget
+ *
+ * @package Dashboard\Model\Widget
+ */
 class NumberWidget extends AbstractWidget {}
