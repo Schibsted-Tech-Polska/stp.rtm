@@ -36,8 +36,8 @@ class NewRelicDao extends AbstractDao {
     public function fetchRpmForNumberWidget(array $params = array()) {
         $rpm = 0;
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
-        $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
+        $params['beginDateTime'] = '-5 minutes';
+        $params['endDateTime'] = 'now';
 
         $response = $this->fetchRpmForGraphWidget($params);
 
@@ -58,8 +58,8 @@ class NewRelicDao extends AbstractDao {
     public function fetchFeRpmForNumberWidget(array $params = array()) {
         $rpm = 0;
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
-        $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
+        $params['beginDateTime'] = '-5 minutes';
+        $params['endDateTime'] = 'now';
 
         $response = $this->fetchFeRpmForGraphWidget($params);
 
@@ -135,8 +135,8 @@ class NewRelicDao extends AbstractDao {
     public function fetchCpuUsageForNumberWidget(array $params = array()) {
         $result = 0;
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-1 minute')) . 'T' . date('H:i:s', strtotime('-1 minute')) . 'Z';
-        $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
+        $params['beginDateTime'] = '-1 minute';
+        $params['endDateTime'] = 'now';
 
         $response = $this->fetchCpuUsageForGraphWidget($params);
 
@@ -176,8 +176,8 @@ class NewRelicDao extends AbstractDao {
     public function fetchAverageResponseTimeForNumberWidget(array $params = array()) {
         $result = 0;
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
-        $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
+        $params['beginDateTime'] = '-5 minutes';
+        $params['endDateTime'] = 'now';
 
         $response = $this->fetchAverageResponseTimeForGraphWidget($params);
 
@@ -229,8 +229,8 @@ class NewRelicDao extends AbstractDao {
     public function fetchThresholdValues(array $params = array()) {
         $result = array();
 
-        $params['beginDateTime'] = date('Y-m-d', strtotime('-5 minutes')) . 'T' . date('H:i:s', strtotime('-5 minutes')) . 'Z';
-        $params['endDateTime'] = date('Y-m-d') . 'T' . date('H:i:s') . 'Z';
+        $params['beginDateTime'] = '-5 minutes';
+        $params['endDateTime'] = 'now';
 
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
 
