@@ -42,6 +42,8 @@ During a build process it shows progress bar. Widget relies on Jenkins REST API.
 
 
 
-#License
+
+
+##License
 
 Distributed under the MIT license
