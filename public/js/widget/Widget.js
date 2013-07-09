@@ -1,4 +1,4 @@
-/*global baseUrl _ */
+/*global baseUrl,_ */
 
 /**
  * Base widget
