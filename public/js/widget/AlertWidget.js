@@ -1,3 +1,5 @@
+/*global Widget */
+
 /**
  * Constructor of AlertWidget
  *
@@ -16,7 +18,7 @@ function AlertWidget(widget, configName) {
         'percentageDiff': 0,
         'oldValue': '',
         'lastUpdate': ''
-    }
+    };
 }
 
 AlertWidget.prototype = new Widget();
@@ -41,7 +43,7 @@ $.extend(AlertWidget.prototype, {
 
         this.dataToBind.value = response.data;
 
-        $.extend(this.dataToBind,this.setDifference(this.oldValue, this.dataToBind.value));
+        $.extend(this.dataToBind, this.setDifference(this.oldValue, this.dataToBind.value));
 
         this.oldValue = this.dataToBind.value;
 

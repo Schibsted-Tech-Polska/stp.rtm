@@ -1,3 +1,5 @@
+/*global baseUrl _ */
+
 /**
  * Base widget
  *
@@ -9,7 +11,7 @@ function Widget() {
      * @property urlBase
      * @type {string}
      */
-    this.urlBase = "/resources";
+    this.urlBase = baseUrl + "resources";
     /**
      * Hash string representing previous values of a response.
      * @property oldValueHash
@@ -68,17 +70,17 @@ Widget.prototype = {
             url: this.urlBase + this.configName + this.widgetId + this.oldValueHash
         });
 
-        resp.success( this.fetchDataOnSuccess.bind(this) );
-        resp.error( this.fetchDataOnError.bind(this) );
+        resp.success(this.fetchDataOnSuccess.bind(this));
+        resp.error(this.fetchDataOnError.bind(this));
 
         resp.onreadystatechange = null;
         resp.abort = null;
         resp = null;
     },
 
-    fetchDataOnSuccess: function(response) {
+    fetchDataOnSuccess: function (response) {
         setTimeout(function () {
-            this.fetchData()
+            this.fetchData();
         }.bind(this), this.params.refreshRate * 1000);
 
         if (response.hash === undefined) {
@@ -86,19 +88,19 @@ Widget.prototype = {
         }
 
 
-        if (this.oldValueHash != "/" + response.hash || this.oldValueHash == '') {
+        if (this.oldValueHash !== "/" + response.hash || this.oldValueHash === '') {
             this.oldValueHash = "/" + response.hash;
             this.handleResponse(response);
         }
     },
 
-    fetchDataOnError: function(jqXHR, status, errorThrown) {
+    fetchDataOnError: function (jqXHR) {
         /**
          * Scheduling next request for 10 times the normal refreshRate
          * to minimize the number of failed requests.
          */
         setTimeout(function () {
-            this.fetchData()
+            this.fetchData();
         }.bind(this), this.params.refreshRate * 1000 * 10);
 
         var response = $.parseJSON(jqXHR.responseText).error;
@@ -115,17 +117,18 @@ Widget.prototype = {
      */
     setDifference: function (oldValue, newValue) {
 
-        dataToBind = {};
+        var dataToBind = {},
+            diff,
+            percentageDiff;
 
         if ($.isNumeric(oldValue) && oldValue > 0 && $.isNumeric(newValue)) {
 
-            var diff = newValue - oldValue;
-
-            var percentageDiff = Math.round(Math.abs(diff) / oldValue * 100);
+            diff = newValue - oldValue;
+            percentageDiff = Math.round(Math.abs(diff) / oldValue * 100);
 
             dataToBind.oldValue = oldValue;
 
-            if(percentageDiff > 0) {
+            if (percentageDiff > 0) {
                 dataToBind.percentageDiff = percentageDiff;
             }
 
@@ -145,11 +148,11 @@ Widget.prototype = {
         throw new Error('Method "handleResponse" must be implemented by concrete widget constructors');
     },
 
-    checkThresholds: function(currentValue) {
+    checkThresholds: function (currentValue) {
         this.$widget.removeClass('thresholdCautionValue').removeClass('thresholdCriticalValue');
 
-        if (typeof(this.params.thresholdComparator) != 'undefined') {
-            if (this.params.thresholdComparator == 'lowerIsBetter') {
+        if (typeof(this.params.thresholdComparator) !== 'undefined') {
+            if (this.params.thresholdComparator === 'lowerIsBetter') {
                 if (this.$widget.attr('data-threshold-critical-value') && currentValue >= this.$widget.attr('data-threshold-critical-value')) {
                     this.$widget.addClass('thresholdCriticalValue');
                 } else if (this.$widget.attr('data-threshold-caution-value') && currentValue >= this.$widget.attr('data-threshold-caution-value')) {

@@ -16,6 +16,9 @@
         ->prependStylesheet($this->basePath() . '/css/style.css')
         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')?>
     <!-- Scripts -->
+    <script type="text/javascript">
+        var baseUrl = <?php echo '"' . $this->basePath('/') . '"'; ?>;
+    </script>
     <?php
     $jsAssets = $this->headScript();
 
