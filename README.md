@@ -42,7 +42,7 @@ In order to run Stp.Rtm you have to specify configuration file for each of your 
 
 ### Defining configuration file
 
-Below you can find a template and two examples of configuration files. The configuration file should contains
+Below you can find a template and two examples of configuration files. The configuration file should contain
  a list of all widgets that you want to display on your dashboard.
 For each widget you have to specify its unique id, type and all of required parameters.
 
