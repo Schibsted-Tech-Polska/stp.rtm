@@ -48,6 +48,7 @@ For each widget you have to specify its unique id, type and all of required para
 If you want to use NewRelic's API you have to provide additional information like x-api-key and accountId.
 
 <strong>The template of a configuration file</strong>
+
     return array(
         'theme' = '%YOUR_THEME_NAME%', // (optional) default 'dark'
         'newRelic' => array(
