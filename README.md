@@ -116,8 +116,6 @@ If you want to use NewRelic's API you have to provide additional information lik
                     'span' => '%WIDGET_WIDTH%', // widget width, accepted values: 1-12 (optional)
                     'valuePrefix' => '%VALUE_PREFIX%', // string value to be displayed in front of the value (optional)
                     'valueSuffix' => '%', // string value to be displayed after the value (optional)
-                    'beginDateTime' => date('Y-m-d', strtotime('-30 minutes')) . 'T' . date('H:i:s', strtotime('-30 minutes')) . 'Z', // start time for collecting data for the graph
-                    'endDateTime' => date('Y-m-d') . 'T' . date('H:i:s') . 'Z',  // end time for collecting data for the graph
                     'beginDateTime' => '-30 minutes', // start time for collecting data for the graph
                     'endDateTime' => 'now', // end time for collecting data for the graph
                 ),

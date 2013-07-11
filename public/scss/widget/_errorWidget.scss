@@ -9,14 +9,23 @@ $caution-background-color: #978C06;
 // ----------------------------------------------------------------------------
 #dashboardBody .widget.ErrorWidget {
 
+  .sock {
+    display: none;
+  }
+
   &.warning {
-    background: {
-      image: url(../img/sock.png);
-      repeat: no-repeat;
-      position:  191px 215px;
-      size: 19%;
+    .sock {
+      background: {
+        image: url(../img/sock.png);
+        repeat: no-repeat;
+      }
+      width: 100px;
+      height: 100px;
+      display: block;
+      float: right;
     }
   }
+
 
   &.thresholdCriticalValue {
     background-color: $critical-background-color;
