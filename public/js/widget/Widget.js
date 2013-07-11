@@ -81,7 +81,7 @@ Widget.prototype = {
     fetchDataOnSuccess: function (response) {
         setTimeout(function () {
             this.fetchData();
-        }.bind(this), this.params.refreshRate * 1000);
+        }.bind(this), this.refreshRandomizer(this.params.refreshRate));
 
         if (response.hash === undefined) {
             throw new Error('Widget ' + this.widgetId + ' did not return value hash');
@@ -101,7 +101,7 @@ Widget.prototype = {
          */
         setTimeout(function () {
             this.fetchData();
-        }.bind(this), this.params.refreshRate * 1000 * 10);
+        }.bind(this), this.refreshRandomizer(this.params.refreshRate) * 10);
 
         var response = $.parseJSON(jqXHR.responseText).error;
 
@@ -167,5 +167,16 @@ Widget.prototype = {
                 }
             }
         }
+    },
+
+    // Return refresh randomizer
+    refreshRandomizer: function (refreshRate) {
+        var randomizer = refreshRate;
+        // Add from 0 to 9 seconds
+        randomizer += Math.random() * 10;
+        // Use integer value of miliseconds
+        randomizer = Math.floor(randomizer * 1000);
+
+        return randomizer;
     }
 };
