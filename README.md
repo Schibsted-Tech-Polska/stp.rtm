@@ -45,10 +45,11 @@ In order to run Stp.Rtm you have to specify configuration file for each of your 
 Below you can find a template and two examples of configuration files. The configuration file should contain
  a list of all widgets that you want to display on your dashboard.
 For each widget you have to specify its unique id, type and all of required parameters.
+If you want to use NewRelic's API you have to provide additional information like x-api-key and accountId.
 
 <strong>The template of a configuration file</strong>
-
     return array(
+        'theme' = '%YOUR_THEME_NAME%', // (optional) default 'dark'
         'newRelic' => array(
             'headers' => array(
                 'x-api-key' => '%API_KEY%',
@@ -65,6 +66,16 @@ For each widget you have to specify its unique id, type and all of required para
                     'metric' => 'messages',
                     'span' => '%WIDGET_WIDTH%', // widget width, accepted values: 1-12
                     'title' => '%WIDGET_TITLE%', // string title
+                ),
+            ),
+            array('id' => '%UNIQUE_TO_DASHBOARD_WIDGET_ID%',
+                'type' => 'alert',
+                'params' => array(
+                    'dao' => 'splunk',
+                    'metric' => 'Fivehundreds',
+                    'title' => '%WIDGET_TITLE%',// string title (optional)
+                    'subtitle' => '%WIDGET_SUBTITILE%', // string subtitle (optional)
+                    'config' => '%SPLUNKS_JOB_NAME%', // splunk's job name
                 ),
             ),
             array('id' => '%UNIQUE_TO_DASHBOARD_WIDGET_ID%',
@@ -106,6 +117,8 @@ For each widget you have to specify its unique id, type and all of required para
                     'valueSuffix' => '%', // string value to be displayed after the value (optional)
                     'beginDateTime' => date('Y-m-d', strtotime('-30 minutes')) . 'T' . date('H:i:s', strtotime('-30 minutes')) . 'Z', // start time for collecting data for the graph
                     'endDateTime' => date('Y-m-d') . 'T' . date('H:i:s') . 'Z',  // end time for collecting data for the graph
+                    'beginDateTime' => '-30 minutes', // start time for collecting data for the graph
+                    'endDateTime' => 'now', // end time for collecting data for the graph
                 ),
             ),
             array('id' => '%UNIQUE_TO_DASHBOARD_WIDGET_ID%',
@@ -230,6 +243,16 @@ For each widget you have to specify its unique id, type and all of required para
                      'thresholdComparator' => 'lowerIsBetter',
                  ),
              ),
+             array('id' => '%WIDGET_ID_7%',
+                 'type' => 'alert',
+                 'params' => array(
+                     'dao' => 'splunk',
+                     'metric' => 'Fivehundreds',
+                     'title' => 'Splunk',
+                     'subtitle' => 'Status code 500',
+                     'config' => '%SPLUNKS_JOB_NAME%'
+                 ),
+             ),
          ),
      );
 
@@ -254,6 +277,10 @@ For each widget you have to specify its unique id, type and all of required para
         ),
     );
 
+### Running dashboard
+
+Assuming that http://localhost serve index.php from the /public directory, you can run your
+dashboard by adding name of the config file to the url: http://localhost/configName
 
 
 ##License
