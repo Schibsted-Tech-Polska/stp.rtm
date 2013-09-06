@@ -51,7 +51,7 @@ class JenkinsDao extends AbstractDao {
         if (isset($buildInfo['culprits']) && count($buildInfo['culprits'])) {
             return $buildInfo['culprits'][0]['fullName'];
         } else {
-            if (isset($buildInfo['actions'][0]['causes'][0])) {
+            if (isset($buildInfo['actions'][0]['causes'][0]) && isset($buildInfo['actions'][0]['causes'][0]['userName'])) {
                 return $buildInfo['actions'][0]['causes'][0]['userName'];
             } else {
                 return 'UNKNOWN';
