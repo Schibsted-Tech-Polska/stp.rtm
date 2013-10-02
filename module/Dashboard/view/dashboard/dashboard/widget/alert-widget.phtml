@@ -12,7 +12,12 @@
                 <div class="span12 last">
                     <div class="content">
                         <span class="failure">
-                            <strong><%= item.url %></strong><br/><small> <%= item.numberOfErrors %> errors, last at <% var date = new Date(item.lastErrorTime*1000); print(date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()) %></small>
+                            <strong><%= item.url %></strong><br/><small> <%= item.numberOfErrors %> errors, last at <% var date = new Date(item.lastErrorTime*1000); print(date.getUTCFullYear() + '-' +
+                                    ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+                                    ('00' + date.getUTCDate()).slice(-2) + ' ' +
+                                    ('00' + date.getUTCHours()).slice(-2) + ':' +
+                                    ('00' + date.getUTCMinutes()).slice(-2) + ':' +
+                                    ('00' + date.getUTCSeconds()).slice(-2)) %></small>
                         </span>
                     </div>
                 </div>
