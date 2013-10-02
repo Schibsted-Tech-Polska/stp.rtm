@@ -19,38 +19,42 @@
   color: #ed303c;
 }
 /* line 46, ../../scss/themes/dark.scss */
+#dashboardBody .widget.MessagesWidget .message .content .warning {
+  color: #f3704f;
+}
+/* line 49, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .content .success {
   color: #70c536;
 }
-/* line 52, ../../scss/themes/dark.scss */
+/* line 55, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-thumbs-up {
   color: #70c536;
 }
-/* line 56, ../../scss/themes/dark.scss */
+/* line 59, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-screenshot {
   color: #ed303c;
 }
-/* line 62, ../../scss/themes/dark.scss */
+/* line 65, ../../scss/themes/dark.scss */
 #dashboardBody .widget.ErrorWidget {
   background-color: #373c3f;
 }
-/* line 66, ../../scss/themes/dark.scss */
+/* line 69, ../../scss/themes/dark.scss */
 #dashboardBody .widget.GraphWidget {
   background-color: #373c3f;
 }
-/* line 70, ../../scss/themes/dark.scss */
+/* line 73, ../../scss/themes/dark.scss */
 #dashboardBody .widget.NumberWidget {
   background-color: #373c3f;
 }
-/* line 75, ../../scss/themes/dark.scss */
+/* line 78, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .face {
   background-color: #248f8d;
 }
-/* line 80, ../../scss/themes/dark.scss */
+/* line 83, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .FAILURE .face {
   background-color: #ed303c;
 }
-/* line 85, ../../scss/themes/dark.scss */
+/* line 88, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget p.change-rate {
   color: white;
 }

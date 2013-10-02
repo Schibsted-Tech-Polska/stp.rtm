@@ -140,13 +140,13 @@
   width: 100%;
   height: 100%;
   -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 1.0s linear;
+  -webkit-transition: all 1s linear;
   -moz-transform-style: preserve-3d;
-  -moz-transition: all 1.0s linear;
+  -moz-transition: all 1s linear;
   -o-transform-style: preserve-3d;
-  -o-transition: all 1.0s linear;
+  -o-transition: all 1s linear;
   transform-style: preserve-3d;
-  transition: all 1.0s linear;
+  transition: all 1s linear;
 }
 /* line 130, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container.flipped-effect .flip-content {
@@ -210,7 +210,7 @@
 /* line 18, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message {
   text-align: left;
-  border-bottom: 1px dotted #666;
+  border-bottom: 1px dotted #666666;
   margin-bottom: 0.1em;
   padding-bottom: 0.4em;
   overflow: hidden;
@@ -240,7 +240,7 @@
   position: absolute;
   top: 24px;
   left: 36px;
-  text-shadow: 0px 0px 4px #000;
+  text-shadow: 0px 0px 4px black;
   width: auto;
   font-size: 34px;
   font-weight: normal;
@@ -279,9 +279,17 @@
   margin-top: 0;
 }
 
-/* line 1, ../scss/widget/_alertWidget.scss */
-.failure {
-  color: #ED303C;
+/* line 2, ../scss/widget/_alertWidget.scss */
+#dashboardBody .widget.AlertWidget .failure {
+  color: #F3704F;
+}
+/* line 6, ../scss/widget/_alertWidget.scss */
+#dashboardBody .widget.AlertWidget small {
+  font-size: 70%;
+}
+/* line 10, ../scss/widget/_alertWidget.scss */
+#dashboardBody .widget.AlertWidget h1 {
+  margin-bottom: 0;
 }
 
 @font-face {
@@ -297,7 +305,7 @@ body {
   color: white;
   padding: 0 13px 13px;
   background-color: #282c2e;
-  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
 }
 
@@ -339,37 +347,41 @@ body {
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 83, ../scss/dashboard.scss */
+/* line 81, ../scss/dashboard.scss */
+#dashboardBody .widget .row-fluid [class*=span] {
+  margin-top: 5px;
+}
+/* line 89, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 89, ../scss/dashboard.scss */
+/* line 95, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 94, ../scss/dashboard.scss */
+/* line 100, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-/* line 100, ../scss/dashboard.scss */
+/* line 106, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: white;
 }
-/* line 106, ../scss/dashboard.scss */
+/* line 112, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: white;
 }
-/* line 112, ../scss/dashboard.scss */
+/* line 118, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -379,12 +391,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 122, ../scss/dashboard.scss */
+  /* line 128, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 130, ../scss/dashboard.scss */
+/* line 136, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -392,12 +404,12 @@ body {
   overflow: hidden;
 }
 
-/* line 137, ../scss/dashboard.scss */
+/* line 143, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 141, ../scss/dashboard.scss */
+/* line 147, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }
