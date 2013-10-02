@@ -12,7 +12,7 @@
                 <div class="span12 last">
                     <div class="content">
                         <span class="failure">
-                            <strong><%= item.url %></strong><br/><small> <%= item.numberOfErrors %> errors, last at <%= item.lastErrorTime %></small>
+                            <strong><%= item.url %></strong><br/><small> <%= item.numberOfErrors %> errors, last at <% var date = new Date(item.lastErrorTime*1000); print(date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()) %></small>
                         </span>
                     </div>
                 </div>
