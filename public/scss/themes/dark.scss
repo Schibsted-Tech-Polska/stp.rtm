@@ -43,6 +43,9 @@ $font-color--message-title: $color-orange;
           .failure {
             color: $color-red;
           }
+          .warning {
+            color: $color-orange;
+          }
           .success {
             color: $color-green;
           }

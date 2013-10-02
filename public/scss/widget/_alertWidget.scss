@@ -1,3 +1,15 @@
-.failure {
-  color: #ED303C;
+#dashboardBody .widget.AlertWidget {
+    .failure {
+        color: #F3704F;
+    }
+
+    small {
+        font-size: 70%;
+    }
+
+    h1 {
+        margin: {
+            bottom: 0;
+        }
+    }
 }

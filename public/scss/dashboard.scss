@@ -78,6 +78,12 @@ body {
       font-size: 0.5em;
     }
 
+    .row-fluid [class*=span] {
+       margin: {
+         top: 5px;
+       }
+    }
+
   }
 
   .row-fluid [class*=span] {
