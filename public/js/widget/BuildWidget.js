@@ -85,10 +85,10 @@ $.extend(BuildWidget.prototype, {
         /**
          * Hacks for the flipping effect - totally optional
          */
-        if (response.data.currentStatus === 'FAILURE') {
+        if (response.data.currentStatus === 'FAILURE' || response.data.currentStatus === 'UNSTABLE') {
             this.$widget.find('.flip-container').removeClass("flipped-effect");
             this.$widget.find('.progress-bar').hide();
-            this.$widget.find('.flip-container').addClass("FAILURE");
+            this.$widget.find('.flip-container').addClass(response.data.currentStatus);
         }
         else if (response.data.currentStatus === null) {
             if (!this.$widget.find('.flip-container').hasClass("flipped-effect")) {

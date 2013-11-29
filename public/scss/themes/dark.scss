@@ -85,6 +85,12 @@ $font-color--message-title: $color-orange;
         }
       }
 
+      .UNSTABLE {
+        .face {
+            background-color: $color-orange;
+        }
+      }
+
       p.change-rate {
         color: $color-white;
       }

@@ -5,6 +5,7 @@ $background-color:  #4b5f24;
 
 $title-color:       rgba(255, 255, 255, 1);
 $moreinfo-color:    rgba(255, 255, 255, 0.3);
+$color-orange: #F3704F;
 
 $meter-background:  rgba(20, 20, 20, 1);
 
@@ -48,6 +49,12 @@ $meter-background:  rgba(20, 20, 20, 1);
   .FAILURE {
     .face {
       background: #cf0d4d;
+    }
+  }
+
+  .UNSTABLE {
+    .face {
+      background: $color-orange;
     }
   }
 

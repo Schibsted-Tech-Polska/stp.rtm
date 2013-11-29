@@ -54,7 +54,11 @@
 #dashboardBody .widget.BuildWidget .FAILURE .face {
   background-color: #ed303c;
 }
-/* line 88, ../../scss/themes/dark.scss */
+/* line 89, ../../scss/themes/dark.scss */
+#dashboardBody .widget.BuildWidget .UNSTABLE .face {
+  background-color: #f3704f;
+}
+/* line 94, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget p.change-rate {
   color: white;
 }
