@@ -5,6 +5,6 @@
 
 return array(
     'urls' => array(
-        'fetchJobsWithWorkersForQueueWidget' => 'URL_TO_GEARMAN_UI_APPLICATION'
+        'fetchJobsWithWorkersForQueueWidget' => ':gearmanuiUrl:/info'
     ),
 );
