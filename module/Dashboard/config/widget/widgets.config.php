@@ -20,6 +20,14 @@ return array(
         'valuePrefix' => '',
         'span' => 3,
     ),
+    'queue' => array(
+        'refreshRate' => 5,
+        'title' => '',
+        'subtitle' => '',
+        'valueSuffix' => '',
+        'valuePrefix' => '',
+        'span' => 3,
+    ),
     'error' => array(
             'refreshRate' => 60,
             'title' => '',

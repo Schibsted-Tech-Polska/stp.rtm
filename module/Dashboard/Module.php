@@ -2,6 +2,7 @@
 namespace Dashboard;
 
 use Dashboard\Model\Dao\EventsDao;
+use Dashboard\Model\Dao\GearmanDao;
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
 use Dashboard\Model\Dao\SplunkDao;
@@ -55,6 +56,12 @@ class Module {
                 'EventsDao' => function (ServiceManager $serviceManager) {
                     return new EventsDao($serviceManager->get('EventsDaoConfig'));
                 },
+                'GearmanDaoConfig' => function (ServiceManager $serviceManager) {
+                        return include('config/dao/GearmanDao.config.php');
+                    },
+                'GearmanDao' => function (ServiceManager $serviceManager) {
+                        return new GearmanDao($serviceManager->get('GearmanDaoConfig'));
+                    },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));
                 },

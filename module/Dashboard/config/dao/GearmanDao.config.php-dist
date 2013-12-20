@@ -1,0 +1,10 @@
+<?php
+/**
+ * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
+ */
+
+return array(
+    'urls' => array(
+        'fetchJobsWithWorkersForQueueWidget' => 'URL_TO_GEARMAN_UI_APPLICATION'
+    ),
+);

@@ -1,0 +1,31 @@
+<div id="<?php echo $widgetId; ?>"
+     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
+     data-widget-type="<?php echo $widgetType; ?>"
+     data-params='<?php echo $this->json($params)?>'
+     data-threshold-caution-value="<?php echo isset($threshold['caution-value']) ? $threshold['caution-value'] : 0?>"
+     data-threshold-critical-value="<?php echo isset($threshold['critical-value']) ? $threshold['critical-value'] : 0?>">
+</div>
+<script type="text/template" id="<?php echo $widgetId; ?>Tpl">
+    <div class="widgetContainer">
+        <img src="img/logo.png" style="width: 30%;"/>
+
+
+        <% _.each(value, function(item) { %>
+            <div style="margin: 10px 0;">
+            <h3 class="<%= item.up %>" style="margin-bottom: 2px;"><%= item.name %></h3>
+            <table style="width: 100%;">
+                <% _.each(item.status, function(value, key) { %>
+                <tr>
+                    <% if (value.capable_workers > 0) {%>
+                        <th style="width: 50%;text-align: right;padding: 2px 4px;"><%= key %></th>
+                        <td style="width: 50%;text-align: left;padding: 2px 4px;color: #999999;"><%= value.capable_workers %> workers, <%= value.in_queue %> jobs in queue</td>
+                    <% } %>
+                </tr>
+                <% }); %>
+            </table>
+            </div>
+        <% }); %>
+
+        <p class="updated-at">Last update: <%= lastUpdate %></p>
+    </div>
+</script>
