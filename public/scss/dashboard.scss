@@ -6,6 +6,7 @@ $default-widget-bg-color: #373c3f;
 $body-bg-color: #282C2E;
 $color-red: #ED303C;
 $color-yellow: #FFF46B;
+$color-gray: #999;
 
 // ----------------------------------------------------------------------------
 // Sizes
@@ -22,6 +23,7 @@ $default-font-size: 1.25em;
 @import "widget/messagesWidget";
 @import "widget/graphWidget";
 @import "widget/alertWidget";
+@import "widget/queueWidget";
 
 @font-face {
 
