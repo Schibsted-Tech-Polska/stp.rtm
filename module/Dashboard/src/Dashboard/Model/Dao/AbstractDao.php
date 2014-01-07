@@ -162,6 +162,14 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
     }
 
     /**
+     * Returns ONLY Auth data from self::$daoOptions
+     * @return array
+     */
+    public function getDaoAuth() {
+        return isset($this->daoOptions['auth']) ? $this->daoOptions['auth'] : null;
+    }
+
+    /**
      * Executes a request to a given URL using injected Data Provider
      *
      * @param string|\Zend\Uri\HttpUri $url endpoint destination URL
@@ -188,6 +196,10 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
         }
 
         $client = $this->getDataProvider();
+
+        if (!is_null($this->getDaoAuth())) {
+            $client->setAuth($this->getDaoAuth()['username'], $this->getDaoAuth()['password'], Client::AUTH_BASIC);
+        }
 
         $headers = $request->getHeaders();
         $headers->addHeaders($this->getDaoHeaders());
