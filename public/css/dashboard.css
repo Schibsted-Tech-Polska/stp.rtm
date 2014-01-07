@@ -144,13 +144,13 @@
   width: 100%;
   height: 100%;
   -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 1s linear;
+  -webkit-transition: all 1.0s linear;
   -moz-transform-style: preserve-3d;
-  -moz-transition: all 1s linear;
+  -moz-transition: all 1.0s linear;
   -o-transform-style: preserve-3d;
-  -o-transition: all 1s linear;
+  -o-transition: all 1.0s linear;
   transform-style: preserve-3d;
-  transition: all 1s linear;
+  transition: all 1.0s linear;
 }
 /* line 137, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container.flipped-effect .flip-content {
@@ -214,7 +214,7 @@
 /* line 18, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message {
   text-align: left;
-  border-bottom: 1px dotted #666666;
+  border-bottom: 1px dotted #666;
   margin-bottom: 0.1em;
   padding-bottom: 0.4em;
   overflow: hidden;
@@ -244,7 +244,7 @@
   position: absolute;
   top: 24px;
   left: 36px;
-  text-shadow: 0px 0px 4px black;
+  text-shadow: 0px 0px 4px #000;
   width: auto;
   font-size: 34px;
   font-weight: normal;
@@ -296,6 +296,36 @@
   margin-bottom: 0;
 }
 
+/* line 4, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget {
+  overflow: hidden;
+}
+/* line 7, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .gearmanLogo {
+  width: 30%;
+}
+/* line 11, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server {
+  margin: 10px 0;
+}
+/* line 14, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server .jobsList {
+  width: 100%;
+}
+/* line 17, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server .jobsList .name {
+  width: 50%;
+  text-align: right;
+  padding: 2px 4px;
+}
+/* line 23, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server .jobsList .status {
+  width: 50%;
+  text-align: left;
+  padding: 2px 4px;
+  color: #999999;
+}
+
 @font-face {
   font-family: 'Icons';
   src: url("fonts/artill_clean_icons-webfont.eot");
@@ -304,16 +334,16 @@
   font-style: normal;
 }
 
-/* line 35, ../scss/dashboard.scss */
+/* line 37, ../scss/dashboard.scss */
 body {
   color: white;
   padding: 0 13px 13px;
   background-color: #282c2e;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
 }
 
-/* line 44, ../scss/dashboard.scss */
+/* line 46, ../scss/dashboard.scss */
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
@@ -323,19 +353,19 @@ body {
   vertical-align: middle;
   position: relative;
 }
-/* line 53, ../scss/dashboard.scss */
+/* line 55, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCriticalValue .value {
   color: #ed303c;
 }
-/* line 57, ../scss/dashboard.scss */
+/* line 59, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCautionValue .value {
   color: #fff46b;
 }
-/* line 61, ../scss/dashboard.scss */
+/* line 63, ../scss/dashboard.scss */
 #dashboardBody .widget .value {
   margin-top: 40px;
 }
-/* line 65, ../scss/dashboard.scss */
+/* line 67, ../scss/dashboard.scss */
 #dashboardBody .widget .updated-at {
   display: block;
   position: absolute;
@@ -343,49 +373,49 @@ body {
   left: 0;
   right: 0;
 }
-/* line 73, ../scss/dashboard.scss */
+/* line 75, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-/* line 77, ../scss/dashboard.scss */
+/* line 79, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 81, ../scss/dashboard.scss */
+/* line 83, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-/* line 89, ../scss/dashboard.scss */
+/* line 91, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 95, ../scss/dashboard.scss */
+/* line 97, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 100, ../scss/dashboard.scss */
+/* line 102, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-/* line 106, ../scss/dashboard.scss */
+/* line 108, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: white;
 }
-/* line 112, ../scss/dashboard.scss */
+/* line 114, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: white;
 }
-/* line 118, ../scss/dashboard.scss */
+/* line 120, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -395,12 +425,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 128, ../scss/dashboard.scss */
+  /* line 130, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 136, ../scss/dashboard.scss */
+/* line 138, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -408,12 +438,12 @@ body {
   overflow: hidden;
 }
 
-/* line 143, ../scss/dashboard.scss */
+/* line 145, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 147, ../scss/dashboard.scss */
+/* line 149, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }
