@@ -6,6 +6,7 @@ use Dashboard\Model\Dao\GearmanDao;
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
 use Dashboard\Model\Dao\SplunkDao;
+use Dashboard\Model\Dao\HipChatDao;
 use Dashboard\Model\Widget\WidgetFactory;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
@@ -78,7 +79,13 @@ class Module {
                 },
                 'SplunkDao' => function (ServiceManager $serviceManager) {
                     return new SplunkDao($serviceManager->get('SplunkDaoConfig'));
-                }
+                },
+                'HipChatDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/HipChatDao.config.php');
+                },
+                'HipChatDao' => function (ServiceManager $serviceManager) {
+                    return new HipChatDao($serviceManager->get('HipChatDaoConfig'));
+                },
             ),
         );
     }
