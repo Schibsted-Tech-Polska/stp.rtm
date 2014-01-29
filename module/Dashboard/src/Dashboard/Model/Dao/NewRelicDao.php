@@ -220,6 +220,54 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Fetches CPU usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchCpuFromThresholdForNumberWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['CPU']['metric_value'];
+    }
+
+    /**
+     * Fetches DB usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchDBFromThresholdForNumberWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['DB']['metric_value'];
+    }
+
+    /**
+     * Fetches throughput by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchThroughputFromThresholdForNumberWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['Throughput']['metric_value'];
+    }
+
+    /**
+     * Fetches response time by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchResponseTimeFromThresholdForNumberWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['Response Time']['metric_value'];
+    }
+
+    /**
      * Fetches all threshold values for the application.
      * Because it can only be obtained in XML I manually parse it into an array.
      *
