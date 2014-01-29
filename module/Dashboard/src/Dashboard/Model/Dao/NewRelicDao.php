@@ -127,6 +127,21 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Apdex value
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return mixed
+     */
+    public function fetchApdexForIncrementalGraphWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => strtotime($thresholdValues['Apdex']['end_time']),
+            'y' => $thresholdValues['Apdex']['metric_value'],
+        );
+    }
+
+    /**
      * CPU shows the percentage of time spent in User space by the CPU as an average of reporting apps (agents).
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL
@@ -220,6 +235,21 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Fetches memory usage by your app
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchMemoryForIncrementalGraphWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => strtotime($thresholdValues['Memory']['end_time']),
+            'y' => $thresholdValues['Memory']['metric_value'],
+        );
+    }
+
+    /**
      * Fetches CPU usage by your app based on thresholds.xml (good for free accounts).
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL
@@ -229,6 +259,21 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return $thresholdValues['CPU']['metric_value'];
+    }
+
+    /**
+     * Fetches CPU usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchCpuFromThresholdForIncrementalGraphWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => strtotime($thresholdValues['CPU']['end_time']),
+            'y' => $thresholdValues['CPU']['metric_value'],
+        );
     }
 
     /**
@@ -244,6 +289,21 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Fetches DB usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchDBFromThresholdForIncrementalGraphWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => strtotime($thresholdValues['DB']['end_time']),
+            'y' => $thresholdValues['DB']['metric_value'],
+        );
+    }
+
+    /**
      * Fetches throughput by your app based on thresholds.xml (good for free accounts).
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL
@@ -256,6 +316,21 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Fetches throughput by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchThroughputFromThresholdForIncrementalGraphWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => strtotime($thresholdValues['Throughput']['end_time']),
+            'y' => $thresholdValues['Throughput']['metric_value'],
+        );
+    }
+
+    /**
      * Fetches response time by your app based on thresholds.xml (good for free accounts).
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL
@@ -265,6 +340,21 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return $thresholdValues['Response Time']['metric_value'];
+    }
+
+    /**
+     * Fetches response time by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchResponseTimeFromThresholdForIncrementalGraphWidget(array $params = array()) {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => strtotime($thresholdValues['Response Time']['end_time']),
+            'y' => $thresholdValues['Response Time']['metric_value'],
+        );
     }
 
     /**
