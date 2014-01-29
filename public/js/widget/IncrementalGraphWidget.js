@@ -37,7 +37,6 @@ $.extend(IncrementalGraphWidget.prototype, {
             pointX = parseFloat(currentPoint.x) * 1000,
             pointY = parseFloat(currentPoint.y);
 
-
         /**
          * Calculating diff from last collected value
          */
@@ -58,7 +57,7 @@ $.extend(IncrementalGraphWidget.prototype, {
     handleChangeRate: function() {
         $('.change-rate', this.widget)
             .show()
-            .removeClass(['better', 'worse']).addClass(this.dataToBind.trend)
+            .removeClass('better worse').addClass(this.dataToBind.trend)
             .find('i')
                 .removeClass().addClass(this.dataToBind.arrowClass).parent()
             .find('.percentageDiff')
