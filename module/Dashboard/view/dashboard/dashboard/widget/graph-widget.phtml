@@ -13,7 +13,7 @@
                     class="suffix"><?php echo $params['valueSuffix']; ?></span></h2>
 
             <% if (percentageDiff > 0) { %>
-            <p class="change-rate">
+            <p class="change-rate <%= trend %>">
                 <i class="<%= arrowClass %>"></i>
                 <span class="difference"><%= percentageDiff %>% (<%= oldValue %><?php echo $params['valueSuffix']; ?>)</span>
             </p>

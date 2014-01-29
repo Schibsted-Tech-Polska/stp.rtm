@@ -374,48 +374,52 @@ body {
   right: 0;
 }
 /* line 75, ../scss/dashboard.scss */
+#dashboardBody .widget .change-rate.worse {
+  color: #ed303c !important;
+}
+/* line 79, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-/* line 79, ../scss/dashboard.scss */
+/* line 83, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 83, ../scss/dashboard.scss */
+/* line 87, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-/* line 91, ../scss/dashboard.scss */
+/* line 95, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 97, ../scss/dashboard.scss */
+/* line 101, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 102, ../scss/dashboard.scss */
+/* line 106, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-/* line 108, ../scss/dashboard.scss */
+/* line 112, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: white;
 }
-/* line 114, ../scss/dashboard.scss */
+/* line 118, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: white;
 }
-/* line 120, ../scss/dashboard.scss */
+/* line 124, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -425,12 +429,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 130, ../scss/dashboard.scss */
+  /* line 134, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 138, ../scss/dashboard.scss */
+/* line 142, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -438,12 +442,12 @@ body {
   overflow: hidden;
 }
 
-/* line 145, ../scss/dashboard.scss */
+/* line 149, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 149, ../scss/dashboard.scss */
+/* line 153, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }

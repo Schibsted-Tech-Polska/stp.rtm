@@ -72,6 +72,10 @@ body {
       right: 0;
     }
 
+    .change-rate.worse {
+      color: $color-red !important;
+    }
+
     .prefix {
       font-size: 0.5em;
     }
