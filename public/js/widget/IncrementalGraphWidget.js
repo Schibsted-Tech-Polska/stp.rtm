@@ -53,6 +53,10 @@ $.extend(IncrementalGraphWidget.prototype, {
             this.setupGraph();
         }
         this.chart.highcharts().series[0].addPoint([pointX, pointY], true, (this.chart.highcharts().series[0].data.length >= this.params.maxPoints));
+        $(this.widget).blinkStop();
+        if (((this.params.thresholdComparator == 'higherIsBetter') && (currentValue <= this.params.criticalValue)) || ((this.params.thresholdComparator == 'lowerIsBetter') && (currentValue >= this.params.criticalValue))) {
+            $(this.widget).blink({opacity: 0.2});
+        }
     },
 
     handleChangeRate: function() {
