@@ -47,11 +47,12 @@ $.extend(IncrementalGraphWidget.prototype, {
 
         if (this.chart !== null) {
             this.handleChangeRate();
+            this.updateValue();
         } else {
             this.renderTemplate(this.dataToBind);
             this.setupGraph();
         }
-        this.chart.highcharts().series[0].addPoint([pointX, pointY]);
+        this.chart.highcharts().series[0].addPoint([pointX, pointY], true, (this.chart.highcharts().series[0].data.length >= this.params.maxPoints));
     },
 
     handleChangeRate: function() {
@@ -66,11 +67,20 @@ $.extend(IncrementalGraphWidget.prototype, {
                 .html(this.dataToBind.oldValue);
     },
 
+    updateValue: function() {
+        $('h2.value > .content', this.widget).html(this.dataToBind.value);
+    },
+
     setupGraph: function() {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
         $('.change-rate', this.widget).hide();
         this.chart = $('.graph', this.widget).highcharts({
             chart: {
-                type: 'spline'
+                type: this.params.graphType
             },
             title: {
                 text: ''
@@ -78,7 +88,11 @@ $.extend(IncrementalGraphWidget.prototype, {
             xAxis: {
                 title: '',
                 type: 'datetime',
-                tickPixelInterval: 150
+                dateTimeLabelFormats: {
+                    millisecond: '%H:%M',
+                    second: '%H:%M'
+                },
+                tickPixelInterval: this.params.graphTickPixelInterval
             },
             yAxis: {
                 title: ''

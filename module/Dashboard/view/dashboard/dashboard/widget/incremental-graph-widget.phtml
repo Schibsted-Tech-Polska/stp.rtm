@@ -9,8 +9,8 @@
             <h1 class="title"><?php echo $params['title']; ?> <?php if ($params['subtitle']):?><br/><small><?php echo $params['subtitle']; ?></small><?php endif?></h1>
 
             <h2 class="value">
-                <span class="prefix"><?php echo $params['valuePrefix']; ?></span><%= value %><span
-                    class="suffix"><?php echo $params['valueSuffix']; ?></span></h2>
+                <span class="prefix"><?php echo $params['valuePrefix']; ?></span><span class="content"><%= value %></span><span class="suffix"><?php echo $params['valueSuffix']; ?></span>
+            </h2>
 
             <p class="change-rate">
                 <i class="icon-arrow"></i>
