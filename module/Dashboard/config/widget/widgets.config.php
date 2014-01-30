@@ -80,6 +80,9 @@ return array(
         'valuePrefix' => '',
         'span' => 3,
         'useThreshold' => 0,
+        'maxPoints' => 20,
+        'graphType' => 'spline',
+        'graphTickPixelInterval' => 150,
     ),
     'alert' => array(
         'refreshRate' => 60,
