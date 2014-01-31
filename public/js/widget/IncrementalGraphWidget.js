@@ -57,6 +57,18 @@ $.extend(IncrementalGraphWidget.prototype, {
         if (((this.params.thresholdComparator == 'higherIsBetter') && (currentValue <= this.params.criticalValue)) || ((this.params.thresholdComparator == 'lowerIsBetter') && (currentValue >= this.params.criticalValue))) {
             $(this.widget).blink({opacity: 0.2});
         }
+        this.chart.highcharts().xAxis[0].removePlotLine('deployment');
+        for (var i=0; i<currentPoint.events.length; i++) {
+            var deployment = currentPoint.events[i];
+            this.chart.highcharts().xAxis[0].addPlotLine({
+                id: 'deployment',
+                label: { text: deployment.title, style: { color: 'orange' } },
+                value: parseFloat(deployment.date) * 1000,
+                color: 'orange',
+                width: 2,
+                zIndex: 5
+            });
+        }
     },
 
     handleChangeRate: function() {
