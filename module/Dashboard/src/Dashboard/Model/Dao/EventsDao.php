@@ -19,7 +19,7 @@ class EventsDao extends AbstractDao {
         $qb = $dm->createQueryBuilder('Dashboard\Document\Message');
 
         if ($params['dashboardName'] != 'general') {
-            $qb->field('projectName')->equals(isset($params['projectName']) ? isset($params['projectName']) : $params['dashboardName']);
+            $qb->field('projectName')->equals(isset($params['projectName']) ? $params['projectName'] : $params['dashboardName']);
             $qb->field('widgetId')->equals($params['widgetId']);
         }
 
