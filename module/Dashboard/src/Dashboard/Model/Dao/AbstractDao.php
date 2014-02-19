@@ -39,6 +39,20 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
     const RESPONSE_IN_JSON = 'json';
 
     /**
+     * Requests returns XML acquired from HTML
+     *
+     * @var string
+     */
+    const RESPONSE_IN_HTML = 'html';
+
+    /**
+     * Requests returns data as is, without any processing
+     *
+     * @var string
+     */
+    const RESPONSE_AS_IS = 'plain';
+
+    /**
      * Data provider object, may be overloaded
      *
      * @var \Zend\Http\Client
@@ -220,6 +234,21 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
                     } catch (Exception $e) {
                         throw new Client\Exception\RuntimeException('Parsing XML from request response failed');
                     }
+                    break;
+                case self::RESPONSE_IN_HTML:
+                    try {
+                        // load as HTML, supress any error and pass it to XML parser
+                        $doc = new \DOMDocument();
+                        $doc->recover = true;
+                        $doc->strictErrorChecking = false;
+                        @$doc->loadHTML($response->getBody());
+                        $responseParsed = simplexml_load_string($doc->saveXML());
+                    } catch (Exception $e) {
+                        throw new Client\Exception\RuntimeException('Parsing XML from request response failed');
+                    }
+                    break;
+                case self::RESPONSE_AS_IS:
+                    $responseParsed = $response;
                     break;
                 default:
                     throw new Client\Exception\RuntimeException('Parser for request response not found.');
