@@ -78,4 +78,16 @@ return array(
         'subtitle' => '',
         'span' => 3,
     ),
+    'image' => array(
+        'refreshRate' => 60,
+        'title' => '',
+        'subtitle' => '',
+        'span' => 3,
+    ),
+    'smog' => array(
+        'refreshRate' => 60,
+        'title' => '',
+        'subtitle' => '',
+        'span' => 3,
+    ),
 );
