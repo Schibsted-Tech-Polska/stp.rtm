@@ -136,8 +136,9 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => strtotime($thresholdValues['Apdex']['end_time']),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['Apdex']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
         );
     }
 
@@ -244,8 +245,9 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => strtotime($thresholdValues['Memory']['end_time']),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['Memory']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
         );
     }
 
@@ -271,8 +273,9 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => strtotime($thresholdValues['CPU']['end_time']),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['CPU']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
         );
     }
 
@@ -298,8 +301,9 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => strtotime($thresholdValues['DB']['end_time']),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['DB']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
         );
     }
 
@@ -325,8 +329,9 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => strtotime($thresholdValues['Throughput']['end_time']),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['Throughput']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
         );
     }
 
@@ -352,8 +357,9 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => strtotime($thresholdValues['Response Time']['end_time']),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['Response Time']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
         );
     }
 
@@ -381,6 +387,53 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
+     * Fetches events for the application.
+     * Because it can only be obtained in XML I manually parse it into an array.
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
+    public function fetchEvents(array $params = array()) {
+        $result = array();
+
+        $response = $this->request($this->config['urls']['fetchEvents'], $params, self::RESPONSE_IN_XML);
+
+        foreach ($response->channel->item as $event) {
+            $event = (array) $event;
+            if (preg_match('/\[([a-z]+)\](.*)/i', $event['title'], $matches)) {
+                if (!empty($params['eventType']) && $params['eventType']==$matches[1]) {
+                    $result[] = array(
+                        'title' => trim($matches[2], ' -.'),
+                        'date' => strtotime($event['pubDate']), // doesn't need TimeZone conversion
+                        'type' => $matches[1],
+                    );
+                }
+            } else {
+                $result[] = array(
+                    'title' => $event['title'],
+                    'date' => strtotime($event['pubDate']), // doesn't need TimeZone conversion
+                    'type' => '',
+                );
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * Fetches deployment events for the application.
+     *
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
+    public function fetchDeploymentEvents(array $params = array()) {
+        $events = array();
+        if (!empty($this->getDaoParams()['feed']) || !empty($params['feed'])) {
+            $events = $this->fetchEvents($params + array('eventType' => 'deployment'));
+        }
+        return $events;
+    }
+
+    /**
      * Fetches threshold values set for this metric (if they are set)
      * @param array $params widget params
      * @return array
@@ -397,5 +450,19 @@ class NewRelicDao extends AbstractDao {
         }
 
         return $result;
+    }
+
+    /**
+     * Helper function to convert time between timezones.
+     * @param $time
+     * @param $originTimezone
+     * @param $targetTimezone
+     * @param string $format
+     * @return string
+     */
+    private function convertTimeBetweenTimezones($time, $originTimezone, $targetTimezone, $format = 'Y-m-d H:i:s') {
+        $convertedTime = new \DateTime($time, new \DateTimeZone($originTimezone) );
+        $convertedTime->setTimeZone(new \DateTimeZone($targetTimezone));
+        return $convertedTime->format($format);
     }
 }
