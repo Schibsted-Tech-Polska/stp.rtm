@@ -136,7 +136,7 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Apdex']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['Apdex']['metric_value'],
             'events' => $this->fetchDeploymentEvents($params),
         );
@@ -245,7 +245,7 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Memory']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['Memory']['metric_value'],
             'events' => $this->fetchDeploymentEvents($params),
         );
@@ -273,7 +273,7 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['CPU']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['CPU']['metric_value'],
             'events' => $this->fetchDeploymentEvents($params),
         );
@@ -301,7 +301,7 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['DB']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['DB']['metric_value'],
             'events' => $this->fetchDeploymentEvents($params),
         );
@@ -329,7 +329,7 @@ class NewRelicDao extends AbstractDao {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return array(
-            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Throughput']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
             'y' => $thresholdValues['Throughput']['metric_value'],
             'events' => $this->fetchDeploymentEvents($params),
         );
