@@ -6,6 +6,8 @@ use Dashboard\Model\Dao\GearmanDao;
 use Dashboard\Model\Dao\JenkinsDao;
 use Dashboard\Model\Dao\NewRelicDao;
 use Dashboard\Model\Dao\SplunkDao;
+use Dashboard\Model\Dao\TeamcityDao;
+use Dashboard\Model\Dao\SmogDao;
 use Dashboard\Model\Widget\WidgetFactory;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
@@ -78,6 +80,18 @@ class Module {
                 },
                 'SplunkDao' => function (ServiceManager $serviceManager) {
                     return new SplunkDao($serviceManager->get('SplunkDaoConfig'));
+                },
+                'TeamcityDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/TeamcityDao.config.php');
+                },
+                'TeamcityDao' => function (ServiceManager $serviceManager) {
+                    return new TeamcityDao($serviceManager->get('TeamcityDaoConfig'));
+                },
+                'SmogDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/SmogDao.config.php');
+                },
+                'SmogDao' => function (ServiceManager $serviceManager) {
+                    return new SmogDao($serviceManager->get('SmogDaoConfig'));
                 }
             ),
         );

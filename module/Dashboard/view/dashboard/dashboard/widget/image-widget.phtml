@@ -1,0 +1,14 @@
+<div id="<?php echo $widgetId; ?>"
+     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
+     data-widget-type="<?php echo $widgetType; ?>"
+     data-params='<?php echo $this->json($params)?>'>
+</div>
+<script type="text/template" id="<?php echo $widgetId; ?>Tpl">
+    <div class="widgetContainer">
+        <h1 class="title"><?php echo $params['title']; ?> <?php if ($params['subtitle']):?><br/><small><?php echo $params['subtitle']; ?></small><?php endif?></h1>
+
+        <div class="content">
+            <img src="<%= url %>" />
+        </div>
+    </div>
+</script>
