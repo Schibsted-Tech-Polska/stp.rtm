@@ -2,7 +2,7 @@
 namespace Dashboard\Model\Dao;
 
 /**
- * Class HipChatDao
+ * Class BambooDao
  *
  * @package Dashboard\Model\Dao
  */
