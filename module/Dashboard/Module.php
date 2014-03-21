@@ -1,6 +1,7 @@
 <?php
 namespace Dashboard;
 
+use Dashboard\Model\Dao\BambooDao;
 use Dashboard\Model\Dao\EventsDao;
 use Dashboard\Model\Dao\GearmanDao;
 use Dashboard\Model\Dao\JenkinsDao;
@@ -86,6 +87,12 @@ class Module {
                 'HipChatDao' => function (ServiceManager $serviceManager) {
                     return new HipChatDao($serviceManager->get('HipChatDaoConfig'));
                 },
+                'BambooDaoConfig' => function (ServiceManager $serviceManager) {
+                        return include('config/dao/BambooDao.config.php');
+                    },
+                'BambooDao' => function (ServiceManager $serviceManager) {
+                        return new BambooDao($serviceManager->get('BambooDaoConfig'));
+                    },
             ),
         );
     }
