@@ -1,6 +1,7 @@
 <?php
 namespace Dashboard;
 
+use Dashboard\Model\Dao\BambooDao;
 use Dashboard\Model\Dao\EventsDao;
 use Dashboard\Model\Dao\GearmanDao;
 use Dashboard\Model\Dao\JenkinsDao;
@@ -8,6 +9,7 @@ use Dashboard\Model\Dao\NewRelicDao;
 use Dashboard\Model\Dao\SplunkDao;
 use Dashboard\Model\Dao\TeamcityDao;
 use Dashboard\Model\Dao\SmogDao;
+use Dashboard\Model\Dao\HipChatDao;
 use Dashboard\Model\Widget\WidgetFactory;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
@@ -93,6 +95,18 @@ class Module {
                 'SmogDao' => function (ServiceManager $serviceManager) {
                     return new SmogDao($serviceManager->get('SmogDaoConfig'));
                 }
+                'HipChatDaoConfig' => function (ServiceManager $serviceManager) {
+                    return include('config/dao/HipChatDao.config.php');
+                },
+                'HipChatDao' => function (ServiceManager $serviceManager) {
+                    return new HipChatDao($serviceManager->get('HipChatDaoConfig'));
+                },
+                'BambooDaoConfig' => function (ServiceManager $serviceManager) {
+                        return include('config/dao/BambooDao.config.php');
+                },
+                'BambooDao' => function (ServiceManager $serviceManager) {
+                        return new BambooDao($serviceManager->get('BambooDaoConfig'));
+                },
             ),
         );
     }
