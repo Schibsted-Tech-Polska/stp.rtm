@@ -1,6 +1,7 @@
 <?php
 namespace Dashboard;
 
+use Dashboard\Model\Dao\AtgImporterDao;
 use Dashboard\Model\Dao\BambooDao;
 use Dashboard\Model\Dao\EventsDao;
 use Dashboard\Model\Dao\GearmanDao;
@@ -92,6 +93,9 @@ class Module {
                     },
                 'BambooDao' => function (ServiceManager $serviceManager) {
                         return new BambooDao($serviceManager->get('BambooDaoConfig'));
+                    },
+                'AtgImporterDao' => function (ServiceManager $serviceManager) {
+                        return new AtgImporterDao(null);
                     },
             ),
         );
