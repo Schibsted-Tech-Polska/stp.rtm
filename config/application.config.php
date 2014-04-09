@@ -5,7 +5,18 @@
  *
  * @see https://github.com/zendframework/ZFTool
  */
-return array(
+
+if (!file_exists(__DIR__ . '/environment.config.php' )) {
+    throw new \Exception('environment.config.php does not exist!');
+} else {
+    require('environment.config.php');
+
+    if (!isset($env)) {
+        throw new \RuntimeException('Application environment is not set. Have you run rake?');
+    }
+}
+
+$config = array(
     'modules' => array(
         'Whoops',
         'DoctrineModule',
@@ -39,4 +50,16 @@ return array(
 
         // The path in which to cache merged configuration.
         'cache_dir' => './data/cache',
+);
+
+$envConfigPath = __DIR__ . '/' . $env . '.config.php';
+if (is_readable($envConfigPath)) {
+    $envConfig = require $envConfigPath;
+
+    $config = \Zend\Stdlib\ArrayUtils::merge(
+        $config,
+        $envConfig
     );
+}
+
+return $config;

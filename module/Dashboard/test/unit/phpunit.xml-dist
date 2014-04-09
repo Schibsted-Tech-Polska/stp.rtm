@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="Bootstrap.php"
+         colors="true"
+         verbose="true"
+         backupStaticAttributes="false"
+         backupGlobals="false"
+         syntaxCheck="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         processIsolation="false">
+
+    <testsuites>
+        <testsuite name="Api Unit Test">
+            <directory>./VektklubbCore</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <env name="APP_ENV" value="testing" />
+    </php>
+
+    <filter>
+        <blacklist>
+            <directory suffix=".php">../../../../vendor/</directory>
+            <directory suffix=".php">../../../../config/</directory>
+        </blacklist>
+        <whitelist>
+            <directory suffix=".php">../../src</directory>
+        </whitelist>
+    </filter>
+
+</phpunit>

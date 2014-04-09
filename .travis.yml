@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - "5.5"
+  - "5.4"
+
+install:
+  - composer install --dev --prefer-dist
+
+script:
+  - vendor/bin/phpunit --configuration test/phpunit.xml --coverage-text
+  - vendor/bin/phpcs --standard=psr1 library test
+
+notifications:
+  email: true
