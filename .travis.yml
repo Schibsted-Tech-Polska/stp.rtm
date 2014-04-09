@@ -1,11 +1,9 @@
 language: php
+cache: bundler
 
 php:
   - "5.5"
   - "5.4"
-
-install:
-  - gem install rails
 
 before_script:
   - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
