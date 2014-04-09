@@ -14,14 +14,12 @@ use Zend\View\Model\ViewModel;
 use Zend\Http\Client;
 
 class IndexController extends AbstractActionController {
-
     /**
      * Index action for homepage
      *
      * @return array|ViewModel
      */
     public function indexAction() {
-
         return new ViewModel();
     }
 }
