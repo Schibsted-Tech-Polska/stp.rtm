@@ -7,6 +7,9 @@ php:
 install:
   - gem install rails
 
+before_script:
+  - echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
 script:
   - rake build setEnv[testing] ci
 
