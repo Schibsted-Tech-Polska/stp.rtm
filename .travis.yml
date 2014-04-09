@@ -5,11 +5,10 @@ php:
   - "5.4"
 
 install:
-  - composer install --dev --prefer-dist
+  - gem install rails
 
 script:
-  - vendor/bin/phpunit --configuration test/phpunit.xml --coverage-text
-  - vendor/bin/phpcs --standard=psr1 library test
+  - rake build setEnv[testing] ci
 
 notifications:
   email: true
