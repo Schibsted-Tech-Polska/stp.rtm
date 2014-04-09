@@ -17,7 +17,10 @@ use Zend\ServiceManager\ServiceManager;
 
 class Module {
     public function getConfig() {
-        return include __DIR__ . '/config/module.config.php';
+        return array_merge_recursive(
+            include __DIR__ . '/config/module.config.php',
+            $this->autoloadConfigs(__DIR__ . '/config/autoload')
+        );
     }
 
     public function getAutoloaderConfig() {
@@ -40,32 +43,32 @@ class Module {
         return array(
             'factories' => array(
                 'WidgetConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/widget/widgets.config.php');
+                    return $serviceManager->get('Config')['widgetsConfig'];
                 },
                 'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/JenkinsDao.config.php');
+                    return $serviceManager->get('Config')['JenkinsDao'];
                 },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
                     return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
                 },
                 'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/NewRelicDao.config.php');
+                    return $serviceManager->get('Config')['NewRelicDao'];
                 },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
                     return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
                 },
                 'EventsDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/EventsDao.config.php');
+                    return $serviceManager->get('Config')['EventsDao'];
                 },
                 'EventsDao' => function (ServiceManager $serviceManager) {
                     return new EventsDao($serviceManager->get('EventsDaoConfig'));
                 },
                 'GearmanDaoConfig' => function (ServiceManager $serviceManager) {
-                        return include('config/dao/GearmanDao.config.php');
-                    },
+                    return $serviceManager->get('Config')['GearmanDao'];
+                },
                 'GearmanDao' => function (ServiceManager $serviceManager) {
-                        return new GearmanDao($serviceManager->get('GearmanDaoConfig'));
-                    },
+                    return new GearmanDao($serviceManager->get('GearmanDaoConfig'));
+                },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new WidgetFactory($serviceManager->get('WidgetConfig'));
                 },
@@ -78,36 +81,64 @@ class Module {
                     return new MemcachedOptions($config['dashboardCache']);
                 },
                 'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/SplunkDao.config.php');
+                    return $serviceManager->get('Config')['SplunkDao'];
                 },
                 'SplunkDao' => function (ServiceManager $serviceManager) {
                     return new SplunkDao($serviceManager->get('SplunkDaoConfig'));
                 },
                 'TeamcityDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/TeamcityDao.config.php');
+                    return $serviceManager->get('Config')['TeamcityDao'];
                 },
                 'TeamcityDao' => function (ServiceManager $serviceManager) {
                     return new TeamcityDao($serviceManager->get('TeamcityDaoConfig'));
                 },
                 'SmogDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/SmogDao.config.php');
+                    return $serviceManager->get('Config')['SmogDao'];
                 },
                 'SmogDao' => function (ServiceManager $serviceManager) {
                     return new SmogDao($serviceManager->get('SmogDaoConfig'));
-                }
+                },
                 'HipChatDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/HipChatDao.config.php');
+                    return $serviceManager->get('Config')['HipChatDao'];
                 },
                 'HipChatDao' => function (ServiceManager $serviceManager) {
                     return new HipChatDao($serviceManager->get('HipChatDaoConfig'));
                 },
                 'BambooDaoConfig' => function (ServiceManager $serviceManager) {
-                        return include('config/dao/BambooDao.config.php');
+                    return $serviceManager->get('Config')['BambooDao'];
                 },
                 'BambooDao' => function (ServiceManager $serviceManager) {
-                        return new BambooDao($serviceManager->get('BambooDaoConfig'));
+                    return new BambooDao($serviceManager->get('BambooDaoConfig'));
                 },
             ),
         );
+    }
+
+    /**
+     * Include all files in modules config/autoload if the directory exists
+     * @param  string $configPath Optional path to the configs path
+     * @return array
+     */
+    private function autoloadConfigs($configPath = __DIR__) {
+        $config = [];
+
+        if (is_dir($configPath)) {
+            $directory = new \RecursiveDirectoryIterator($configPath);
+            $iterator = new \RecursiveIteratorIterator($directory);
+            $regex = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
+
+            foreach ($regex as $file) {
+                $singleConfigArray = require_once($file[0]);
+
+                if (is_array($singleConfigArray)) {
+                    $config = array_merge_recursive(
+                        $config,
+                        $singleConfigArray
+                    );
+                }
+            }
+        }
+
+        return $config;
     }
 }

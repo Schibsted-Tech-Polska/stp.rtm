@@ -3,5 +3,6 @@
  * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
  */
 
-return array(
-);
+return [
+    'EventsDao' => [],
+];

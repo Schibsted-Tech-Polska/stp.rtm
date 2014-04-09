@@ -3,8 +3,8 @@
  * @author: Damian Rawski <damian.rawski@schibsted.pl>
  */
 
-return array(
-    'urls' => array(
+return [
+    'urls' => [
         'listRecentMessages' => 'https://api.hipchat.com/v1/rooms/history?auth_token=:auth_token:&room_id=:room_id:&date=recent',
-    ),
-);
+    ],
+];
