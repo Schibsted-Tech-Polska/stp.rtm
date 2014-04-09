@@ -57,13 +57,13 @@ end
 desc "Measure project size using PHPLOC"
 task :phploc do |task|
     puts task.comment
-    system_check "phploc --log-csv #{buildPath}/logs/phploc.csv #{srcPath}"
+    system_check "vendor/bin/phploc --log-csv #{buildPath}/logs/phploc.csv #{srcPath}"
 end
 
 desc "Calculate software metrics using PHP_Depend"
 task :pdepend do |task|
     puts task.comment
-    system_check "pdepend --jdepend-xml=#{buildPath}/logs/jdepend.xml" +
+    system_check "vendor/bin/pdepend --jdepend-xml=#{buildPath}/logs/jdepend.xml" +
              " --jdepend-chart=#{buildPath}/pdepend/dependencies.svg" +
              " --overview-pyramid=#{buildPath}/pdepend/overview-pyramid.svg" +
              " #{srcPath}"
@@ -72,25 +72,25 @@ end
 desc "Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing."
 task :phpmd do |task|
     puts task.comment
-    system_check "phpmd #{srcPath} text scripts/php/phpmd.xml"
+    system_check "vendor/bin/phpmd #{srcPath} text scripts/php/phpmd.xml"
 end
 
 desc "Perform project mess detection using PHPMD creating a log file for the continuous integration server"
 task :phpmdCi do |task|
     puts task.comment
-    system_check "phpmd #{srcPath} xml scripts/php/phpmd.xml --reportfile #{buildPath}/logs/pmd.xml"
+    system_check "vendor/bin/phpmd #{srcPath} xml scripts/php/phpmd.xml --reportfile #{buildPath}/logs/pmd.xml"
 end
 
 desc "Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing."
 task :phpcs do |task|
     puts task.comment
-    system_check "phpcs --standard=#{codeStyle} #{srcPath}"
+    system_check "vendor/bin/phpcs --standard=#{codeStyle} #{srcPath}"
 end
 
 desc "Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server"
 task :phpcsCi do |task|
     puts task.comment
-    system_check "phpcs" +
+    system_check "vendor/bin/phpcs" +
              " --report=checkstyle" +
              " --report-file=#{buildPath}/logs/checkstyle.xml" +
              " --standard=#{codeStyle} #{srcPath}" +
@@ -100,13 +100,7 @@ end
 desc "Find duplicate code using PHPCPD"
 task :phpcpd do |task|
     puts task.comment
-    system_check "phpcpd --log-pmd #{buildPath}/logs/pmd-cpd.xml #{srcPath} > /dev/null"
-end
-
-desc "Generate API documentation using phpDoc"
-task :phpdoc do |task|
-    puts task.comment
-    system_check "phpdoc -t #{buildPath}/api -d #{srcPath} -i */config/*.*"
+    system_check "vendor/bin/phpcpd --log-pmd #{buildPath}/logs/pmd-cpd.xml #{srcPath} > /dev/null"
 end
 
 namespace :composer do
@@ -210,9 +204,6 @@ desc "Make copy of config/environment.config.php.dist and set env to given one (
 task :setEnv, [:newEnv] do |task, args|
     puts task.comment
     system_check "cat config/environment.config.php.dist | sed -r -e 's/#APPLICATION_ENVIRONMENT#/#{args.newEnv}/g' > config/environment.config.php"
-    if args.newEnv == 'testing'
-        system "mv #{rootPath}/public/.htaccess.ci.dist #{rootPath}/public/.htaccess"
-    end
 end
 
 desc "Generate json data for API documentation"
@@ -237,7 +228,7 @@ end
 
 testType = ENV["testType"] || defaultTestType
 
-task :ci => ["lint","phploc","pdepend","phpmdCi","phpcsCi","phpcpd","phpdoc","phpcb"] do
+task :ci => ["lint","phploc","pdepend","phpmdCi","phpcsCi","phpcpd","phpcb"] do
     Rake::Task["test"].invoke(testType)
 end
 
