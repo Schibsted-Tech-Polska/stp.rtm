@@ -209,6 +209,19 @@ task :apidocs, [:apiUrl] do |task, args|
 END
 end
 
+module Rake
+    class Application
+        attr_accessor :current_task
+    end
+    class Task
+        alias :old_execute :execute
+        def execute(args=nil)
+              Rake.application.current_task = @name
+              old_execute(args)
+        end
+    end
+end
+
 module Kernel
     def system_check(args=nil)
         system(args)
