@@ -158,17 +158,10 @@ task :test, [:testType] do |task, args|
 
         system_check "php vendor/bin/phpunit -c " +
                 " $PWD/#{currentModulePath}/#{args.testType}/phpunit.xml" +
-                " --log-junit $PWD/#{buildPath}/logs/test-unit-#{moduleName.downcase}.xml" +
-                " --coverage-clover $PWD/#{buildPath}/logs/clover-#{moduleName.downcase}.xml" +
-                " --coverage-html $PWD/#{buildPath}/#{coveragePath}/#{moduleName.downcase}" +
-                " --coverage-php $PWD/#{coverageCovFile}" +
+                " --coverage-text"
                 " $PWD/#{currentModulePath}/#{args.testType}/#{moduleName}Test/"
 
         system <<END
-        sed -i -e "1s/^/<?php return unserialize('/" #{coverageCovFile}
-        echo "');" >> #{coverageCovFile}
-        php -d error_reporting=0 vendor/bin/phpcov merge --html="#{coverageFullPath}/Vektklubb" #{coverageFullPath}
-        php -d error_reporting=0 vendor/bin/phpcov merge --clover="#{buildPath}/logs/clover-vektklubb.xml" #{coverageFullPath}
 END
     end
 end
