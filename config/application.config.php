@@ -9,7 +9,7 @@
 if (!file_exists(__DIR__ . '/environment.config.php' )) {
     throw new \Exception('environment.config.php does not exist!');
 } else {
-    require('environment.config.php');
+    require 'environment.config.php';
 
     if (!isset($env)) {
         throw new \RuntimeException('Application environment is not set. Have you run rake?');

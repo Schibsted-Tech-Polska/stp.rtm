@@ -6,7 +6,6 @@
 
 namespace Dashboard\Model\Dao;
 
-
 use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 use Dashboard\Model\Dao\Exception\EndpointUrlNotDefined;
 use Dashboard\Model\Dao\Exception\FetchNotImplemented;
@@ -16,7 +15,8 @@ use Zend\Json\Json;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-abstract class AbstractDao implements ServiceLocatorAwareInterface {
+abstract class AbstractDao implements ServiceLocatorAwareInterface
+{
     /**
      * Service locator
      *
@@ -78,9 +78,10 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      * Set service locator
      *
      * @param ServiceLocatorInterface $serviceLocator Service locator interface.
-     * @return $this
+     *                                                @return $this
      */
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator) {
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
         $this->serviceLocator = $serviceLocator;
 
         return $this;
@@ -91,17 +92,19 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      *
      * @return ServiceLocatorInterface
      */
-    public function getServiceLocator() {
+    public function getServiceLocator()
+    {
         return $this->serviceLocator;
     }
 
     /**
      * Dao constructor
      * Data provider can be injected, otherwise we use \Zend\Http\Client
-     * @param array $config Dao configuration
+     * @param array  $config       Dao configuration
      * @param object $dataProvider data provider object
      */
-    public function __construct($config, $dataProvider = null) {
+    public function __construct($config, $dataProvider = null)
+    {
         $this->config = $config;
 
         if (is_null($dataProvider)) {
@@ -114,10 +117,11 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
     /**
      * Creates a dataProvider object (\Zend\Http\Client)
      *
-     * @param string|null $auth Auth data login:password
+     * @param  string|null $auth Auth data login:password
      * @return Client
      */
-    protected function setDefaultDataProvider($auth = null) {
+    protected function setDefaultDataProvider($auth = null)
+    {
         $dataProvider = new Client();
 
         $adapter = new Client\Adapter\Curl();
@@ -151,9 +155,10 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
     /**
      * Configures Dao instance for performing requests
      * @param array $daoOptions - Dao usage parameters e.g. accountId, optional headers
-     * @return $this
+     *                          @return $this
      */
-    public function setDaoOptions(array $daoOptions) {
+    public function setDaoOptions(array $daoOptions)
+    {
         $this->daoOptions = $daoOptions;
 
         return $this;
@@ -163,7 +168,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      * Returns ONLY URL parameters from self::$daoOptions
      * @return array
      */
-    public function getDaoParams() {
+    public function getDaoParams()
+    {
         return isset($this->daoOptions['params']) ? $this->daoOptions['params'] : array();
     }
 
@@ -171,7 +177,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      * Returns ONLY Http headers from self::$daoOptions
      * @return array
      */
-    public function getDaoHeaders() {
+    public function getDaoHeaders()
+    {
         return isset($this->daoOptions['headers']) ? $this->daoOptions['headers'] : array();
     }
 
@@ -179,22 +186,24 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      * Returns ONLY Auth data from self::$daoOptions
      * @return array
      */
-    public function getDaoAuth() {
+    public function getDaoAuth()
+    {
         return isset($this->daoOptions['auth']) ? $this->daoOptions['auth'] : null;
     }
 
     /**
      * Executes a request to a given URL using injected Data Provider
      *
-     * @param string|\Zend\Uri\HttpUri $url endpoint destination URL
-     * @param array|null $params request params values
-     * @param int $responseFormat Format of the response - needed to execute a proper parser
-     * @param string|null $auth Auth data login:password
-     * @param array|null $postData POST data
+     * @param  string|\Zend\Uri\HttpUri                     $url            endpoint destination URL
+     * @param  array|null                                   $params         request params values
+     * @param  int                                          $responseFormat Format of the response - needed to execute a proper parser
+     * @param  string|null                                  $auth           Auth data login:password
+     * @param  array|null                                   $postData       POST data
      * @return mixed
      * @throws \Zend\Http\Client\Exception\RuntimeException
      */
-    public function request($url, $params = array(), $responseFormat = self::RESPONSE_IN_JSON, $auth = null, $postData = null) {
+    public function request($url, $params = array(), $responseFormat = self::RESPONSE_IN_JSON, $auth = null, $postData = null)
+    {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
 
@@ -254,6 +263,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
                     throw new Client\Exception\RuntimeException('Parser for request response not found.');
                     break;
             }
+
             return $responseParsed;
         } else {
             throw new Client\Exception\RuntimeException('Request failed with status: ' . $response->renderStatusLine() . ' ' . $response->getBody());
@@ -264,7 +274,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      * Data provider setter
      * @param \Zend\Http\Client $dataProvider data provider object
      */
-    public function setDataProvider($dataProvider) {
+    public function setDataProvider($dataProvider)
+    {
         $this->dataProvider = $dataProvider;
     }
 
@@ -272,18 +283,20 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
      * Data provider getter
      * @return \Zend\Http\Client
      */
-    public function getDataProvider() {
+    public function getDataProvider()
+    {
         return $this->dataProvider;
     }
 
     /**
      * Returns endpoint URL associated with a supplied method name.
      * Throws an exception if no URL found.
-     * @param string $methodName name of method used for fetching data
+     * @param  string                          $methodName name of method used for fetching data
      * @return string
      * @throws Exception\EndpointUrlNotDefined
      */
-    protected function getEndpointUrl($methodName) {
+    protected function getEndpointUrl($methodName)
+    {
         if (!isset($this->config['urls'][$methodName])) {
             throw new EndpointUrlNotDefined('Endpoint URL for method "' . $methodName . '" is not defined in ' . get_class($this));
         }
@@ -293,12 +306,13 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
 
     /**
      * Parses given endpoint URL and replaces all placeholders with their corresponding value
-     * @param string $url - bare URL with placeholders
-     * @param array|null $params - array with optional parameter values
+     * @param  string                            $url    - bare URL with placeholders
+     * @param  array|null                        $params - array with optional parameter values
      * @throws Exception\EndpointUrlNotAssembled
      * @return mixed
      */
-    protected function assembleUrl($url, $params = array()) {
+    protected function assembleUrl($url, $params = array())
+    {
         /**
          * Merging parameters common for all dashboard widget and widget-specific
          */
@@ -315,11 +329,12 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
 
     /**
      * Checks if all placeholders in $url have their corresponding values in $params
-     * @param string $url - bare URL with placeholders
-     * @param array $params - array with optional parameter values
+     * @param  string                            $url    - bare URL with placeholders
+     * @param  array                             $params - array with optional parameter values
      * @throws Exception\EndpointUrlNotAssembled
      */
-    protected function validateUrlParamValues($url, $params) {
+    protected function validateUrlParamValues($url, $params)
+    {
         preg_match_all('/\:[\w]+\:/', $url, $matches);
 
         if (isset($matches[0]) && is_array($matches[0])) {
@@ -334,11 +349,12 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface {
     /**
      * If method does not exist in DAO class and it starts with 'fetch' prefix,
      * we throw the exception because this method should be handled in a specific DAO.
-     * @param string $method Function name
-     * @param array $args Method arguments
+     * @param  string                        $method Function name
+     * @param  array                         $args   Method arguments
      * @throws Exception\FetchNotImplemented
      */
-    public function __call($method, $args) {
+    public function __call($method, $args)
+    {
         if (strpos($method, 'fetch') === 0) {
             throw new FetchNotImplemented('Method "' . $method . '" not implemented in ' . get_class($this));
         }

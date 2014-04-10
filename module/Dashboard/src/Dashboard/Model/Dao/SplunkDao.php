@@ -8,14 +8,16 @@ use Zend\Json\Json;
  *
  * @package Dashboard\Model\Dao
  */
-class SplunkDao extends AbstractDao {
+class SplunkDao extends AbstractDao
+{
     /**
      * Fetch status 500 for vgtv
      *
-     * @param array $params Params
+     * @param  array $params Params
      * @return array
      */
-    public function fetchFivehundredsForAlertWidget(array $params = array()) {
+    public function fetchFivehundredsForAlertWidget(array $params = array())
+    {
         // Get JSON
         $splunkJson = $this->request($this->config['url'], array(), 'json', $this->config['auth'], $this->config['jobs'][$params['config']]);
 
@@ -26,6 +28,7 @@ class SplunkDao extends AbstractDao {
                 $returnArray[$key]['numberOfErrors'] = $splunkJson['columns'][0][$key];
                 $returnArray[$key]['lastErrorTime'] = $splunkJson['columns'][2][$key];
             }
+
             return $returnArray;
         } else {
             return array();

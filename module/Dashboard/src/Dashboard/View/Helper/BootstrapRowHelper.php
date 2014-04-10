@@ -8,15 +8,17 @@ namespace Dashboard\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
-class BootstrapRowHelper extends AbstractHelper {
+class BootstrapRowHelper extends AbstractHelper
+{
     /**
      * Prepares rows with widgets for Bootstrap
      *
-     * @param array $widgetCollection Array of instances of \Dashboard\Model\Widget\AbstractWidget
+     * @param  array      $widgetCollection Array of instances of \Dashboard\Model\Widget\AbstractWidget
      * @throws \Exception
      * @return string
      */
-    public function __invoke(array $widgetCollection) {
+    public function __invoke(array $widgetCollection)
+    {
         $span = 0;
         $html = '';
 

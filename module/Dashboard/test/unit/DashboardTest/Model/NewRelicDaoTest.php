@@ -7,12 +7,13 @@ namespace DashboardTest\Model;
 
 use DashboardTest\Bootstrap;
 
-class NewRelicDaoTest extends \PHPUnit_Framework_TestCase {
-
+class NewRelicDaoTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @return \Dashboard\Model\Dao\NewRelicDao
      */
-    protected function getConfiguredDao() {
+    protected function getConfiguredDao()
+    {
         $dao = Bootstrap::getServiceManager()->get('NewRelicDao');
         $dao->setDaoOptions(array(
             'headers' => array(
@@ -28,7 +29,8 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase {
     /**
      * Testing proper Jenkins API method - should return JSON parsed into array
      */
-    public function testProperApiUrl() {
+    public function testProperApiUrl()
+    {
         $response = $this->getConfiguredDao()->fetchRpmForNumberWidget(array(
             'appId' => '1290733',
         ));
@@ -40,7 +42,8 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase {
      * Executing fetch* method that is not defined in JenkinsDao - should throw an Exception
      * @expectedException \Dashboard\Model\Dao\Exception\FetchNotImplemented
      */
-    public function testImproperApiMethod() {
+    public function testImproperApiMethod()
+    {
         $this->getConfiguredDao()->fetchImproperDataName(array(
             'appId' => '1290733',
         ));
@@ -50,7 +53,8 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase {
      * Proper API method, not all required params given - should throw an Exception
      * @expectedException \Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled
      */
-    public function testNotAllRequiredParamsGiven() {
+    public function testNotAllRequiredParamsGiven()
+    {
         $this->getConfiguredDao()->fetchErrorRateForErrorWidget();
     }
 }

@@ -15,7 +15,8 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  *
  * @package Dashboard\Model\Widget
  */
-class WidgetFactory implements ServiceLocatorAwareInterface {
+class WidgetFactory implements ServiceLocatorAwareInterface
+{
     /**
      * Service locator
      *
@@ -34,20 +35,22 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
      *
      * @param array $widgetConfig Default widget configuration.
      */
-    public function __construct(array $widgetConfig) {
+    public function __construct(array $widgetConfig)
+    {
         $this->widgetDefaultConfig = $widgetConfig;
     }
 
     /**
      * Creates instance of a widget
      *
-     * @param array      $widgetData Widget data from rtm config
-     * @param array|null $daoParams  Dao parameters array
-     * @param string $resourceName Resource name
+     * @param  array                      $widgetData   Widget data from rtm config
+     * @param  array|null                 $daoParams    Dao parameters array
+     * @param  string                     $resourceName Resource name
      * @throws InvalidWidgetTypeException
      * @return AbstractWidget
      */
-    public function build(array $widgetData, $daoParams, $resourceName) {
+    public function build(array $widgetData, $daoParams, $resourceName)
+    {
         $widgetClass = __NAMESPACE__ . '\\' . ucfirst($widgetData['type']) . 'Widget';
 
         if (class_exists($widgetClass)) {
@@ -82,9 +85,10 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
      * Set service locator
      *
      * @param ServiceLocatorInterface $serviceLocator Service locator interface.
-     * @return $this
+     *                                                @return $this
      */
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator) {
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
         $this->serviceLocator = $serviceLocator;
 
         return $this;
@@ -95,7 +99,8 @@ class WidgetFactory implements ServiceLocatorAwareInterface {
      *
      * @return ServiceLocatorInterface
      */
-    public function getServiceLocator() {
+    public function getServiceLocator()
+    {
         return $this->serviceLocator;
     }
 }

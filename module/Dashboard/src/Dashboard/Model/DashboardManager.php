@@ -7,7 +7,6 @@
 namespace Dashboard\Model;
 
 use Zend\Di\ServiceLocator;
-use Zend\ServiceManager\ServiceLocatorAwareTrait;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\ServiceManager;
 
@@ -16,7 +15,8 @@ use Zend\ServiceManager\ServiceManager;
  *
  * @package Dashboard\Model
  */
-class DashboardManager {
+class DashboardManager
+{
     /**
      * Default dashboard's theme name
      *
@@ -71,9 +71,10 @@ class DashboardManager {
      * @param string                  $resourceName   Config name retrieved from URL.
      * @param ServiceLocatorInterface $serviceLocator Interface for retrieving services.
      * @param string                  $widgetId       Id of a single widget to create for this dashboard (not all of them)
-     * @internal param array $configName Dashboard's config
+     *                                                @internal param array $configName Dashboard's config
      */
-    public function __construct($resourceName, ServiceLocatorInterface $serviceLocator, $widgetId = null) {
+    public function __construct($resourceName, ServiceLocatorInterface $serviceLocator, $widgetId = null)
+    {
         $this->serviceLocator = $serviceLocator;
         $this->setResourceName($resourceName);
         $this->loadConfig($resourceName);
@@ -85,17 +86,19 @@ class DashboardManager {
      *
      * @return array
      */
-    public function getWidgetTypes() {
+    public function getWidgetTypes()
+    {
         return $this->widgetTypes;
     }
 
     /**
      * Loads configuration array from rtm config file
      *
-     * @param string $resourceName Config file name retrieved from url
+     * @param  string     $resourceName Config file name retrieved from url
      * @throws \Exception
      */
-    public function loadConfig($resourceName) {
+    public function loadConfig($resourceName)
+    {
         $configFilePath = self::RTM_CONFIG_DIR . '/' . $resourceName . '.config.php';
 
         if (file_exists($configFilePath)) {
@@ -110,7 +113,8 @@ class DashboardManager {
      *
      * @param string|null $widgetId Id of a single widget we want to create
      */
-    public function initWidgetCollection($widgetId = null) {
+    public function initWidgetCollection($widgetId = null)
+    {
         $widgetFactory = $this->getServiceLocator()->get('WidgetFactory');
 
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
@@ -131,7 +135,8 @@ class DashboardManager {
      *
      * @param Widget\AbstractWidget $widget Concrete widget object
      */
-    public function addWidget(Widget\AbstractWidget $widget) {
+    public function addWidget(Widget\AbstractWidget $widget)
+    {
         $this->widgetsCollection[$widget->getId()] = $widget;
         $this->widgetTypes[$widget->getWidgetTypeName()] = $widget->getWidgetTypeName();
     }
@@ -139,11 +144,12 @@ class DashboardManager {
     /**
      * Returns concrete instance of widget with the given identifier
      *
-     * @param string $id Widget's id
+     * @param  string     $id Widget's id
      * @throws \Exception
      * @return mixed
      */
-    public function getWidget($id) {
+    public function getWidget($id)
+    {
         if (isset($this->widgetsCollection[$id])) {
             return $this->widgetsCollection[$id];
         } else {
@@ -156,7 +162,8 @@ class DashboardManager {
      *
      * @return array
      */
-    public function getWidgets() {
+    public function getWidgets()
+    {
         return $this->widgetsCollection;
     }
 
@@ -165,7 +172,8 @@ class DashboardManager {
      *
      * @return ServiceLocatorInterface
      */
-    public function getServiceLocator() {
+    public function getServiceLocator()
+    {
         return $this->serviceLocator;
     }
 
@@ -174,7 +182,8 @@ class DashboardManager {
      *
      * @param string $resourceName Resource name
      */
-    protected function setResourceName($resourceName) {
+    protected function setResourceName($resourceName)
+    {
         $this->resourceName = $resourceName;
     }
 
@@ -183,7 +192,8 @@ class DashboardManager {
      *
      * @return string
      */
-    public function getResourceName() {
+    public function getResourceName()
+    {
         return $this->resourceName;
     }
 
@@ -192,7 +202,8 @@ class DashboardManager {
      *
      * @return string
      */
-    public function getThemeName() {
+    public function getThemeName()
+    {
         if (isset($this->rtmConfig['theme'])) {
             return $this->rtmConfig['theme'];
         }

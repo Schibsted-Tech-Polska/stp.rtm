@@ -6,14 +6,16 @@ namespace Dashboard\Model\Dao;
  *
  * @package Dashboard\Model\Dao
  */
-class HipChatDao extends AbstractDao {
+class HipChatDao extends AbstractDao
+{
     /**
      * Fetch HipChat messages
      *
-     * @param array $params Params
+     * @param  array $params Params
      * @return array
      */
-    public function fetchListRecentMessagesForMessagesWidget(array $params = array()) {
+    public function fetchListRecentMessagesForMessagesWidget(array $params = array())
+    {
         $daoParams = $this->getDaoParams();
         $hipChatJson = $this->request($this->config['urls']['listRecentMessages'], array(
             'room_id' => $params['room'],
@@ -29,6 +31,7 @@ class HipChatDao extends AbstractDao {
                     'content' => $message['message'],
                 );
             }
+
             return array_slice($returnArray, 0, $params['limit']);
         } else {
             return array();

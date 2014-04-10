@@ -10,13 +10,15 @@ namespace Dashboard\Model\Widget;
  *
  * @package Dashboard\Model\Widget
  */
-class GeneralMessagesWidget extends MessagesWidget {
+class GeneralMessagesWidget extends MessagesWidget
+{
     /**
      * Constructor
      *
      * @param array $params Params
      */
-    public function __construct(array $params) {
+    public function __construct(array $params)
+    {
         parent::__construct($params);
 
         $this->setWidgetTypeName('MessagesWidget');

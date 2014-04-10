@@ -15,15 +15,18 @@ use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
 use Zend\ServiceManager\ServiceManager;
 
-class Module {
-    public function getConfig() {
+class Module
+{
+    public function getConfig()
+    {
         return array_merge_recursive(
             include __DIR__ . '/config/module.config.php',
             $this->autoloadConfigs(__DIR__ . '/config/autoload')
         );
     }
 
-    public function getAutoloaderConfig() {
+    public function getAutoloaderConfig()
+    {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
@@ -39,7 +42,8 @@ class Module {
      *
      * @return array|\Zend\ServiceManager\Config
      */
-    public function getServiceConfig() {
+    public function getServiceConfig()
+    {
         return array(
             'factories' => array(
                 'WidgetConfig' => function (ServiceManager $serviceManager) {
@@ -74,10 +78,12 @@ class Module {
                 },
                 'CacheAdapter' => function ($serviceManager) {
                     $cacheAdapter = new Memcached($serviceManager->get('CacheAdapterOptions'));
+
                     return $cacheAdapter;
                 },
                 'CacheAdapterOptions' => function ($serviceManager) {
                     $config = $serviceManager->get('Config');
+
                     return new MemcachedOptions($config['dashboardCache']);
                 },
                 'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
@@ -119,7 +125,8 @@ class Module {
      * @param  string $configPath Optional path to the configs path
      * @return array
      */
-    private function autoloadConfigs($configPath = __DIR__) {
+    private function autoloadConfigs($configPath = __DIR__)
+    {
         $config = [];
 
         if (is_dir($configPath)) {

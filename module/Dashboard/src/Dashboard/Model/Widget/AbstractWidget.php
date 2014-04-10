@@ -10,7 +10,8 @@ use Dashboard\Model\Dao\AbstractDao;
 use Zend\Filter\Inflector;
 use Zend\View\Model\ViewModel;
 
-abstract class AbstractWidget {
+abstract class AbstractWidget
+{
     /**
      * Widget's identifier
      *
@@ -58,7 +59,8 @@ abstract class AbstractWidget {
      *
      * @param array $params Merged parameters from custom and default widget config
      */
-    public function __construct(array $params) {
+    public function __construct(array $params)
+    {
         $this->params = $params;
 
         $this->setWidgetTypeName($this->getClassName());
@@ -72,7 +74,8 @@ abstract class AbstractWidget {
      *
      * @return mixed
      */
-    public function fetchData() {
+    public function fetchData()
+    {
         $methodName = 'fetch' . ucfirst($this->getParam('metric')) . 'For' . $this->getWidgetTypeName();
 
         $response = $this->getDao()->$methodName($this->params);
@@ -84,10 +87,11 @@ abstract class AbstractWidget {
     /**
      * Returns widget specific parameter
      *
-     * @param string $paramName Parameter name.
-     * @return mixed Value of a provided parameter name or null if the parameter is not specified.
+     * @param  string $paramName Parameter name.
+     * @return mixed  Value of a provided parameter name or null if the parameter is not specified.
      */
-    public function getParam($paramName) {
+    public function getParam($paramName)
+    {
         if (isset($this->params[$paramName])) {
             return $this->params[$paramName];
         } else {
@@ -100,9 +104,10 @@ abstract class AbstractWidget {
      *
      * @param string $paramName parameter name
      * @param mixed  $value     parameter value
-     * @return $this
+     *                          @return $this
      */
-    public function setParam($paramName, $value) {
+    public function setParam($paramName, $value)
+    {
         $this->params[$paramName] = $value;
 
         return $this;
@@ -113,7 +118,8 @@ abstract class AbstractWidget {
      *
      * @param array $responseHash Array of response values
      */
-    public function setResponseHash($responseHash) {
+    public function setResponseHash($responseHash)
+    {
         $hash = sha1(serialize($responseHash));
         $this->responseHash = $hash;
     }
@@ -123,7 +129,8 @@ abstract class AbstractWidget {
      *
      * @return mixed
      */
-    public function getResponseHash() {
+    public function getResponseHash()
+    {
         return $this->responseHash;
     }
 
@@ -132,7 +139,8 @@ abstract class AbstractWidget {
      *
      * @return ViewModel
      */
-    public function getTplName() {
+    public function getTplName()
+    {
         $tplName = $this->getParam('tplName');
 
         if (is_null($tplName)) {
@@ -152,7 +160,8 @@ abstract class AbstractWidget {
      *
      * @return string
      */
-    protected function prepareTplName() {
+    protected function prepareTplName()
+    {
         // We're separating each word of a widget class name using a dash (‘-‘).
         $inflector = new Inflector(':tplName');
         $inflector->setRules(array(
@@ -171,7 +180,8 @@ abstract class AbstractWidget {
      *
      * @return string
      */
-    public function getClassName() {
+    public function getClassName()
+    {
         $class = explode('\\', get_class($this));
 
         return end($class);
@@ -182,7 +192,8 @@ abstract class AbstractWidget {
      *
      * @param AbstractDao $dao Concrete dao object
      */
-    public function setDao(AbstractDao $dao) {
+    public function setDao(AbstractDao $dao)
+    {
         $this->dao = $dao;
     }
 
@@ -191,7 +202,8 @@ abstract class AbstractWidget {
      *
      * @return mixed
      */
-    public function getDao() {
+    public function getDao()
+    {
         return $this->dao;
     }
 
@@ -200,7 +212,8 @@ abstract class AbstractWidget {
      *
      * @param mixed $id Widget identifier
      */
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
@@ -209,7 +222,8 @@ abstract class AbstractWidget {
      *
      * @return mixed
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -218,7 +232,8 @@ abstract class AbstractWidget {
      *
      * @return array
      */
-    public function getParams() {
+    public function getParams()
+    {
         return $this->params;
     }
 
@@ -227,7 +242,8 @@ abstract class AbstractWidget {
      *
      * @param string $cacheIdentifier string index key
      */
-    public function setCacheIdentifier($cacheIdentifier) {
+    public function setCacheIdentifier($cacheIdentifier)
+    {
         $this->params['cacheIdentifier'] = $cacheIdentifier;
     }
 
@@ -236,7 +252,8 @@ abstract class AbstractWidget {
      *
      * @return string
      */
-    public function getCacheIdentifier() {
+    public function getCacheIdentifier()
+    {
         return $this->params['cacheIdentifier'];
     }
 
@@ -245,7 +262,8 @@ abstract class AbstractWidget {
      *
      * @param string $widgetTypeName Widget type name
      */
-    public function setWidgetTypeName($widgetTypeName) {
+    public function setWidgetTypeName($widgetTypeName)
+    {
         $this->widgetTypeName = $widgetTypeName;
     }
 
@@ -254,7 +272,8 @@ abstract class AbstractWidget {
      *
      * @return string
      */
-    public function getWidgetTypeName() {
+    public function getWidgetTypeName()
+    {
         return $this->widgetTypeName;
     }
 
@@ -268,7 +287,8 @@ abstract class AbstractWidget {
      * Returns metrics threshold values
      * @return array
      */
-    public function getThreshold() {
+    public function getThreshold()
+    {
         return $this->threshold;
     }
 }
