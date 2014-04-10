@@ -10,7 +10,7 @@ buildPath = 'data/build'
 cachePath = 'data/cache'
 logPath = 'data/log'
 srcPath = 'module'
-codeStyle = 'VG'
+codeStyle = 'PSR2'
 testPath = "module/%s/test"
 coveragePath = 'coverage'
 testableModules = %w(Dashboard)
@@ -72,29 +72,13 @@ end
 desc "Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing."
 task :phpmd do |task|
     puts task.comment
-    system_check "vendor/bin/phpmd #{srcPath} text scripts/php/phpmd.xml"
-end
-
-desc "Perform project mess detection using PHPMD creating a log file for the continuous integration server"
-task :phpmdCi do |task|
-    puts task.comment
-    system_check "vendor/bin/phpmd #{srcPath} xml scripts/php/phpmd.xml --reportfile #{buildPath}/logs/pmd.xml"
+    system "vendor/bin/phpmd #{srcPath} text scripts/php/phpmd.xml"
 end
 
 desc "Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing."
 task :phpcs do |task|
     puts task.comment
     system_check "vendor/bin/phpcs --standard=#{codeStyle} #{srcPath}"
-end
-
-desc "Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server"
-task :phpcsCi do |task|
-    puts task.comment
-    system_check "vendor/bin/phpcs" +
-             " --report=checkstyle" +
-             " --report-file=#{buildPath}/logs/checkstyle.xml" +
-             " --standard=#{codeStyle} #{srcPath}" +
-             " > /dev/null"
 end
 
 desc "Find duplicate code using PHPCPD"
@@ -234,7 +218,7 @@ end
 
 testType = ENV["testType"] || defaultTestType
 
-task :ci => ["lint","phploc","pdepend","phpmdCi","phpcsCi","phpcpd","phpcb"] do
+task :ci => ["lint","phploc","pdepend","phpmd","phpcs","phpcpd","phpcb"] do
     Rake::Task["test"].invoke(testType)
 end
 
