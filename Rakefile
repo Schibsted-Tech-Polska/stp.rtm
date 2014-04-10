@@ -78,13 +78,13 @@ end
 desc "Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing."
 task :phpcs do |task|
     puts task.comment
-    system_check "vendor/bin/phpcs --standard=#{codeStyle} #{srcPath}"
+    system "vendor/bin/phpcs --standard=#{codeStyle} #{srcPath}"
 end
 
 desc "Find duplicate code using PHPCPD"
 task :phpcpd do |task|
     puts task.comment
-    system_check "vendor/bin/phpcpd --log-pmd #{buildPath}/logs/pmd-cpd.xml #{srcPath} > /dev/null"
+    system_check "vendor/bin/phpcpd  #{srcPath}"
 end
 
 namespace :composer do
@@ -168,15 +168,6 @@ task :pullModules do |task|
       end
 end
 
-desc "Aggregate tool output with PHP_CodeBrowser"
-task :phpcb do |task|
-      puts task.comment
-      system_check "phpcb" +
-            " --log #{buildPath}/logs/" +
-            " --source #{srcPath}" +
-            " --output #{buildPath}/code-browser"
-end
-
 desc "Make copy of config/environment.config.php.dist and set env to given one (development testing staging production)"
 task :setEnv, [:newEnv] do |task, args|
     puts task.comment
@@ -218,7 +209,7 @@ end
 
 testType = ENV["testType"] || defaultTestType
 
-task :ci => ["lint","phploc","pdepend","phpmd","phpcs","phpcpd","phpcb"] do
+task :ci => ["lint","phploc","pdepend","phpmd","phpcs","phpcpd"] do
     Rake::Task["test"].invoke(testType)
 end
 
