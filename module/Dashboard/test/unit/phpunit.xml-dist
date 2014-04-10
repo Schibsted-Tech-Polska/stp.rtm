@@ -12,9 +12,9 @@
          processIsolation="false">
 
     <testsuites>
-        <testsuite name="Api Unit Test">
-            <directory>./VektklubbCore</directory>
-        </testsuite>
+        <testsuite name="Dashboard module Test">
+                    <directory>./DashboardTest</directory>
+                </testsuite>
     </testsuites>
 
     <php>
