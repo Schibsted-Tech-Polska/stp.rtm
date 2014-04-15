@@ -35,6 +35,14 @@ task :prepare do |task|
     end
 end
 
+desc "Setup configuration files - YOU NEED TO MODIFY THEM FOR YOUR APP!"
+task :setupConfigFiles do |task|
+    Dir.glob("#{srcPath}/Dashboard/config/autoload/dao/*-dist").each do |file|
+        puts "Copying #{file} into #{file.gsub(/-dist$/, '')}"
+        print `cp -n #{file} #{file.gsub(/-dist$/, '')}`
+    end
+end
+
 desc "Prepare directories for deploy"
 task :prepareDeploy do |task|
     puts task.comment
@@ -159,15 +167,6 @@ task :behat, [:profile] do |task, args|
     system_check "vendor/behat/behat/bin/behat --config config/behat.yml --profile #{args.profile}"
 end
 
-desc "Refresh stp's vendors"
-task :pullModules do |task|
-      puts task.comment
-      Dir.glob("./vendor/{stp}/*").each do |dirName|
-          puts "Pulling #{dirName}..."
-          system "cd #{dirName} && git pull"
-      end
-end
-
 desc "Make copy of config/environment.config.php.dist and set env to given one (development testing staging production)"
 task :setEnv, [:newEnv] do |task, args|
     puts task.comment
@@ -213,6 +212,6 @@ task :ci => ["lint","phploc","pdepend","phpmd","phpcs","phpcpd"] do
     Rake::Task["test"].invoke(testType)
 end
 
-task :build => ["prepare","prepareDeploy","composer:dev"]
+task :build => ["prepare","prepareDeploy","setupConfigFiles","composer:dev"]
 
 task :default => ["build"]
