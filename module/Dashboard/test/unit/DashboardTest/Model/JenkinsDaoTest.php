@@ -10,7 +10,16 @@ class JenkinsDaoTest extends \PHPUnit_Framework_TestCase
      */
     public function testProperApiUrl()
     {
-        $response = Bootstrap::getServiceManager()->get('JenkinsDao')->fetchStatusForBuildWidget(array(
+        /**
+         * @var \Dashboard\Model\Dao\JenkinsDao
+         */
+        $jenkinsDao = Bootstrap::getServiceManager()->get('JenkinsDao');
+        $testAdapter = new \Zend\Http\Client\Adapter\Test();
+        $testAdapter->setResponse(
+            file_get_contents(__DIR__ . '/../Mock/mockedJenkinsResponse.txt') );
+        $jenkinsDao->getDataProvider()->setAdapter($testAdapter);
+
+        $response = $jenkinsDao->fetchStatusForBuildWidget(array(
             'view' => 'VGTV',
             'job'  => 'VGTV_front-end',
         ));
