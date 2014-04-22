@@ -19,6 +19,10 @@ behatPath = 'behat'
 
 buildDirs = %w(api code-browser coverage/html coverage/clover logs pdepend behat)
 
+def is_composer_installed
+  return system("composer --version > /dev/null 2>&1")
+end
+
 desc "Cleanup build artifacts"
 task :clean do |task|
     puts task.comment
@@ -100,20 +104,29 @@ namespace :composer do
 
     desc "Install composer's dependencies"
     task :install, [:params] do |task, args|
-        unless File.exist?('composer.phar')
-            system "curl -s http://getcomposer.org/installer | php -d \"apc.enable_cli=off\" "
+        if is_composer_installed
+            system_check "composer install #{args.params}"
+        else
+            unless File.exist?('composer.phar')
+                system "curl -s http://getcomposer.org/installer | php -d \"apc.enable_cli=off\" "
+            end
+
+            system_check "php -d \"apc.enable_cli=off\" composer.phar install #{args.params}"
         end
 
-        system_check "php -d \"apc.enable_cli=off\" composer.phar install #{args.params} --prefer-dist"
     end
 
     desc "Update composer's dependencies"
     task :update, [:params] do |task, args|
-        unless File.exist?('composer.phar')
-            system "curl -s http://getcomposer.org/installer | php -d \"apc.enable_cli=off\" "
-        end
+        if is_composer_installed
+            system_check "composer update #{args.params}"
+        else
+            unless File.exist?('composer.phar')
+                system "curl -s http://getcomposer.org/installer | php -d \"apc.enable_cli=off\" "
+            end
 
-        system_check "php -d \"apc.enable_cli=off\" composer.phar update #{args.params} --prefer-dist"
+            system_check "php -d \"apc.enable_cli=off\" composer.phar update #{args.params} --prefer-dist"
+        end
     end
 
     desc "Update composer's dependencies for development"
