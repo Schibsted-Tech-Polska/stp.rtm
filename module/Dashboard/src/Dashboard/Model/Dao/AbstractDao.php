@@ -356,7 +356,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     public function __call($method, $args)
     {
         if (strpos($method, 'fetch') === 0) {
-            throw new FetchNotImplemented('Method "' . $method . '" not implemented in ' . get_class($this));
+            throw new FetchNotImplemented(sprintf('Method "%s" not implemented in %s. Executed with %s.', $method, get_class($this), print_r($args, true)));
         }
     }
 }

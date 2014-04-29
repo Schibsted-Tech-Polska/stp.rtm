@@ -16,7 +16,8 @@ class JenkinsDaoTest extends \PHPUnit_Framework_TestCase
         $jenkinsDao = Bootstrap::getServiceManager()->get('JenkinsDao');
         $testAdapter = new \Zend\Http\Client\Adapter\Test();
         $testAdapter->setResponse(
-            file_get_contents(__DIR__ . '/../Mock/mockedJenkinsResponse.txt') );
+            file_get_contents(__DIR__ . '/../Mock/mockedJenkinsResponse.txt')
+        );
         $jenkinsDao->getDataProvider()->setAdapter($testAdapter);
 
         $response = $jenkinsDao->fetchStatusForBuildWidget(array(

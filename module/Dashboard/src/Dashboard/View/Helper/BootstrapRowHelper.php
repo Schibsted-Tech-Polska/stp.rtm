@@ -26,17 +26,21 @@ class BootstrapRowHelper extends AbstractHelper
         foreach ($widgetCollection as $widget) {
 
             if (!is_numeric($widget->getParam('span'))) {
-                throw new \Exception('Span value of ' . $widget->getId() . ' widget is not numeric or is not specified');
+                throw new \Exception(
+                    'Span value of ' . $widget->getId() . ' widget is not numeric or is not specified'
+                );
             }
 
             $span += $widget->getParam('span');
             if ($span > 12) {
                 $html .= '</div><div class="row-fluid">';
-                $span = $widget->getParam('span');;
+                $span = $widget->getParam('span');
             }
 
             // Using partial helper for retrieving view of each widget
-            $html .= $this->view->partial($widget->getTplName(), array(
+            $html .= $this->view->partial(
+                    $widget->getTplName(),
+                array(
                     'widgetId' => $widget->getId(),
                     'widgetType' => $widget->getWidgetTypeName(),
                     'params' => $widget->getParams(),

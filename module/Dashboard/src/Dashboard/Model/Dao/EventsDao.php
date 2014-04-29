@@ -56,12 +56,12 @@ class EventsDao extends AbstractDao
     {
         $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
 
-        $eventDocumentClassname = '\Dashboard\Document\\' . ucfirst($eventType);
-        if (!class_exists($eventDocumentClassname)) {
+        $document = '\Dashboard\Document\\' . ucfirst($eventType);
+        if (!class_exists($document)) {
             throw new EventTypeNotDefined('Desired event type has no Document class defined.');
         }
 
-        $event = new $eventDocumentClassname();
+        $event = new $document();
         $event->fromArray($data);
         $event->setProjectName($configName);
         $event->setWidgetId($widgetId);
