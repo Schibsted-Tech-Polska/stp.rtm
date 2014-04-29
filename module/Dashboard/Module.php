@@ -94,7 +94,7 @@ class Module {
                 },
                 'SmogDao' => function (ServiceManager $serviceManager) {
                     return new SmogDao($serviceManager->get('SmogDaoConfig'));
-                }
+                },
                 'HipChatDaoConfig' => function (ServiceManager $serviceManager) {
                     return include('config/dao/HipChatDao.config.php');
                 },
