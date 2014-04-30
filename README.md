@@ -1,13 +1,10 @@
-# Stp.Rtm
-
-Real time monitor dashboard using Jenkins API and New Relic API
 
 ![ScreenShot](screenshot.png "Dashboard")
 
 ## Dependencies
-- php >="5.3.3"
+- php >= 5.4
 - cURL
-- Zend Framework "2.2.0"
+- Zend Framework ~2.3
 - Doctrine-mongo-odm-module
 - MongoDB PHP driver
 - [Whoops](https://github.com/filp/whoops) error handler
