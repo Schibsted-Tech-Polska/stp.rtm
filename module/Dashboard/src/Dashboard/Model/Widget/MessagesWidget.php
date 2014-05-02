@@ -10,4 +10,6 @@ namespace Dashboard\Model\Widget;
  *
  * @package Dashboard\Model\Widget
  */
-class MessagesWidget extends AbstractWidget {}
+class MessagesWidget extends AbstractWidget
+{
+}

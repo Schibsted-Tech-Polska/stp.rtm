@@ -11,4 +11,6 @@ namespace Dashboard\Model\Dao\Exception;
  *
  * @package Dashboard\Model\Dao\Exception
  */
-class EndpointUrlNotDefined extends \Exception {}
+class EndpointUrlNotDefined extends \Exception
+{
+}

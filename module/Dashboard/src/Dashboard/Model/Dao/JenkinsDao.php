@@ -7,14 +7,16 @@
 
 namespace Dashboard\Model\Dao;
 
-class JenkinsDao extends AbstractDao {
+class JenkinsDao extends AbstractDao
+{
     /**
      * Fetches all data necessary for displaying build status widget
      *
-     * @param array $params parameters for assembling proper endpoint URL
+     * @param  array $params parameters for assembling proper endpoint URL
      * @return array
      */
-    public function fetchStatusForBuildWidget(array $params) {
+    public function fetchStatusForBuildWidget(array $params)
+    {
         $responseParsed = array();
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
@@ -34,7 +36,8 @@ class JenkinsDao extends AbstractDao {
         return $responseParsed;
     }
 
-    public function fetchBuildStatus(array $params) {
+    public function fetchBuildStatus(array $params)
+    {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
 
@@ -44,10 +47,11 @@ class JenkinsDao extends AbstractDao {
      * it returns the build executor's name.
      * In all other cases (theoretically not possible) it returns 'UNKNOWN' string.
      *
-     * @param array $buildInfo - part of the JenkinsDao::fetchStatus() response
+     * @param  array $buildInfo - part of the JenkinsDao::fetchStatus() response
      * @return string
      */
-    protected function getLastCommitter(array $buildInfo) {
+    protected function getLastCommitter(array $buildInfo)
+    {
         if (isset($buildInfo['culprits']) && count($buildInfo['culprits'])) {
             return $buildInfo['culprits'][0]['fullName'];
         } else {
@@ -62,10 +66,11 @@ class JenkinsDao extends AbstractDao {
     /**
      * Calculates the average of all available job health status indicators.
      *
-     * @param array $jobInfo - JenkinsDao::fetchStatus() response
+     * @param  array $jobInfo - JenkinsDao::fetchStatus() response
      * @return float
      */
-    protected function getAverageHealthScore(array $jobInfo) {
+    protected function getAverageHealthScore(array $jobInfo)
+    {
         $averageHealthScore = 0;
 
         if (isset($jobInfo['healthReport']) && count($jobInfo['healthReport']) > 0) {
@@ -81,10 +86,11 @@ class JenkinsDao extends AbstractDao {
     /**
      * Returns code coverage for concrete build or null if not specified.
      *
-     * @param array $healthReport Health report data
+     * @param  array $healthReport Health report data
      * @return null|int
      */
-    protected function getCodeCoverage($healthReport) {
+    protected function getCodeCoverage($healthReport)
+    {
         $score = null;
         foreach ($healthReport as $data) {
             if (strpos($data['description'], 'Clover Coverage') !== false) {

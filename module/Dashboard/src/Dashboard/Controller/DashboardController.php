@@ -6,20 +6,20 @@
  */
 namespace Dashboard\Controller;
 
-use Dashboard\Model\Dao\MessagesDao;
 use Dashboard\Model\DashboardManager;
-use Dashboard\Model\Widget\MessagesWidget;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class DashboardController extends AbstractActionController {
+class DashboardController extends AbstractActionController
+{
     /**
      * Renders page with dashboard skeleton.
      *
      * @throws \Whoops\Example\Exception
      * @return array|void
      */
-    public function dashboardAction() {
+    public function dashboardAction()
+    {
         $configName = $this->params()->fromRoute('configName');
 
         $dashboardManager = new DashboardManager($configName, $this->serviceLocator);

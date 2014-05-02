@@ -5,9 +5,19 @@
  *
  * @see https://github.com/zendframework/ZFTool
  */
-return array(
+
+if (!file_exists(__DIR__ . '/environment.config.php' )) {
+    throw new \Exception('environment.config.php does not exist!');
+} else {
+    require 'environment.config.php';
+
+    if (!isset($env)) {
+        throw new \RuntimeException('Application environment is not set. Have you run rake?');
+    }
+}
+
+$config = array(
     'modules' => array(
-        'Whoops',
         'DoctrineModule',
         'DoctrineMongoODMModule',
         'Application',
@@ -18,16 +28,19 @@ return array(
             './module',
             './vendor'
             ),
-        'config_glob_paths' => array('config/autoload/{,*.}{global,local}.php')
+
+        // An array of paths from which to glob configuration files after
+        // modules are loaded. These effectively override configuration
+        // provided by modules themselves. Paths may use GLOB_BRACE notation.
+        'config_glob_paths' => array(
+            sprintf('config/autoload/{,*.}{global,%s}.php', $env),
+            'config/autoload/{,*.}{local}.php',
         ),
 
-        // Whether or not to enable a configuration cache.
-        // If enabled, the merged configuration will be cached and used in
-        // subsequent requests.
         'config_cache_enabled' => false,
 
         // The key used to create the configuration cache file name.
-        'config_cache_key' => "stp-rtm",
+        'config_cache_key' => 'app_config',
 
         // Whether or not to enable a module class map cache.
         // If enabled, creates a module class map cache which will be used
@@ -35,8 +48,25 @@ return array(
         'module_map_cache_enabled' => false,
 
         // The key used to create the class map cache file name.
-        'module_map_cache_key' => "stp-rtm",
+        'module_map_cache_key' => 'module_map',
 
         // The path in which to cache merged configuration.
-        'cache_dir' => './data/cache',
+        'cache_dir' =>  __DIR__ . '/../data/cache',
+
+        // Whether or not to enable modules dependency checking.
+        // Enabled by default, prevents usage of modules that depend on other modules
+        // that weren't loaded.
+        'check_dependencies' => true,
+    ),
+);
+$envConfigPath = __DIR__ . '/' . $env . '.config.php';
+if (is_readable($envConfigPath)) {
+    $envConfig = require $envConfigPath;
+
+    $config = \Zend\Stdlib\ArrayUtils::merge(
+        $config,
+        $envConfig
     );
+}
+
+return $config;

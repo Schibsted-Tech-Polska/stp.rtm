@@ -1,0 +1,12 @@
+<?php
+/**
+ * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
+ */
+
+return [
+    'GearmanDao' => [
+        'urls' => [
+            'fetchJobsWithWorkersForQueueWidget' => ':gearmanuiUrl:/info',
+        ],
+    ],
+];
