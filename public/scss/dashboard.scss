@@ -46,6 +46,8 @@ body {
 
 #dashboardBody {
   .introduction {
+    position: relative;
+
     .logo {
       font-size: 4em;
       line-height: 100px;
@@ -57,7 +59,11 @@ body {
 
     .documentation {
       font-size: 0.85em;
-      line-height: 1;
+      line-height: 25px;
+
+      h1, h2, h3, h4, h5 {
+        font-weight: 300;
+      }
 
       h2 {
         font-size: 31.5px;
@@ -72,6 +78,16 @@ body {
       pre {
         margin: 0.8em 0;
         background-color: #4C5457;
+      }
+
+      li {
+        line-height: 25px;
+      }
+
+      a[href^="https://travis-ci.org"] {
+        position: absolute;
+        top: 10px;
+        right: 20px;
       }
     }
 

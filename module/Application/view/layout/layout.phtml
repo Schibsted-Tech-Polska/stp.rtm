@@ -3,15 +3,15 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <?php echo $this->headTitle('Stp.Rtm'); ?>
+    <?php echo $this->headTitle('STP Real Time Monitor'); ?>
 
     <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
     <!-- Le styles -->
     <?php
-        if ($this->theme) {
-            $this->headLink()->prependStylesheet($this->basePath() . '/css/themes/' . $this->theme . '.css');
-        }
+    if ($this->theme) {
+        $this->headLink()->prependStylesheet($this->basePath() . '/css/themes/' . $this->theme . '.css');
+    }
     echo $this->headLink()
         ->prependStylesheet($this->basePath() . '/css/dashboard.css')
         ->prependStylesheet($this->basePath() . '/css/font-awesome.css')
@@ -44,8 +44,7 @@
         ->prependFile($this->basePath() . '/js/jquery.blink.js')
         ->prependFile($this->basePath() . '/js/jquery.min.js')
         ->prependFile($this->basePath() . '/js/showdown.js')
-        ->prependFile('//google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert')
-        ;
+        ->prependFile('//google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert');
     ?>
 
 </head>
