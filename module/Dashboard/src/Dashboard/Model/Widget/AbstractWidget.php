@@ -103,8 +103,8 @@ abstract class AbstractWidget
      * Sets a param for a specific widget
      *
      * @param string $paramName parameter name
-     * @param mixed  $value     parameter value
-     *                          @return $this
+     * @param mixed $value parameter value
+     * @return $this
      */
     public function setParam($paramName, $value)
     {
@@ -281,7 +281,9 @@ abstract class AbstractWidget
      * Empty method for fetching threshold values.
      * To be extended if necessary.
      */
-    public function setThreshold() {}
+    public function setThreshold()
+    {
+    }
 
     /**
      * Returns metrics threshold values

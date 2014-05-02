@@ -16,7 +16,7 @@ class LongPollingController extends AbstractRestfulController
     /**
      * Return current data for widgets
      *
-     * @param  string                     $widgetId widget's id
+     * @param  string $widgetId widget's id
      * @return \Zend\View\Model\JsonModel
      */
     public function get($widgetId)

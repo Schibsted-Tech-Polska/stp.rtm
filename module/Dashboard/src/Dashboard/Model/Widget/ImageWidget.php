@@ -1,6 +1,6 @@
 <?php
 /**
- * @author: Krzysztof Wójcicki <krzysztof.wojcicki@gmail.com>
+ * @author: Krzysztof Wï¿½jcicki <krzysztof.wojcicki@gmail.com>
  */
 
 namespace Dashboard\Model\Widget;
@@ -10,4 +10,6 @@ namespace Dashboard\Model\Widget;
  *
  * @package Dashboard\Model\Widget
  */
-class ImageWidget extends AbstractWidget {}
+class ImageWidget extends AbstractWidget
+{
+}

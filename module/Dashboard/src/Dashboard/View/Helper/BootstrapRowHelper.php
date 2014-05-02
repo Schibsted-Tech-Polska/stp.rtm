@@ -13,7 +13,7 @@ class BootstrapRowHelper extends AbstractHelper
     /**
      * Prepares rows with widgets for Bootstrap
      *
-     * @param  array      $widgetCollection Array of instances of \Dashboard\Model\Widget\AbstractWidget
+     * @param  array $widgetCollection Array of instances of \Dashboard\Model\Widget\AbstractWidget
      * @throws \Exception
      * @return string
      */
@@ -39,7 +39,7 @@ class BootstrapRowHelper extends AbstractHelper
 
             // Using partial helper for retrieving view of each widget
             $html .= $this->view->partial(
-                    $widget->getTplName(),
+                $widget->getTplName(),
                 array(
                     'widgetId' => $widget->getId(),
                     'widgetType' => $widget->getWidgetTypeName(),

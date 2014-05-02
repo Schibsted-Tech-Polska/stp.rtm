@@ -36,7 +36,7 @@ class Bootstrap
             }
         }
 
-        $zf2ModulePaths  = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
+        $zf2ModulePaths = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
         if (!getenv('ZF2_MODULES_TEST_PATHS')) {
             if (defined('ZF2_MODULES_TEST_PATHS')) {
                 $zf2ModulePaths .= ZF2_MODULES_TEST_PATHS;

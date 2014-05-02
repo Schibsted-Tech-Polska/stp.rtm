@@ -10,4 +10,6 @@ namespace Dashboard\Model\Widget;
  *
  * @package Dashboard\Model\Widget
  */
-class IncrementalGraphWidget extends AbstractWidget {}
+class IncrementalGraphWidget extends AbstractWidget
+{
+}

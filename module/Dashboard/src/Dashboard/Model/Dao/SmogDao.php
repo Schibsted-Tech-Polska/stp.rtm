@@ -12,7 +12,7 @@ class SmogDao extends AbstractDao
     public function fetchForSmogWidget(array $params)
     {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_HTML);
-        $table = (array) $response->xpath('//body/center')[0]->xpath('./table')[0]->xpath('.//tr');
+        $table = (array)$response->xpath('//body/center')[0]->xpath('./table')[0]->xpath('.//tr');
         $norms = $this->config['norms'];
 
         $result = array();
@@ -21,12 +21,12 @@ class SmogDao extends AbstractDao
                 continue;
             }
 
-            $cells		= $row->xpath('td');
-            $name		= trim(strip_tags((string) $cells[0]->asXml()));
-            $unit		= trim(strip_tags((string) $cells[1]->asXml()));
-            $norm		= trim(strip_tags((string) $cells[2]->asXml()));
-            $parameter	= preg_replace('/.*\((.*)\)/', '\1', $name);
-            $value		= null;
+            $cells = $row->xpath('td');
+            $name = trim(strip_tags((string)$cells[0]->asXml()));
+            $unit = trim(strip_tags((string)$cells[1]->asXml()));
+            $norm = trim(strip_tags((string)$cells[2]->asXml()));
+            $parameter = preg_replace('/.*\((.*)\)/', '\1', $name);
+            $value = null;
 
             if (empty($norm)) {
                 $norm = @$norms[strtoupper($parameter)];
@@ -37,7 +37,7 @@ class SmogDao extends AbstractDao
             }
 
             for ($i = count($cells) - 1; $i > 2; --$i) {
-                $candidateValue = trim(strip_tags((string) $cells[$i]->asXml()));
+                $candidateValue = trim(strip_tags((string)$cells[$i]->asXml()));
                 if (!empty($candidateValue)) {
                     $value = $candidateValue;
                     break;
@@ -45,12 +45,12 @@ class SmogDao extends AbstractDao
             }
 
             $result[] = array(
-                'name'		=> $name,
-                'norm'		=> (float) $norm,
-                'unit'		=> $unit,
-                'value'		=> (float) $value,
-                'percent'	=> 100 * ((float) $value) / ((float) $norm),
-                'parameter'	=> $parameter,
+                'name' => $name,
+                'norm' => (float)$norm,
+                'unit' => $unit,
+                'value' => (float)$value,
+                'percent' => 100 * ((float)$value) / ((float)$norm),
+                'parameter' => $parameter,
             );
         }
 

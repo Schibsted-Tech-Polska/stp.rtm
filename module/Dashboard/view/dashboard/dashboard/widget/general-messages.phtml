@@ -1,29 +1,40 @@
 <div id="<?php echo $widgetId; ?>"
      class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
      data-widget-type="<?php echo $widgetType; ?>"
-     data-params='<?php echo $this->json($params)?>'>
+     data-params='<?php echo $this->json($params) ?>'>
 </div>
 <script type="text/template" id="<?php echo $widgetId; ?>Tpl">
     <div class="widgetContainer">
         <h3><?php echo $params['title']?></h3>
         <% _.each(value, function(item) { %>
-            <div class="message row-fluid">
+
+
+        <div class="message row-fluid">
                 <% if (item.avatar) {%>
-                    <div class="span2 targetAvatar">
+
+            <div class="span2 targetAvatar">
                         <%= item.avatar %>
                     </div>
-                    <div class="span10 last">
-                        <div class="content"><%= item.content %></div>
-                        <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
-                    </div>
-                <%} else {%>
-                    <div class="span12 last">
-                        <div class="content"><%= item.content %></div>
-                        <div class="createdAt"><% if (item.projectName != '') {%><span class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
-                    </div>
-                <% } %>
+            <div class="span10 last">
+                <div class="content"><%= item.content %></div>
+                <div class="createdAt"><% if (item.projectName != '') {%><span
+                    class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
             </div>
-        <% }); %>
+
+                            <%} else {%>
+
+
+            <div class="span12 last">
+                <div class="content"><%= item.content %></div>
+                <div class="createdAt"><% if (item.projectName != '') {%><span
+                    class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
+            </div>
+
+                            <% } %>
+                        </div>
+
+                <% }); %>
+
         <audio src="sound/80921__justinbw__buttonchime02up.wav" autoplay="true"></audio>
     </div>
 </script>

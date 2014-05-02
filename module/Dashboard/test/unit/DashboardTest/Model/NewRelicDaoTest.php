@@ -26,6 +26,7 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase
 
         return $dao;
     }
+
     /**
      * Testing proper Jenkins API method - should return JSON parsed into array
      */

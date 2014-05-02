@@ -47,7 +47,7 @@ class JenkinsDao extends AbstractDao
      * it returns the build executor's name.
      * In all other cases (theoretically not possible) it returns 'UNKNOWN' string.
      *
-     * @param  array  $buildInfo - part of the JenkinsDao::fetchStatus() response
+     * @param  array $buildInfo - part of the JenkinsDao::fetchStatus() response
      * @return string
      */
     protected function getLastCommitter(array $buildInfo)
@@ -86,7 +86,7 @@ class JenkinsDao extends AbstractDao
     /**
      * Returns code coverage for concrete build or null if not specified.
      *
-     * @param  array    $healthReport Health report data
+     * @param  array $healthReport Health report data
      * @return null|int
      */
     protected function getCodeCoverage($healthReport)

@@ -43,9 +43,9 @@ class WidgetFactory implements ServiceLocatorAwareInterface
     /**
      * Creates instance of a widget
      *
-     * @param  array                      $widgetData   Widget data from rtm config
-     * @param  array|null                 $daoParams    Dao parameters array
-     * @param  string                     $resourceName Resource name
+     * @param  array $widgetData Widget data from rtm config
+     * @param  array|null $daoParams Dao parameters array
+     * @param  string $resourceName Resource name
      * @throws InvalidWidgetTypeException
      * @return AbstractWidget
      */
@@ -85,7 +85,7 @@ class WidgetFactory implements ServiceLocatorAwareInterface
      * Set service locator
      *
      * @param ServiceLocatorInterface $serviceLocator Service locator interface.
-     *                                                @return $this
+     * @return $this
      */
     public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
     {

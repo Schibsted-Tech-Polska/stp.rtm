@@ -78,7 +78,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      * Set service locator
      *
      * @param ServiceLocatorInterface $serviceLocator Service locator interface.
-     *                                                @return $this
+     * @return $this
      */
     public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
     {
@@ -100,7 +100,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     /**
      * Dao constructor
      * Data provider can be injected, otherwise we use \Zend\Http\Client
-     * @param array  $config       Dao configuration
+     * @param array $config Dao configuration
      * @param object $dataProvider data provider object
      */
     public function __construct($config, $dataProvider = null)
@@ -146,7 +146,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
         $dataProvider->setOptions(array(
             'maxredirects' => 1,
-            'timeout'      => 30
+            'timeout' => 30
         ));
 
         return $dataProvider;
@@ -155,7 +155,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     /**
      * Configures Dao instance for performing requests
      * @param array $daoOptions - Dao usage parameters e.g. accountId, optional headers
-     *                          @return $this
+     * @return $this
      */
     public function setDaoOptions(array $daoOptions)
     {
@@ -194,11 +194,11 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     /**
      * Executes a request to a given URL using injected Data Provider
      *
-     * @param  string|\Zend\Uri\HttpUri                     $url            endpoint destination URL
-     * @param  array|null                                   $params         request params values
-     * @param  int                                          $responseFormat Format of the response - needed to execute a proper parser
-     * @param  string|null                                  $auth           Auth data login:password
-     * @param  array|null                                   $postData       POST data
+     * @param  string|\Zend\Uri\HttpUri $url endpoint destination URL
+     * @param  array|null $params request params values
+     * @param  int $responseFormat Format of the response - needed to execute a proper parser
+     * @param  string|null $auth Auth data login:password
+     * @param  array|null $postData POST data
      * @return mixed
      * @throws \Zend\Http\Client\Exception\RuntimeException
      */
@@ -291,7 +291,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     /**
      * Returns endpoint URL associated with a supplied method name.
      * Throws an exception if no URL found.
-     * @param  string                          $methodName name of method used for fetching data
+     * @param  string $methodName name of method used for fetching data
      * @return string
      * @throws Exception\EndpointUrlNotDefined
      */
@@ -306,8 +306,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
     /**
      * Parses given endpoint URL and replaces all placeholders with their corresponding value
-     * @param  string                            $url    - bare URL with placeholders
-     * @param  array|null                        $params - array with optional parameter values
+     * @param  string $url - bare URL with placeholders
+     * @param  array|null $params - array with optional parameter values
      * @throws Exception\EndpointUrlNotAssembled
      * @return mixed
      */
@@ -329,8 +329,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
     /**
      * Checks if all placeholders in $url have their corresponding values in $params
-     * @param  string                            $url    - bare URL with placeholders
-     * @param  array                             $params - array with optional parameter values
+     * @param  string $url - bare URL with placeholders
+     * @param  array $params - array with optional parameter values
      * @throws Exception\EndpointUrlNotAssembled
      */
     protected function validateUrlParamValues($url, $params)
@@ -349,8 +349,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     /**
      * If method does not exist in DAO class and it starts with 'fetch' prefix,
      * we throw the exception because this method should be handled in a specific DAO.
-     * @param  string                        $method Function name
-     * @param  array                         $args   Method arguments
+     * @param  string $method Function name
+     * @param  array $args Method arguments
      * @throws Exception\FetchNotImplemented
      */
     public function __call($method, $args)

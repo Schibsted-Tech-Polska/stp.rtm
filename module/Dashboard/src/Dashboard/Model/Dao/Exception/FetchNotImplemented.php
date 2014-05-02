@@ -11,4 +11,6 @@ namespace Dashboard\Model\Dao\Exception;
  *
  * @package Dashboard\Model\Dao\Exception
  */
-class FetchNotImplemented extends \Exception {}
+class FetchNotImplemented extends \Exception
+{
+}

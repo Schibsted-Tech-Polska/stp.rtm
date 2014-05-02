@@ -22,7 +22,7 @@ class JenkinsDaoTest extends \PHPUnit_Framework_TestCase
 
         $response = $jenkinsDao->fetchStatusForBuildWidget(array(
             'view' => 'VGTV',
-            'job'  => 'VGTV_front-end',
+            'job' => 'VGTV_front-end',
         ));
 
         $this->assertTrue(is_array($response), 'Testing proper API URL');
@@ -36,7 +36,7 @@ class JenkinsDaoTest extends \PHPUnit_Framework_TestCase
     {
         Bootstrap::getServiceManager()->get('JenkinsDao')->fetchImproperDataName(array(
             'view' => 'VGTV',
-            'job'  => 'VGTV_front-end',
+            'job' => 'VGTV_front-end',
         ));
     }
 
