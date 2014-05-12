@@ -13,7 +13,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  * @ODM\DiscriminatorField(fieldName="type")
  * @ODM\DiscriminatorMap({"message"="Message", "deploy"="Deploy"})
  */
-class Event extends AbstractDocument {
+class Event extends AbstractDocument
+{
     const TYPE_MESSAGE = 'message';
     const TYPE_DEPLOY = 'deploy';
 
@@ -68,7 +69,8 @@ class Event extends AbstractDocument {
     /**
      * Event document constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->setCreatedAt(new \Datetime());
     }
 
@@ -76,7 +78,8 @@ class Event extends AbstractDocument {
      * createdAt datetime setter
      * @param \Datetime $createdAt - date of message creation
      */
-    public function setCreatedAt($createdAt) {
+    public function setCreatedAt($createdAt)
+    {
         $this->createdAt = $createdAt;
     }
 
@@ -84,7 +87,8 @@ class Event extends AbstractDocument {
      * createdAt datetime getter
      * @return string
      */
-    public function getCreatedAt() {
+    public function getCreatedAt()
+    {
         return $this->createdAt->format('Y-m-d H:i:s');;
     }
 
@@ -92,7 +96,8 @@ class Event extends AbstractDocument {
      * Event contents
      * @param string $content - message contents
      */
-    public function setContent($content) {
+    public function setContent($content)
+    {
         $this->content = $content;
     }
 
@@ -100,7 +105,8 @@ class Event extends AbstractDocument {
      * Event contents getter
      * @return string
      */
-    public function getContent() {
+    public function getContent()
+    {
         return $this->content;
     }
 
@@ -108,7 +114,8 @@ class Event extends AbstractDocument {
      * projectName setter
      * @param string $projectName - project/dashboard name
      */
-    public function setProjectName($projectName) {
+    public function setProjectName($projectName)
+    {
         $this->projectName = $projectName;
     }
 
@@ -116,7 +123,8 @@ class Event extends AbstractDocument {
      * projectName getter
      * @return string
      */
-    public function getProjectName() {
+    public function getProjectName()
+    {
         return $this->projectName;
     }
 
@@ -124,7 +132,8 @@ class Event extends AbstractDocument {
      * widgetId setter
      * @param string $widgetId - unique to a dashboard widget id
      */
-    public function setWidgetId($widgetId) {
+    public function setWidgetId($widgetId)
+    {
         $this->widgetId = $widgetId;
     }
 
@@ -132,7 +141,8 @@ class Event extends AbstractDocument {
      * widgetId getter
      * @return string
      */
-    public function getWidgetId() {
+    public function getWidgetId()
+    {
         return $this->widgetId;
     }
 
@@ -140,7 +150,8 @@ class Event extends AbstractDocument {
      * Sets HTML with a person's avatar image
      * @param string $avatar - full url to the image
      */
-    public function setAvatar($avatar) {
+    public function setAvatar($avatar)
+    {
         $this->avatar = $avatar;
     }
 
@@ -148,7 +159,8 @@ class Event extends AbstractDocument {
      * Returns person's avatar image URL
      * @return string
      */
-    public function getAvatar() {
+    public function getAvatar()
+    {
         return $this->avatar;
     }
 }

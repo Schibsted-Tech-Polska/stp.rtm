@@ -1,21 +1,22 @@
 <?php
 namespace Dashboard;
 
-use Dashboard\Model\Dao\EventsDao;
-use Dashboard\Model\Dao\JenkinsDao;
-use Dashboard\Model\Dao\NewRelicDao;
-use Dashboard\Model\Dao\SplunkDao;
-use Dashboard\Model\Widget\WidgetFactory;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
 use Zend\ServiceManager\ServiceManager;
 
-class Module {
-    public function getConfig() {
-        return include __DIR__ . '/config/module.config.php';
+class Module
+{
+    public function getConfig()
+    {
+        return array_merge_recursive(
+            include __DIR__ . '/config/module.config.php',
+            $this->autoloadConfigs(__DIR__ . '/config/autoload')
+        );
     }
 
-    public function getAutoloaderConfig() {
+    public function getAutoloaderConfig()
+    {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
@@ -31,48 +32,110 @@ class Module {
      *
      * @return array|\Zend\ServiceManager\Config
      */
-    public function getServiceConfig() {
+    public function getServiceConfig()
+    {
         return array(
             'factories' => array(
                 'WidgetConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/widget/widgets.config.php');
-                },
+                        return $serviceManager->get('Config')['widgetsConfig'];
+                    },
                 'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/JenkinsDao.config.php');
-                },
+                        return $serviceManager->get('Config')['JenkinsDao'];
+                    },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
-                    return new JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
-                },
+                        return new Model\Dao\JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
+                    },
                 'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/NewRelicDao.config.php');
-                },
+                        return $serviceManager->get('Config')['NewRelicDao'];
+                    },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
-                    return new NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
-                },
+                        return new Model\Dao\NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
+                    },
                 'EventsDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/EventsDao.config.php');
-                },
+                        return $serviceManager->get('Config')['EventsDao'];
+                    },
                 'EventsDao' => function (ServiceManager $serviceManager) {
-                    return new EventsDao($serviceManager->get('EventsDaoConfig'));
-                },
+                        return new Model\Dao\EventsDao($serviceManager->get('EventsDaoConfig'));
+                    },
+                'GearmanDaoConfig' => function (ServiceManager $serviceManager) {
+                        return $serviceManager->get('Config')['GearmanDao'];
+                    },
+                'GearmanDao' => function (ServiceManager $serviceManager) {
+                        return new Model\Dao\GearmanDao($serviceManager->get('GearmanDaoConfig'));
+                    },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
-                    return new WidgetFactory($serviceManager->get('WidgetConfig'));
-                },
+                        return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
+                    },
                 'CacheAdapter' => function ($serviceManager) {
-                    $cacheAdapter = new Memcached($serviceManager->get('CacheAdapterOptions'));
-                    return $cacheAdapter;
-                },
+                        $cacheAdapter = new Memcached($serviceManager->get('CacheAdapterOptions'));
+
+                        return $cacheAdapter;
+                    },
                 'CacheAdapterOptions' => function ($serviceManager) {
-                    $config = $serviceManager->get('Config');
-                    return new MemcachedOptions($config['dashboardCache']);
-                },
+                        $config = $serviceManager->get('Config');
+
+                        return new MemcachedOptions($config['dashboardCache']);
+                    },
                 'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
-                    return include('config/dao/SplunkDao.config.php');
-                },
+                        return $serviceManager->get('Config')['SplunkDao'];
+                    },
                 'SplunkDao' => function (ServiceManager $serviceManager) {
-                    return new SplunkDao($serviceManager->get('SplunkDaoConfig'));
-                }
+                        return new Model\Dao\SplunkDao($serviceManager->get('SplunkDaoConfig'));
+                    },
+                'TeamcityDaoConfig' => function (ServiceManager $serviceManager) {
+                        return $serviceManager->get('Config')['TeamcityDao'];
+                    },
+                'TeamcityDao' => function (ServiceManager $serviceManager) {
+                        return new Model\Dao\TeamcityDao($serviceManager->get('TeamcityDaoConfig'));
+                    },
+                'SmogDaoConfig' => function (ServiceManager $serviceManager) {
+                        return $serviceManager->get('Config')['SmogDao'];
+                    },
+                'SmogDao' => function (ServiceManager $serviceManager) {
+                        return new Model\Dao\SmogDao($serviceManager->get('SmogDaoConfig'));
+                    },
+                'HipChatDaoConfig' => function (ServiceManager $serviceManager) {
+                        return $serviceManager->get('Config')['HipChatDao'];
+                    },
+                'HipChatDao' => function (ServiceManager $serviceManager) {
+                        return new Model\Dao\HipChatDao($serviceManager->get('HipChatDaoConfig'));
+                    },
+                'BambooDaoConfig' => function (ServiceManager $serviceManager) {
+                        return $serviceManager->get('Config')['BambooDao'];
+                    },
+                'BambooDao' => function (ServiceManager $serviceManager) {
+                        return new Model\Dao\BambooDao($serviceManager->get('BambooDaoConfig'));
+                    },
             ),
         );
+    }
+
+    /**
+     * Include all files in modules config/autoload if the directory exists
+     * @param  string $configPath Optional path to the configs path
+     * @return array
+     */
+    private function autoloadConfigs($configPath = __DIR__)
+    {
+        $config = [];
+
+        if (is_dir($configPath)) {
+            $directory = new \RecursiveDirectoryIterator($configPath);
+            $iterator = new \RecursiveIteratorIterator($directory);
+            $regex = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
+
+            foreach ($regex as $file) {
+                $singleConfigArray = require_once($file[0]);
+
+                if (is_array($singleConfigArray)) {
+                    $config = array_merge_recursive(
+                        $config,
+                        $singleConfigArray
+                    );
+                }
+            }
+        }
+
+        return $config;
     }
 }

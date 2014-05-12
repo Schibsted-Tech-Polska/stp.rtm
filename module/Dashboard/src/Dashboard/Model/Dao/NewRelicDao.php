@@ -7,13 +7,14 @@
 
 namespace Dashboard\Model\Dao;
 
-class NewRelicDao extends AbstractDao {
-
+class NewRelicDao extends AbstractDao
+{
     /**
      * Adding datetimes parsing before assembling URL using parent method.
      * {@inheritdoc}
      */
-    protected function assembleUrl($url, $params = array()) {
+    protected function assembleUrl($url, $params = array())
+    {
         if (isset($params['beginDateTime'])) {
             $params['beginDateTime'] = date('Y-m-d', strtotime($params['beginDateTime'])) . 'T' . date('H:i:s', strtotime($params['beginDateTime'])) . 'Z';
         }
@@ -30,10 +31,11 @@ class NewRelicDao extends AbstractDao {
     /**
      * Fetches CURRENT requests per minute for a given application - a single integer value
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return int
      */
-    public function fetchRpmForNumberWidget(array $params = array()) {
+    public function fetchRpmForNumberWidget(array $params = array())
+    {
         $rpm = 0;
 
         $params['beginDateTime'] = '-5 minutes';
@@ -52,10 +54,11 @@ class NewRelicDao extends AbstractDao {
     /**
      * Fetches CURRENT requests per minute for a given application (FE) - a single integer value
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return int
      */
-    public function fetchFeRpmForNumberWidget(array $params = array()) {
+    public function fetchFeRpmForNumberWidget(array $params = array())
+    {
         $rpm = 0;
 
         $params['beginDateTime'] = '-5 minutes';
@@ -71,11 +74,12 @@ class NewRelicDao extends AbstractDao {
         return $rpm;
     }
 
-    public function fetchFeRpmForGraphWidget(array $params = array()) {
+    public function fetchFeRpmForGraphWidget(array $params = array())
+    {
         $responseParsed = array();
-        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
-            foreach ($response as $key => $singleStat) {
+            foreach ($response as $singleStat) {
                 $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['requests_per_minute']));
             }
         }
@@ -87,14 +91,15 @@ class NewRelicDao extends AbstractDao {
      * Fetch array of requests per minute values from beginDateTime to endDateTime
      * with constant intervals.
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return array
      */
-    public function fetchRpmForGraphWidget(array $params = array()) {
+    public function fetchRpmForGraphWidget(array $params = array())
+    {
         $responseParsed = array();
-        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
-            foreach ($response as $key => $singleStat) {
+            foreach ($response as $singleStat) {
                 $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['requests_per_minute']));
             }
         }
@@ -105,10 +110,11 @@ class NewRelicDao extends AbstractDao {
     /**
      * Number of errors per minute compared to total number of requests to the application
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return mixed
      */
-    public function fetchErrorRateForErrorWidget(array $params = array()) {
+    public function fetchErrorRateForErrorWidget(array $params = array())
+    {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return $thresholdValues['Error Rate']['metric_value'];
@@ -117,22 +123,41 @@ class NewRelicDao extends AbstractDao {
     /**
      * Apdex value
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return mixed
      */
-    public function fetchApdexForNumberWidget(array $params = array()) {
+    public function fetchApdexForNumberWidget(array $params = array())
+    {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return $thresholdValues['Apdex']['metric_value'];
     }
 
     /**
+     * Apdex value
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return mixed
+     */
+    public function fetchApdexForIncrementalGraphWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Apdex']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'y' => $thresholdValues['Apdex']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
+        );
+    }
+
+    /**
      * CPU shows the percentage of time spent in User space by the CPU as an average of reporting apps (agents).
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return int
      */
-    public function fetchCpuUsageForNumberWidget(array $params = array()) {
+    public function fetchCpuUsageForNumberWidget(array $params = array())
+    {
         $result = 0;
 
         $params['beginDateTime'] = '-1 minute';
@@ -152,14 +177,15 @@ class NewRelicDao extends AbstractDao {
      * Fetch array of CPU usage values from beginDateTime to endDateTime
      * with constant intervals.
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return array
      */
-    public function fetchCpuUsageForGraphWidget(array $params = array()) {
+    public function fetchCpuUsageForGraphWidget(array $params = array())
+    {
         $responseParsed = array();
-        $response =  $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
-            foreach ($response as $key => $singleStat) {
+            foreach ($response as $singleStat) {
                 $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => $singleStat['percent']);
             }
         }
@@ -170,10 +196,11 @@ class NewRelicDao extends AbstractDao {
     /**
      * Returns average response time from the last minute in seconds
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return float
      */
-    public function fetchAverageResponseTimeForNumberWidget(array $params = array()) {
+    public function fetchAverageResponseTimeForNumberWidget(array $params = array())
+    {
         $result = 0;
 
         $params['beginDateTime'] = '-5 minutes';
@@ -192,15 +219,16 @@ class NewRelicDao extends AbstractDao {
     /**
      * Fetch array of average response time values from beginDateTime to endDateTime
      * with constant intervals.
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return array
      */
-    public function fetchAverageResponseTimeForGraphWidget(array $params = array()) {
+    public function fetchAverageResponseTimeForGraphWidget(array $params = array())
+    {
         $responseParsed = array();
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response)) {
-            foreach ($response as $key => $singleStat) {
-                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['average_response_time']*1000));
+            foreach ($response as $singleStat) {
+                $responseParsed[] = array('x' => 1000 * (strtotime($singleStat['begin']) + 7200), 'y' => round($singleStat['average_response_time'] * 1000));
             }
         }
 
@@ -210,23 +238,162 @@ class NewRelicDao extends AbstractDao {
     /**
      * Fetches memory usage by your app
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return float
      */
-    public function fetchMemoryForNumberWidget(array $params = array()) {
+    public function fetchMemoryForNumberWidget(array $params = array())
+    {
         $thresholdValues = $this->fetchThresholdValues($params);
 
         return $thresholdValues['Memory']['metric_value'];
     }
 
     /**
+     * Fetches memory usage by your app
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchMemoryForIncrementalGraphWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Memory']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'y' => $thresholdValues['Memory']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
+        );
+    }
+
+    /**
+     * Fetches CPU usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchCpuFromThresholdForNumberWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['CPU']['metric_value'];
+    }
+
+    /**
+     * Fetches CPU usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchCpuFromThresholdForIncrementalGraphWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['CPU']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'y' => $thresholdValues['CPU']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
+        );
+    }
+
+    /**
+     * Fetches DB usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchDBFromThresholdForNumberWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['DB']['metric_value'];
+    }
+
+    /**
+     * Fetches DB usage by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchDBFromThresholdForIncrementalGraphWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['DB']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'y' => $thresholdValues['DB']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
+        );
+    }
+
+    /**
+     * Fetches throughput by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchThroughputFromThresholdForNumberWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['Throughput']['metric_value'];
+    }
+
+    /**
+     * Fetches throughput by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchThroughputFromThresholdForIncrementalGraphWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Throughput']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'y' => $thresholdValues['Throughput']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
+        );
+    }
+
+    /**
+     * Fetches response time by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchResponseTimeFromThresholdForNumberWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return $thresholdValues['Response Time']['metric_value'];
+    }
+
+    /**
+     * Fetches response time by your app based on thresholds.xml (good for free accounts).
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchResponseTimeFromThresholdForIncrementalGraphWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => (int)$this->convertTimeBetweenTimezones($thresholdValues['Response Time']['end_time'], 'UTC', date_default_timezone_get(), 'U'),
+            'y' => $thresholdValues['Response Time']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
+        );
+    }
+
+    /**
      * Fetches all threshold values for the application.
      * Because it can only be obtained in XML I manually parse it into an array.
      *
-     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return array
      */
-    public function fetchThresholdValues(array $params = array()) {
+    public function fetchThresholdValues(array $params = array())
+    {
         $result = array();
 
         $params['beginDateTime'] = '-5 minutes';
@@ -235,7 +402,7 @@ class NewRelicDao extends AbstractDao {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
 
         foreach ($response->threshold_value as $thresholdValue) {
-            $thresholdValue = (array) $thresholdValue;
+            $thresholdValue = (array)$thresholdValue;
             $result[$thresholdValue['@attributes']['name']] = $thresholdValue['@attributes'];
         }
 
@@ -243,21 +410,89 @@ class NewRelicDao extends AbstractDao {
     }
 
     /**
-     * Fetches threshold values set for this metric (if they are set)
-     * @param array $params widget params
+     * Fetches events for the application.
+     * Because it can only be obtained in XML I manually parse it into an array.
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return array
      */
-    public function fetchThreshold(array $params = array()) {
+    public function fetchEvents(array $params = array())
+    {
+        $result = array();
+
+        $response = $this->request($this->config['urls']['fetchEvents'], $params, self::RESPONSE_IN_XML);
+
+        foreach ($response->channel->item as $event) {
+            $event = (array)$event;
+            if (preg_match('/\[([a-z]+)\](.*)/i', $event['title'], $matches)) {
+                if (!empty($params['eventType']) && $params['eventType'] == $matches[1]) {
+                    $result[] = array(
+                        'title' => trim($matches[2], ' -.'),
+                        'date' => strtotime($event['pubDate']), // doesn't need TimeZone conversion
+                        'type' => $matches[1],
+                    );
+                }
+            } else {
+                $result[] = array(
+                    'title' => $event['title'],
+                    'date' => strtotime($event['pubDate']), // doesn't need TimeZone conversion
+                    'type' => '',
+                );
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Fetches deployment events for the application.
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
+    public function fetchDeploymentEvents(array $params = array())
+    {
+        $events = array();
+        if (!empty($this->getDaoParams()['feed']) || !empty($params['feed'])) {
+            $events = $this->fetchEvents($params + array('eventType' => 'deployment'));
+        }
+
+        return $events;
+    }
+
+    /**
+     * Fetches threshold values set for this metric (if they are set)
+     * @param  array $params widget params
+     * @return array
+     */
+    public function fetchThreshold(array $params = array())
+    {
         $result = array();
 
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
         foreach ($response->threshold as $thresholdValue) {
-            if (strtolower($params['metric']) == strtolower((string) $thresholdValue->type)) {
-                $result = (array) $thresholdValue;
+            if (strtolower($params['metric']) == strtolower((string)$thresholdValue->type)) {
+                $result = (array)$thresholdValue;
                 break;
             }
         }
 
         return $result;
+    }
+
+    /**
+     * Helper function to convert time between timezones.
+     * @param $time
+     * @param $originTimezone
+     * @param $targetTimezone
+     * @param  string $format
+     * @return string
+     */
+    private function convertTimeBetweenTimezones($time, $originTimezone, $targetTimezone, $format = 'Y-m-d H:i:s')
+    {
+        $convertedTime = new \DateTime($time, new \DateTimeZone($originTimezone));
+        $convertedTime->setTimeZone(new \DateTimeZone($targetTimezone));
+
+        return $convertedTime->format($format);
     }
 }

@@ -10,4 +10,6 @@ namespace Dashboard\Model\Widget\Exception;
  *
  * @package Dashboard\Model\Widget\Exception
  */
-class InvalidWidgetParameterException extends \Exception {}
+class InvalidWidgetParameterException extends \Exception
+{
+}

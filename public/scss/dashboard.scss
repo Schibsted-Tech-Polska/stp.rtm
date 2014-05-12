@@ -6,6 +6,7 @@ $default-widget-bg-color: #373c3f;
 $body-bg-color: #282C2E;
 $color-red: #ED303C;
 $color-yellow: #FFF46B;
+$color-gray: #999;
 
 // ----------------------------------------------------------------------------
 // Sizes
@@ -14,6 +15,7 @@ $widgets-margin: 13px;
 $widgets-padding: 14px;
 $widget-height: 366px;
 $default-font-size: 1.25em;
+$default-font-weight-normal: 300;
 
 @import "widget/errorWidget";
 @import "widget/textWidget";
@@ -22,6 +24,7 @@ $default-font-size: 1.25em;
 @import "widget/messagesWidget";
 @import "widget/graphWidget";
 @import "widget/alertWidget";
+@import "widget/queueWidget";
 
 @font-face {
 
@@ -38,9 +41,58 @@ body {
   background-color: $body-bg-color;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: $default-font-size;
+  font-weight: $default-font-weight-normal;
 }
 
 #dashboardBody {
+  .introduction {
+    position: relative;
+
+    .logo {
+      font-size: 4em;
+      line-height: 100px;
+      background: url('../img/rtm-logo.png') no-repeat left top;
+      padding-left: 115px;
+      margin: 1em auto 1em auto;
+      width: 660px;
+    }
+
+    .documentation {
+      font-size: 0.85em;
+      line-height: 25px;
+
+      h1, h2, h3, h4, h5 {
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size: 31.5px;
+        margin-top: 1em;
+      }
+
+      h3 {
+        font-size: 24.5px;
+        margin-top: 0.75em;
+      }
+
+      pre {
+        margin: 0.8em 0;
+        background-color: #4C5457;
+      }
+
+      li {
+        line-height: 25px;
+      }
+
+      a[href^="https://travis-ci.org"] {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+    }
+
+  }
+
   .widget {
     padding: $widgets-padding;
     overflow: hidden;
@@ -68,6 +120,10 @@ body {
       bottom: 10px;
       left: 0;
       right: 0;
+    }
+
+    .change-rate.worse {
+      color: $color-red !important;
     }
 
     .prefix {

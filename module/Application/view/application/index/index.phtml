@@ -1,7 +1,19 @@
 <div class="container" data-config-name="<?php echo $this->configName; ?>">
     <div class="row-fluid">
-        <div class="span12 mainContent">
-            <header>Stp.Rtm</header>
+        <div class="span8 offset2 mainContent introduction">
+            <header class="logo">Real Time Monitor</header>
+
+            <div class="documentation span12">
+                <?= require(APP_BASEPATH . '/README.md') ?>
+            </div>
+
+            <script type="text/javascript">
+                $(function () {
+                    var converter = new Showdown.converter();
+                    $('.introduction .documentation').html(converter.makeHtml($('.introduction .documentation').text()));
+                    $('code').addClass('prettyprint');
+                });
+            </script>
         </div>
     </div>
 </div>

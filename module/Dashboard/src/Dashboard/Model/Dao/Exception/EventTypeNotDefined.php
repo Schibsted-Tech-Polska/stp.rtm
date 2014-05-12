@@ -12,4 +12,6 @@ namespace Dashboard\Model\Dao\Exception;
  *
  * @package Dashboard\Model\Dao\Exception
  */
-class EventTypeNotDefined extends \Exception {}
+class EventTypeNotDefined extends \Exception
+{
+}

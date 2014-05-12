@@ -17,6 +17,7 @@ if (isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] == 'develo
  * to the application root now.
  */
 chdir(dirname(__DIR__));
+define('APP_BASEPATH', realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR));
 
 // Setup autoloading
 require 'init_autoloader.php';

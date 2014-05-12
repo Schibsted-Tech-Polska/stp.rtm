@@ -50,85 +50,86 @@
 #dashboardBody .widget.BuildWidget .details {
   position: absolute;
   bottom: 5px;
+  left: 0px;
   width: 100%;
 }
-/* line 32, ../scss/widget/_buildWidget.scss */
+/* line 33, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .title {
   color: white;
 }
-/* line 36, ../scss/widget/_buildWidget.scss */
+/* line 37, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .more-info {
   color: rgba(255, 255, 255, 0.3);
 }
-/* line 40, ../scss/widget/_buildWidget.scss */
+/* line 41, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .updated-at {
   display: none;
 }
-/* line 44, ../scss/widget/_buildWidget.scss */
+/* line 45, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .progress-bar {
   display: none;
   margin-top: 22px;
 }
-/* line 50, ../scss/widget/_buildWidget.scss */
+/* line 51, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .FAILURE .face {
   background: #cf0d4d;
 }
-/* line 56, ../scss/widget/_buildWidget.scss */
+/* line 57, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .UNSTABLE .face {
   background: #f3704f;
 }
-/* line 61, ../scss/widget/_buildWidget.scss */
+/* line 62, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face {
   padding: 14px 12px;
   background: #1693a7;
 }
-/* line 66, ../scss/widget/_buildWidget.scss */
+/* line 67, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.front {
   z-index: 20;
 }
-/* line 70, ../scss/widget/_buildWidget.scss */
+/* line 71, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.back {
   background: #a7169e;
 }
-/* line 74, ../scss/widget/_buildWidget.scss */
+/* line 75, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flipped-effect .face.back {
   z-index: 21;
 }
-/* line 78, ../scss/widget/_buildWidget.scss */
+/* line 79, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .average-health-score {
   font-family: "Icons";
   font-size: 210px;
   line-height: 0.9;
   margin-bottom: 25px;
 }
-/* line 85, ../scss/widget/_buildWidget.scss */
+/* line 86, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .last-built {
   font-size: 14px;
 }
-/* line 89, ../scss/widget/_buildWidget.scss */
+/* line 90, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .last-committer {
   font-size: 26px;
   margin-bottom: 3px;
 }
-/* line 94, ../scss/widget/_buildWidget.scss */
+/* line 95, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .change-rate {
   line-height: 220%;
 }
-/* line 98, ../scss/widget/_buildWidget.scss */
+/* line 99, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .code-coverage {
   line-height: 140%;
 }
-/* line 102, ../scss/widget/_buildWidget.scss */
+/* line 103, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .build-icon {
   width: 100%;
   height: 230px;
 }
-/* line 106, ../scss/widget/_buildWidget.scss */
+/* line 107, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .build-icon svg {
   width: 100%;
   height: 100%;
 }
-/* line 112, ../scss/widget/_buildWidget.scss */
+/* line 113, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container {
   position: relative;
   width: 100%;
@@ -139,27 +140,27 @@
   -o-perspective: 1000px;
   perspective: 1000px;
 }
-/* line 124, ../scss/widget/_buildWidget.scss */
+/* line 125, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-content {
   width: 100%;
   height: 100%;
   -webkit-transform-style: preserve-3d;
-  -webkit-transition: all 1s linear;
+  -webkit-transition: all 1.0s linear;
   -moz-transform-style: preserve-3d;
-  -moz-transition: all 1s linear;
+  -moz-transition: all 1.0s linear;
   -o-transform-style: preserve-3d;
-  -o-transition: all 1s linear;
+  -o-transition: all 1.0s linear;
   transform-style: preserve-3d;
-  transition: all 1s linear;
+  transition: all 1.0s linear;
 }
-/* line 137, ../scss/widget/_buildWidget.scss */
+/* line 138, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container.flipped-effect .flip-content {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-/* line 144, ../scss/widget/_buildWidget.scss */
+/* line 145, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face {
   position: absolute;
   width: 100%;
@@ -173,7 +174,7 @@
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 159, ../scss/widget/_buildWidget.scss */
+/* line 160, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.back {
   display: block;
   -webkit-transform: rotateY(180deg);
@@ -184,7 +185,7 @@
   color: white;
   text-align: center;
 }
-/* line 171, ../scss/widget/_buildWidget.scss */
+/* line 172, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .widget-clock h2 {
   font-size: 66px;
 }
@@ -214,7 +215,7 @@
 /* line 18, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message {
   text-align: left;
-  border-bottom: 1px dotted #666666;
+  border-bottom: 1px dotted #666;
   margin-bottom: 0.1em;
   padding-bottom: 0.4em;
   overflow: hidden;
@@ -244,7 +245,7 @@
   position: absolute;
   top: 24px;
   left: 36px;
-  text-shadow: 0px 0px 4px black;
+  text-shadow: 0px 0px 4px #000;
   width: auto;
   font-size: 34px;
   font-weight: normal;
@@ -296,6 +297,36 @@
   margin-bottom: 0;
 }
 
+/* line 4, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget {
+  overflow: hidden;
+}
+/* line 7, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .gearmanLogo {
+  width: 30%;
+}
+/* line 11, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server {
+  margin: 10px 0;
+}
+/* line 14, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server .jobsList {
+  width: 100%;
+}
+/* line 17, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server .jobsList .name {
+  width: 50%;
+  text-align: right;
+  padding: 2px 4px;
+}
+/* line 23, ../scss/widget/_queueWidget.scss */
+#dashboardBody .widget.QueueWidget .server .jobsList .status {
+  width: 50%;
+  text-align: left;
+  padding: 2px 4px;
+  color: #999999;
+}
+
 @font-face {
   font-family: 'Icons';
   src: url("fonts/artill_clean_icons-webfont.eot");
@@ -304,16 +335,64 @@
   font-style: normal;
 }
 
-/* line 35, ../scss/dashboard.scss */
+/* line 38, ../scss/dashboard.scss */
 body {
   color: white;
   padding: 0 13px 13px;
   background-color: #282c2e;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
+  font-weight: 300;
 }
 
-/* line 44, ../scss/dashboard.scss */
+/* line 48, ../scss/dashboard.scss */
+#dashboardBody .introduction {
+  position: relative;
+}
+/* line 51, ../scss/dashboard.scss */
+#dashboardBody .introduction .logo {
+  font-size: 4em;
+  line-height: 100px;
+  background: url("../img/rtm-logo.png") no-repeat left top;
+  padding-left: 115px;
+  margin: 1em auto 1em auto;
+  width: 660px;
+}
+/* line 60, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation {
+  font-size: 0.85em;
+  line-height: 25px;
+}
+/* line 64, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation h1, #dashboardBody .introduction .documentation h2, #dashboardBody .introduction .documentation h3, #dashboardBody .introduction .documentation h4, #dashboardBody .introduction .documentation h5 {
+  font-weight: 300;
+}
+/* line 68, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation h2 {
+  font-size: 31.5px;
+  margin-top: 1em;
+}
+/* line 73, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation h3 {
+  font-size: 24.5px;
+  margin-top: 0.75em;
+}
+/* line 78, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation pre {
+  margin: 0.8em 0;
+  background-color: #4C5457;
+}
+/* line 83, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation li {
+  line-height: 25px;
+}
+/* line 87, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation a[href^="https://travis-ci.org"] {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+/* line 96, ../scss/dashboard.scss */
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
@@ -323,19 +402,19 @@ body {
   vertical-align: middle;
   position: relative;
 }
-/* line 53, ../scss/dashboard.scss */
+/* line 105, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCriticalValue .value {
   color: #ed303c;
 }
-/* line 57, ../scss/dashboard.scss */
+/* line 109, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCautionValue .value {
   color: #fff46b;
 }
-/* line 61, ../scss/dashboard.scss */
+/* line 113, ../scss/dashboard.scss */
 #dashboardBody .widget .value {
   margin-top: 40px;
 }
-/* line 65, ../scss/dashboard.scss */
+/* line 117, ../scss/dashboard.scss */
 #dashboardBody .widget .updated-at {
   display: block;
   position: absolute;
@@ -343,49 +422,53 @@ body {
   left: 0;
   right: 0;
 }
-/* line 73, ../scss/dashboard.scss */
+/* line 125, ../scss/dashboard.scss */
+#dashboardBody .widget .change-rate.worse {
+  color: #ed303c !important;
+}
+/* line 129, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-/* line 77, ../scss/dashboard.scss */
+/* line 133, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 81, ../scss/dashboard.scss */
+/* line 137, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-/* line 89, ../scss/dashboard.scss */
+/* line 145, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 95, ../scss/dashboard.scss */
+/* line 151, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 100, ../scss/dashboard.scss */
+/* line 156, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-/* line 106, ../scss/dashboard.scss */
+/* line 162, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: white;
 }
-/* line 112, ../scss/dashboard.scss */
+/* line 168, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: white;
 }
-/* line 118, ../scss/dashboard.scss */
+/* line 174, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -395,12 +478,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 128, ../scss/dashboard.scss */
+  /* line 184, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 136, ../scss/dashboard.scss */
+/* line 192, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -408,12 +491,12 @@ body {
   overflow: hidden;
 }
 
-/* line 143, ../scss/dashboard.scss */
+/* line 199, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 147, ../scss/dashboard.scss */
+/* line 203, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }

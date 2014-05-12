@@ -12,14 +12,16 @@ use Dashboard\Model\Widget\MessagesWidget;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
-class EventsApiController extends AbstractRestfulController {
+class EventsApiController extends AbstractRestfulController
+{
     /**
      * Creates new events
      *
      * @param  mixed $data Request data
      * @return mixed
      */
-    public function create($data) {
+    public function create($data)
+    {
         $configName = $this->params()->fromRoute('configName');
         $widgetId = $this->params()->fromRoute('widgetId');
 
@@ -53,45 +55,5 @@ class EventsApiController extends AbstractRestfulController {
         }
 
         return $this->getResponse()->setStatusCode(201);
-    }
-
-    /**
-     * Delete an existing resource
-     *
-     * @param  mixed $id Request id
-     * @return mixed
-     */
-    public function delete($id) {
-        return $this->getResponse()->setStatusCode(405);
-    }
-
-    /**
-     * Return current data for widgets
-     *
-     * @param  string $widgetId widget's id
-     * @return \Zend\View\Model\JsonModel
-     */
-    public function get($id) {
-        return $this->getResponse()->setStatusCode(405);
-    }
-
-    /**
-     * Return list of resources
-     *
-     * @return mixed
-     */
-    public function getList() {
-        return $this->getResponse()->setStatusCode(405);
-    }
-
-    /**
-     * Update an existing resource
-     *
-     * @param  mixed $id   Resource id
-     * @param  mixed $data Resource data
-     * @return mixed
-     */
-    public function update($id, $data) {
-        return $this->getResponse()->setStatusCode(405);
     }
 }

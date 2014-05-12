@@ -1,24 +1,30 @@
 <div id="<?php echo $widgetId; ?>"
      class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
      data-widget-type="<?php echo $widgetType; ?>"
-     data-params='<?php echo $this->json($params)?>'
-     data-threshold-caution-value="<?php echo isset($threshold['caution-value']) ? $threshold['caution-value'] : 0?>"
-     data-threshold-critical-value="<?php echo isset($threshold['critical-value']) ? $threshold['critical-value'] : 0?>">
+     data-params='<?php echo $this->json($params) ?>'
+     data-threshold-caution-value="<?php echo isset($threshold['caution-value']) ? $threshold['caution-value'] : 0 ?>"
+     data-threshold-critical-value="<?php echo isset($threshold['critical-value']) ? $threshold['critical-value'] : 0 ?>">
 </div>
 <script type="text/template" id="<?php echo $widgetId; ?>Tpl">
     <div class="widgetContainer <% if (thresholdValue > 0 && value > thresholdValue) { %>aboveThreshold<% } %>">
-        <h1 class="title"><?php echo $params['title']; ?> <?php if ($params['subtitle']):?><br/><small><?php echo $params['subtitle']; ?></small><?php endif?></h1>
+        <h1 class="title"><?php echo $params['title']; ?> <?php if ($params['subtitle']):?><br/>
+            <small><?php echo $params['subtitle']; ?></small><?php endif?>
+        </h1>
 
         <h2 class="value">
             <span class="prefix"><?php echo $params['valuePrefix']; ?></span><%= value %><span
-                class="suffix"><?php echo $params['valueSuffix']; ?></span></h2>
+            class="suffix"><?php echo $params['valueSuffix']; ?></span></h2>
 
         <% if (percentageDiff > 0) { %>
-            <p class="change-rate">
-                <i class="<%= arrowClass %>"></i>
-                <span class="difference"><%= percentageDiff %>% (<?php echo $params['valuePrefix']; ?><%= oldValue %><?php echo $params['valueSuffix']; ?>)</span>
-            </p>
+
+
+        <p class="change-rate <%= trend %>">
+            <i class="<%= arrowClass %>"></i>
+            <span class="difference"><%= percentageDiff %>% (<?php echo $params['valuePrefix']; ?><%= oldValue %><?php echo $params['valueSuffix']; ?>)</span>
+        </p>
         <% } %>
+
+
 
         <p class="updated-at">Last update: <%= lastUpdate %></p>
     </div>

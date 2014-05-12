@@ -1,0 +1,13 @@
+default:
+  paths:
+    features: ../features
+  context:
+    parameters:
+  formatter:
+    name: pretty
+
+ci:
+  formatter:
+    name: pretty,junit,html
+    parameters:
+      output_path: null,data/build/behat,data/build/behat/behat_report.html

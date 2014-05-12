@@ -19,7 +19,6 @@
 
 namespace Whoops;
 
-use Whoops\Run;
 use Whoops\Provider\Zend\ExceptionStrategy;
 use Whoops\Provider\Zend\RouteNotFoundStrategy;
 use Whoops\Handler\JsonResponseHandler;
@@ -27,10 +26,12 @@ use Whoops\Handler\PrettyPageHandler;
 use Zend\EventManager\EventInterface;
 use Zend\Console\Request as ConsoleRequest;
 
-class Module {
+class Module
+{
     protected $run;
 
-    public function onBootstrap(EventInterface $event) {
+    public function onBootstrap(EventInterface $event)
+    {
         $prettyPageHandler = new PrettyPageHandler();
 
         // Set editor
@@ -46,7 +47,8 @@ class Module {
         $this->attachListeners($event);
     }
 
-    public function getAutoloaderConfig() {
+    public function getAutoloaderConfig()
+    {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
@@ -56,7 +58,8 @@ class Module {
         );
     }
 
-    private function attachListeners(EventInterface $event) {
+    private function attachListeners(EventInterface $event)
+    {
         $request = $event->getRequest();
         $application = $event->getApplication();
         $services = $application->getServiceManager();

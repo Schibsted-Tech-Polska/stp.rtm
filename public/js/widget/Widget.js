@@ -137,6 +137,8 @@ Widget.prototype = {
             } else {
                 dataToBind.arrowClass = "icon-arrow-down";
             }
+
+            dataToBind.trend = ((this.params.thresholdComparator == 'higherIsBetter') ? ((diff >= 0) ? 'better' : 'worse') : ((diff <= 0) ? 'better' : 'worse'));
         }
 
         return dataToBind;
