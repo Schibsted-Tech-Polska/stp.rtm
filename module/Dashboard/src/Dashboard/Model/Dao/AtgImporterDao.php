@@ -25,10 +25,10 @@ class AtgImporterDao extends AbstractDao {
 
         $lastReportsWithErrors = $importJson['eventsProcessingResultsWithErrors'];
         $datetime = new DateTime();
-        $limit = $datetime->sub(date_interval_create_from_date_string('3 days'))->getTimestamp();
+        $limit = $datetime->sub(date_interval_create_from_date_string('4 days'))->getTimestamp();
         $count = 0;
         foreach ($lastReportsWithErrors as $reportWithErrors) {
-            if ($limit < $reportWithErrors['date']) {
+            if ($limit < $reportWithErrors['date'] / 1000) {
                 $count++;
             }
         }
@@ -50,6 +50,5 @@ class AtgImporterDao extends AbstractDao {
 
         return $count;
     }
-
 
 }

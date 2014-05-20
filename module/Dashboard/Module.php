@@ -2,6 +2,7 @@
 namespace Dashboard;
 
 use Dashboard\Model\Dao\AtgImporterDao;
+use Dashboard\Model\Dao\AtgTimeMetricsDao;
 use Dashboard\Model\Dao\BambooDao;
 use Dashboard\Model\Dao\EventsDao;
 use Dashboard\Model\Dao\GearmanDao;
@@ -96,6 +97,9 @@ class Module {
                     },
                 'AtgImporterDao' => function (ServiceManager $serviceManager) {
                         return new AtgImporterDao(null);
+                    },
+                'AtgTimeMetricsDao' => function (ServiceManager $serviceManager) {
+                        return new AtgTimeMetricsDao(null);
                     },
             ),
         );
