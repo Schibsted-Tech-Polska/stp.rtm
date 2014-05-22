@@ -37,7 +37,7 @@ class EventsDao extends AbstractDao
         $resultArray = $result->toArray();
 
         foreach ($resultArray as $key => $message) {
-            $resultArray[$key]['createdAt'] = date('Y-m-d H:i:s', $message['createdAt']->sec);
+            $resultArray[$key]['createdAt'] = gmdate('Y-m-d H:i:s', $message['createdAt']->sec);
         }
 
         return $resultArray;

@@ -43,7 +43,7 @@ class BambooDao extends AbstractDao
 
         }
         $buildTime = date_create_from_format(self::BAMBOO_DATE_FORMAT, $lastBuild['buildCompletedTime'])->getTimestamp();
-        $responseParsed['lastBuilt'] = date(self::WIDGET_DATE_FORMAT, $buildTime);
+        $responseParsed['lastBuilt'] = gmdate(self::WIDGET_DATE_FORMAT, $buildTime);
 
         $responseParsed['averageHealthScore'] = $responseParsed['currentStatus'] == self::JENKINS_FAILING_STATUS ? 0 : 100;
 

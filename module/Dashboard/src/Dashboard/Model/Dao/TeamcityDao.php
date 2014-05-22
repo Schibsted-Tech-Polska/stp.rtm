@@ -21,8 +21,8 @@ class TeamcityDao extends AbstractDao
             $result[] = array(
                 'author' => $this->fetchUserName($params, $change['@attributes']['username']),
                 'content' => $change['comment'],
-                'createdAtDate' => date('Y-m-d', strtotime($change['@attributes']['date'])),
-                'createdAtTime' => date('H:i:s', strtotime($change['@attributes']['date'])),
+                'createdAtDate' => gmdate('Y-m-d', strtotime($change['@attributes']['date'])),
+                'createdAtTime' => gmdate('H:i:s', strtotime($change['@attributes']['date'])),
                 'revision' => $change['@attributes']['version']
             );
         }
@@ -42,7 +42,7 @@ class TeamcityDao extends AbstractDao
 
         $build = $this->fetchFinishedBuildStatus($params);
         $result['currentStatus'] = $build['@attributes']['status'];
-        $result['lastBuilt'] = date('Y-m-d H:i:s', strtotime($build['startDate']));
+        $result['lastBuilt'] = gmdate('Y-m-d H:i:s', strtotime($build['startDate']));
         $result['lastCommitter'] = $this->getLastCommitter($params, $build);
         $result['codeCoverage'] = $this->getCodeCoverage($params, $build);
         $result['averageHealthScore'] = $this->getAverageHealthScore($params, $build);

@@ -35,7 +35,7 @@ class LongPollingController extends AbstractRestfulController
             $result = new JsonModel(array(
                 'data' => $responseData,
                 'hash' => $widget->getResponseHash(),
-                'updateTime' => date("H:i"),
+                'updateTime' => gmdate("H:i"),
             ));
         } catch (\Exception $e) {
             $this->getResponse()->setStatusCode(400);
@@ -46,7 +46,7 @@ class LongPollingController extends AbstractRestfulController
                 ),
                 'data' => '',
                 'hash' => $widget->getResponseHash(),
-                'updateTime' => date("H:i"),
+                'updateTime' => gmdate("H:i"),
             ));
         }
 

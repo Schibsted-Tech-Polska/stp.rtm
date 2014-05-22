@@ -16,11 +16,11 @@ class NewRelicDao extends AbstractDao
     protected function assembleUrl($url, $params = array())
     {
         if (isset($params['beginDateTime'])) {
-            $params['beginDateTime'] = date('Y-m-d', strtotime($params['beginDateTime'])) . 'T' . date('H:i:s', strtotime($params['beginDateTime'])) . 'Z';
+            $params['beginDateTime'] = gmdate('Y-m-d', strtotime($params['beginDateTime'])) . 'T' . gmdate('H:i:s', strtotime($params['beginDateTime'])) . 'Z';
         }
 
         if (isset($params['endDateTime'])) {
-            $params['endDateTime'] = date('Y-m-d', strtotime($params['endDateTime'])) . 'T' . date('H:i:s', strtotime($params['endDateTime'])) . 'Z';
+            $params['endDateTime'] = gmdate('Y-m-d', strtotime($params['endDateTime'])) . 'T' . gmdate('H:i:s', strtotime($params['endDateTime'])) . 'Z';
         }
 
         $url = parent::assembleUrl($url, $params);
