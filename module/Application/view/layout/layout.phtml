@@ -37,20 +37,23 @@
     }
 
     echo $jsAssets
-        ->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-        ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-        ->prependFile($this->basePath() . '/js/underscore-min.js')
-        ->prependFile($this->basePath() . '/js/jquery.knob.js')
-        ->prependFile($this->basePath() . '/js/jquery.blink.js')
         ->prependFile($this->basePath() . '/js/jquery.min.js')
-        ->prependFile($this->basePath() . '/js/showdown.js')
-        ->prependFile('//google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert');
+        ;
     ?>
 
 </head>
 <body id="dashboardBody">
 <?php echo $this->content; ?>
 <!-- /container -->
-<?php echo $this->inlineScript() ?>
+<?php echo $this->inlineScript()
+    ->appendFile($this->basePath() . '/js/bootstrap.min.js')
+    ->appendFile($this->basePath() . '/js/underscore-min.js')
+    ->appendFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+    ->appendFile($this->basePath() . '/js/jquery.knob.js')
+    ->appendFile($this->basePath() . '/js/jquery.blink.js')
+    ->appendFile($this->basePath() . '/js/showdown.js')
+    ->appendFile('//google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert')
+;
+?>
 </body>
 </html>
