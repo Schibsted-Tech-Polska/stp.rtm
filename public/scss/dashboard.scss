@@ -95,6 +95,12 @@ body {
         top: 40px;
         right: 20px;
       }
+
+      a[href^="https://www.versioneye.com"] {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+      }
     }
 
   }
