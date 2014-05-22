@@ -190,16 +190,6 @@ task :setEnv, [:newEnv] do |task, args|
     system_check "cat config/environment.config.php.dist | sed -r -e 's/#APPLICATION_ENVIRONMENT#/#{args.newEnv}/g' > config/environment.config.php"
 end
 
-desc "Generate json data for API documentation"
-task :apidocs, [:apiUrl] do |task, args|
-    puts task.comment
-    system_check <<END
-        SRC_PATH='module'
-        rm -rf public/docs/json/*
-        vendor/bin/swagger $SRC_PATH -o public/docs/json --default-base-path #{args.apiUrl}
-END
-end
-
 module Rake
     class Application
         attr_accessor :current_task

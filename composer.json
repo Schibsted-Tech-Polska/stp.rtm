@@ -6,7 +6,6 @@
     "require": {
         "php": ">=5.4",
         "zendframework/zendframework": "~2.3",
-        "zircote/swagger-php": "0.8.1",
         "doctrine/doctrine-mongo-odm-module": "dev-master"
     },
     "require-dev": {
@@ -17,9 +16,8 @@
         "pdepend/pdepend":"*",
         "sebastian/phpcpd": "*",
         "squizlabs/php_codesniffer": "1.*",
-        "filp/whoops": "1.0.*",
+        "filp/whoops": "*",
         "fabpot/php-cs-fixer": "*@dev",
-        "behat/behat": "~2.5",
         "satooshi/php-coveralls": "dev-master"
     }
 }
