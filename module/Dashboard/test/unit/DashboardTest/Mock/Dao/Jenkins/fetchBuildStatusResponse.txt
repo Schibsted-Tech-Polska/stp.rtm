@@ -1,0 +1,1324 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "actions" : [
+    {
+      "parameters" : [
+        {
+          "name" : "ISSUE_NUM",
+          "value" : "10608"
+        }
+      ]
+    },
+    {
+      "causes" : [
+        {
+          "shortDescription" : "Started by user jing9",
+          "userId" : "jing9",
+          "userName" : "jing9"
+        }
+      ]
+    },
+    {
+      "tags" : [
+
+      ]
+    },
+    {
+
+    },
+    {
+
+    }
+  ],
+  "artifacts" : [
+
+  ],
+  "building" : true,
+  "description" : null,
+  "duration" : 0,
+  "estimatedDuration" : 5412859,
+  "executor" : {
+    "currentExecutable" : {
+      "number" : 3960,
+      "url" : "https://builds.apache.org/job/PreCommit-HADOOP-Build/3960/"
+    },
+    "currentWorkUnit" : {
+
+    },
+    "idle" : false,
+    "likelyStuck" : false,
+    "number" : 0,
+    "progress" : 64
+  },
+  "fullDisplayName" : "PreCommit-HADOOP-Build #3960",
+  "id" : "2014-05-22_07-34-58",
+  "keepLog" : false,
+  "number" : 3960,
+  "result" : null,
+  "timestamp" : 1400744098837,
+  "url" : "https://builds.apache.org/job/PreCommit-HADOOP-Build/3960/",
+  "builtOn" : "hadoop0",
+  "changeSet" : {
+    "items" : [
+      {
+        "affectedPaths" : [
+          "hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/web/resources/NamenodeWebHdfsMethods.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/WebHdfsFileSystem.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/DeleteOpParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/PutOpParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/site/apt/WebHDFS.apt.vm"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/jing9",
+          "fullName" : "jing9"
+        },
+        "commitId" : "1596772",
+        "timestamp" : 1400743818310,
+        "date" : "2014-05-22T07:30:18.310392Z",
+        "msg" : "HDFS-6438. DeleteSnapshot should be a DELETE request in WebHdfs. Contributed by Jing Zhao.",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/web/resources/NamenodeWebHdfsMethods.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/WebHdfsFileSystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/DeleteOpParam.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/PutOpParam.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/site/apt/WebHDFS.apt.vm"
+          }
+        ],
+        "revision" : 1596772,
+        "user" : "jing9"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-yarn-project/CHANGES.txt",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/QueuePlacementPolicy.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/QueuePlacementRule.java"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/kasha",
+          "fullName" : "kasha"
+        },
+        "commitId" : "1596765",
+        "timestamp" : 1400739204069,
+        "date" : "2014-05-22T06:13:24.069014Z",
+        "msg" : "YARN-2089. FairScheduler: QueuePlacementPolicy and QueuePlacementRule are missing audience annotations. (Zhihai Xu via kasha)",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/QueuePlacementPolicy.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/QueuePlacementRule.java"
+          }
+        ],
+        "revision" : 1596765,
+        "user" : "kasha"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-tools/hadoop-sls/src/main/java/org/apache/hadoop/yarn/sls/scheduler/ResourceSchedulerWrapper.java",
+          "hadoop-yarn-project/CHANGES.txt",
+          "hadoop-yarn-project/hadoop-yarn/dev-support/findbugs-exclude.xml",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/monitor/capacity/ProportionalCapacityPreemptionPolicy.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/AbstractYarnScheduler.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/SchedulerApplication.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/SchedulerNode.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/YarnScheduler.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/CapacityScheduler.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/CapacitySchedulerContext.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/LeafQueue.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/ParentQueue.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/common/fica/FiCaSchedulerNode.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/FSQueue.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/FSSchedulerNode.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/FairScheduler.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/QueueManager.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fifo/FifoScheduler.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/dao/FairSchedulerQueueInfo.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/monitor/capacity/TestProportionalCapacityPreemptionPolicy.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/TestSchedulerUtils.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestApplicationLimits.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestCapacityScheduler.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestChildQueueOrder.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestLeafQueue.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestParentQueue.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/TestFairScheduler.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fifo/TestFifoScheduler.java"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/vinodkv",
+          "fullName" : "vinodkv"
+        },
+        "commitId" : "1596753",
+        "timestamp" : 1400736746674,
+        "date" : "2014-05-22T05:32:26.674556Z",
+        "msg" : "YARN-2017. Merged some of the common scheduler code. Contributed by Jian He.",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-tools/hadoop-sls/src/main/java/org/apache/hadoop/yarn/sls/scheduler/ResourceSchedulerWrapper.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/dev-support/findbugs-exclude.xml"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/monitor/capacity/ProportionalCapacityPreemptionPolicy.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/AbstractYarnScheduler.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/SchedulerApplication.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/SchedulerNode.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/YarnScheduler.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/CapacityScheduler.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/CapacitySchedulerContext.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/LeafQueue.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/ParentQueue.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/common/fica/FiCaSchedulerNode.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/FSQueue.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/FSSchedulerNode.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/FairScheduler.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/QueueManager.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fifo/FifoScheduler.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/main/java/org/apache/hadoop/yarn/server/resourcemanager/webapp/dao/FairSchedulerQueueInfo.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/monitor/capacity/TestProportionalCapacityPreemptionPolicy.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/TestSchedulerUtils.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestApplicationLimits.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestCapacityScheduler.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestChildQueueOrder.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestLeafQueue.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/capacity/TestParentQueue.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fair/TestFairScheduler.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-resourcemanager/src/test/java/org/apache/hadoop/yarn/server/resourcemanager/scheduler/fifo/TestFifoScheduler.java"
+          }
+        ],
+        "revision" : 1596753,
+        "user" : "vinodkv"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/balancer/Balancer.java"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/cnauroth",
+          "fullName" : "cnauroth"
+        },
+        "commitId" : "1596742",
+        "timestamp" : 1400734253628,
+        "date" : "2014-05-22T04:50:53.628029Z",
+        "msg" : "HDFS-6433. Replace BytesMoved class with AtomicLong. Contributed by Benoy Antony.",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/balancer/Balancer.java"
+          }
+        ],
+        "revision" : 1596742,
+        "user" : "cnauroth"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSImage.java"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/cnauroth",
+          "fullName" : "cnauroth"
+        },
+        "commitId" : "1596739",
+        "timestamp" : 1400733500400,
+        "date" : "2014-05-22T04:38:20.400294Z",
+        "msg" : "HDFS-6409. Fix typo in log message about NameNode layout version upgrade. Contributed by Chen He.",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSImage.java"
+          }
+        ],
+        "revision" : 1596739,
+        "user" : "cnauroth"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-yarn-project/CHANGES.txt",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/src/test/java/org/apache/hadoop/yarn/applications/distributedshell/TestDistributedShell.java"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/zjshen",
+          "fullName" : "zjshen"
+        },
+        "commitId" : "1596724",
+        "timestamp" : 1400721374198,
+        "date" : "2014-05-22T01:16:14.198005Z",
+        "msg" : "YARN-2081. Fixed TestDistributedShell failure after YARN-1962. Contributed by Zhiguo Hong.",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-applications/hadoop-yarn-applications-distributedshell/src/test/java/org/apache/hadoop/yarn/applications/distributedshell/TestDistributedShell.java"
+          }
+        ],
+        "revision" : 1596724,
+        "user" : "zjshen"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeSymlink.java"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/wang",
+          "fullName" : "wang"
+        },
+        "commitId" : "1596713",
+        "timestamp" : 1400717430355,
+        "date" : "2014-05-22T00:10:30.355200Z",
+        "msg" : "HDFS-6396. Remove support for ACL feature from INodeSymlink. Contributed by Charles Lamb.",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeSymlink.java"
+          }
+        ],
+        "revision" : 1596713,
+        "user" : "wang"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-yarn-project/CHANGES.txt",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/yarn-default.xml",
+          "hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-applicationhistoryservice/src/main/java/org/apache/hadoop/yarn/server/applicationhistoryservice/ApplicationHistoryServer.java"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/vinodkv",
+          "fullName" : "vinodkv"
+        },
+        "commitId" : "1596710",
+        "timestamp" : 1400714408022,
+        "date" : "2014-05-21T23:20:08.022618Z",
+        "msg" : "YARN-1938. Added kerberos login for the Timeline Server. Contributed by Zhijie Shen.",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-api/src/main/java/org/apache/hadoop/yarn/conf/YarnConfiguration.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-common/src/main/resources/yarn-default.xml"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-yarn-project/hadoop-yarn/hadoop-yarn-server/hadoop-yarn-server-applicationhistoryservice/src/main/java/org/apache/hadoop/yarn/server/applicationhistoryservice/ApplicationHistoryServer.java"
+          }
+        ],
+        "revision" : 1596710,
+        "user" : "vinodkv"
+      },
+      {
+        "affectedPaths" : [
+          "hadoop-common-project/hadoop-common/CHANGES.txt",
+          "hadoop-common-project/hadoop-common/src/main/docs",
+          "hadoop-common-project/hadoop-common/src/main/java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/AbstractFileSystem.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FileContext.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FileSystem.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FilterFileSystem.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FilterFs.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/XAttrCodec.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/XAttrSetFlag.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/shell/FsCommand.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/shell/XAttrCommands.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/viewfs/ChRootedFileSystem.java",
+          "hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/viewfs/ViewFileSystem.java",
+          "hadoop-common-project/hadoop-common/src/site/apt/FileSystemShell.apt.vm",
+          "hadoop-common-project/hadoop-common/src/test/core",
+          "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/TestHarFileSystem.java",
+          "hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/shell/TestXAttrCommands.java",
+          "hadoop-hdfs-project/hadoop-hdfs",
+          "hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt",
+          "hadoop-hdfs-project/hadoop-hdfs/pom.xml",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/fs/Hdfs.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/fs/XAttr.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/DFSClient.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/DFSConfigKeys.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/DistributedFileSystem.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/XAttrHelper.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocol/ClientProtocol.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocolPB/ClientNamenodeProtocolServerSideTranslatorPB.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocolPB/ClientNamenodeProtocolTranslatorPB.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocolPB/PBHelper.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/AclConfigFlag.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSDirectory.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLog.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLogLoader.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLogOp.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLogOpCodes.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSImageFormat.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSImageFormatPBINode.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSNamesystem.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INode.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeAttributes.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeDirectoryAttributes.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeFileAttributes.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeReference.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeSymlink.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeWithAdditionalFields.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/NNConf.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/NameNodeLayoutVersion.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/NameNodeRpcServer.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/XAttrFeature.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/XAttrPermissionFilter.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/XAttrStorage.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/snapshot/FSImageFormatPBSnapshot.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/snapshot/Snapshot.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/web/resources/NamenodeWebHdfsMethods.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/JsonUtil.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/WebHdfsFileSystem.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/GetOpParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/PutOpParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrEncodingParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrNameParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrSetFlagParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrValueParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/native",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/proto/ClientNamenodeProtocol.proto",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/proto/fsimage.proto",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/proto/xattr.proto",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/resources/hdfs-default.xml",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/webapps/datanode",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/webapps/hdfs",
+          "hadoop-hdfs-project/hadoop-hdfs/src/main/webapps/secondary",
+          "hadoop-hdfs-project/hadoop-hdfs/src/site/apt/ExtendedAttributes.apt.vm",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/hdfs",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/cli/TestXAttrCLI.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/fs/TestXAttr.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/DFSTestUtil.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/TestDFSShell.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/TestSafeMode.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/FSXAttrBaseTest.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestFSImageWithXAttr.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestFileContextXAttr.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestINodeFile.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameNodeXAttr.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNamenodeRetryCache.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestStartup.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestXAttrConfigFlag.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/ha/TestRetryCacheWithHA.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/ha/TestXAttrsWithHA.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/snapshot/TestXAttrWithSnapshot.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/web/TestJsonUtil.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/web/TestWebHDFSXAttr.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/web/resources/TestParam.java",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/resources/editsStored",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/resources/editsStored.xml",
+          "hadoop-hdfs-project/hadoop-hdfs/src/test/resources/testXAttrConf.xml",
+          "hadoop-mapreduce-project",
+          "hadoop-mapreduce-project/CHANGES.txt",
+          "hadoop-mapreduce-project/conf",
+          "hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/src/main/resources/mapred-default.xml",
+          "hadoop-project/src/site/site.xml"
+        ],
+        "author" : {
+          "absoluteUrl" : "https://builds.apache.org/user/umamahesh",
+          "fullName" : "umamahesh"
+        },
+        "commitId" : "1596575",
+        "timestamp" : 1400680653918,
+        "date" : "2014-05-21T13:57:33.918922Z",
+        "msg" : "Merge HDFS-2006 HDFS XAttrs branch to Trunk",
+        "paths" : [
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/docs"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/AbstractFileSystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FileContext.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FileSystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FilterFileSystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/FilterFs.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/XAttrCodec.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/XAttrSetFlag.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/shell/FsCommand.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/shell/XAttrCommands.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/viewfs/ChRootedFileSystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/main/java/org/apache/hadoop/fs/viewfs/ViewFileSystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/site/apt/FileSystemShell.apt.vm"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/test/core"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/TestHarFileSystem.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-common-project/hadoop-common/src/test/java/org/apache/hadoop/fs/shell/TestXAttrCommands.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/pom.xml"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/fs/Hdfs.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/fs/XAttr.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/DFSClient.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/DFSConfigKeys.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/DistributedFileSystem.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/XAttrHelper.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocol/ClientProtocol.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocolPB/ClientNamenodeProtocolServerSideTranslatorPB.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocolPB/ClientNamenodeProtocolTranslatorPB.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/protocolPB/PBHelper.java"
+          },
+          {
+            "editType" : "delete",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/AclConfigFlag.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSDirectory.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLog.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLogLoader.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLogOp.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSEditLogOpCodes.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSImageFormat.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSImageFormatPBINode.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/FSNamesystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INode.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeAttributes.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeDirectoryAttributes.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeFileAttributes.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeReference.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeSymlink.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/INodeWithAdditionalFields.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/NNConf.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/NameNodeLayoutVersion.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/NameNodeRpcServer.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/XAttrFeature.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/XAttrPermissionFilter.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/XAttrStorage.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/snapshot/FSImageFormatPBSnapshot.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/snapshot/Snapshot.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/namenode/web/resources/NamenodeWebHdfsMethods.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/JsonUtil.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/WebHdfsFileSystem.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/GetOpParam.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/PutOpParam.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrEncodingParam.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrNameParam.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrSetFlagParam.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/web/resources/XAttrValueParam.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/native"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/proto/ClientNamenodeProtocol.proto"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/proto/fsimage.proto"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/proto/xattr.proto"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/resources/hdfs-default.xml"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/webapps/datanode"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/webapps/hdfs"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/main/webapps/secondary"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/site/apt/ExtendedAttributes.apt.vm"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/hdfs"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/cli/TestXAttrCLI.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/fs/TestXAttr.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/DFSTestUtil.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/TestDFSShell.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/TestSafeMode.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/FSXAttrBaseTest.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestFSImageWithXAttr.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestFileContextXAttr.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestINodeFile.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNameNodeXAttr.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestNamenodeRetryCache.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestStartup.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/TestXAttrConfigFlag.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/ha/TestRetryCacheWithHA.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/ha/TestXAttrsWithHA.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/server/namenode/snapshot/TestXAttrWithSnapshot.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/web/TestJsonUtil.java"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/web/TestWebHDFSXAttr.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/java/org/apache/hadoop/hdfs/web/resources/TestParam.java"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/resources/editsStored"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/resources/editsStored.xml"
+          },
+          {
+            "editType" : "add",
+            "file" : "/hadoop/common/trunk/hadoop-hdfs-project/hadoop-hdfs/src/test/resources/testXAttrConf.xml"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-mapreduce-project"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-mapreduce-project/CHANGES.txt"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-mapreduce-project/conf"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/src/main/resources/mapred-default.xml"
+          },
+          {
+            "editType" : "edit",
+            "file" : "/hadoop/common/trunk/hadoop-project/src/site/site.xml"
+          }
+        ],
+        "revision" : 1596575,
+        "user" : "umamahesh"
+      }
+    ],
+    "kind" : "svn",
+    "revisions" : [
+      {
+        "module" : "http://svn.apache.org/repos/asf/hadoop/common/trunk",
+        "revision" : 1596772
+      },
+      {
+        "module" : "http://svn.apache.org/repos/asf/hadoop/nightly",
+        "revision" : 1555008
+      }
+    ]
+  },
+  "culprits" : [
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/arp",
+      "description" : null,
+      "fullName" : "arp",
+      "id" : "arp",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+
+        },
+        {
+          "address" : "aagarwal@hortonworks.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/cmccabe",
+      "description" : null,
+      "fullName" : "cmccabe",
+      "id" : "cmccabe",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+
+        },
+        {
+          "address" : "cmccabe@cloudera.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/jing9",
+      "description" : null,
+      "fullName" : "jing9",
+      "id" : "jing9",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+
+        },
+        {
+          "address" : "zhaojing9@gmail.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/cnauroth",
+      "description" : null,
+      "fullName" : "cnauroth",
+      "id" : "cnauroth",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+
+        },
+        {
+          "address" : "cnauroth@hortonworks.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/umamahesh",
+      "description" : "",
+      "fullName" : "umamahesh",
+      "id" : "umamahesh",
+      "property" : [
+        {
+
+        },
+        {
+          "participatingInGame" : true,
+          "score" : 0.0,
+          "user" : {
+            "absoluteUrl" : "https://builds.apache.org/user/umamahesh",
+            "fullName" : "umamahesh"
+          }
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+          "PViewBuildNoExecutor" : false,
+          "PViewBuildNoQueue" : false,
+          "PViewExpression" : ".*",
+          "pcBuildButton" : true,
+          "pcConsoleView" : true,
+          "pcJob" : false,
+          "pcLastDuration" : false,
+          "pcLastFailure" : true,
+          "pcLastStable" : false,
+          "pcLastSuccess" : true,
+          "pcStatus" : true,
+          "pcWeather" : false,
+          "stepInNumberJobs" : 10,
+          "treePosition" : 1,
+          "treeSplitChar" : "-",
+          "user" : {
+            "absoluteUrl" : "https://builds.apache.org/user/umamahesh",
+            "fullName" : "umamahesh"
+          }
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "address" : "umagangumalla@gmail.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/kihwal",
+      "description" : null,
+      "fullName" : "kihwal",
+      "id" : "kihwal",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+
+        },
+        {
+          "address" : "kihwal@yahoo-inc.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/wang",
+      "description" : null,
+      "fullName" : "wang",
+      "id" : "wang",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+
+        },
+        {
+          "address" : "andrew@umbrant.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/kasha",
+      "description" : null,
+      "fullName" : "kasha",
+      "id" : "kasha",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+          "address" : "karthik@kambatla.com"
+        },
+        {
+
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/vinodkv",
+      "description" : null,
+      "fullName" : "vinodkv",
+      "id" : "vinodkv",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        },
+        {
+
+        },
+        {
+          "address" : "vinodkv@hortonworks.com"
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/zjshen",
+      "description" : null,
+      "fullName" : "zjshen",
+      "id" : "zjshen",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "address" : "zshen@hortonworks.com"
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        }
+      ]
+    },
+    {
+      "absoluteUrl" : "https://builds.apache.org/user/jlowe",
+      "description" : null,
+      "fullName" : "jlowe",
+      "id" : "jlowe",
+      "property" : [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+          "address" : "jlowe@yahoo-inc.com"
+        },
+        {
+
+        },
+        {
+          "insensitiveSearch" : false
+        }
+      ]
+    }
+  ]
+}

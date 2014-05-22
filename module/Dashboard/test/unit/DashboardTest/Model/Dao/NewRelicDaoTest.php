@@ -3,16 +3,16 @@
  * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
  */
 
-namespace DashboardTest\Model;
+namespace DashboardTest\Model\Dao;
 
 use DashboardTest\Bootstrap;
 
-class NewRelicDaoTest extends \PHPUnit_Framework_TestCase
+class NewRelicDaoTest extends AbstractDaoTestCase
 {
     /**
      * @return \Dashboard\Model\Dao\NewRelicDao
      */
-    protected function getConfiguredDao()
+    protected function getTestedDao()
     {
         $dao = Bootstrap::getServiceManager()->get('NewRelicDao');
         $dao->setDaoOptions(array(
@@ -29,14 +29,34 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Testing proper Jenkins API method - should return JSON parsed into array
+     *
+     * @dataProvider fetchRpmForNumberWidgetDataProvider
      */
-    public function testProperApiUrl()
+    public function testFetchRpmForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $response = $this->getConfiguredDao()->fetchRpmForNumberWidget(array(
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchRpmForNumberWidget(array(
             'appId' => '1290733',
         ));
 
-        $this->assertTrue(is_numeric($response), 'Testing proper API URL');
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * Data provider for testFetchStatusForBuildWidget()
+     * @return array
+     */
+    public function fetchRpmForNumberWidgetDataProvider()
+    {
+        return [
+            'proper result' => [
+                '$apiResponse' =>
+                    __DIR__ . '/../../Mock/Dao/NewRelic/fetchRpmForNumberWidgetResponse.txt',
+                '$expectedDaoResponse' => 775,
+            ],
+        ];
     }
 
     /**
@@ -45,7 +65,7 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase
      */
     public function testImproperApiMethod()
     {
-        $this->getConfiguredDao()->fetchImproperDataName(array(
+        $this->testedDao->fetchImproperDataName(array(
             'appId' => '1290733',
         ));
     }
@@ -56,6 +76,6 @@ class NewRelicDaoTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotAllRequiredParamsGiven()
     {
-        $this->getConfiguredDao()->fetchErrorRateForErrorWidget();
+        $this->testedDao->fetchErrorRateForErrorWidget();
     }
 }

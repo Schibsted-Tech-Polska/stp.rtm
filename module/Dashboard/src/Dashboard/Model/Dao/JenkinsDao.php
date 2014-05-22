@@ -29,7 +29,9 @@ class JenkinsDao extends AbstractDao
         $responseParsed['percentDone'] = 0;
 
         if ($response['lastBuild']['building'] == true) {
-            $buildStatus = $this->fetchBuildStatus(array_merge($params, array('buildNumber' => $response['lastBuild']['number'])));
+            $buildStatus = $this->fetchBuildStatus(
+                array_merge($params, array('buildNumber' => $response['lastBuild']['number']))
+            );
             $responseParsed['percentDone'] = $buildStatus['executor']['progress'];
         }
 
@@ -55,7 +57,9 @@ class JenkinsDao extends AbstractDao
         if (isset($buildInfo['culprits']) && count($buildInfo['culprits'])) {
             return $buildInfo['culprits'][0]['fullName'];
         } else {
-            if (isset($buildInfo['actions'][0]['causes'][0]) && isset($buildInfo['actions'][0]['causes'][0]['userName'])) {
+            if (isset($buildInfo['actions'][0]['causes'][0])
+                && isset($buildInfo['actions'][0]['causes'][0]['userName'])
+            ) {
                 return $buildInfo['actions'][0]['causes'][0]['userName'];
             } else {
                 return 'UNKNOWN';
