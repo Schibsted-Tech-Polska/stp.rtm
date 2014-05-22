@@ -1,0 +1,7 @@
+service_name: travis-ci
+repo_token: E8T6YBrF4S5ljAQBMgpiSmLYVBrJhB0AB
+
+# for php-coveralls
+src_dir: module
+coverage_clover: data/build/logs/clover-stp.rtm.xml
+json_path: data/build/logs/coveralls-upload.json

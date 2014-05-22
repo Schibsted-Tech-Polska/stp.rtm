@@ -13,5 +13,8 @@ before_script:
 script:
   - rake build setEnv[testing] ci
 
+after_script:
+ - php vendor/bin/coveralls -v
+
 notifications:
   email: true

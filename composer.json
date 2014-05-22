@@ -19,6 +19,7 @@
         "squizlabs/php_codesniffer": "1.*",
         "filp/whoops": "1.0.*",
         "fabpot/php-cs-fixer": "*@dev",
-        "behat/behat": "~2.5"
+        "behat/behat": "~2.5",
+        "satooshi/php-coveralls": "dev-master"
     }
 }

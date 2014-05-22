@@ -163,11 +163,14 @@ task :test, [:testType] do |task, args|
         coverageCovFile = "#{buildPath}/#{coveragePath}/#{moduleName.downcase}.cov"
 
         system_check "php vendor/bin/phpunit -c " +
-                " $PWD/#{currentModulePath}/#{args.testType}/phpunit.xml" +
-                " --coverage-text"
-                " $PWD/#{currentModulePath}/#{args.testType}/#{moduleName}Test/"
+                        " $PWD/#{currentModulePath}/#{args.testType}/phpunit.xml" +
+                        " --coverage-clover $PWD/#{buildPath}/logs/clover-#{moduleName.downcase}.xml" +
+                        " --coverage-php $PWD/#{coverageCovFile}" +
+                        " --coverage-text" +
+                        " $PWD/#{currentModulePath}/#{args.testType}/#{moduleName}Test/"
 
         system <<END
+        php -d error_reporting=0 vendor/bin/phpcov merge --clover="#{buildPath}/logs/clover-stp.rtm.xml" #{coverageFullPath}
 END
     end
 end
