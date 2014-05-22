@@ -2,6 +2,7 @@
 ![ScreenShot](screenshot.png "Dashboard")
 
 [![Build Status](https://travis-ci.org/Schibsted-Tech-Polska/stp.rtm.svg?branch=master)](https://travis-ci.org/Schibsted-Tech-Polska/stp.rtm)
+[![Coverage Status](https://coveralls.io/repos/Schibsted-Tech-Polska/stp.rtm/badge.png?branch=master)](https://coveralls.io/r/Schibsted-Tech-Polska/stp.rtm?branch=master)
 
 ## Dependencies
 - php >= 5.4

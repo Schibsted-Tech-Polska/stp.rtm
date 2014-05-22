@@ -89,6 +89,12 @@ body {
         top: 10px;
         right: 20px;
       }
+
+      a[href^="https://coveralls.io"] {
+        position: absolute;
+        top: 40px;
+        right: 20px;
+      }
     }
 
   }
