@@ -11,6 +11,7 @@ function NumberWidget(widget, configName) {
 
     this.widget = widget;
     this.configName = configName;
+    this.oldValue = 0;
 
     this.dataToBind = {
         'value': '',
@@ -50,12 +51,13 @@ $.extend(NumberWidget.prototype, {
         }
 
         $.extend(this.dataToBind, this.setDifference(this.oldValue, this.dataToBind.value));
-
+        var old = this.oldValue;
         this.oldValue = this.dataToBind.value;
 
         this.dataToBind.lastUpdate = response.updateTime;
 
         this.renderTemplate(this.dataToBind);
+        this.animateNumber(this.$widget.find('.mainValue'),old, this.dataToBind.value);
 
         this.checkThresholds(this.dataToBind.value);
     }

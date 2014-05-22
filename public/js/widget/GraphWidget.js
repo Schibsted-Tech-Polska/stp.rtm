@@ -5,6 +5,7 @@ function GraphWidget(widget, configName) {
     this.widget = widget;
     this.configName = configName;
     this.chart = null;
+    this.oldValue = 0;
 
     this.dataToBind = {
         'value': '',
@@ -40,9 +41,10 @@ $.extend(GraphWidget.prototype, {
         $.extend(this.dataToBind, this.setDifference(this.oldValue, currentValue));
 
         this.dataToBind.value = currentValue;
-        this.oldValue = currentValue;
 
         this.renderTemplate(this.dataToBind);
+        this.animateNumber(this.$widget.find('.mainValue'),this.oldValue, currentValue);
+        this.oldValue = currentValue;
 
         if (this.chart !== null) {
             this.chart.highcharts().destroy();

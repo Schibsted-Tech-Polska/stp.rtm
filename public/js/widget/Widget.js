@@ -180,5 +180,26 @@ Widget.prototype = {
         randomizer = Math.floor(randomizer * 1000);
 
         return randomizer;
+    },
+    animateNumber: function (el, start, end) {
+        if (!$.isNumeric(start) || !$.isNumeric(end)) {
+            return;
+        }
+
+        start = this.isInteger(start) ? parseInt(start, 10) : parseFloat(start);
+        end = this.isInteger(end) ? parseInt(end, 10) : parseFloat(end);
+        var precission = end % 1 === 0 ? 0 : 1;
+
+        $({value: start}).animate({value: end}, {
+            duration: 1000,
+            easing: 'swing',
+            step: function () {
+                el.text(this.value.toFixed(precission));
+            }
+        });
+    },
+
+    isInteger: function (number) {
+        return parseFloat(number) == parseInt(number, 10);
     }
 };
