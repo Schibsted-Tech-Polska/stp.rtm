@@ -1,7 +1,7 @@
 
 ![ScreenShot](screenshot.png "Dashboard")
 
-[![Build Status](https://travis-ci.org/domeq/stp.rtm.svg?branch=rake-travis-compatible)](https://travis-ci.org/domeq/stp.rtm)
+[![Build Status](https://travis-ci.org/Schibsted-Tech-Polska/stp.rtm.svg?branch=master)](https://travis-ci.org/Schibsted-Tech-Polska/stp.rtm)
 
 ## Dependencies
 - php >= 5.4
@@ -87,7 +87,7 @@ and modify `url` and `auth` keys to match your setup.
 In order to run Stp.Rtm you have to specify configuration file for each of your dashboards. All configuration
  files should be placed under "/config/rtm/" directory.
 
-### Defining dashboorad instance configuration file
+### Defining dashboard instance configuration file
 
 Below you can find a template and two examples of configuration files. The configuration file should contain
  a list of all widgets that you want to display on your dashboard.
