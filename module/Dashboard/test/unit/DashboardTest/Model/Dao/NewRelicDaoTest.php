@@ -6,9 +6,12 @@
 namespace DashboardTest\Model\Dao;
 
 use DashboardTest\Bootstrap;
+use DashboardTest\DataProvider\NewRelicDaoDataProvider;
 
 class NewRelicDaoTest extends AbstractDaoTestCase
 {
+    use NewRelicDaoDataProvider;
+
     /**
      * @return \Dashboard\Model\Dao\NewRelicDao
      */
@@ -17,10 +20,10 @@ class NewRelicDaoTest extends AbstractDaoTestCase
         $dao = Bootstrap::getServiceManager()->get('NewRelicDao');
         $dao->setDaoOptions(array(
             'headers' => array(
-                'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30',
+                'x-api-key' => 'foobar',
             ),
             'params' => array(
-                'accountId' => '100366',
+                'accountId' => '1111111',
             ),
         ));
 
@@ -28,8 +31,6 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * Testing proper Jenkins API method - should return JSON parsed into array
-     *
      * @dataProvider fetchRpmForNumberWidgetDataProvider
      */
     public function testFetchRpmForNumberWidget($apiResponse, $expectedDaoResponse)
@@ -37,7 +38,7 @@ class NewRelicDaoTest extends AbstractDaoTestCase
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
         $response = $this->testedDao->fetchRpmForNumberWidget(array(
-            'appId' => '1290733',
+            'appId' => '1111111',
         ));
 
         $this->assertInternalType('numeric', $response);
@@ -45,18 +46,276 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * Data provider for testFetchStatusForBuildWidget()
-     * @return array
+     * @dataProvider fetchFeRpmForNumberWidgetDataProvider
      */
-    public function fetchRpmForNumberWidgetDataProvider()
+    public function testFetchFeRpmForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        return [
-            'proper result' => [
-                '$apiResponse' =>
-                    __DIR__ . '/../../Mock/Dao/NewRelic/fetchRpmForNumberWidgetResponse.txt',
-                '$expectedDaoResponse' => 775,
-            ],
-        ];
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchFeRpmForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchErrorRateForErrorWidgetDataProvider
+     */
+    public function testFetchErrorRateForErrorWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchErrorRateForErrorWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchApdexForNumberWidgetDataProvider
+     */
+    public function testFetchApdexForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchApdexForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchApdexForIncrementalGraphWidgetDataProvider
+     */
+    public function testFetchApdexForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchApdexForIncrementalGraphWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchCpuUsageForNumberWidgetDataProvider
+     */
+    public function testFetchCpuUsageForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchCpuUsageForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchAverageResponseTimeForNumberWidgetDataProvider
+     */
+    public function testFetchAverageResponseTimeForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchAverageResponseTimeForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchMemoryForNumberWidgetDataProvider
+     */
+    public function testFetchMemoryForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchMemoryForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchMemoryForIncrementalGraphWidgetDataProvider
+     */
+    public function testFetchMemoryForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchMemoryForIncrementalGraphWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchCpuFromThresholdForNumberWidgetDataProvider
+     */
+    public function testFetchCpuFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchCpuFromThresholdForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchCpuFromThresholdForIncrementalGraphWidgetDataProvider
+     */
+    public function testFetchCpuFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchCpuFromThresholdForIncrementalGraphWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchDBFromThresholdForNumberWidgetDataProvider
+     */
+    public function testFetchDBFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchDBFromThresholdForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchDBFromThresholdForIncrementalGraphWidgetDataProvider
+     */
+    public function testFetchDBFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchDBFromThresholdForIncrementalGraphWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchThroughputFromThresholdForNumberWidgetDataProvider
+     */
+    public function testFetchThroughputFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchThroughputFromThresholdForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchThroughputFromThresholdForIncrementalGraphWidgetDataProvider
+     */
+    public function testFetchThroughputFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchThroughputFromThresholdForIncrementalGraphWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchResponseTimeFromThresholdForNumberWidgetDataProvider
+     */
+    public function testFetchResponseTimeFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchResponseTimeFromThresholdForNumberWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchResponseTimeFromThresholdForIncrementalGraphWidgetDataProvider
+     */
+    public function testFetchResponseTimeFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchResponseTimeFromThresholdForIncrementalGraphWidget(array(
+            'appId' => '1111111',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchEventsDataProvider
+     */
+    public function testFetchEvents($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchEvents(array(
+            'appId' => '1111111',
+            'feed' => '2222',
+            'eventType' => 'deployment',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchThresholdDataProvider
+     */
+    public function testFetchThreshold($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+
+        $response = $this->testedDao->fetchThreshold(array(
+            'appId' => '1111111',
+            'metric' => 'Apdex',
+        ));
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
     }
 
     /**
@@ -66,7 +325,7 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     public function testImproperApiMethod()
     {
         $this->testedDao->fetchImproperDataName(array(
-            'appId' => '1290733',
+            'appId' => '1111111',
         ));
     }
 

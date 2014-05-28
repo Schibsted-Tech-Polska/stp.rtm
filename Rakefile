@@ -215,10 +215,13 @@ end
 
 testType = ENV["testType"] || defaultTestType
 
-task :ci => ["lint","phploc","pdepend","phpmd","phpcs","phpcpd"] do
+task :ci => ["prepare","prepareDeploy","setupConfigFiles","composer:dev","lint","phploc","pdepend","phpmd","phpcs","phpcpd"] do
+    Rake::Task["setEnv"].invoke("testing")
     Rake::Task["test"].invoke(testType)
 end
 
-task :build => ["prepare","prepareDeploy","setupConfigFiles","composer:dev"]
+task :build => ["prepare","prepareDeploy","setupConfigFiles","composer:prod"] do
+    Rake::Task["setEnv"].invoke("production")
+end
 
 task :default => ["build"]

@@ -420,7 +420,7 @@ class NewRelicDao extends AbstractDao
     {
         $result = array();
 
-        $response = $this->request($this->config['urls']['fetchEvents'], $params, self::RESPONSE_IN_XML);
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
 
         foreach ($response->channel->item as $event) {
             $event = (array)$event;

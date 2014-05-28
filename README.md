@@ -22,12 +22,15 @@
 The recommended way to get a working copy of this project is to clone the repository
 and use `rake` to perform installation and initial setup. To do that, please go to the newly cloned directory and execute:
 
-    $ rake build setEnv[production]
+    $ rake
 
-The `setEnv` parameter value can be either:
+By default environment is set to **production**, for more verbose error reporting switch to **development** by executing:
 
-- `development` (more verbose error reporting)
-- `production` (no error reporting, configuration caching).
+    $ rake composer:dev setEnv[development]
+
+To go back to **production** just rerun
+
+    $ rake
 
 ## Available data sources
 
