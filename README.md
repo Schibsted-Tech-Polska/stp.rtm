@@ -3,7 +3,6 @@
 
 [![Build Status](https://travis-ci.org/Schibsted-Tech-Polska/stp.rtm.svg?branch=master)](https://travis-ci.org/Schibsted-Tech-Polska/stp.rtm)
 [![Coverage Status](https://coveralls.io/repos/Schibsted-Tech-Polska/stp.rtm/badge.png?branch=master)](https://coveralls.io/r/Schibsted-Tech-Polska/stp.rtm?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/537de2df14c15855aa000124//badge.svg)](https://www.versioneye.com/user/projects/537de2df14c15855aa000124/)
 
 ## Dependencies
 - php >= 5.4
