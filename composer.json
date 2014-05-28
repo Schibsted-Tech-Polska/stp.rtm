@@ -4,7 +4,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "github-oauth": {
+            "github.com": "0f1045ecff9d1a2d6260f501ac1ffcfa5370550c"
+        }
     },
     "require": {
         "php": ">=5.4",
