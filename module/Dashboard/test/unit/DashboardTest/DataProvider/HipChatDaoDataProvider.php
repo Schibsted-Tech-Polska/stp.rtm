@@ -6,7 +6,8 @@
 namespace DashboardTest\DataProvider;
 
 
-trait HipChatDaoDataProvider {
+trait HipChatDaoDataProvider
+{
     /**
      * @return array
      */
@@ -16,21 +17,21 @@ trait HipChatDaoDataProvider {
             'proper result' => [
                 '$apiResponse' =>
                     __DIR__ . '/../Mock/Dao/HipChat/fetchListRecentMessagesForMessagesWidgetResponse.txt',
-                '$expectedDaoResponse' => array (
+                '$expectedDaoResponse' => array(
                     0 =>
-                        array (
+                        array(
                             'projectName' => 'Deploy Bot',
                             'createdAt' => '2010-11-19 16:13:40',
                             'content' => 'This message is sent via the API so the user_id is \'api\'.',
                         ),
                     1 =>
-                        array (
+                        array(
                             'projectName' => 'Garret Heaton',
                             'createdAt' => '2010-11-19 15:49:44',
                             'content' => 'This is a file upload',
                         ),
                     2 =>
-                        array (
+                        array(
                             'projectName' => 'Garret Heaton',
                             'createdAt' => '2010-11-19 15:48:19',
                             'content' => 'Good morning! This is a regular message.',

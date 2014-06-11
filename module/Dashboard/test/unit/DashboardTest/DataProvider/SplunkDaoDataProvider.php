@@ -6,7 +6,8 @@
 namespace DashboardTest\DataProvider;
 
 
-trait SplunkDaoDataProvider {
+trait SplunkDaoDataProvider
+{
     /**
      * @return array
      */

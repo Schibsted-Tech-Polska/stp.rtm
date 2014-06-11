@@ -9,7 +9,7 @@ namespace Dashboard\Model\Dao;
 
 class TeamcityDao extends AbstractDao
 {
-    private $_usersMap = null;
+    private $usersMap = null;
 
     public function fetchStatusForMessagesWidget(array $params)
     {
@@ -62,25 +62,33 @@ class TeamcityDao extends AbstractDao
 
     public function fetchUserName(array $params, $name)
     {
-        if ($this->_usersMap == null) {
-            $this->_usersMap = array();
-            $response = (array)$this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML)->xpath('//user/@href');
+        if ($this->usersMap == null) {
+            $this->usersMap = array();
+            $response = (array) $this
+                ->request(
+                    $this->getEndpointUrl(__FUNCTION__),
+                    $params,
+                    self::RESPONSE_IN_XML
+                )
+                ->xpath('//user/@href');
 
             foreach ($response as $href) {
                 $url = $params['baseUrl'] . ((string)$href);
                 $user = $this->request($url, $params, self::RESPONSE_IN_XML);
 
-                $vcsName = @(string)$user->xpath('/user/properties/property[@name="plugin:vcs:tfs:anyVcsRoot"]/@value')[0];
-                $userName = @(string)$user->xpath('/user/@name')[0];
+                $vcsName = @(string)$user
+                    ->xpath('/user/properties/property[@name="plugin:vcs:tfs:anyVcsRoot"]/@value')[0];
+                $userName = @(string)$user
+                    ->xpath('/user/@name')[0];
 
                 if (!empty($vcsName) && !empty($userName)) {
-                    $this->_usersMap[$vcsName] = $userName;
+                    $this->usersMap[$vcsName] = $userName;
                 }
             }
         }
 
-        if (!empty($this->_usersMap[$name])) {
-            return $this->_usersMap[$name];
+        if (!empty($this->usersMap[$name])) {
+            return $this->usersMap[$name];
         }
 
         return $name;
@@ -151,7 +159,8 @@ class TeamcityDao extends AbstractDao
         $params = $params + array('id' => $id);
 
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_HTML);
-        $result = $response->xpath('//body//table[@class="coverageStats"][1]//tr[2]/td[4]/span[@class="percent"][1]')[0];
+        $result = $response
+            ->xpath('//body//table[@class="coverageStats"][1]//tr[2]/td[4]/span[@class="percent"][1]')[0];
 
         return trim((string)$result);
     }

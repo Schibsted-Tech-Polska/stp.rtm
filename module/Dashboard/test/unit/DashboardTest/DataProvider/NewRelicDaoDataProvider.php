@@ -6,7 +6,8 @@
 namespace DashboardTest\DataProvider;
 
 
-trait NewRelicDaoDataProvider {
+trait NewRelicDaoDataProvider
+{
     /**
      * @return array
      */
@@ -313,5 +314,4 @@ trait NewRelicDaoDataProvider {
             ],
         ];
     }
-
 }

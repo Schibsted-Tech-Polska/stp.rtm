@@ -3,7 +3,6 @@ namespace DashboardTest\Model\Dao;
 
 use DashboardTest\DataProvider\SplunkDaoDataProvider;
 
-
 class SplunkDaoTest extends AbstractDaoTestCase
 {
     use SplunkDaoDataProvider;

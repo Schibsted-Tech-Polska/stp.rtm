@@ -6,7 +6,8 @@
 namespace DashboardTest\DataProvider;
 
 
-trait BambooDaoDataProvider {
+trait BambooDaoDataProvider
+{
     /**
      * @return array
      */
