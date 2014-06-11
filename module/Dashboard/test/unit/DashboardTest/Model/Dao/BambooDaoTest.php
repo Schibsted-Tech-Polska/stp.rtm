@@ -21,10 +21,17 @@ class BambooDaoTest extends AbstractDaoTestCase
     /**
      * @dataProvider fetchStatusForBuildWidgetDataProvider
      */
-    public function testFetchStatusForBuildWidget($runningBuildsResponse, $fetchStatusForBuildWidgetResponse, $expectedDaoResponse)
-    {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($runningBuildsResponse));
-        $this->testedDao->getDataProvider()->getAdapter()->addResponse(file_get_contents($fetchStatusForBuildWidgetResponse));
+    public function testFetchStatusForBuildWidget(
+        $runningBuildsResponse,
+        $fetchStatusForBuildWidgetResponse,
+        $expectedDaoResponse
+    ) {
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(
+            file_get_contents($runningBuildsResponse)
+        );
+        $this->testedDao->getDataProvider()->getAdapter()->addResponse(
+            file_get_contents($fetchStatusForBuildWidgetResponse)
+        );
 
         $response = $this->testedDao->fetchStatusForBuildWidget(['project' => 'foobar', 'plan' => 'awesome']);
         $this->assertInternalType('array', $response);

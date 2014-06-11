@@ -6,7 +6,8 @@
 namespace DashboardTest\DataProvider;
 
 
-trait SmogDaoDataProvider {
+trait SmogDaoDataProvider
+{
     /**
      * @return array
      */
@@ -16,9 +17,9 @@ trait SmogDaoDataProvider {
             'proper result' => [
                 '$apiResponse' =>
                     __DIR__ . '/../Mock/Dao/Smog/fetchForSmogWidgetResponse.txt',
-                '$expectedDaoResponse' => array (
+                '$expectedDaoResponse' => array(
                     0 =>
-                        array (
+                        array(
                             'name' => 'Dwutlenek siarki (SO 2)',
                             'norm' => 350.0,
                             'unit' => 'ug/m 3',
@@ -27,7 +28,7 @@ trait SmogDaoDataProvider {
                             'parameter' => 'SO 2',
                         ),
                     1 =>
-                        array (
+                        array(
                             'name' => 'Dwutlenek azotu (NO 2)',
                             'norm' => 200.0,
                             'unit' => 'ug/m 3',
@@ -36,7 +37,7 @@ trait SmogDaoDataProvider {
                             'parameter' => 'NO 2',
                         ),
                     2 =>
-                        array (
+                        array(
                             'name' => 'Tlenek wÄgla (CO)',
                             'norm' => 10000,
                             'unit' => 'mg/m 3',

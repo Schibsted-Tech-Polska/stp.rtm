@@ -1,5 +1,6 @@
 <?php
 namespace Dashboard\Model\Dao;
+
 use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 
 /**

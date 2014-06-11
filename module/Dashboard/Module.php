@@ -38,74 +38,74 @@ class Module
             'factories' => array(
                 'WidgetConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['widgetsConfig'];
-                    },
+                },
                 'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['JenkinsDao'];
-                    },
+                },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
-                    },
+                },
                 'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['NewRelicDao'];
-                    },
+                },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
-                    },
+                },
                 'EventsDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['EventsDao'];
-                    },
+                },
                 'EventsDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\EventsDao($serviceManager->get('EventsDaoConfig'));
-                    },
+                },
                 'GearmanDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['GearmanDao'];
-                    },
+                },
                 'GearmanDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\GearmanDao($serviceManager->get('GearmanDaoConfig'));
-                    },
+                },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                         return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
-                    },
+                },
                 'CacheAdapter' => function ($serviceManager) {
                         $cacheAdapter = new Memcached($serviceManager->get('CacheAdapterOptions'));
 
                         return $cacheAdapter;
-                    },
+                },
                 'CacheAdapterOptions' => function ($serviceManager) {
                         $config = $serviceManager->get('Config');
 
                         return new MemcachedOptions($config['dashboardCache']);
-                    },
+                },
                 'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['SplunkDao'];
-                    },
+                },
                 'SplunkDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\SplunkDao($serviceManager->get('SplunkDaoConfig'));
-                    },
+                },
                 'TeamcityDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['TeamcityDao'];
-                    },
+                },
                 'TeamcityDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\TeamcityDao($serviceManager->get('TeamcityDaoConfig'));
-                    },
+                },
                 'SmogDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['SmogDao'];
-                    },
+                },
                 'SmogDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\SmogDao($serviceManager->get('SmogDaoConfig'));
-                    },
+                },
                 'HipChatDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['HipChatDao'];
-                    },
+                },
                 'HipChatDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\HipChatDao($serviceManager->get('HipChatDaoConfig'));
-                    },
+                },
                 'BambooDaoConfig' => function (ServiceManager $serviceManager) {
                         return $serviceManager->get('Config')['BambooDao'];
-                    },
+                },
                 'BambooDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\BambooDao($serviceManager->get('BambooDaoConfig'));
-                    },
+                },
             ),
         );
     }

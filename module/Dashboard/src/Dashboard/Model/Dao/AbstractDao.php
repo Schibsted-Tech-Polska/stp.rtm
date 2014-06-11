@@ -202,8 +202,13 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      * @return mixed
      * @throws \Zend\Http\Client\Exception\RuntimeException
      */
-    public function request($url, $params = array(), $responseFormat = self::RESPONSE_IN_JSON, $auth = null, $postData = null)
-    {
+    public function request(
+        $url,
+        $params = array(),
+        $responseFormat = self::RESPONSE_IN_JSON,
+        $auth = null,
+        $postData = null
+    ) {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
 
@@ -266,7 +271,11 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
             return $responseParsed;
         } else {
-            throw new Client\Exception\RuntimeException('Request failed with status: ' . $response->renderStatusLine() . ' ' . $response->getBody());
+            throw new Client\Exception\RuntimeException(
+                'Request failed with status: '
+                . $response->renderStatusLine()
+                . ' ' . $response->getBody()
+            );
         }
     }
 
@@ -298,7 +307,12 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     protected function getEndpointUrl($methodName)
     {
         if (!isset($this->config['urls'][$methodName])) {
-            throw new EndpointUrlNotDefined('Endpoint URL for method "' . $methodName . '" is not defined in ' . get_class($this));
+            throw new EndpointUrlNotDefined(
+                'Endpoint URL for method "'
+                . $methodName
+                . '" is not defined in '
+                . get_class($this)
+            );
         }
 
         return $this->config['urls'][$methodName];
@@ -340,7 +354,11 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         if (isset($matches[0]) && is_array($matches[0])) {
             foreach ($matches[0] as $placeholderName) {
                 if (!isset($params[str_replace(':', '', $placeholderName)])) {
-                    throw new EndpointUrlNotAssembled('Endpoint URL cannot be assembled - not all required params were given (missing ' . $placeholderName . ')');
+                    throw new EndpointUrlNotAssembled(
+                        'Endpoint URL cannot be assembled - not all required params were given (missing '
+                        . $placeholderName
+                        . ')'
+                    );
                 }
             }
         }
@@ -356,7 +374,14 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     public function __call($method, $args)
     {
         if (strpos($method, 'fetch') === 0) {
-            throw new FetchNotImplemented(sprintf('Method "%s" not implemented in %s. Executed with %s.', $method, get_class($this), print_r($args, true)));
+            throw new FetchNotImplemented(
+                sprintf(
+                    'Method "%s" not implemented in %s. Executed with %s.',
+                    $method,
+                    get_class($this),
+                    print_r($args, true)
+                )
+            );
         }
     }
 }

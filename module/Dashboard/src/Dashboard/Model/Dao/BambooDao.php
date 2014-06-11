@@ -42,10 +42,17 @@ class BambooDao extends AbstractDao
             $responseParsed['percentDone'] = 0;
 
         }
-        $buildTime = date_create_from_format(self::BAMBOO_DATE_FORMAT, $lastBuild['buildCompletedTime'])->getTimestamp();
+        $buildTime = date_create_from_format(
+            self::BAMBOO_DATE_FORMAT,
+            $lastBuild['buildCompletedTime']
+        )->getTimestamp();
         $responseParsed['lastBuilt'] = gmdate(self::WIDGET_DATE_FORMAT, $buildTime);
 
-        $responseParsed['averageHealthScore'] = $responseParsed['currentStatus'] == self::JENKINS_FAILING_STATUS ? 0 : 100;
+        if ($responseParsed['currentStatus'] == self::JENKINS_FAILING_STATUS) {
+            $responseParsed['averageHealthScore'] = 0;
+        } else {
+            $responseParsed['averageHealthScore'] = 100;
+        }
 
         return $responseParsed;
     }

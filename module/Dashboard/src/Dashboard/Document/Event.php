@@ -89,7 +89,7 @@ class Event extends AbstractDocument
      */
     public function getCreatedAt()
     {
-        return $this->createdAt->format('Y-m-d H:i:s');;
+        return $this->createdAt->format('Y-m-d H:i:s');
     }
 
     /**

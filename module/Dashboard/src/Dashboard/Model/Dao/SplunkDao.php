@@ -23,7 +23,13 @@ class SplunkDao extends AbstractDao
         }
 
         // Get JSON
-        $splunkJson = $this->request($this->config['url'], array(), 'json', $this->config['auth'], $this->config['jobs'][$params['config']]);
+        $splunkJson = $this->request(
+            $this->config['url'],
+            array(),
+            'json',
+            $this->config['auth'],
+            $this->config['jobs'][$params['config']]
+        );
 
         if ($splunkJson) {
             $returnArray = array();
