@@ -1,5 +1,6 @@
 <?php
 namespace Dashboard\Model\Dao;
+use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 
 /**
  * Class HipChatDao
@@ -16,13 +17,17 @@ class HipChatDao extends AbstractDao
      */
     public function fetchListRecentMessagesForMessagesWidget(array $params = array())
     {
+        if (!isset($params['room'])) {
+            throw new EndpointUrlNotAssembled('You need to specify room name');
+        }
+
         $daoParams = $this->getDaoParams();
         $hipChatJson = $this->request($this->config['urls']['listRecentMessages'], array(
             'room_id' => $params['room'],
             'auth_token' => $daoParams['auth_token'],
         ), 'json', true);
 
-        if ($hipChatJson) {
+        if ($hipChatJson && isset($hipChatJson['messages'])) {
             $returnArray = array();
             foreach (array_reverse($hipChatJson['messages']) as $message) {
                 $returnArray[] = array(

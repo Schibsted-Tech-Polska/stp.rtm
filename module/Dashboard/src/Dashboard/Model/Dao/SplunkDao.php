@@ -1,7 +1,7 @@
 <?php
 namespace Dashboard\Model\Dao;
 
-use Zend\Json\Json;
+use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 
 /**
  * Class SplunkDao
@@ -18,6 +18,10 @@ class SplunkDao extends AbstractDao
      */
     public function fetchFivehundredsForAlertWidget(array $params = array())
     {
+        if (!isset($params['config']) || !isset($this->config['jobs'][$params['config']])) {
+            throw new EndpointUrlNotAssembled('You need to specify job name and configure it in SplunkDao.config.php');
+        }
+
         // Get JSON
         $splunkJson = $this->request($this->config['url'], array(), 'json', $this->config['auth'], $this->config['jobs'][$params['config']]);
 
@@ -28,7 +32,6 @@ class SplunkDao extends AbstractDao
                 $returnArray[$key]['numberOfErrors'] = $splunkJson['columns'][0][$key];
                 $returnArray[$key]['lastErrorTime'] = $splunkJson['columns'][2][$key];
             }
-
             return $returnArray;
         } else {
             return array();

@@ -1,12 +1,12 @@
 <?php
 namespace DashboardTest\Model\Dao;
 
-use DashboardTest\Bootstrap;
-use DashboardTest\DataProvider\GearmanDaoDataProvider;
+use DashboardTest\DataProvider\SplunkDaoDataProvider;
 
-class GearmanDaoTest extends AbstractDaoTestCase
+
+class SplunkDaoTest extends AbstractDaoTestCase
 {
-    use GearmanDaoDataProvider;
+    use SplunkDaoDataProvider;
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -20,15 +20,17 @@ class GearmanDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * @dataProvider fetchJobsWithWorkersForQueueWidgetDataProvider
+     * @dataProvider fetchFivehundredsForAlertWidgetDataProvider
      */
-    public function testFetchJobsWithWorkersForQueueWidget($apiResponse, $expectedDaoResponse)
+    public function testFetchFivehundredsForAlertWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
-
-        $response = $this->testedDao->fetchJobsWithWorkersForQueueWidget(['gearmanuiUrl' => 'http://gearmanui-url.com']);
+        $adapter = $this->testedDao->getDataProvider()->getAdapter();
+        $responseString = file_get_contents($apiResponse);
+        $adapter->setResponse($responseString);
+        $response = $this->testedDao->fetchFivehundredsForAlertWidget(['config' => 'godtStatus500']);
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
+
     }
 
     /**
@@ -46,6 +48,6 @@ class GearmanDaoTest extends AbstractDaoTestCase
      */
     public function testNotAllRequiredParamsGiven()
     {
-        $this->testedDao->fetchJobsWithWorkersForQueueWidget();
+        $this->testedDao->fetchFivehundredsForAlertWidget();
     }
 }

@@ -1,12 +1,11 @@
 <?php
 namespace DashboardTest\Model\Dao;
 
-use DashboardTest\Bootstrap;
-use DashboardTest\DataProvider\GearmanDaoDataProvider;
+use DashboardTest\DataProvider\SmogDaoDataProvider;
 
-class GearmanDaoTest extends AbstractDaoTestCase
+class SmogDaoTest extends AbstractDaoTestCase
 {
-    use GearmanDaoDataProvider;
+    use SmogDaoDataProvider;
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -20,13 +19,13 @@ class GearmanDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * @dataProvider fetchJobsWithWorkersForQueueWidgetDataProvider
+     * @dataProvider fetchForSmogWidgetDataProvider
      */
-    public function testFetchJobsWithWorkersForQueueWidget($apiResponse, $expectedDaoResponse)
+    public function testFetchForSmogWidget($apiResponse, $expectedDaoResponse)
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchJobsWithWorkersForQueueWidget(['gearmanuiUrl' => 'http://gearmanui-url.com']);
+        $response = $this->testedDao->fetchForSmogWidget();
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
     }
@@ -38,14 +37,5 @@ class GearmanDaoTest extends AbstractDaoTestCase
     public function testImproperApiMethod()
     {
         $this->testedDao->fetchImproperDataName();
-    }
-
-    /**
-     * Proper API method, not all required params given - should throw an Exception
-     * @expectedException \Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled
-     */
-    public function testNotAllRequiredParamsGiven()
-    {
-        $this->testedDao->fetchJobsWithWorkersForQueueWidget();
     }
 }

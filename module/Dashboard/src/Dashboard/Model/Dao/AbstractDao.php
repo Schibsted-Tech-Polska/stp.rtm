@@ -208,7 +208,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         $request->setUri($this->assembleUrl($url, $params));
 
         // Auth data
-        if ($auth) {
+        if ($auth && !$this->getDataProvider()->getAdapter() instanceof \Zend\Http\Client\Adapter\Test) {
             $this->setDataProvider($this->setDefaultDataProvider($auth));
         }
 

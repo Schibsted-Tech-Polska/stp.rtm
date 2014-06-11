@@ -1,12 +1,11 @@
 <?php
 namespace DashboardTest\Model\Dao;
 
-use DashboardTest\Bootstrap;
-use DashboardTest\DataProvider\GearmanDaoDataProvider;
+use DashboardTest\DataProvider\BambooDaoDataProvider;
 
-class GearmanDaoTest extends AbstractDaoTestCase
+class BambooDaoTest extends AbstractDaoTestCase
 {
-    use GearmanDaoDataProvider;
+    use BambooDaoDataProvider;
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -20,13 +19,14 @@ class GearmanDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * @dataProvider fetchJobsWithWorkersForQueueWidgetDataProvider
+     * @dataProvider fetchStatusForBuildWidgetDataProvider
      */
-    public function testFetchJobsWithWorkersForQueueWidget($apiResponse, $expectedDaoResponse)
+    public function testFetchStatusForBuildWidget($runningBuildsResponse, $fetchStatusForBuildWidgetResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($runningBuildsResponse));
+        $this->testedDao->getDataProvider()->getAdapter()->addResponse(file_get_contents($fetchStatusForBuildWidgetResponse));
 
-        $response = $this->testedDao->fetchJobsWithWorkersForQueueWidget(['gearmanuiUrl' => 'http://gearmanui-url.com']);
+        $response = $this->testedDao->fetchStatusForBuildWidget(['project' => 'foobar', 'plan' => 'awesome']);
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
     }
@@ -46,6 +46,6 @@ class GearmanDaoTest extends AbstractDaoTestCase
      */
     public function testNotAllRequiredParamsGiven()
     {
-        $this->testedDao->fetchJobsWithWorkersForQueueWidget();
+        $this->testedDao->fetchStatusForBuildWidget();
     }
 }

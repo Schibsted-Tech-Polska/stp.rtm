@@ -5,6 +5,7 @@
 
 namespace DashboardTest\Model\Dao;
 
+use DashboardTest\Bootstrap;
 
 abstract class AbstractDaoTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +18,10 @@ abstract class AbstractDaoTestCase extends \PHPUnit_Framework_TestCase
      * Returns the instance of tested dao
      * @return \Dashboard\Model\Dao\AbstractDao
      */
-    abstract protected function getTestedDao();
+    protected function getTestedDao() {
+        $daoClass = str_replace('Test', '', str_replace(__NAMESPACE__ . '\\', '', get_class($this)));
+        return Bootstrap::getServiceManager()->get($daoClass);
+    }
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -26,6 +30,8 @@ abstract class AbstractDaoTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
+        Bootstrap::getServiceManager()->setAllowOverride(true);
+
         $this->testedDao = $this->getTestedDao();
         $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
     }

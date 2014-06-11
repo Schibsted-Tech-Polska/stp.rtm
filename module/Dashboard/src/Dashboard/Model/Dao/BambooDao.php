@@ -73,6 +73,10 @@ class BambooDao extends AbstractDao
 
     private function getAuth()
     {
-        return $this->getDaoParams()['username'] . ":" . $this->getDaoParams()['password'];
+        if (isset($this->getDaoParams()['username'], $this->getDaoParams()['password'])) {
+            return $this->getDaoParams()['username'] . ":" . $this->getDaoParams()['password'];
+        } else {
+            return false;
+        }
     }
 }
