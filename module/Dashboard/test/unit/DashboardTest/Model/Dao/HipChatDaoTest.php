@@ -1,12 +1,11 @@
 <?php
 namespace DashboardTest\Model\Dao;
 
-use DashboardTest\Bootstrap;
-use DashboardTest\DataProvider\GearmanDaoDataProvider;
+use DashboardTest\DataProvider\HipChatDaoDataProvider;
 
-class GearmanDaoTest extends AbstractDaoTestCase
+class HipChatDaoTest extends AbstractDaoTestCase
 {
-    use GearmanDaoDataProvider;
+    use HipChatDaoDataProvider;
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -20,13 +19,14 @@ class GearmanDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * @dataProvider fetchJobsWithWorkersForQueueWidgetDataProvider
+     * @dataProvider fetchListRecentMessagesForMessagesWidgetDataProvider
      */
-    public function testFetchJobsWithWorkersForQueueWidget($apiResponse, $expectedDaoResponse)
+    public function testFetchListRecentMessagesForMessagesWidget($apiResponse, $expectedDaoResponse)
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->setDaoOptions(['params' => ['auth_token' => 'qwertyuiop']]);
 
-        $response = $this->testedDao->fetchJobsWithWorkersForQueueWidget(['gearmanuiUrl' => 'http://gearmanui-url.com']);
+        $response = $this->testedDao->fetchListRecentMessagesForMessagesWidget(['room' => 'foobar', 'limit' => 10]);
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
     }
@@ -46,6 +46,6 @@ class GearmanDaoTest extends AbstractDaoTestCase
      */
     public function testNotAllRequiredParamsGiven()
     {
-        $this->testedDao->fetchJobsWithWorkersForQueueWidget();
+        $this->testedDao->fetchListRecentMessagesForMessagesWidget();
     }
 }

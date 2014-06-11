@@ -9,7 +9,7 @@ namespace Dashboard\Model\Dao;
 
 class SmogDao extends AbstractDao
 {
-    public function fetchForSmogWidget(array $params)
+    public function fetchForSmogWidget(array $params = [])
     {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_HTML);
         $table = (array)$response->xpath('//body/center')[0]->xpath('./table')[0]->xpath('.//tr');
@@ -46,10 +46,10 @@ class SmogDao extends AbstractDao
 
             $result[] = array(
                 'name' => $name,
-                'norm' => (float)$norm,
+                'norm' => (double)$norm,
                 'unit' => $unit,
-                'value' => (float)$value,
-                'percent' => 100 * ((float)$value) / ((float)$norm),
+                'value' => (double)$value,
+                'percent' => 100 * ((double)$value) / ((double)$norm),
                 'parameter' => $parameter,
             );
         }

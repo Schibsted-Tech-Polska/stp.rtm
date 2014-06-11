@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 May 2014 09:04:15 GMT
+Content-Type: application/json; charset=utf-8
+Connection: close
+Status: 200 OK
+X-Frame-Options: DENY
+ETag: "5b67fcee56127abde925cf9af41e6f55"
+Cache-Control: max-age=0, private, must-revalidate
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.046716
+
+{"expand":"results","link":{"rel":"self","href":"http://myhost:8085/rest/api/latest/result"},"results":{"expand":"result","size":2,"max-result":2,"start-index":0,"result":[{"number":5157,"buildState":"Successful","key":"MYPLAN1-5157","expand":"artifacts","failedTestCount":0,"successfulTestCount":1617,"buildStartedTime":"2009-06-15T14:56:06.821+1000","buildCompletedTime":"2009-06-15T15:14:10.994+1000","buildDurationInSeconds":1084.0,"buildDurationDescription":"18 minutes","buildRelativeTime":"2 hours ago","buildTestSummary":"1617 passed","buildReason":"<a href=\"http://myhost:8085/browse/BAM-MAIN-5157/commit\">Updated by Austin Powers</a>","reasonSummary":"<a href=\"http://myhost:8085/browse/BAM-MAIN-5157/commit\">Updated by Austin Powers</a>","queueStartedTime":"2009-06-15T14:53:54.499+1000","queueTimeInSeconds":1.0,"vcsUpdateStartedTime":"2009-06-15T14:53:55.546+1000","vcsUpdateInSeconds":131.0,"artifacts":{"size":1,"max-result":1,"start-index":0},"link":{"rel":"self","href":"http://myhost:8085/rest/api/latest/result/MYPLAN1-5157"}},{"number":2,"state":"Successful","key":"MYPROJ1-MYPLAN6","link":{"rel":"self","href":"http://panda:8085/rest/api/latest/result/MYPROJ1-MYPLAN6-1"}}]}}

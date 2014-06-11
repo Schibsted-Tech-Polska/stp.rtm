@@ -17,7 +17,7 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     protected function getTestedDao()
     {
-        $dao = Bootstrap::getServiceManager()->get('NewRelicDao');
+        $dao = parent::getTestedDao();
         $dao->setDaoOptions(array(
             'headers' => array(
                 'x-api-key' => 'foobar',

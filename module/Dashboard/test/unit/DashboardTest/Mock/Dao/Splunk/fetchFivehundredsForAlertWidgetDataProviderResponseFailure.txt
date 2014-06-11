@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Connection: Close
+Date: Wed, 11 Jun 2014 08:33:39 GMT
+Expires: Thu, 26 Oct 1978 00:00:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+Content-Type: application/json; charset=UTF-8
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: Splunkd

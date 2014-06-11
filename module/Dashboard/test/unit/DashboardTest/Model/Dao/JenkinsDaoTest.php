@@ -17,14 +17,6 @@ class JenkinsDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * @return \Dashboard\Model\Dao\JenkinsDao
-     */
-    protected function getTestedDao()
-    {
-        return Bootstrap::getServiceManager()->get('JenkinsDao');
-    }
-
-    /**
      * Testing proper Jenkins API method - should return JSON parsed into array
      *
      * @dataProvider fetchStatusForBuildWidgetDataProvider

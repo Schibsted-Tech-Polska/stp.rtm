@@ -15,7 +15,7 @@ class EventsDao extends AbstractDao
      * @param  array $params array storing dashboard and widget names and other options
      * @return array|mixed
      */
-    public function fetchMessagesForMessagesWidget(array $params)
+    public function fetchMessagesForMessagesWidget(array $params = [])
     {
         $dm = $this->getServiceLocator()->get('doctrine.documentmanager.odm_default');
         $qb = $dm->createQueryBuilder('Dashboard\Document\Message');
