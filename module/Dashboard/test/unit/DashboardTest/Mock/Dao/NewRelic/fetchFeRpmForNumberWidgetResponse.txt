@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 May 2014 09:04:15 GMT
+Content-Type: application/json; charset=utf-8
+Connection: close
+Status: 200 OK
+X-Frame-Options: DENY
+ETag: "5b67fcee56127abde925cf9af41e6f55"
+Cache-Control: max-age=0, private, must-revalidate
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.046716
+
+[{"name":"EndUser","begin":"2014-05-28T09:09:00Z","end":"2014-05-28T09:10:00Z","app":"godt.no","agent_id":1716240,"requests_per_minute":7843.0},{"name":"EndUser","begin":"2014-05-28T09:10:00Z","end":"2014-05-28T09:11:00Z","app":"godt.no","agent_id":1716240,"requests_per_minute":7679.0},{"name":"EndUser","begin":"2014-05-28T09:11:00Z","end":"2014-05-28T09:12:00Z","app":"godt.no","agent_id":1716240,"requests_per_minute":7675.0},{"name":"EndUser","begin":"2014-05-28T09:12:00Z","end":"2014-05-28T09:13:00Z","app":"godt.no","agent_id":1716240,"requests_per_minute":7548.0},{"name":"EndUser","begin":"2014-05-28T09:13:00Z","end":"2014-05-28T09:14:00Z","app":"godt.no","agent_id":1716240,"requests_per_minute":7908.000000000001}]

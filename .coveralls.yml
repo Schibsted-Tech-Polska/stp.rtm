@@ -1,0 +1,4 @@
+# for php-coveralls
+src_dir: .
+coverage_clover: data/build/logs/clover-stp.rtm.xml
+json_path: data/build/logs/coveralls-upload.json

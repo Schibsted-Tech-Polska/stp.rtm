@@ -1,9 +1,9 @@
 <div id="<?php echo $widgetId; ?>"
      class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
      data-widget-type="<?php echo $widgetType; ?>"
-     data-params='<?php echo $this->json($params)?>'
-     data-threshold-caution-value="<?php echo isset($threshold['caution-value']) ? $threshold['caution-value'] : 0?>"
-     data-threshold-critical-value="<?php echo isset($threshold['critical-value']) ? $threshold['critical-value'] : 0?>">
+     data-params='<?php echo $this->json($params) ?>'
+     data-threshold-caution-value="<?php echo isset($threshold['caution-value']) ? $threshold['caution-value'] : 0 ?>"
+     data-threshold-critical-value="<?php echo isset($threshold['critical-value']) ? $threshold['critical-value'] : 0 ?>">
 </div>
 <script type="text/template" id="<?php echo $widgetId; ?>Tpl">
     <div class="widgetContainer">
@@ -11,20 +11,29 @@
 
 
         <% _.each(value, function(server) { %>
-            <div class="server">
+
+
+        <div class="server">
             <h3 class="<%= server.up ? "up" : "down" %>" style="margin-bottom: 2px;"><%= server.name %></h3>
             <table class="jobsList">
                 <% _.each(server.status, function(job, jobName) { %>
+
                 <tr>
                     <% if (job.capable_workers > 0) {%>
-                        <th class="name"><%= jobName %></th>
-                        <td class="status"><%= job.capable_workers %> workers, <%= job.in_queue %> jobs in queue</td>
-                    <% } %>
-                </tr>
+
+                    <th class="name"><%= jobName %></th>
+                    <td class="status"><%= job.capable_workers %> workers, <%= job.in_queue %> jobs in queue</td>
+
+                                        <% } %>
+                                    </tr>
+
+                                <% }); %>
+                            </table>
+        </div>
+
                 <% }); %>
-            </table>
-            </div>
-        <% }); %>
+
+
 
         <p class="updated-at">Last update: <%= lastUpdate %></p>
     </div>

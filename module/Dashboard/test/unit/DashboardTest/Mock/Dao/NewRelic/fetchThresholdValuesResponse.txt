@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 May 2014 09:04:15 GMT
+Content-Type: application/json; charset=utf-8
+Connection: close
+Status: 200 OK
+X-Frame-Options: DENY
+ETag: "5b67fcee56127abde925cf9af41e6f55"
+Cache-Control: max-age=0, private, must-revalidate
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.046716
+
+<?xml version="1.0" encoding="UTF-8"?>
+<threshold-values type="array">
+  <threshold_value name="Apdex" metric_value="0.99" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="0.99 [0.5]"/>
+  <threshold_value name="Application Busy" metric_value="27.6" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="27.6%"/>
+  <threshold_value name="Error Rate" metric_value="0" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="0%"/>
+  <threshold_value name="Throughput" metric_value="252" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="252 rpm"/>
+  <threshold_value name="Errors" metric_value="0" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="0 epm"/>
+  <threshold_value name="Response Time" metric_value="134" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="134 ms"/>
+  <threshold_value name="DB" metric_value="1.76" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="1.76%"/>
+  <threshold_value name="CPU" metric_value="15.8" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="15.8%"/>
+  <threshold_value name="Memory" metric_value="87.8" threshold_value="1" begin_time="2014-05-28 09:49:46" end_time="2014-05-28 09:52:46" formatted_metric_value="87.8 MB"/>
+</threshold-values>

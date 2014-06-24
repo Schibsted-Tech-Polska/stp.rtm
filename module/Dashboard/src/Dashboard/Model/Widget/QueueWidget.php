@@ -6,4 +6,6 @@ namespace Dashboard\Model\Widget;
  *
  * @package Dashboard\Model\Widget
  */
-class QueueWidget extends AbstractWidget {}
+class QueueWidget extends AbstractWidget
+{
+}
