@@ -1,14 +1,29 @@
 {
     "name": "Stp.Rtm",
     "description": "Real time monitor dashboard using Jenkins API and New Relic API",
-    "minimum-stability": "alpha",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "preferred-install": "dist",
+        "github-oauth": {
+            "github.com": "0f1045ecff9d1a2d6260f501ac1ffcfa5370550c"
+        }
+    },
     "require": {
-        "php": ">=5.3.3",
-        "zendframework/zendframework": "2.2.0",
-        "doctrine/doctrine-mongo-odm-module": "dev-master",
-        "filp/whoops": "1.0.7"
+        "php": ">=5.4",
+        "zendframework/zendframework": "~2.3",
+        "doctrine/doctrine-mongo-odm-module": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "~4.0",
+        "phpunit/phpcov": "~2.0",
+        "phploc/phploc": "*",
+        "phpmd/phpmd": "*",
+        "pdepend/pdepend":"*",
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "1.*",
+        "filp/whoops": "*",
+        "fabpot/php-cs-fixer": "*@dev",
+        "satooshi/php-coveralls": "dev-master"
     }
 }

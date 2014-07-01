@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 May 2014 09:04:15 GMT
+Content-Type: application/json; charset=utf-8
+Connection: close
+Status: 200 OK
+X-Frame-Options: DENY
+ETag: "5b67fcee56127abde925cf9af41e6f55"
+Cache-Control: max-age=0, private, must-revalidate
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.046716
+
+[{"name":"HttpDispatcher","begin":"2014-05-22T08:57:00Z","end":"2014-05-22T08:58:00Z","app":"api.vgtv.no","agent_id":1290733,"requests_per_minute":705.0},{"name":"HttpDispatcher","begin":"2014-05-22T08:58:00Z","end":"2014-05-22T08:59:00Z","app":"api.vgtv.no","agent_id":1290733,"requests_per_minute":745.0},{"name":"HttpDispatcher","begin":"2014-05-22T08:59:00Z","end":"2014-05-22T09:00:00Z","app":"api.vgtv.no","agent_id":1290733,"requests_per_minute":748.0},{"name":"HttpDispatcher","begin":"2014-05-22T09:00:00Z","end":"2014-05-22T09:01:00Z","app":"api.vgtv.no","agent_id":1290733,"requests_per_minute":803.0},{"name":"HttpDispatcher","begin":"2014-05-22T09:01:00Z","end":"2014-05-22T09:02:00Z","app":"api.vgtv.no","agent_id":1290733,"requests_per_minute":775.0}]

@@ -16,7 +16,7 @@ return array(
         array('id' => '%UNIQUE_TO_DASHBOARD_WIDGET_ID%',
             'type' => 'messages',
             'params' => array(
-                'dao' => 'messages',
+                'dao' => 'events',
                 'metric' => 'messages',
                 'span' => '%WIDGET_WIDTH%', // widget width, accepted values: 1-12
                 'title' => '%WIDGET_TITLE%', // string title

@@ -1,0 +1,37 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 May 2014 09:04:15 GMT
+Content-Type: application/json; charset=utf-8
+Connection: close
+Status: 200 OK
+X-Frame-Options: DENY
+ETag: "5b67fcee56127abde925cf9af41e6f55"
+Cache-Control: max-age=0, private, must-revalidate
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.046716
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>New Relic event list for VG: godt.no</title>
+    <description>Recent alerts, deployments, and notes in New Relic</description>
+    <link>https://rpm.newrelic.com/account_feeds/11111/applications/1111/events.rss</link>
+    <ttl>3600</ttl>
+    <lastBuildDate>2014-05-28 01:45:16</lastBuildDate>
+    <item>
+      <title>[incident] - Alert for Application policy</title>
+      <link>/accounts/100366/incidents/8460431</link>
+      <pubDate>Wed, 28 May 2014 01:45:16 -0700</pubDate>
+    </item>
+    <item>
+      <title>[deployment] - michald deployed revision 4701</title>
+      <link>/accounts/100366/applications/1716240/deployments/1613645</link>
+      <pubDate>Thu, 22 May 2014 06:25:04 -0700</pubDate>
+    </item>
+    <item>
+      <title>[deployment] - anmaciur deployed revision 4697</title>
+      <link>/accounts/100366/applications/1716240/deployments/1601962</link>
+      <pubDate>Tue, 20 May 2014 05:07:20 -0700</pubDate>
+    </item>
+  </channel>
+</rss>

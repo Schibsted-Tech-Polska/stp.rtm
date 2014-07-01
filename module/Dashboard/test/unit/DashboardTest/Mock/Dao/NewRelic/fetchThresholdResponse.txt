@@ -1,0 +1,29 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 May 2014 09:04:15 GMT
+Content-Type: application/json; charset=utf-8
+Connection: close
+Status: 200 OK
+X-Frame-Options: DENY
+ETag: "5b67fcee56127abde925cf9af41e6f55"
+Cache-Control: max-age=0, private, must-revalidate
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.046716
+
+<?xml version="1.0" encoding="UTF-8"?>
+<thresholds type="array">
+  <threshold>
+    <id type="integer">500035</id>
+    <type>Apdex</type>
+    <caution-value>0.85</caution-value>
+    <critical-value>0.7</critical-value>
+    <url>https://rpm.newrelic.com/api/v1/accounts/100366/applications/1716240/thresholds/500035</url>
+  </threshold>
+  <threshold>
+    <id type="integer">500036</id>
+    <type>ErrorRate</type>
+    <caution-value>1</caution-value>
+    <critical-value>5</critical-value>
+    <url>https://rpm.newrelic.com/api/v1/accounts/100366/applications/1716240/thresholds/500036</url>
+  </threshold>
+</thresholds>

@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Connection: Close
+Date: Wed, 11 Jun 2014 08:33:39 GMT
+Expires: Thu, 26 Oct 1978 00:00:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+Content-Type: application/json; charset=UTF-8
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Server: Splunkd
+
+{"preview":false,"init_offset":0,"messages":[{"type":"DEBUG","text":"base lispy: [ AND 500 sourcetype::apache_access [ NOT toolbox ] [ OR host::godt-web-* host::red-web-* ] ]"},{"type":"DEBUG","text":"search context: user=\"wiskra\", app=\"search\", bs-pathname=\"/opt/splunk/etc\""}],"fields":["count","url","latestTime"],"columns":[["8","4","1"],["www.godt.no/svp/api/assets","www.godt.no/api/search/recipes","red.vgnett.no/godt-admin/image/upload"],["1402337747","1402338198","1402258823"]]}

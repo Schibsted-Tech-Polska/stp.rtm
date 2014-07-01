@@ -1,23 +1,35 @@
 <?php
 namespace Dashboard\Model\Dao;
 
-use Zend\Json\Json;
+use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 
 /**
  * Class SplunkDao
  *
  * @package Dashboard\Model\Dao
  */
-class SplunkDao extends AbstractDao {
+class SplunkDao extends AbstractDao
+{
     /**
      * Fetch status 500 for vgtv
      *
-     * @param array $params Params
+     * @param  array $params Params
      * @return array
      */
-    public function fetchFivehundredsForAlertWidget(array $params = array()) {
+    public function fetchFivehundredsForAlertWidget(array $params = array())
+    {
+        if (!isset($params['config']) || !isset($this->config['jobs'][$params['config']])) {
+            throw new EndpointUrlNotAssembled('You need to specify job name and configure it in SplunkDao.config.php');
+        }
+
         // Get JSON
-        $splunkJson = $this->request($this->config['url'], array(), 'json', $this->config['auth'], $this->config['jobs'][$params['config']]);
+        $splunkJson = $this->request(
+            $this->config['url'],
+            array(),
+            'json',
+            $this->config['auth'],
+            $this->config['jobs'][$params['config']]
+        );
 
         if ($splunkJson) {
             $returnArray = array();

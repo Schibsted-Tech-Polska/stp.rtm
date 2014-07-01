@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 22 May 2014 09:04:15 GMT
+Content-Type: application/json; charset=utf-8
+Connection: close
+Status: 200 OK
+X-Frame-Options: DENY
+ETag: "5b67fcee56127abde925cf9af41e6f55"
+Cache-Control: max-age=0, private, must-revalidate
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.046716
+
+{"messages":[{"date":"2010-11-19T15:48:19-0800","from":{"name":"Garret Heaton","user_id":10},"message":"Good morning! This is a regular message."},{"date":"2010-11-19T15:49:44-0800","from":{"name":"Garret Heaton","user_id":10},"file":{"name":"Screenshot.png","size":141909,"url":"http:\/\/uploads.hipchat.com\/xxx\/Screenshot.png"},"message":"This is a file upload"},{"date":"2010-11-19T16:13:40-0800","from":{"name":"Deploy Bot","user_id":"api"},"message":"This message is sent via the API so the user_id is 'api'."}]}
