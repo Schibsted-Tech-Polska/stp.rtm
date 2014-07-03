@@ -207,7 +207,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         $params = array(),
         $responseFormat = self::RESPONSE_IN_JSON,
         $auth = null,
-        $postData = null
+        $postData = null,
+        $throwException = true
     ) {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
@@ -270,12 +271,14 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
             }
 
             return $responseParsed;
-        } else {
+        } else if ($throwException) {
             throw new Client\Exception\RuntimeException(
                 'Request failed with status: '
                 . $response->renderStatusLine()
                 . ' ' . $response->getBody()
             );
+        } else {
+            return $response;
         }
     }
 
