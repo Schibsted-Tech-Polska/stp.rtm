@@ -4,7 +4,7 @@ namespace Dashboard\Model\Dao;
 use DateTime;
 
 /**
- * Class BambooDao
+ * Class AtgImporterDao
  *
  * @package Dashboard\Model\Dao
  */
