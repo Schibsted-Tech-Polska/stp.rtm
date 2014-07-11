@@ -23,12 +23,4 @@ class NumberWithNewRelicThresholdWidget extends NumberWidget
 
         $this->setWidgetTypeName('NumberWidget');
     }
-
-    /**
-     * Set threshold
-     */
-    public function setThreshold()
-    {
-        $this->threshold = $this->getDao()->fetchThreshold($this->getParams());
-    }
 }
