@@ -20,9 +20,14 @@ class HttpStatusDao extends AbstractDao {
         return $threshold;
     }
 
-    function fetchHttpStatusForErrorWidget(array $params = array()) {
-        $importJson = $this->request($params['url'], $params, 'plain', null, null, false);
-        return $importJson->getStatusCode();
+    function fetchHttpStatusForNumberWidget(array $params = array()) {
+        try {
+            $importJson = $this->request($params['url'], $params, 'plain');
+            $status = $importJson->getStatusCode();
+            return $status;
+        } catch(\Exception $e) {
+            $status = $e->getCode();
+            return $status;
+        }
     }
-
 }
