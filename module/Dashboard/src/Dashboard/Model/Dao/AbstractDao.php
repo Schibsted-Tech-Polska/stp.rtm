@@ -274,7 +274,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
             throw new Client\Exception\RuntimeException(
                 'Request failed with status: '
                 . $response->renderStatusLine()
-                . ' ' . $response->getBody()
+                . ' ' . $response->getBody(),
+                $response->getStatusCode()
             );
         }
     }
