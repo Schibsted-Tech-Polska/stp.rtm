@@ -278,11 +278,14 @@ abstract class AbstractWidget
     }
 
     /**
-     * Empty method for fetching threshold values.
+     * Set threshold values.
      * To be extended if necessary.
      */
     public function setThreshold()
     {
+        if (method_exists($this->getDao(), 'fetchThreshold')) {
+            $this->threshold = $this->getDao()->fetchThreshold($this->getParams());
+        }
     }
 
     /**
