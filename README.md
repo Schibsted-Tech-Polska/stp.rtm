@@ -42,6 +42,7 @@ To go back to **production** just rerun
 - **[New Relic](http://newrelic.com/)** - Software analytics platform
 - **[Splunk](http://www.splunk.com/)** - Operational Intelligence, Log Management, Application Management, Enterprise Security and Compliance
 - **[Teamcity](http://www.jetbrains.com/teamcity/)** - Continuous Integration for Everybody
+- **[Http Status]** - Checks HTTP status of given URL
 
 #### Custom sources ;)
  - **Events** - listing events saved in MongoDB (these can be pretty much anything you want)
