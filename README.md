@@ -43,6 +43,7 @@ To go back to **production** just rerun
 - **[Splunk](http://www.splunk.com/)** - Operational Intelligence, Log Management, Application Management, Enterprise Security and Compliance
 - **[Teamcity](http://www.jetbrains.com/teamcity/)** - Continuous Integration for Everybody
 - **[Http Status]** - Checks HTTP status of given URL
+- **[IMBO](http://imbo-project.org)** - IMBO Image Server database and storage status check
 
 #### Custom sources ;)
  - **Events** - listing events saved in MongoDB (these can be pretty much anything you want)
