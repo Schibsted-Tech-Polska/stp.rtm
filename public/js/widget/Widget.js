@@ -87,6 +87,7 @@ Widget.prototype = {
             throw new Error('Widget ' + this.widgetId + ' did not return value hash');
         }
 
+        this.$widget.css('opacity', '1');
 
         if (this.oldValueHash !== "/" + response.hash || this.oldValueHash === '') {
             this.oldValueHash = "/" + response.hash;
@@ -101,9 +102,11 @@ Widget.prototype = {
          */
         setTimeout(function () {
             this.fetchData();
-        }.bind(this), this.refreshRandomizer(this.params.refreshRate) * 10);
+        }.bind(this), this.refreshRandomizer(this.params.refreshRate));
 
         var response = $.parseJSON(jqXHR.responseText).error;
+
+        this.$widget.css('opacity', '0.2');
 
         throw new Error(response.message + " (type: " + response.type + ")");
     },
