@@ -122,6 +122,11 @@ class DashboardManager
                 $daoParams = array();
                 if (isset($widgetData['params']['dao']) && isset($this->rtmConfig[$widgetData['params']['dao']])) {
                     $daoParams = $this->rtmConfig[$widgetData['params']['dao']];
+
+                }
+
+                if (isset($widgetData['params']['daoOptions'])) {
+                    $daoParams = array_replace_recursive($daoParams, $widgetData['params']['daoOptions']);
                 }
 
                 $widget = $widgetFactory->build($widgetData, $daoParams, $this->getResourceName());

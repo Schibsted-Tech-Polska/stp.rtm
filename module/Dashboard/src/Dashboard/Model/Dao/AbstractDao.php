@@ -336,7 +336,9 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         $this->validateUrlParamValues($url, $params);
 
         foreach ($params as $key => $value) {
-            $url = str_replace(':' . $key . ':', $value, $url);
+            if (!is_array($value)) {
+                $url = str_replace(':' . $key . ':', $value, $url);
+            }
         }
 
         return $url;
