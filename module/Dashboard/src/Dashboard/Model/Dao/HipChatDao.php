@@ -31,11 +31,25 @@ class HipChatDao extends AbstractDao
         if ($hipChatJson && isset($hipChatJson['messages'])) {
             $returnArray = array();
             foreach (array_reverse($hipChatJson['messages']) as $message) {
-                $returnArray[] = array(
-                    'projectName' => $message['from']['name'],
-                    'createdAt' => (new \DateTime($message['date']))->format('Y-m-d H:i:s'),
-                    'content' => $message['message'],
-                );
+                if (isset($params['fromUser'])) {
+                    if (!is_array($params['fromUser'])) {
+                        $params['fromUser'] = array($params['fromUser']);
+                    }
+
+                    if (in_array($message['from']['name'], $params['fromUser'])) {
+                        $returnArray[] = array(
+                            'projectName' => $message['from']['name'],
+                            'createdAt' => (new \DateTime($message['date']))->format('Y-m-d H:i:s'),
+                            'content' => $message['message'],
+                        );
+                    }
+                } else {
+                    $returnArray[] = array(
+                        'projectName' => $message['from']['name'],
+                        'createdAt' => (new \DateTime($message['date']))->format('Y-m-d H:i:s'),
+                        'content' => $message['message'],
+                    );
+                }
             }
 
             return array_slice($returnArray, 0, $params['limit']);
