@@ -20,7 +20,8 @@ return array(
                 'subtitle' => '%ROOM_ID%',
                 'title' => '',
                 'limit' => 5,
-                'room' => '%ROOM_ID%'
+                'room' => '%ROOM_ID%',
+                'fromUser' => array('%USERNAME%'),
             ),
         ),
     ),
