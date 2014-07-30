@@ -3,7 +3,7 @@ namespace DashboardTest\Model\Dao;
 
 use DashboardTest\DataProvider\Bamboo4DaoDataProvider;
 
-class Bamboo4DaoTest extends BambooDaoTest
+class Bamboo4DaoTest extends AbstractBambooDao
 {
     use Bamboo4DaoDataProvider;
 
