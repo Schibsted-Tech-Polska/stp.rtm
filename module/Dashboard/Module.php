@@ -106,6 +106,12 @@ class Module
                 'BambooDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\BambooDao($serviceManager->get('BambooDaoConfig'));
                 },
+                'Bamboo4DaoConfig' => function (ServiceManager $serviceManager) {
+                        return $serviceManager->get('Config')['Bamboo4Dao'];
+                    },
+                'Bamboo4Dao' => function (ServiceManager $serviceManager) {
+                        return new Model\Dao\Bamboo4Dao($serviceManager->get('Bamboo4DaoConfig'));
+                },
                 'HttpStatusDao' => function () {
                         return new Model\Dao\HttpStatusDao(null);
                 },

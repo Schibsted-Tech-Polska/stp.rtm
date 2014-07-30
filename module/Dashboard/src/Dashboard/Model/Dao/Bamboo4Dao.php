@@ -1,19 +1,13 @@
 <?php
+/**
+ * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
+ */
+
 namespace Dashboard\Model\Dao;
 
-/**
- * Class BambooDao
- *
- * @package Dashboard\Model\Dao
- */
-class BambooDao extends AbstractDao
-{
-    const BAMBOO_BUILD_REASON_PATTERN = "/<a href=\".*?\">([\w\s]+)(&lt;.*?&gt;)*<\/a>/";
-    const BAMBOO_DATE_FORMAT = 'Y-m-d\TG:i:s.uP';
-    const WIDGET_DATE_FORMAT = 'Y-m-d H:i:s';
-    const BAMBOO_FAILING_STATUS = 'Failed';
-    const JENKINS_FAILING_STATUS = 'FAILURE';
 
+class Bamboo4Dao extends BambooDao
+{
     /**
      * Fetch Build status for Bamboo plan
      *
@@ -36,8 +30,8 @@ class BambooDao extends AbstractDao
             $responseParsed['lastCommitter'] = $this->getCommitterNames($latestRunningBuild['triggerReason']);
             $responseParsed['building'] = true;
         } else {
-            $responseParsed['lastCommitter'] = $this->getCommitterNames($lastBuild['reasonSummary']);
-            $responseParsed['currentStatus'] = $this->mapBuildStatusName($lastBuild['buildState']);
+            $responseParsed['lastCommitter'] = $this->getCommitterNames($lastBuild['buildReason']);
+            $responseParsed['currentStatus'] = $this->mapBuildStatusName($lastBuild['state']);
             $responseParsed['building'] = false;
             $responseParsed['percentDone'] = 0;
 
@@ -55,35 +49,5 @@ class BambooDao extends AbstractDao
         }
 
         return $responseParsed;
-    }
-
-    protected function getCommitterNames($triggerReason)
-    {
-        preg_match_all(self::BAMBOO_BUILD_REASON_PATTERN, $triggerReason, $matches);
-
-        return implode(", ", $matches[1]);
-    }
-
-    protected function mapBuildStatusName($bambooStatus)
-    {
-        if ($bambooStatus == self::BAMBOO_FAILING_STATUS) {
-            return self::JENKINS_FAILING_STATUS;
-        }
-
-        return $bambooStatus;
-    }
-
-    protected function fetchRunningBuilds($params, $auth)
-    {
-        return $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_JSON, $auth);
-    }
-
-    protected function getAuth()
-    {
-        if (isset($this->getDaoParams()['username'], $this->getDaoParams()['password'])) {
-            return $this->getDaoParams()['username'] . ":" . $this->getDaoParams()['password'];
-        } else {
-            return false;
-        }
     }
 }

@@ -35,7 +35,7 @@ To go back to **production** just rerun
 
 #### Popular sources
 
-- **[Bamboo](https://www.atlassian.com/software/bamboo)** - Continuous Integration & Build Server
+- **[Bamboo](https://www.atlassian.com/software/bamboo)** - Continuous Integration & Build Server (compatible with Bamboo 4.* and 5.*)
 - **[GearmanUI](http://gaspaio.github.io/gearmanui/)** - PHP application providing a minimal monitoring dashboard for a cluster of Gearman Job Servers
 - **[HipChat](https://www.hipchat.com/)** - Private group chat and IM, business and team collaboration
 - **[Jenkins](http://jenkins-ci.org/)** - An extendable open source continuous integration server
