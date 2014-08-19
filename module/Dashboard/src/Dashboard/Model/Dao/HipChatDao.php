@@ -10,6 +10,8 @@ use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
  */
 class HipChatDao extends AbstractDao
 {
+    private $stripChars = array('\n');
+
     /**
      * Fetch HipChat messages
      *
@@ -40,14 +42,14 @@ class HipChatDao extends AbstractDao
                         $returnArray[] = array(
                             'projectName' => $message['from']['name'],
                             'createdAt' => (new \DateTime($message['date']))->format('Y-m-d H:i:s'),
-                            'content' => $message['message'],
+                            'content' => str_replace($this->stripChars, '',$message['message']),
                         );
                     }
                 } else {
                     $returnArray[] = array(
                         'projectName' => $message['from']['name'],
                         'createdAt' => (new \DateTime($message['date']))->format('Y-m-d H:i:s'),
-                        'content' => $message['message'],
+                        'content' => str_replace($this->stripChars, '',$message['message']),
                     );
                 }
             }
