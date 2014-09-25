@@ -63,6 +63,12 @@ class Module
                 'GearmanDao' => function (ServiceManager $serviceManager) {
                         return new Model\Dao\GearmanDao($serviceManager->get('GearmanDaoConfig'));
                 },
+                'RabbitMQDaoConfig' => function (ServiceManager $serviceManager) {
+                    return $serviceManager->get('Config')['RabbitMQDao'];
+                },
+                'RabbitMQDao' => function (ServiceManager $serviceManager) {
+                    return new Model\Dao\RabbitMQDao($serviceManager->get('RabbitMQDaoConfig'));
+                },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                         return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
                 },

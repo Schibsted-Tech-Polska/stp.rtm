@@ -6,7 +6,7 @@
 return [
     'GearmanDao' => [
         'urls' => [
-            'fetchJobsWithWorkersForQueueWidget' => ':gearmanuiUrl:/info',
+            'fetchJobsWithWorkersForGearmanWidget' => ':gearmanuiUrl:/info',
         ],
     ],
 ];

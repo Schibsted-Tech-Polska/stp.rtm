@@ -24,7 +24,8 @@ $default-font-weight-normal: 300;
 @import "widget/messagesWidget";
 @import "widget/graphWidget";
 @import "widget/alertWidget";
-@import "widget/queueWidget";
+@import "widget/gearmanWidget";
+@import "widget/rabbitMQWidget";
 
 @font-face {
 

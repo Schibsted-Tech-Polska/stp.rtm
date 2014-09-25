@@ -20,14 +20,14 @@ class GearmanDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * @dataProvider fetchJobsWithWorkersForQueueWidgetDataProvider
+     * @dataProvider fetchJobsWithWorkersForGearmanWidgetDataProvider
      */
-    public function testFetchJobsWithWorkersForQueueWidget($apiResponse, $expectedDaoResponse)
+    public function testFetchJobsWithWorkersForGearmanWidget($apiResponse, $expectedDaoResponse)
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
         $response = $this->testedDao
-            ->fetchJobsWithWorkersForQueueWidget([
+            ->fetchJobsWithWorkersForGearmanWidget([
                 'gearmanuiUrl' => 'http://gearmanui-url.com'
             ]);
         $this->assertInternalType('array', $response);
@@ -49,6 +49,6 @@ class GearmanDaoTest extends AbstractDaoTestCase
      */
     public function testNotAllRequiredParamsGiven()
     {
-        $this->testedDao->fetchJobsWithWorkersForQueueWidget();
+        $this->testedDao->fetchJobsWithWorkersForGearmanWidget();
     }
 }

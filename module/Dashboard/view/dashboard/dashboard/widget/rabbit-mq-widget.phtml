@@ -1,0 +1,27 @@
+<div id="<?php echo $widgetId; ?>"
+     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
+     data-widget-type="<?php echo $widgetType; ?>"
+     data-params='<?php echo $this->json($params) ?>'
+     data-threshold-caution-value="<?php echo isset($threshold['caution-value']) ? $threshold['caution-value'] : 0 ?>"
+     data-threshold-critical-value="<?php echo isset($threshold['critical-value']) ? $threshold['critical-value'] : 0 ?>">
+</div>
+<script type="text/template" id="<?php echo $widgetId; ?>Tpl">
+    <div class="widgetContainer">
+        <img src="http://2600hz.org/images/rabbitmq.png" class="logo"/>
+
+            <div class="queues">
+                <% _.each(value, function(queue) { %>
+                <table class="queue">
+                <tr>
+                    <th class="name <%= queue.status %>"><%= queue.name %></th>
+                    <td class="status"><%= queue.messages %> messages (<%= queue.messages_details.rate %>/s), <%= queue.consumers %> workers, <%= Math.round(queue.memory/1024/1024) %>MB RAM</td>
+                </tr>
+
+
+                </table>
+                <% }); %>
+            </div>
+
+        <p class="updated-at">Last update: <%= lastUpdate %></p>
+    </div>
+</script>
