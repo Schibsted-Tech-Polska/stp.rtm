@@ -146,7 +146,8 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
         $dataProvider->setOptions(array(
             'maxredirects' => 1,
-            'timeout' => 30
+            'timeout' => 30,
+            'useragent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.122 Safari/537.36',
         ));
 
         return $dataProvider;
@@ -211,7 +212,6 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     ) {
         $request = new Request();
         $request->setUri($this->assembleUrl($url, $params));
-
         // Auth data
         if ($auth && !$this->getDataProvider()->getAdapter() instanceof \Zend\Http\Client\Adapter\Test) {
             $this->setDataProvider($this->setDefaultDataProvider($auth));
@@ -236,7 +236,6 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
          * @var \Zend\Http\Response
          */
         $response = $client->dispatch($request);
-
         if ($response->isSuccess()) {
             switch ($responseFormat) {
                 case self::RESPONSE_IN_JSON:
