@@ -14,7 +14,7 @@ class GearmanDao extends AbstractDao
      * @param  array $params Params
      * @return array
      */
-    public function fetchJobsWithWorkersForQueueWidget(array $params = array())
+    public function fetchJobsWithWorkersForGearmanWidget(array $params = array())
     {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }

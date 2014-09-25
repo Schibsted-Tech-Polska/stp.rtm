@@ -11,12 +11,12 @@ trait GearmanDaoDataProvider
     /**
      * @return array
      */
-    public function fetchJobsWithWorkersForQueueWidgetDataProvider()
+    public function fetchJobsWithWorkersForGearmanWidgetDataProvider()
     {
         return [
             'proper result' => [
                 '$apiResponse' =>
-                    __DIR__ . '/../Mock/Dao/Gearman/fetchJobsWithWorkersForQueueWidgetResponse.txt',
+                    __DIR__ . '/../Mock/Dao/Gearman/fetchJobsWithWorkersForGearmanWidgetResponse.txt',
                 '$expectedDaoResponse' => array(
                     0 =>
                         array(
