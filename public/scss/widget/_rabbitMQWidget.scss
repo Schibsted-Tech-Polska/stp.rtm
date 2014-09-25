@@ -15,17 +15,24 @@
             width: 100%;
 
             .name {
-                width: 35%;
+                width: 45%;
                 text-align: right;
                 padding: 2px 4px;
                 font-weight: normal;
             }
 
             .status {
-                width: 65%;
+                width: 55%;
                 text-align: left;
                 padding: 2px 4px;
                 color: $color-gray;
+            }
+
+            .failure {
+              color: $color-red;
+            }
+            .warning {
+              color: $color-yellow;
             }
         }
     }
