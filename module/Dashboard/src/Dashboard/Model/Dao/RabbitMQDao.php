@@ -2,7 +2,7 @@
 namespace Dashboard\Model\Dao;
 
 /**
- * Class GearmanDao
+ * Class RabbitMQDao
  *
  * @package Dashboard\Model\Dao
  */

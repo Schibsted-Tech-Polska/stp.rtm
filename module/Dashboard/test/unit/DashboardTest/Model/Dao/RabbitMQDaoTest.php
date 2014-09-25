@@ -1,11 +1,11 @@
 <?php
 namespace DashboardTest\Model\Dao;
 
-use DashboardTest\DataProvider\GearmanDaoDataProvider;
+use DashboardTest\DataProvider\RabbitMQDaoDataProvider;
 
-class GearmanDaoTest extends AbstractDaoTestCase
+class RabbitMQDaoTest extends AbstractDaoTestCase
 {
-    use GearmanDaoDataProvider;
+    use RabbitMQDaoDataProvider;
 
     /**
      * Sets up the fixture, for example, open a network connection.
@@ -19,16 +19,20 @@ class GearmanDaoTest extends AbstractDaoTestCase
     }
 
     /**
-     * @dataProvider fetchJobsWithWorkersForGearmanWidgetDataProvider
+     * @dataProvider fetchQueuesForRabbitMQWidgetDataProvider
      */
-    public function testFetchJobsWithWorkersForGearmanWidget($apiResponse, $expectedDaoResponse)
+    public function testFetchQueuesForRabbitMQWidget($apiResponse, $expectedDaoResponse)
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
         $response = $this->testedDao
-            ->fetchJobsWithWorkersForGearmanWidget([
-                'gearmanuiUrl' => 'http://gearmanui-url.com'
+            ->fetchQueuesForRabbitMQWidget([
+                'rabbitMQUrl' => 'http://rabbitmq-url.com',
+                'vhost' => 'integrator',
+                'ignoreQueues' => ['.*testing.*'],
+                'queueNameParser' => function($queueName) { return $queueName;},
             ]);
+
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
     }
@@ -48,6 +52,6 @@ class GearmanDaoTest extends AbstractDaoTestCase
      */
     public function testNotAllRequiredParamsGiven()
     {
-        $this->testedDao->fetchJobsWithWorkersForGearmanWidget();
+        $this->testedDao->fetchQueuesForRabbitMQWidget();
     }
 }
