@@ -345,17 +345,25 @@
 }
 /* line 17, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .name {
-  width: 35%;
+  width: 45%;
   text-align: right;
   padding: 2px 4px;
   font-weight: normal;
 }
 /* line 24, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .status {
-  width: 65%;
+  width: 55%;
   text-align: left;
   padding: 2px 4px;
   color: #999999;
+}
+/* line 31, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues .queue .failure {
+  color: #ed303c;
+}
+/* line 34, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues .queue .warning {
+  color: #fff46b;
 }
 
 @font-face {
