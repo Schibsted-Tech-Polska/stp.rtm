@@ -61,11 +61,22 @@ class RabbitMQDao extends AbstractDao
 
         if (isset($response['messages_details']['samples'])) {
             foreach ($response['messages_details']['samples'] as $singleStat) {
-                $responseParsed[] = array(
+                $responseParsed[] = [
                     'x' => $singleStat['timestamp'],
                     'y' => $singleStat['sample']
-                );
+                ];
             }
+        } else {
+            $responseParsed = [
+                [
+                    'x' => 0,
+                    'y' => 0,
+                ],
+                [
+                    'x' => (int) gmdate('U') * 1000,
+                    'y' => 0,
+                ],
+            ];
         }
 
         return array_reverse($responseParsed);
