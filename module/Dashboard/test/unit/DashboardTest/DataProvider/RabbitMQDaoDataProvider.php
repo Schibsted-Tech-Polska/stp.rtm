@@ -18,7 +18,7 @@ trait RabbitMQDaoDataProvider
                 '$apiResponse' =>
                     __DIR__ . '/../Mock/Dao/RabbitMQ/fetchQueuesForRabbitMQWidgetResponse.txt',
                 '$expectedDaoResponse' => array (
-                    0 =>
+                    'integrator:clean:adobe-campaign:queue' =>
                         array (
                             'memory' => 10771136,
                             'message_stats' =>
@@ -98,7 +98,7 @@ trait RabbitMQDaoDataProvider
                                 ),
                             'node' => 'rabbit@vg-dev-01',
                         ),
-                    1 =>
+                    'integrator:clean:hadoop:queue' =>
                         array (
                             'memory' => 100305384,
                             'message_stats' =>
@@ -183,7 +183,7 @@ trait RabbitMQDaoDataProvider
                                 ),
                             'node' => 'rabbit@vg-dev-01',
                         ),
-                    2 =>
+                    'integrator:clean:mysql:queue' =>
                         array (
                             'memory' => 601184,
                             'message_stats' =>
@@ -248,7 +248,7 @@ trait RabbitMQDaoDataProvider
                                 ),
                             'node' => 'rabbit@vg-dev-01',
                         ),
-                    3 =>
+                    'integrator:raw:hadoop:queue' =>
                         array (
                             'message_stats' =>
                                 array (

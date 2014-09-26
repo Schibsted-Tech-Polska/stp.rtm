@@ -15,7 +15,12 @@
                 <tr>
                     <th class="name <%= queue.status %>"><%= queue.name %></th>
                     <td class="status">
-                        <span class="<%= queue.messages > 0 ? "warning" : "success" %>"><%= queue.messages %> messages</span> (<%= queue.messages_details.rate %>/s), <%= Math.round(queue.memory/1024/1024) %>MB RAM<br/>
+                        <span class="<%= queue.messages > 0 ? "warning" : "success" %>">
+                            <%= queue.messages %> messages</span> (<%= queue.messages_details.rate %>/s)
+                            <% if (typeof(queue.invalidQueueInfo) != "undefined") { %>
+                                <span class="<%= queue.invalidQueueInfo.messages > 0 ? "failure" : "success" %>"><%= queue.invalidQueueInfo.messages %> invalid</span>
+                            <% } %>
+                        <br/>
                         <span class="<%= queue.consumers > 0 ? "success" : "failure" %>"><%= queue.consumers %> workers running</span>
                     </td>
                 </tr>
