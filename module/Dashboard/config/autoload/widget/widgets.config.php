@@ -37,6 +37,22 @@ return [
             'valuePrefix' => '',
             'span' => 3,
         ],
+        'eye' => [
+            'refreshRate' => 5,
+            'title' => '',
+            'subtitle' => '',
+            'valueSuffix' => '',
+            'valuePrefix' => '',
+            'span' => 3,
+        ],
+        'process' => [
+            'refreshRate' => 5,
+            'title' => '',
+            'subtitle' => '',
+            'valueSuffix' => '',
+            'valuePrefix' => '',
+            'span' => 3,
+        ],
         'error' => [
             'refreshRate' => 60,
             'title' => '',
