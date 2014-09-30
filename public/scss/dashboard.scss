@@ -4,9 +4,25 @@
 $default-font-color: #fff;
 $default-widget-bg-color: #373c3f;
 $body-bg-color: #282C2E;
+
+//------- COLOR PALETTE ------
+$color-gray: #999;
+$color-white: #ffffff;
+$color-green: #70C536;
+$color-cyan: #00BAD8;
+$color-orange: #F3704F;
 $color-red: #ED303C;
 $color-yellow: #FFF46B;
-$color-gray: #999;
+$color-blue-dark: #248F8D;
+
+//------- COLORS USAGE ------
+$bg-color: #282C2E;
+$bg-graph-widget: #373C3F;
+$bg-message-widget: #373C3F;
+$bg-number-widget: #373C3F;
+$bg-build-widget: #484D50;
+$bg-build-sleep: $color-blue-dark;
+$bg-warning: $color-red;
 
 // ----------------------------------------------------------------------------
 // Sizes
@@ -26,6 +42,8 @@ $default-font-weight-normal: 300;
 @import "widget/alertWidget";
 @import "widget/gearmanWidget";
 @import "widget/rabbitMQWidget";
+@import "widget/eyeWidget";
+@import "widget/processWidget";
 
 @font-face {
 

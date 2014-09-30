@@ -69,6 +69,12 @@ class Module
                 'RabbitMQDao' => function (ServiceManager $serviceManager) {
                     return new Model\Dao\RabbitMQDao($serviceManager->get('RabbitMQDaoConfig'));
                 },
+                'EyeDaoConfig' => function (ServiceManager $serviceManager) {
+                    return $serviceManager->get('Config')['EyeDao'];
+                },
+                'EyeDao' => function (ServiceManager $serviceManager) {
+                    return new Model\Dao\EyeDao($serviceManager->get('EyeDaoConfig'));
+                },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                         return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
                 },

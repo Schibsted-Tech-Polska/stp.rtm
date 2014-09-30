@@ -14,55 +14,43 @@
 #dashboardBody .widget.MessagesWidget .message .content {
   color: #f3704f;
 }
-/* line 43, ../../scss/themes/dark.scss */
-#dashboardBody .widget.MessagesWidget .message .content .failure {
-  color: #ed303c;
-}
-/* line 46, ../../scss/themes/dark.scss */
-#dashboardBody .widget.MessagesWidget .message .content .warning {
-  color: #f3704f;
-}
-/* line 49, ../../scss/themes/dark.scss */
-#dashboardBody .widget.MessagesWidget .message .content .success {
-  color: #70c536;
-}
-/* line 55, ../../scss/themes/dark.scss */
+/* line 44, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-thumbs-up {
   color: #70c536;
 }
-/* line 59, ../../scss/themes/dark.scss */
+/* line 48, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-thumbs-down {
   color: #f3704f;
 }
-/* line 63, ../../scss/themes/dark.scss */
+/* line 52, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-screenshot {
   color: #ed303c;
 }
-/* line 69, ../../scss/themes/dark.scss */
+/* line 58, ../../scss/themes/dark.scss */
 #dashboardBody .widget.ErrorWidget {
   background-color: #373c3f;
 }
-/* line 73, ../../scss/themes/dark.scss */
+/* line 62, ../../scss/themes/dark.scss */
 #dashboardBody .widget.GraphWidget {
   background-color: #373c3f;
 }
-/* line 77, ../../scss/themes/dark.scss */
+/* line 66, ../../scss/themes/dark.scss */
 #dashboardBody .widget.NumberWidget {
   background-color: #373c3f;
 }
-/* line 82, ../../scss/themes/dark.scss */
+/* line 71, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .face {
   background-color: #248f8d;
 }
-/* line 87, ../../scss/themes/dark.scss */
+/* line 76, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .FAILURE .face {
   background-color: #ed303c;
 }
-/* line 93, ../../scss/themes/dark.scss */
+/* line 82, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .UNSTABLE .face {
   background-color: #f3704f;
 }
-/* line 98, ../../scss/themes/dark.scss */
+/* line 87, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget p.change-rate {
   color: white;
 }
