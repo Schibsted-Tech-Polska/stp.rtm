@@ -33,7 +33,8 @@
         $jsAssets->prependFile($this->basePath() . '/js/Dashboard.js')
             ->prependFile($this->basePath() . '/js/widget/Widget.js')
             ->prependFile($this->basePath() . '/js/highcharts/js/themes/dashboard.js')
-            ->prependFile($this->basePath() . '/js/highcharts/js/highcharts.js');
+            ->prependFile($this->basePath() . '/js/highcharts/js/highcharts.js')
+            ->prependFile($this->basePath() . '/js/date.format.js');
     }
 
     echo $jsAssets

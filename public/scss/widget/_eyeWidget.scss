@@ -1,0 +1,28 @@
+// ----------------------------------------------------------------------------
+// Widget-messages styles
+// ----------------------------------------------------------------------------
+#dashboardBody .widget.EyeWidget {
+    overflow: hidden;
+
+    .process {
+        margin: 10px 0;
+        width: 100%;
+
+      color: $color-red;
+      .name {
+          width: 40%;
+        }
+
+        .state {
+          width: 60%;
+        }
+
+        &.starting {
+          color: $color-yellow;
+        }
+
+        &.up {
+          color: $color-green;
+        }
+    }
+}
