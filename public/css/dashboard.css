@@ -297,34 +297,73 @@
   margin-bottom: 0;
 }
 
-/* line 4, ../scss/widget/_queueWidget.scss */
-#dashboardBody .widget.QueueWidget {
+/* line 4, ../scss/widget/_gearmanWidget.scss */
+#dashboardBody .widget.GearmanWidget {
   overflow: hidden;
 }
-/* line 7, ../scss/widget/_queueWidget.scss */
-#dashboardBody .widget.QueueWidget .gearmanLogo {
+/* line 7, ../scss/widget/_gearmanWidget.scss */
+#dashboardBody .widget.GearmanWidget .gearmanLogo {
   width: 30%;
 }
-/* line 11, ../scss/widget/_queueWidget.scss */
-#dashboardBody .widget.QueueWidget .server {
+/* line 11, ../scss/widget/_gearmanWidget.scss */
+#dashboardBody .widget.GearmanWidget .server {
   margin: 10px 0;
 }
-/* line 14, ../scss/widget/_queueWidget.scss */
-#dashboardBody .widget.QueueWidget .server .jobsList {
+/* line 14, ../scss/widget/_gearmanWidget.scss */
+#dashboardBody .widget.GearmanWidget .server .jobsList {
   width: 100%;
 }
-/* line 17, ../scss/widget/_queueWidget.scss */
-#dashboardBody .widget.QueueWidget .server .jobsList .name {
+/* line 17, ../scss/widget/_gearmanWidget.scss */
+#dashboardBody .widget.GearmanWidget .server .jobsList .name {
   width: 50%;
   text-align: right;
   padding: 2px 4px;
 }
-/* line 23, ../scss/widget/_queueWidget.scss */
-#dashboardBody .widget.QueueWidget .server .jobsList .status {
+/* line 23, ../scss/widget/_gearmanWidget.scss */
+#dashboardBody .widget.GearmanWidget .server .jobsList .status {
   width: 50%;
   text-align: left;
   padding: 2px 4px;
   color: #999999;
+}
+
+/* line 4, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget {
+  overflow: hidden;
+}
+/* line 7, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .logo {
+  margin-bottom: 20px;
+}
+/* line 11, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues {
+  margin: 10px 0;
+}
+/* line 14, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues .queue {
+  width: 100%;
+}
+/* line 17, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues .queue .name {
+  width: 45%;
+  text-align: right;
+  padding: 2px 4px;
+  font-weight: normal;
+}
+/* line 24, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues .queue .status {
+  width: 55%;
+  text-align: left;
+  padding: 2px 4px;
+  color: #999999;
+}
+/* line 31, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues .queue .failure {
+  color: #ed303c;
+}
+/* line 34, ../scss/widget/_rabbitMQWidget.scss */
+#dashboardBody .widget.RabbitMQWidget .queues .queue .warning {
+  color: #fff46b;
 }
 
 @font-face {
@@ -335,7 +374,7 @@
   font-style: normal;
 }
 
-/* line 38, ../scss/dashboard.scss */
+/* line 39, ../scss/dashboard.scss */
 body {
   color: white;
   padding: 0 13px 13px;
@@ -345,11 +384,11 @@ body {
   font-weight: 300;
 }
 
-/* line 48, ../scss/dashboard.scss */
+/* line 49, ../scss/dashboard.scss */
 #dashboardBody .introduction {
   position: relative;
 }
-/* line 51, ../scss/dashboard.scss */
+/* line 52, ../scss/dashboard.scss */
 #dashboardBody .introduction .logo {
   font-size: 4em;
   line-height: 100px;
@@ -358,41 +397,53 @@ body {
   margin: 1em auto 1em auto;
   width: 660px;
 }
-/* line 60, ../scss/dashboard.scss */
+/* line 61, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation {
   font-size: 0.85em;
   line-height: 25px;
 }
-/* line 64, ../scss/dashboard.scss */
+/* line 65, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h1, #dashboardBody .introduction .documentation h2, #dashboardBody .introduction .documentation h3, #dashboardBody .introduction .documentation h4, #dashboardBody .introduction .documentation h5 {
   font-weight: 300;
 }
-/* line 68, ../scss/dashboard.scss */
+/* line 69, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h2 {
   font-size: 31.5px;
   margin-top: 1em;
 }
-/* line 73, ../scss/dashboard.scss */
+/* line 74, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h3 {
   font-size: 24.5px;
   margin-top: 0.75em;
 }
-/* line 78, ../scss/dashboard.scss */
+/* line 79, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation pre {
   margin: 0.8em 0;
   background-color: #4C5457;
 }
-/* line 83, ../scss/dashboard.scss */
+/* line 84, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation li {
   line-height: 25px;
 }
-/* line 87, ../scss/dashboard.scss */
+/* line 88, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://travis-ci.org"] {
   position: absolute;
   top: 10px;
   right: 20px;
 }
-/* line 96, ../scss/dashboard.scss */
+/* line 94, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation a[href^="https://coveralls.io"] {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+/* line 100, ../scss/dashboard.scss */
+#dashboardBody .introduction .documentation a[href^="https://www.versioneye.com"] {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+}
+/* line 109, ../scss/dashboard.scss */
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
@@ -402,19 +453,19 @@ body {
   vertical-align: middle;
   position: relative;
 }
-/* line 105, ../scss/dashboard.scss */
+/* line 118, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCriticalValue .value {
   color: #ed303c;
 }
-/* line 109, ../scss/dashboard.scss */
+/* line 122, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCautionValue .value {
   color: #fff46b;
 }
-/* line 113, ../scss/dashboard.scss */
+/* line 126, ../scss/dashboard.scss */
 #dashboardBody .widget .value {
   margin-top: 40px;
 }
-/* line 117, ../scss/dashboard.scss */
+/* line 130, ../scss/dashboard.scss */
 #dashboardBody .widget .updated-at {
   display: block;
   position: absolute;
@@ -422,53 +473,53 @@ body {
   left: 0;
   right: 0;
 }
-/* line 125, ../scss/dashboard.scss */
+/* line 138, ../scss/dashboard.scss */
 #dashboardBody .widget .change-rate.worse {
   color: #ed303c !important;
 }
-/* line 129, ../scss/dashboard.scss */
+/* line 142, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-/* line 133, ../scss/dashboard.scss */
+/* line 146, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 137, ../scss/dashboard.scss */
+/* line 150, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-/* line 145, ../scss/dashboard.scss */
+/* line 158, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 151, ../scss/dashboard.scss */
+/* line 164, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 156, ../scss/dashboard.scss */
+/* line 169, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-/* line 162, ../scss/dashboard.scss */
+/* line 175, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: white;
 }
-/* line 168, ../scss/dashboard.scss */
+/* line 181, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: white;
 }
-/* line 174, ../scss/dashboard.scss */
+/* line 187, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -478,12 +529,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 184, ../scss/dashboard.scss */
+  /* line 197, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 192, ../scss/dashboard.scss */
+/* line 205, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -491,12 +542,12 @@ body {
   overflow: hidden;
 }
 
-/* line 199, ../scss/dashboard.scss */
+/* line 212, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 203, ../scss/dashboard.scss */
+/* line 216, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }

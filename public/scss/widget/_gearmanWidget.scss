@@ -1,0 +1,31 @@
+// ----------------------------------------------------------------------------
+// Widget-messages styles
+// ----------------------------------------------------------------------------
+#dashboardBody .widget.GearmanWidget {
+    overflow: hidden;
+
+    .gearmanLogo {
+        width: 30%;
+    }
+
+    .server {
+        margin: 10px 0;
+
+        .jobsList {
+            width: 100%;
+
+            .name {
+                width: 50%;
+                text-align: right;
+                padding: 2px 4px;
+            }
+
+            .status {
+                width: 50%;
+                text-align: left;
+                padding: 2px 4px;
+                color: $color-gray;
+            }
+        }
+    }
+}

@@ -21,7 +21,15 @@ return [
             'valuePrefix' => '',
             'span' => 3,
         ],
-        'queue' => [
+        'gearman' => [
+            'refreshRate' => 5,
+            'title' => '',
+            'subtitle' => '',
+            'valueSuffix' => '',
+            'valuePrefix' => '',
+            'span' => 3,
+        ],
+        'rabbitMQ' => [
             'refreshRate' => 5,
             'title' => '',
             'subtitle' => '',

@@ -2,10 +2,10 @@
 namespace Dashboard\Model\Widget;
 
 /**
- * Class AlertWidget
+ * Class RabbitMQWidget
  *
  * @package Dashboard\Model\Widget
  */
-class QueueWidget extends AbstractWidget
+class RabbitMQWidget extends AbstractWidget
 {
 }

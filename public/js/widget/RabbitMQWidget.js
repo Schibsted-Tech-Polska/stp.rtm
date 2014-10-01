@@ -1,6 +1,6 @@
 /*global Widget */
 
-function QueueWidget(widget, configName) {
+function RabbitMQWidget(widget, configName) {
 
     this.widget = widget;
     this.configName = configName;
@@ -10,10 +10,10 @@ function QueueWidget(widget, configName) {
     };
 }
 
-QueueWidget.prototype = new Widget();
-QueueWidget.prototype.constructor = QueueWidget;
+RabbitMQWidget.prototype = new Widget();
+RabbitMQWidget.prototype.constructor = RabbitMQWidget;
 
-$.extend(QueueWidget.prototype, {
+$.extend(RabbitMQWidget.prototype, {
     /**
      * Invoked after each response from long polling server
      *
