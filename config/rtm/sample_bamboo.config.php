@@ -11,7 +11,8 @@ return array(
         ),
         'params' => array(
             'username' => 'username',
-            'password' => 'password'
+            'password' => 'password',
+            'baseUrl' => '%BASE_URL%'
         ),
     ),
     'widgets' => array(
