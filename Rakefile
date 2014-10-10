@@ -187,7 +187,7 @@ end
 desc "Make copy of config/environment.config.php.dist and set env to given one (development testing staging production)"
 task :setEnv, [:newEnv] do |task, args|
     puts task.comment
-    system_check "cat config/environment.config.php.dist | sed -r -e 's/#APPLICATION_ENVIRONMENT#/#{args.newEnv}/g' > config/environment.config.php"
+    system_check "cat config/environment.config.php.dist | sed -e 's/#APPLICATION_ENVIRONMENT#/#{args.newEnv}/g' > config/environment.config.php"
 end
 
 module Rake
