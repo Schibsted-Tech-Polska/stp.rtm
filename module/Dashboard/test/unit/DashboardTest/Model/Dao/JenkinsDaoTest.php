@@ -14,6 +14,11 @@ class JenkinsDaoTest extends AbstractDaoTestCase
     {
         parent::setUp();
         $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
+        $this->testedDao->setDaoOptions([
+            'params' => [
+                'baseUrl' => 'http://ci.vgnett.no'
+            ]
+        ]);
     }
 
     /**
