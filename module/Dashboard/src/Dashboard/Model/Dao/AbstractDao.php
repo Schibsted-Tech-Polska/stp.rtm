@@ -120,7 +120,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      * @param  string|null $auth Auth data login:password
      * @return Client
      */
-    protected function setDefaultDataProvider($auth = null)
+    protected function setDefaultDataProvider()
     {
         $dataProvider = new Client();
 
@@ -132,11 +132,6 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_SSL_VERIFYHOST => 0,
         );
-
-        // Auth option
-        if ($auth) {
-            $curlOptions[CURLOPT_USERPWD] = $auth;
-        }
 
         $adapter->setOptions(array(
             'curloptions' => $curlOptions
@@ -214,7 +209,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         $request->setUri($this->assembleUrl($url, $params));
         // Auth data
         if ($auth && !$this->getDataProvider()->getAdapter() instanceof \Zend\Http\Client\Adapter\Test) {
-            $this->setDataProvider($this->setDefaultDataProvider($auth));
+            $this->setDataProvider($this->setDefaultDataProvider());
         }
 
         // Use POST method
