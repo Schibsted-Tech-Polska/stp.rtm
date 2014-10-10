@@ -224,4 +224,8 @@ task :build => ["prepare","prepareDeploy","setupConfigFiles","composer:prod"] do
     Rake::Task["setEnv"].invoke("production")
 end
 
+task :herokubuild => ["prepare", "prepareDeploy", "setupConfigFiles"] do
+    Rake::Task["setEnv"].invoke("production")
+end
+
 task :default => ["build"]

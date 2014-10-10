@@ -6,7 +6,6 @@ nbproject
 .idea
 .project
 .settings
-composer.lock
 composer.phar
 vendor/
 public/vendor/
