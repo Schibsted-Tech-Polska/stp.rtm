@@ -29,11 +29,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "rake"
+            "rake herokubuild"
         ]
-    },
-    "extra": {
-        "document-root": "public",
-        "index-document": "index.php"
     }
 }
