@@ -11,6 +11,7 @@
     },
     "require": {
         "php": ">=5.4",
+        "ext-mongo": "*",
         "zendframework/zendframework": "~2.3",
         "doctrine/doctrine-mongo-odm-module": "dev-master"
     },
