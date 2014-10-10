@@ -6,8 +6,8 @@
 return [
     'BambooDao' => [
         'urls' => [
-            'fetchStatusForBuildWidget' => 'http://bamboo.aftonbladet.se:8085/rest/api/latest/result/:project:-:plan:?expand=results[0].result',
-            'fetchRunningBuilds' => 'http://bamboo.aftonbladet.se:8085/chain/admin/ajax/getChains.action?planKey=:project:-:plan:'
+            'fetchStatusForBuildWidget' => ':baseUrl:/rest/api/latest/result/:project:-:plan:?expand=results[0].result',
+            'fetchRunningBuilds' => ':baseUrl:/chain/admin/ajax/getChains.action?planKey=:project:-:plan:'
         ],
     ]
 ];
