@@ -26,5 +26,9 @@
         "filp/whoops": "*",
         "fabpot/php-cs-fixer": "*@dev",
         "satooshi/php-coveralls": "dev-master"
+    },
+    "extra": {
+        "document-root": "public",
+        "index-document": "index.php"
     }
 }
