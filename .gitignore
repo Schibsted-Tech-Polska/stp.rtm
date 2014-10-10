@@ -10,7 +10,6 @@ composer.lock
 composer.phar
 vendor/
 public/vendor/
-config/environment.config.php
 config/autoload/local.php
 config/autoload/*.local.php
 public/vendor/*
