@@ -6,8 +6,8 @@
 return [
     'JenkinsDao' => [
         'urls' => [
-            'fetchStatusForBuildWidget' => 'http://ci.vgnett.no/job/:job:/api/json?pretty=true&depth=1',
-            'fetchBuildStatus' => 'http://ci.vgnett.no/job/:job:/:buildNumber:/api/json?pretty=true&depth=1',
+            'fetchStatusForBuildWidget' => ':baseUrl:/job/:job:/api/json?pretty=true&depth=1',
+            'fetchBuildStatus' => ':baseUrl:/job/:job:/:buildNumber:/api/json?pretty=true&depth=1',
         ],
     ],
 ];
