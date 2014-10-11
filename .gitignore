@@ -20,3 +20,4 @@ data/log/*
 !data/log/.gitkeep
 data/build
 Capfile
+.sass-cache
