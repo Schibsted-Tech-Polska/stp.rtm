@@ -1,0 +1,2 @@
+
+{"data":{"coord":{"lon":19.92,"lat":50.08},"sys":{"type":1,"id":5352,"message":0.1108,"country":"PL","sunrise":1413003398,"sunset":1413043038},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"cmc stations","main":{"temp":17,"pressure":1014,"humidity":93,"temp_min":17,"temp_max":17},"wind":{"speed":1.41,"deg":126.002},"clouds":{"all":75},"dt":1413052200,"id":3094802,"name":"Krakow","cod":200},"hash":"8c98ca8fabd75ac750285bf4bfe39ddc455ea376","updateTime":"19:36"}
