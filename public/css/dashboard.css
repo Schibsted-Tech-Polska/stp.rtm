@@ -1,8 +1,8 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_errorWidget\.scss}line{font-family:\0000312}}
+/* line 12, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget .sock {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_errorWidget\.scss}line{font-family:\0000317}}
+/* line 17, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.warning .sock {
   background-image: url(../img/sock.png);
   background-repeat: no-repeat;
@@ -11,125 +11,125 @@
   display: block;
   float: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_errorWidget\.scss}line{font-family:\0000330}}
+/* line 30, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue {
   background-color: #CC0C39;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_errorWidget\.scss}line{font-family:\0000333}}
+/* line 33, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue .value {
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_errorWidget\.scss}line{font-family:\0000338}}
+/* line 38, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue {
   background-color: #978C06;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_errorWidget\.scss}line{font-family:\0000341}}
+/* line 41, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue .value {
   color: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_textWidget\.scss}line{font-family:\0000310}}
+/* line 10, ../scss/widget/_textWidget.scss */
 #dashboardBody .widget.TextWidget {
   background-color: #4D4C4C;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000315}}
+/* line 15, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget {
   padding: 0;
   background: transparent;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000319}}
+/* line 19, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget h2 {
   font-size: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000322}}
+/* line 22, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget input.jenkins-build {
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000326}}
+/* line 26, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .details {
   position: absolute;
   bottom: 5px;
   left: 0px;
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000333}}
+/* line 33, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .title {
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000337}}
+/* line 37, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .more-info {
   color: rgba(255, 255, 255, 0.3);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000341}}
+/* line 41, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .updated-at {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000345}}
+/* line 45, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .progress-bar {
   display: none;
   margin-top: 22px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000351}}
+/* line 51, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .FAILURE .face {
   background: #cf0d4d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000357}}
+/* line 57, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .UNSTABLE .face {
   background: #F3704F;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000362}}
+/* line 62, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face {
   padding: 14px 12px;
   background: #1693a7;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000367}}
+/* line 67, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.front {
   z-index: 20;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000371}}
+/* line 71, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.back {
   background: #a7169e;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000375}}
+/* line 75, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flipped-effect .face.back {
   z-index: 21;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000379}}
+/* line 79, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .average-health-score {
   font-family: "Icons";
   font-size: 210px;
   line-height: 0.9;
   margin-bottom: 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000386}}
+/* line 86, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .last-built {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000390}}
+/* line 90, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .last-committer {
   font-size: 26px;
   margin-bottom: 3px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000395}}
+/* line 95, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .change-rate {
   line-height: 220%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\0000399}}
+/* line 99, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .code-coverage {
   line-height: 140%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003103}}
+/* line 103, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .build-icon {
   width: 100%;
   height: 230px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003107}}
+/* line 107, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .build-icon svg {
   width: 100%;
   height: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003113}}
+/* line 113, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container {
   position: relative;
   width: 100%;
@@ -140,7 +140,7 @@
   -o-perspective: 1000px;
   perspective: 1000px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003125}}
+/* line 125, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-content {
   width: 100%;
   height: 100%;
@@ -153,14 +153,14 @@
   transform-style: preserve-3d;
   transition: all 1.0s linear;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003138}}
+/* line 138, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container.flipped-effect .flip-content {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003145}}
+/* line 145, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face {
   position: absolute;
   width: 100%;
@@ -174,7 +174,7 @@
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003160}}
+/* line 160, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.back {
   display: block;
   -webkit-transform: rotateY(180deg);
@@ -185,34 +185,34 @@
   color: white;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_buildWidget\.scss}line{font-family:\00003172}}
+/* line 172, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .widget-clock h2 {
   font-size: 66px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_numberWidget\.scss}line{font-family:\000035}}
+/* line 5, ../scss/widget/_numberWidget.scss */
 #dashboardBody .widget.NumberWidget .change-rate {
   font-weight: 500;
   font-size: 30px;
   margin-top: 30px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\000034}}
+/* line 4, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget {
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\000037}}
+/* line 7, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget h1 {
   font-size: 30px;
   margin-bottom: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\0000312}}
+/* line 12, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget h5 {
   color: #ddd;
   text-align: left;
   margin: 6px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\0000318}}
+/* line 18, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message {
   text-align: left;
   border-bottom: 1px dotted #666;
@@ -220,27 +220,27 @@
   padding-bottom: 0.4em;
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\0000325}}
+/* line 25, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .createdAt {
   color: #aaa;
   font-size: 0.75em;
   margin-bottom: 2px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\0000331}}
+/* line 31, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .content {
   font-size: 1.2em;
   color: #ddd;
   line-height: 110%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\0000336}}
+/* line 36, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .content small {
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\0000342}}
+/* line 42, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .targetAvatar {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_messagesWidget\.scss}line{font-family:\0000345}}
+/* line 45, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .targetAvatar i {
   position: absolute;
   top: 24px;
@@ -251,7 +251,7 @@
   font-weight: normal;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_graphWidget\.scss}line{font-family:\000035}}
+/* line 5, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .graph_container {
   width: 100%;
   height: 180px;
@@ -259,67 +259,67 @@
   bottom: 0;
   left: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_graphWidget\.scss}line{font-family:\0000313}}
+/* line 13, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .graph {
   width: 100%;
   height: 190px;
   opacity: 0.6;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_graphWidget\.scss}line{font-family:\0000319}}
+/* line 19, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .text {
   position: relative;
   z-index: 255;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_graphWidget\.scss}line{font-family:\0000324}}
+/* line 24, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget h1 {
   margin-bottom: 8px;
   line-height: 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_graphWidget\.scss}line{font-family:\0000329}}
+/* line 29, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget h1 small {
   font-size: 18px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_graphWidget\.scss}line{font-family:\0000333}}
+/* line 33, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .value {
   margin-top: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_alertWidget\.scss}line{font-family:\000032}}
+/* line 2, ../scss/widget/_alertWidget.scss */
 #dashboardBody .widget.AlertWidget .failure {
   color: #F3704F;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_alertWidget\.scss}line{font-family:\000036}}
+/* line 6, ../scss/widget/_alertWidget.scss */
 #dashboardBody .widget.AlertWidget small {
   font-size: 70%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_alertWidget\.scss}line{font-family:\0000310}}
+/* line 10, ../scss/widget/_alertWidget.scss */
 #dashboardBody .widget.AlertWidget h1 {
   margin-bottom: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_gearmanWidget\.scss}line{font-family:\000034}}
+/* line 4, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget {
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_gearmanWidget\.scss}line{font-family:\000037}}
+/* line 7, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .gearmanLogo {
   width: 30%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_gearmanWidget\.scss}line{font-family:\0000311}}
+/* line 11, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server {
   margin: 10px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_gearmanWidget\.scss}line{font-family:\0000314}}
+/* line 14, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server .jobsList {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_gearmanWidget\.scss}line{font-family:\0000317}}
+/* line 17, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server .jobsList .name {
   width: 50%;
   text-align: right;
   padding: 2px 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_gearmanWidget\.scss}line{font-family:\0000323}}
+/* line 23, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server .jobsList .status {
   width: 50%;
   text-align: left;
@@ -327,95 +327,95 @@
   color: #999;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\000034}}
+/* line 4, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget {
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\000037}}
+/* line 7, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .logo {
   margin-bottom: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\0000311}}
+/* line 11, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues {
   margin: 10px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\0000314}}
+/* line 14, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\0000317}}
+/* line 17, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .name {
   width: 45%;
   text-align: right;
   padding: 2px 4px;
   font-weight: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\0000324}}
+/* line 24, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .status {
   width: 55%;
   text-align: left;
   padding: 2px 4px;
   color: #999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\0000331}}
+/* line 31, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .failure {
   color: #ED303C;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_rabbitMQWidget\.scss}line{font-family:\0000334}}
+/* line 34, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .warning {
   color: #FFF46B;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_eyeWidget\.scss}line{font-family:\000034}}
+/* line 4, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget {
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_eyeWidget\.scss}line{font-family:\000037}}
+/* line 7, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process {
   margin: 10px 0;
   width: 100%;
   color: #ED303C;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_eyeWidget\.scss}line{font-family:\0000312}}
+/* line 12, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process .name {
   width: 40%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_eyeWidget\.scss}line{font-family:\0000316}}
+/* line 16, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process .state {
   width: 60%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_eyeWidget\.scss}line{font-family:\0000320}}
+/* line 20, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process.starting {
   color: #FFF46B;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_eyeWidget\.scss}line{font-family:\0000324}}
+/* line 24, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process.up {
   color: #70C536;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_processWidget\.scss}line{font-family:\000034}}
+/* line 4, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget {
   overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_processWidget\.scss}line{font-family:\000037}}
+/* line 7, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process {
   margin: 10px 0;
   width: 100%;
   color: #ED303C;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_processWidget\.scss}line{font-family:\0000312}}
+/* line 12, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.starting {
   color: #FFF46B;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_processWidget\.scss}line{font-family:\0000316}}
+/* line 16, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.up {
   color: #70C536;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_processWidget\.scss}line{font-family:\0000321}}
+/* line 21, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.unmonitored .pid, #dashboardBody .widget.ProcessWidget .process.down .pid {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_processWidget\.scss}line{font-family:\0000326}}
+/* line 26, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process .icon {
   width: auto;
   height: auto;
@@ -424,13 +424,13 @@
   line-height: 126px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_weatherWidget\.scss}line{font-family:\000032}}
+/* line 2, ../scss/widget/_weatherWidget.scss */
 #dashboardBody .widget.WeatherWidget .weather-icon {
   font-family: 'Icons';
   font-size: 210px;
   line-height: 0.9;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/widget\/_weatherWidget\.scss}line{font-family:\000038}}
+/* line 8, ../scss/widget/_weatherWidget.scss */
 #dashboardBody .widget.WeatherWidget .weather-info {
   font-size: 40px;
 }
@@ -442,7 +442,7 @@
   font-weight: normal;
   font-style: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000358}}
+/* line 58, ../scss/dashboard.scss */
 body {
   color: #fff;
   padding: 0 13px 13px;
@@ -452,11 +452,11 @@ body {
   font-weight: 300;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000368}}
+/* line 68, ../scss/dashboard.scss */
 #dashboardBody .introduction {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000371}}
+/* line 71, ../scss/dashboard.scss */
 #dashboardBody .introduction .logo {
   font-size: 4em;
   line-height: 100px;
@@ -465,53 +465,53 @@ body {
   margin: 1em auto 1em auto;
   width: 660px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000380}}
+/* line 80, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation {
   font-size: 0.85em;
   line-height: 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000384}}
+/* line 84, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h1, #dashboardBody .introduction .documentation h2, #dashboardBody .introduction .documentation h3, #dashboardBody .introduction .documentation h4, #dashboardBody .introduction .documentation h5 {
   font-weight: 300;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000388}}
+/* line 88, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h2 {
   font-size: 31.5px;
   margin-top: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000393}}
+/* line 93, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h3 {
   font-size: 24.5px;
   margin-top: 0.75em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\0000398}}
+/* line 98, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation pre {
   margin: 0.8em 0;
   background-color: #4C5457;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003103}}
+/* line 103, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation li {
   line-height: 25px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003107}}
+/* line 107, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://travis-ci.org"] {
   position: absolute;
   top: 10px;
   right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003113}}
+/* line 113, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://coveralls.io"] {
   position: absolute;
   top: 40px;
   right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003119}}
+/* line 119, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://www.versioneye.com"] {
   position: absolute;
   top: 70px;
   right: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003128}}
+/* line 128, ../scss/dashboard.scss */
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
@@ -521,19 +521,19 @@ body {
   vertical-align: middle;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003137}}
+/* line 137, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCriticalValue .value {
   color: #ED303C;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003141}}
+/* line 141, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCautionValue .value {
   color: #FFF46B;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003145}}
+/* line 145, ../scss/dashboard.scss */
 #dashboardBody .widget .value {
   margin-top: 40px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003149}}
+/* line 149, ../scss/dashboard.scss */
 #dashboardBody .widget .updated-at {
   display: block;
   position: absolute;
@@ -541,53 +541,53 @@ body {
   left: 0;
   right: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003157}}
+/* line 157, ../scss/dashboard.scss */
 #dashboardBody .widget .change-rate.worse {
   color: #ED303C !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003161}}
+/* line 161, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003165}}
+/* line 165, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003169}}
+/* line 169, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003177}}
+/* line 177, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003183}}
+/* line 183, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003188}}
+/* line 188, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003194}}
+/* line 194, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003200}}
+/* line 200, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003206}}
+/* line 206, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -597,12 +597,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003216}}
+  /* line 216, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003224}}
+/* line 224, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -610,12 +610,12 @@ body {
   overflow: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003231}}
+/* line 231, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/michalplachta\/github\/stp\.rtm\/public\/scss\/dashboard\.scss}line{font-family:\00003235}}
+/* line 235, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }
