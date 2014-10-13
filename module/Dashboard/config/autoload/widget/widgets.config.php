@@ -127,5 +127,11 @@ return [
             'subtitle' => '',
             'span' => 3,
         ],
+        'weather' => [
+            'refreshRate' => 900,
+            'title' => 'Weather',
+            'subtitle' => '',
+            'span' => 3
+        ]
     ],
 ];
