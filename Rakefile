@@ -39,15 +39,6 @@ task :prepare do |task|
     end
 end
 
-desc "Setup configuration files - YOU NEED TO MODIFY THEM FOR YOUR APP!"
-task :setupConfigFiles do |task|
-    puts task.comment
-    Dir.glob("#{srcPath}/Dashboard/config/autoload/dao/*-dist").each do |file|
-        puts "Copying #{file} into #{file.gsub(/-dist$/, '')}"
-        print `cp -n #{file} #{file.gsub(/-dist$/, '')}`
-    end
-end
-
 desc "Prepare directories for deploy"
 task :prepareDeploy do |task|
     puts task.comment
@@ -215,16 +206,16 @@ end
 
 testType = ENV["testType"] || defaultTestType
 
-task :ci => ["prepare","prepareDeploy","setupConfigFiles","composer:dev","lint","phploc","pdepend","phpmd","phpcs","phpcpd"] do
+task :ci => ["prepare","prepareDeploy","composer:dev","lint","phploc","pdepend","phpmd","phpcs","phpcpd"] do
     Rake::Task["setEnv"].invoke("testing")
     Rake::Task["test"].invoke(testType)
 end
 
-task :build => ["prepare","prepareDeploy","setupConfigFiles","composer:prod"] do
+task :build => ["prepare","prepareDeploy","composer:prod"] do
     Rake::Task["setEnv"].invoke("production")
 end
 
-task :herokubuild => ["prepare", "prepareDeploy", "setupConfigFiles"] do
+task :herokubuild => ["prepare", "prepareDeploy"] do
     Rake::Task["setEnv"].invoke("production")
 end
 
