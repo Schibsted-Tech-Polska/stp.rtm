@@ -13,7 +13,7 @@ class WeatherDaoTest extends \PHPUnit_Framework_TestCase
         $params = [];
         $result = [];
 
-        $observer = $this->getMockBuilder(WeatherDao::class)
+        $observer = $this->getMockBuilder('Dashboard\\Model\\Dao\\WeatherDao')
             ->disableOriginalConstructor()
             ->setMethods(['request', 'getEndpointUrl'])
             ->setMockClassName('WeatherDao')
