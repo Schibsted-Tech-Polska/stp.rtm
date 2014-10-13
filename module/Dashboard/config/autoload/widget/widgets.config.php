@@ -132,6 +132,12 @@ return [
             'title' => 'Weather',
             'subtitle' => '',
             'span' => 3
+        ],
+        'herokuStatus' => [
+            'refreshRate' => 60,
+            'title' => 'Heroku',
+            'subtitle' => '',
+            'span' => 3
         ]
     ],
 ];

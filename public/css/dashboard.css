@@ -435,6 +435,33 @@
   font-size: 40px;
 }
 
+/* line 2, ../scss/widget/_herokuStatusWidget.scss */
+#dashboardBody .widget.HerokuStatusWidget h1.title {
+  margin: 0;
+}
+/* line 6, ../scss/widget/_herokuStatusWidget.scss */
+#dashboardBody .widget.HerokuStatusWidget i {
+  font-size: 170px;
+  height: auto;
+}
+/* line 11, ../scss/widget/_herokuStatusWidget.scss */
+#dashboardBody .widget.HerokuStatusWidget .heroku-message {
+  font-size: 24px;
+  color: #999;
+}
+/* line 16, ../scss/widget/_herokuStatusWidget.scss */
+#dashboardBody .widget.HerokuStatusWidget .herokuUp {
+  color: green;
+}
+/* line 20, ../scss/widget/_herokuStatusWidget.scss */
+#dashboardBody .widget.HerokuStatusWidget .herokuDown {
+  color: red;
+}
+/* line 24, ../scss/widget/_herokuStatusWidget.scss */
+#dashboardBody .widget.HerokuStatusWidget .herokuDevDown {
+  color: #ffff00;
+}
+
 @font-face {
   font-family: 'Icons';
   src: url("fonts/artill_clean_icons-webfont.eot");
@@ -442,7 +469,7 @@
   font-weight: normal;
   font-style: normal;
 }
-/* line 58, ../scss/dashboard.scss */
+/* line 59, ../scss/dashboard.scss */
 body {
   color: #fff;
   padding: 0 13px 13px;
@@ -452,11 +479,11 @@ body {
   font-weight: 300;
 }
 
-/* line 68, ../scss/dashboard.scss */
+/* line 69, ../scss/dashboard.scss */
 #dashboardBody .introduction {
   position: relative;
 }
-/* line 71, ../scss/dashboard.scss */
+/* line 72, ../scss/dashboard.scss */
 #dashboardBody .introduction .logo {
   font-size: 4em;
   line-height: 100px;
@@ -465,53 +492,53 @@ body {
   margin: 1em auto 1em auto;
   width: 660px;
 }
-/* line 80, ../scss/dashboard.scss */
+/* line 81, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation {
   font-size: 0.85em;
   line-height: 25px;
 }
-/* line 84, ../scss/dashboard.scss */
+/* line 85, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h1, #dashboardBody .introduction .documentation h2, #dashboardBody .introduction .documentation h3, #dashboardBody .introduction .documentation h4, #dashboardBody .introduction .documentation h5 {
   font-weight: 300;
 }
-/* line 88, ../scss/dashboard.scss */
+/* line 89, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h2 {
   font-size: 31.5px;
   margin-top: 1em;
 }
-/* line 93, ../scss/dashboard.scss */
+/* line 94, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h3 {
   font-size: 24.5px;
   margin-top: 0.75em;
 }
-/* line 98, ../scss/dashboard.scss */
+/* line 99, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation pre {
   margin: 0.8em 0;
   background-color: #4C5457;
 }
-/* line 103, ../scss/dashboard.scss */
+/* line 104, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation li {
   line-height: 25px;
 }
-/* line 107, ../scss/dashboard.scss */
+/* line 108, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://travis-ci.org"] {
   position: absolute;
   top: 10px;
   right: 20px;
 }
-/* line 113, ../scss/dashboard.scss */
+/* line 114, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://coveralls.io"] {
   position: absolute;
   top: 40px;
   right: 20px;
 }
-/* line 119, ../scss/dashboard.scss */
+/* line 120, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://www.versioneye.com"] {
   position: absolute;
   top: 70px;
   right: 20px;
 }
-/* line 128, ../scss/dashboard.scss */
+/* line 129, ../scss/dashboard.scss */
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
@@ -521,19 +548,19 @@ body {
   vertical-align: middle;
   position: relative;
 }
-/* line 137, ../scss/dashboard.scss */
+/* line 138, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCriticalValue .value {
   color: #ED303C;
 }
-/* line 141, ../scss/dashboard.scss */
+/* line 142, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCautionValue .value {
   color: #FFF46B;
 }
-/* line 145, ../scss/dashboard.scss */
+/* line 146, ../scss/dashboard.scss */
 #dashboardBody .widget .value {
   margin-top: 40px;
 }
-/* line 149, ../scss/dashboard.scss */
+/* line 150, ../scss/dashboard.scss */
 #dashboardBody .widget .updated-at {
   display: block;
   position: absolute;
@@ -541,53 +568,53 @@ body {
   left: 0;
   right: 0;
 }
-/* line 157, ../scss/dashboard.scss */
+/* line 158, ../scss/dashboard.scss */
 #dashboardBody .widget .change-rate.worse {
   color: #ED303C !important;
 }
-/* line 161, ../scss/dashboard.scss */
+/* line 162, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-/* line 165, ../scss/dashboard.scss */
+/* line 166, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 169, ../scss/dashboard.scss */
+/* line 170, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-/* line 177, ../scss/dashboard.scss */
+/* line 178, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 183, ../scss/dashboard.scss */
+/* line 184, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 188, ../scss/dashboard.scss */
+/* line 189, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-/* line 194, ../scss/dashboard.scss */
+/* line 195, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
   color: #fff;
 }
-/* line 200, ../scss/dashboard.scss */
+/* line 201, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
   color: #fff;
 }
-/* line 206, ../scss/dashboard.scss */
+/* line 207, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -597,12 +624,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 216, ../scss/dashboard.scss */
+  /* line 217, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 224, ../scss/dashboard.scss */
+/* line 225, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -610,12 +637,12 @@ body {
   overflow: hidden;
 }
 
-/* line 231, ../scss/dashboard.scss */
+/* line 232, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 235, ../scss/dashboard.scss */
+/* line 236, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }
