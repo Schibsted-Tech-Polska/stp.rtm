@@ -81,14 +81,10 @@ class Module
                     return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
                 },
                 'CacheAdapter' => function ($serviceManager) {
-                    $cacheAdapter = new Memcached($serviceManager->get('CacheAdapterOptions'));
-
-                    return $cacheAdapter;
+                    return new Memcached($serviceManager->get('CacheAdapterOptions'));
                 },
                 'CacheAdapterOptions' => function ($serviceManager) {
-                    $config = $serviceManager->get('Config');
-
-                    return new MemcachedOptions($config['dashboardCache']);
+                    return new MemcachedOptions($serviceManager->get('Config')['dashboardCache']);
                 },
                 'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
                     return $serviceManager->get('Config')['SplunkDao'];
