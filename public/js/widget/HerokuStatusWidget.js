@@ -8,7 +8,7 @@ function HerokuStatusWidget(widget, configName) {
     this.dataToBind = {
         icon: '',
         className: '',
-        message: ''
+        message: 'OK'
     };
 }
 
@@ -47,8 +47,12 @@ $.extend(HerokuStatusWidget.prototype, {
             this.dataToBind.className = 'herokuDevDown';
         }
 
-        if (this.dataToBind.icon != 'icon-ok' && response.data.issues[0] && response.data.issues[0].title) {
-            this.dataToBind.message = response.data.issues[0].title;
+        if (this.dataToBind.icon != 'icon-ok') {
+            this.dataToBind.message = 'NO MESSAGE';
+
+            if (response.data.issues[0] && response.data.issues[0].title) {
+                this.dataToBind.message = response.data.issues[0].title;
+            }
         }
 
         this.renderTemplate(this.dataToBind);

@@ -135,7 +135,7 @@ return [
         ],
         'herokuStatus' => [
             'refreshRate' => 60,
-            'title' => 'Heroku',
+            'title' => 'Heroku Status',
             'subtitle' => '',
             'span' => 3
         ]
