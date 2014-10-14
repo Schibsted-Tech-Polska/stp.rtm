@@ -1,6 +1,7 @@
 <?php
 namespace Dashboard;
 
+use Dashboard\Model\Dao\HerokuStatusDao;
 use Dashboard\Model\Dao\WeatherDao;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
@@ -38,31 +39,31 @@ class Module
         return array(
             'factories' => array(
                 'WidgetConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['widgetsConfig'];
+                    return $serviceManager->get('Config')['widgetsConfig'];
                 },
                 'JenkinsDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['JenkinsDao'];
+                    return $serviceManager->get('Config')['JenkinsDao'];
                 },
                 'JenkinsDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
+                    return new Model\Dao\JenkinsDao($serviceManager->get('JenkinsDaoConfig'));
                 },
                 'NewRelicDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['NewRelicDao'];
+                    return $serviceManager->get('Config')['NewRelicDao'];
                 },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
+                    return new Model\Dao\NewRelicDao($serviceManager->get('NewRelicDaoConfig'));
                 },
                 'EventsDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['EventsDao'];
+                    return $serviceManager->get('Config')['EventsDao'];
                 },
                 'EventsDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\EventsDao($serviceManager->get('EventsDaoConfig'));
+                    return new Model\Dao\EventsDao($serviceManager->get('EventsDaoConfig'));
                 },
                 'GearmanDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['GearmanDao'];
+                    return $serviceManager->get('Config')['GearmanDao'];
                 },
                 'GearmanDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\GearmanDao($serviceManager->get('GearmanDaoConfig'));
+                    return new Model\Dao\GearmanDao($serviceManager->get('GearmanDaoConfig'));
                 },
                 'RabbitMQDaoConfig' => function (ServiceManager $serviceManager) {
                     return $serviceManager->get('Config')['RabbitMQDao'];
@@ -77,65 +78,67 @@ class Module
                     return new Model\Dao\EyeDao($serviceManager->get('EyeDaoConfig'));
                 },
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
-                        return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
+                    return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
                 },
                 'CacheAdapter' => function ($serviceManager) {
-                        $cacheAdapter = new Memcached($serviceManager->get('CacheAdapterOptions'));
-
-                        return $cacheAdapter;
+                    return new Memcached($serviceManager->get('CacheAdapterOptions'));
                 },
                 'CacheAdapterOptions' => function ($serviceManager) {
-                        $config = $serviceManager->get('Config');
-
-                        return new MemcachedOptions($config['dashboardCache']);
+                    return new MemcachedOptions($serviceManager->get('Config')['dashboardCache']);
                 },
                 'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['SplunkDao'];
+                    return $serviceManager->get('Config')['SplunkDao'];
                 },
                 'SplunkDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\SplunkDao($serviceManager->get('SplunkDaoConfig'));
+                    return new Model\Dao\SplunkDao($serviceManager->get('SplunkDaoConfig'));
                 },
                 'TeamcityDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['TeamcityDao'];
+                    return $serviceManager->get('Config')['TeamcityDao'];
                 },
                 'TeamcityDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\TeamcityDao($serviceManager->get('TeamcityDaoConfig'));
+                    return new Model\Dao\TeamcityDao($serviceManager->get('TeamcityDaoConfig'));
                 },
                 'SmogDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['SmogDao'];
+                    return $serviceManager->get('Config')['SmogDao'];
                 },
                 'SmogDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\SmogDao($serviceManager->get('SmogDaoConfig'));
+                    return new Model\Dao\SmogDao($serviceManager->get('SmogDaoConfig'));
                 },
                 'HipChatDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['HipChatDao'];
+                    return $serviceManager->get('Config')['HipChatDao'];
                 },
                 'HipChatDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\HipChatDao($serviceManager->get('HipChatDaoConfig'));
+                    return new Model\Dao\HipChatDao($serviceManager->get('HipChatDaoConfig'));
                 },
                 'BambooDaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['BambooDao'];
+                    return $serviceManager->get('Config')['BambooDao'];
                 },
                 'BambooDao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\BambooDao($serviceManager->get('BambooDaoConfig'));
+                    return new Model\Dao\BambooDao($serviceManager->get('BambooDaoConfig'));
                 },
                 'Bamboo4DaoConfig' => function (ServiceManager $serviceManager) {
-                        return $serviceManager->get('Config')['Bamboo4Dao'];
-                    },
+                    return $serviceManager->get('Config')['Bamboo4Dao'];
+                },
                 'Bamboo4Dao' => function (ServiceManager $serviceManager) {
-                        return new Model\Dao\Bamboo4Dao($serviceManager->get('Bamboo4DaoConfig'));
+                    return new Model\Dao\Bamboo4Dao($serviceManager->get('Bamboo4DaoConfig'));
                 },
                 'HttpStatusDao' => function () {
-                        return new Model\Dao\HttpStatusDao(null);
+                    return new Model\Dao\HttpStatusDao(null);
                 },
                 'ImboDao' => function () {
-                        return new Model\Dao\ImboDao(null);
+                    return new Model\Dao\ImboDao(null);
                 },
                 'WeatherDaoConfig' => function (ServiceManager $serviceManager) {
                     return $serviceManager->get('Config')['WeatherDao'];
                 },
-                'WeatherDao' => function(ServiceManager $serviceManager) {
+                'WeatherDao' => function (ServiceManager $serviceManager) {
                     return new WeatherDao($serviceManager->get('WeatherDaoConfig'));
+                },
+                'HerokuStatusDaoConfig' => function (ServiceManager $serviceManager) {
+                    return $serviceManager->get('Config')['HerokuStatusDao'];
+                },
+                'HerokuStatusDao' => function (ServiceManager $serviceManager) {
+                    return new HerokuStatusDao($serviceManager->get('HerokuStatusDaoConfig'));
                 }
             ),
         );
