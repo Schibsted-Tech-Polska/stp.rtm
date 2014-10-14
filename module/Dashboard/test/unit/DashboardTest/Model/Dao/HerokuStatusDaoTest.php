@@ -4,23 +4,23 @@ namespace DashboardTest\Model\Dao;
 
 use Zend\Uri\Uri;
 
-class WeatherDaoTest extends \PHPUnit_Framework_TestCase
+class HerokuStatusDaoTest extends \PHPUnit_Framework_TestCase
 {
-    public function testFetchForWeatherWidget()
+    public function testFetchForHerokuStatusWidget()
     {
         $uri = new Uri();
         $params = [];
         $result = [];
 
-        $observer = $this->getMockBuilder('Dashboard\\Model\\Dao\\WeatherDao')
+        $observer = $this->getMockBuilder('Dashboard\\Model\\Dao\\HerokuStatusDao')
             ->disableOriginalConstructor()
             ->setMethods(['request', 'getEndpointUrl'])
-            ->setMockClassName('WeatherDao')
+            ->setMockClassName('HerokuStatusDao')
             ->getMock();
 
         $observer->expects($this->once())
             ->method('getEndpointUrl')
-            ->with('fetchForWeatherWidget')
+            ->with('fetchForHerokuStatusWidget')
             ->willReturn($uri);
 
         $observer->expects($this->once())
@@ -28,6 +28,6 @@ class WeatherDaoTest extends \PHPUnit_Framework_TestCase
             ->with($uri, $params)
             ->willReturn($result);
 
-        $this->assertEquals($result, $observer->fetchForWeatherWidget($params));
+        $this->assertEquals($result, $observer->fetchForHerokuStatusWidget($params));
     }
 }

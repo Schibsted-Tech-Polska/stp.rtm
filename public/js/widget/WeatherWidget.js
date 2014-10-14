@@ -57,12 +57,10 @@ $.extend(WeatherWidget.prototype, {
         }
 
         this.dataToBind.name = response.data.name;
-        console.log(response.data.weather, this.iconsMap[response.data.weather.icon]);
         this.dataToBind.icon = this.iconsMap[response.data.weather[0].icon];
         this.dataToBind.temperature = response.data.main.temp;
         this.dataToBind.pressure = response.data.main.pressure;
 
-        console.log(this.dataToBind);
         this.renderTemplate(this.dataToBind);
     }
 });
