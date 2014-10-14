@@ -18,13 +18,14 @@ class SplunkDao extends AbstractDao
      */
     public function fetchFivehundredsForAlertWidget(array $params = array())
     {
-        if (!is_array($params['config'])) {
+        if (!isset($params['config']) || !is_array($params['config'])) {
             throw new EndpointUrlNotAssembled('You need to specify configure splunk job to use it!');
         }
+
         // Get JSON
         $splunkJson = $this->request(
-            $this->daoOptions['params']['url'],
-            array(),
+            $this->getEndpointUrl(__FUNCTION__),
+            $params,
             'json',
             $this->daoOptions['auth'],
             $params['config']
