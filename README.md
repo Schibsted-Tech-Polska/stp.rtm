@@ -30,6 +30,14 @@ By default environment is set to **production**, for more verbose error reportin
 To go back to **production** just rerun
 
     $ rake
+    
+### Installation on Heroku
+
+In order to run this app on [Heroku](http://www.heroku.com) you need to clone the repository, create you config file 
+as described [here](#definingdashboardinstanceconfigurationfile). Then remove `/config/rtm/.gitignore` file and push 
+the repo to [Heroku](http://www.heroku.com).
+
+**DANGER** don't commit any config files to public repos.
 
 ## Available data sources
 

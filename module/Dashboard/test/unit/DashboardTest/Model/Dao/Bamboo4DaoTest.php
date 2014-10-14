@@ -7,6 +7,17 @@ class Bamboo4DaoTest extends AbstractBambooDao
 {
     use Bamboo4DaoDataProvider;
 
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->testedDao->setDaoOptions([
+            'params' => [
+                'baseUrl' => 'http://bamboo.aftonbladet.se:8085'
+            ]
+        ]);
+    }
+
+
     /**
      * @dataProvider fetchStatusForBuildWidgetDataProvider
      */

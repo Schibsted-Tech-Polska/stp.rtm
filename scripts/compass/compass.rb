@@ -18,6 +18,6 @@ http_fonts_dir = "css/fonts"
 # relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
-# line_comments = false
+line_comments = false
 
 preferred_syntax = :scss

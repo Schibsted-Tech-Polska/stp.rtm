@@ -1,6 +1,7 @@
 <?php
 namespace Dashboard;
 
+use Dashboard\Model\Dao\WeatherDao;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
 use Zend\ServiceManager\ServiceManager;
@@ -130,6 +131,12 @@ class Module
                 'ImboDao' => function () {
                         return new Model\Dao\ImboDao(null);
                 },
+                'WeatherDaoConfig' => function (ServiceManager $serviceManager) {
+                    return $serviceManager->get('Config')['WeatherDao'];
+                },
+                'WeatherDao' => function(ServiceManager $serviceManager) {
+                    return new WeatherDao($serviceManager->get('WeatherDaoConfig'));
+                }
             ),
         );
     }

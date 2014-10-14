@@ -13,24 +13,24 @@
 }
 /* line 30, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue {
-  background-color: #cc0c39;
+  background-color: #CC0C39;
 }
 /* line 33, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue .value {
-  color: white;
+  color: #fff;
 }
 /* line 38, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue {
-  background-color: #978c06;
+  background-color: #978C06;
 }
 /* line 41, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue .value {
-  color: white;
+  color: #fff;
 }
 
 /* line 10, ../scss/widget/_textWidget.scss */
 #dashboardBody .widget.TextWidget {
-  background-color: #4d4c4c;
+  background-color: #4D4C4C;
 }
 
 /* line 15, ../scss/widget/_buildWidget.scss */
@@ -76,7 +76,7 @@
 }
 /* line 57, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .UNSTABLE .face {
-  background: #f3704f;
+  background: #F3704F;
 }
 /* line 62, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face {
@@ -324,7 +324,7 @@
   width: 50%;
   text-align: left;
   padding: 2px 4px;
-  color: #999999;
+  color: #999;
 }
 
 /* line 4, ../scss/widget/_rabbitMQWidget.scss */
@@ -355,15 +355,15 @@
   width: 55%;
   text-align: left;
   padding: 2px 4px;
-  color: #999999;
+  color: #999;
 }
 /* line 31, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .failure {
-  color: #ed303c;
+  color: #ED303C;
 }
 /* line 34, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .warning {
-  color: #fff46b;
+  color: #FFF46B;
 }
 
 /* line 4, ../scss/widget/_eyeWidget.scss */
@@ -374,7 +374,7 @@
 #dashboardBody .widget.EyeWidget .process {
   margin: 10px 0;
   width: 100%;
-  color: #ed303c;
+  color: #ED303C;
 }
 /* line 12, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process .name {
@@ -386,11 +386,11 @@
 }
 /* line 20, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process.starting {
-  color: #fff46b;
+  color: #FFF46B;
 }
 /* line 24, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process.up {
-  color: #70c536;
+  color: #70C536;
 }
 
 /* line 4, ../scss/widget/_processWidget.scss */
@@ -401,15 +401,15 @@
 #dashboardBody .widget.ProcessWidget .process {
   margin: 10px 0;
   width: 100%;
-  color: #ed303c;
+  color: #ED303C;
 }
 /* line 12, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.starting {
-  color: #fff46b;
+  color: #FFF46B;
 }
 /* line 16, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.up {
-  color: #70c536;
+  color: #70C536;
 }
 /* line 21, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.unmonitored .pid, #dashboardBody .widget.ProcessWidget .process.down .pid {
@@ -424,6 +424,17 @@
   line-height: 126px;
 }
 
+/* line 2, ../scss/widget/_weatherWidget.scss */
+#dashboardBody .widget.WeatherWidget .weather-icon {
+  font-family: 'Icons';
+  font-size: 210px;
+  line-height: 0.9;
+}
+/* line 8, ../scss/widget/_weatherWidget.scss */
+#dashboardBody .widget.WeatherWidget .weather-info {
+  font-size: 40px;
+}
+
 @font-face {
   font-family: 'Icons';
   src: url("fonts/artill_clean_icons-webfont.eot");
@@ -431,22 +442,21 @@
   font-weight: normal;
   font-style: normal;
 }
-
-/* line 57, ../scss/dashboard.scss */
+/* line 58, ../scss/dashboard.scss */
 body {
-  color: white;
+  color: #fff;
   padding: 0 13px 13px;
-  background-color: #282c2e;
+  background-color: #282C2E;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
   font-weight: 300;
 }
 
-/* line 67, ../scss/dashboard.scss */
+/* line 68, ../scss/dashboard.scss */
 #dashboardBody .introduction {
   position: relative;
 }
-/* line 70, ../scss/dashboard.scss */
+/* line 71, ../scss/dashboard.scss */
 #dashboardBody .introduction .logo {
   font-size: 4em;
   line-height: 100px;
@@ -455,53 +465,53 @@ body {
   margin: 1em auto 1em auto;
   width: 660px;
 }
-/* line 79, ../scss/dashboard.scss */
+/* line 80, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation {
   font-size: 0.85em;
   line-height: 25px;
 }
-/* line 83, ../scss/dashboard.scss */
+/* line 84, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h1, #dashboardBody .introduction .documentation h2, #dashboardBody .introduction .documentation h3, #dashboardBody .introduction .documentation h4, #dashboardBody .introduction .documentation h5 {
   font-weight: 300;
 }
-/* line 87, ../scss/dashboard.scss */
+/* line 88, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h2 {
   font-size: 31.5px;
   margin-top: 1em;
 }
-/* line 92, ../scss/dashboard.scss */
+/* line 93, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h3 {
   font-size: 24.5px;
   margin-top: 0.75em;
 }
-/* line 97, ../scss/dashboard.scss */
+/* line 98, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation pre {
   margin: 0.8em 0;
   background-color: #4C5457;
 }
-/* line 102, ../scss/dashboard.scss */
+/* line 103, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation li {
   line-height: 25px;
 }
-/* line 106, ../scss/dashboard.scss */
+/* line 107, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://travis-ci.org"] {
   position: absolute;
   top: 10px;
   right: 20px;
 }
-/* line 112, ../scss/dashboard.scss */
+/* line 113, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://coveralls.io"] {
   position: absolute;
   top: 40px;
   right: 20px;
 }
-/* line 118, ../scss/dashboard.scss */
+/* line 119, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://www.versioneye.com"] {
   position: absolute;
   top: 70px;
   right: 20px;
 }
-/* line 127, ../scss/dashboard.scss */
+/* line 128, ../scss/dashboard.scss */
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
@@ -511,19 +521,19 @@ body {
   vertical-align: middle;
   position: relative;
 }
-/* line 136, ../scss/dashboard.scss */
+/* line 137, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCriticalValue .value {
-  color: #ed303c;
+  color: #ED303C;
 }
-/* line 140, ../scss/dashboard.scss */
+/* line 141, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCautionValue .value {
-  color: #fff46b;
+  color: #FFF46B;
 }
-/* line 144, ../scss/dashboard.scss */
+/* line 145, ../scss/dashboard.scss */
 #dashboardBody .widget .value {
   margin-top: 40px;
 }
-/* line 148, ../scss/dashboard.scss */
+/* line 149, ../scss/dashboard.scss */
 #dashboardBody .widget .updated-at {
   display: block;
   position: absolute;
@@ -531,53 +541,53 @@ body {
   left: 0;
   right: 0;
 }
-/* line 156, ../scss/dashboard.scss */
+/* line 157, ../scss/dashboard.scss */
 #dashboardBody .widget .change-rate.worse {
-  color: #ed303c !important;
+  color: #ED303C !important;
 }
-/* line 160, ../scss/dashboard.scss */
+/* line 161, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-/* line 164, ../scss/dashboard.scss */
+/* line 165, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 168, ../scss/dashboard.scss */
+/* line 169, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-/* line 176, ../scss/dashboard.scss */
+/* line 177, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 182, ../scss/dashboard.scss */
+/* line 183, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 187, ../scss/dashboard.scss */
+/* line 188, ../scss/dashboard.scss */
 #dashboardBody h1 {
   margin-bottom: 12px;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
 }
-/* line 193, ../scss/dashboard.scss */
+/* line 194, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
-  color: white;
+  color: #fff;
 }
-/* line 199, ../scss/dashboard.scss */
+/* line 200, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
-  color: white;
+  color: #fff;
 }
-/* line 205, ../scss/dashboard.scss */
+/* line 206, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -587,12 +597,12 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 215, ../scss/dashboard.scss */
+  /* line 216, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 223, ../scss/dashboard.scss */
+/* line 224, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -600,12 +610,12 @@ body {
   overflow: hidden;
 }
 
-/* line 230, ../scss/dashboard.scss */
+/* line 231, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 234, ../scss/dashboard.scss */
+/* line 235, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }
