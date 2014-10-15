@@ -1,5 +1,5 @@
 {
-    "name": "Stp.Rtm",
+    "name": "stp/rtm",
     "description": "Real time monitor dashboard using Jenkins API and New Relic API",
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -9,6 +9,9 @@
             "github.com": "0f1045ecff9d1a2d6260f501ac1ffcfa5370550c"
         }
     },
+    "repositories": [
+        { "type": "vcs", "url": "git.int.vgnett.no:/git/stp/cap4all.git" }
+    ],
     "require": {
         "php": ">=5.4",
         "ext-mongo": "*",
@@ -25,11 +28,15 @@
         "squizlabs/php_codesniffer": "1.*",
         "filp/whoops": "*",
         "fabpot/php-cs-fixer": "*@dev",
-        "satooshi/php-coveralls": "dev-master"
+        "satooshi/php-coveralls": "dev-master",
+        "stp/cap4all": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
             "rake herokubuild"
+        ],
+        "post-update-cmd": [
+            "if [ -f vendor/stp/cap4all/Capfile ];then rm -f Capfile; ln -f -s vendor/stp/cap4all/Capfile Capfile ; fi;"
         ]
     }
 }
