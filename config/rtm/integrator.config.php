@@ -3,9 +3,10 @@
  * Config for rtm
  */
 return array(
+    'theme' => ['tv', 'dark'],
     'rabbitMQ' => array(
         'params' => array(
-            'rabbitMQUrl' => 'http://vg-dev-01:15672',
+            'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
             'vhost' => 'integrator',
         ),
         'headers' => array(
@@ -13,7 +14,7 @@ return array(
         ),
         'auth' => array(
             'username' => 'integrator',
-            'password' => 'gBjBkeup',
+            'password' => 'QO;A=h}[',
         ),
     ),
     'hipChat' => array(
@@ -261,6 +262,22 @@ return array(
             ),
         ),
 
+        // MESSAGES
+        array('id' => 'messagesIntegrator',
+            'type' => 'messages',
+            'params' => array(
+                'dao' => 'hipChat',
+                'metric' => 'listRecentMessages',
+                'span' => 3,
+                'subtitle' => '',
+                'title' => 'Integrator',
+                'limit' => 10,
+                'room' => '678235',
+                'refreshRate' => 30,
+                'fromUser' => ['jenkins', 'Cap4All'],
+            ),
+        ),
+
         // EYE PROCESSES
         array('id' => 'integratorEyeProcesses',
             'type' => 'eye',
@@ -281,22 +298,5 @@ return array(
                 'span' => 1,
             ),
         ),
-
-        // MESSAGES
-        array('id' => 'messagesIntegrator',
-            'type' => 'messages',
-            'params' => array(
-                'dao' => 'hipChat',
-                'metric' => 'listRecentMessages',
-                'span' => 3,
-                'subtitle' => '',
-                'title' => 'Integrator',
-                'limit' => 10,
-                'room' => '678235',
-                'refreshRate' => 30,
-                'fromUser' => ['jenkins', 'Cap4All'],
-            ),
-        ),
-
     ),
 );
