@@ -9,38 +9,37 @@ $caution-background-color: #978C06;
 // ----------------------------------------------------------------------------
 #dashboardBody .widget.ErrorWidget {
 
-  .sock {
-    display: none;
-  }
-
-  &.warning {
     .sock {
-      background: {
-        image: url(../img/sock.png);
-        repeat: no-repeat;
-      }
-      width: 100px;
-      height: 100px;
-      display: block;
-      float: right;
+        display: none;
     }
-  }
 
-
-  &.thresholdCriticalValue {
-    background-color: $critical-background-color;
-
-    .value {
-      color: $default-font-color;
+    &.warning {
+        .sock {
+            background: {
+                image: url(../img/sock.png);
+                repeat: no-repeat;
+            }
+            width: 100px;
+            height: 100px;
+            display: block;
+            float: right;
+        }
     }
-  }
 
-  &.thresholdCautionValue {
-    background-color: $caution-background-color;
+    &.thresholdCriticalValue {
+        background-color: $critical-background-color;
 
-    .value {
-      color: $default-font-color;
+        .value {
+            color: $default-font-color;
+        }
     }
-  }
+
+    &.thresholdCautionValue {
+        background-color: $caution-background-color;
+
+        .value {
+            color: $default-font-color;
+        }
+    }
 
 }

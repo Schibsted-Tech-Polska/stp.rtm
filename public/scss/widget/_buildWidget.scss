@@ -1,177 +1,178 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color:  #4b5f24;
+$background-color: #4b5f24;
 
-$title-color:       rgba(255, 255, 255, 1);
-$moreinfo-color:    rgba(255, 255, 255, 0.3);
+$title-color: rgba(255, 255, 255, 1);
+$moreinfo-color: rgba(255, 255, 255, 0.3);
 $color-orange: #F3704F;
 
-$meter-background:  rgba(20, 20, 20, 1);
+$meter-background: rgba(20, 20, 20, 1);
 
 // ----------------------------------------------------------------------------
 // Build widget styles
 // ----------------------------------------------------------------------------
 #dashboardBody .widget.BuildWidget {
-  padding: 0;
-  background: transparent;
+    padding: 0;
+    background: transparent;
 
-  h2 {font-size: 16px}
-
-
-  input.jenkins-build {
-    color: #fff;
-  }
-
-  .details {
-    position: absolute;
-    bottom: 5px;
-    left: 0px;
-    width: 100%;
-  }
-
-  .title {
-    color: $title-color;
-  }
-
-  .more-info {
-    color: $moreinfo-color;
-  }
-
-  .updated-at {
-    display: none;
-  }
-
-  .progress-bar {
-    display: none;
-    margin-top: 22px;
-  }
-
-  .FAILURE {
-    .face {
-      background: #cf0d4d;
-    }
-  }
-
-  .UNSTABLE {
-    .face {
-      background: $color-orange;
-    }
-  }
-
-  .face {
-    padding: 14px 12px;
-    background: #1693a7;
-  }
-
-  .face.front {
-    z-index: 20;
-  }
-
-  .face.back {
-    background: #a7169e;
-  }
-
-  .flipped-effect .face.back {
-    z-index: 21;
-  }
-
-  .average-health-score {
-    font-family: "Icons";
-    font-size: 210px;
-    line-height: 0.9;
-    margin-bottom: 25px;
-  }
-
-  .last-built {
-    font-size: 14px;
-  }
-
-  .last-committer {
-    font-size: 26px;
-    margin-bottom: 3px;
-  }
-
-  .change-rate {
-    line-height: 220%;
-  }
-
-  .code-coverage {
-    line-height: 140%;
-  }
-
-  .build-icon {
-    width: 100%;
-    height: 230px;
-
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .flip-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-
-    -webkit-perspective: 1000px;
-    -moz-perspective: 1000px;
-    -o-perspective: 1000px;
-    perspective: 1000px;
-  }
-
-  .flip-content {
-    width: 100%;
-    height: 100%;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition: all 1.0s linear;
-    -moz-transform-style: preserve-3d;
-    -moz-transition: all 1.0s linear;
-    -o-transform-style: preserve-3d;
-    -o-transition: all 1.0s linear;
-    transform-style: preserve-3d;
-    transition: all 1.0s linear;
-  }
-
-  .flip-container.flipped-effect .flip-content {
-      -webkit-transform: rotateY(180deg);
-      -moz-transform: rotateY(180deg);
-      -o-transform: rotateY(180deg);
-      transform: rotateY(180deg);
-  }
-
-  .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-
-  .face.back {
-    display: block;
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    padding: 10px;
-    color: white;
-    text-align: center;
-  }
-
-  .widget-clock {
     h2 {
-      font-size: 66px;
+        font-size: 16px
     }
-  }
+
+    input.jenkins-build {
+        color: #fff;
+    }
+
+    .details {
+        position: absolute;
+        bottom: 5px;
+        left: 0px;
+        width: 100%;
+    }
+
+    .title {
+        color: $title-color;
+    }
+
+    .more-info {
+        color: $moreinfo-color;
+    }
+
+    .updated-at {
+        display: none;
+    }
+
+    .progress-bar {
+        display: none;
+        margin-top: 22px;
+    }
+
+    .FAILURE {
+        .face {
+            background: #cf0d4d;
+        }
+    }
+
+    .UNSTABLE {
+        .face {
+            background: $color-orange;
+        }
+    }
+
+    .face {
+        padding: 14px 12px;
+        background: #1693a7;
+    }
+
+    .face.front {
+        z-index: 20;
+    }
+
+    .face.back {
+        background: #a7169e;
+    }
+
+    .flipped-effect .face.back {
+        z-index: 21;
+    }
+
+    .average-health-score {
+        font-family: "Icons";
+        font-size: 14rem;
+        line-height: 0.9;
+        margin-bottom: 25px;
+    }
+
+    .last-built {
+        font-size: 0.7rem;
+    }
+
+    .last-committer {
+        font-size: 1rem;
+        margin-bottom: 3px;
+    }
+
+    .change-rate {
+        line-height: 220%;
+    }
+
+    .code-coverage {
+        font-size: 0.9rem;
+    }
+
+    .build-icon {
+        width: 100%;
+        height: 100%;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .flip-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        -webkit-perspective: 1000px;
+        -moz-perspective: 1000px;
+        -o-perspective: 1000px;
+        perspective: 1000px;
+    }
+
+    .flip-content {
+        width: 100%;
+        height: 100%;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transition: all 1.0s linear;
+        -moz-transform-style: preserve-3d;
+        -moz-transition: all 1.0s linear;
+        -o-transform-style: preserve-3d;
+        -o-transition: all 1.0s linear;
+        transform-style: preserve-3d;
+        transition: all 1.0s linear;
+    }
+
+    .flip-container.flipped-effect .flip-content {
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
+    .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .face.back {
+        display: block;
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        padding: 10px;
+        color: white;
+        text-align: center;
+    }
+
+    .widget-clock {
+        h2 {
+            font-size: 66px;
+        }
+    }
 
 }

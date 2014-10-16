@@ -24,69 +24,69 @@ $font-color--message-title: $color-orange;
 
 #dashboardBody {
 
-  p.change-rate {
-    color: $color-green;
-  }
-
-  background-color: $bg-color;
-
-  .widget {
-
-    &.MessagesWidget {
-
-      background-color: $bg-message-widget;
-
-      .message {
-        .content {
-          color: $font-color--message-title;
-        }
-
-        .icon-thumbs-up {
-          color: $color-green;
-        }
-
-        .icon-thumbs-down {
-          color: $color-orange;
-        }
-
-        .icon-screenshot {
-          color: $color-red;
-        }
-      }
+    p.change-rate {
+        color: $color-green;
     }
 
-    &.ErrorWidget {
-      background-color: $bg-number-widget;
-    }
+    background-color: $bg-color;
 
-    &.GraphWidget {
-      background-color: $bg-graph-widget;
-    }
+    .widget {
 
-    &.NumberWidget {
-      background-color: $bg-number-widget;
-    }
+        &.MessagesWidget {
 
-    &.BuildWidget {
-      .face {
-        background-color: $bg-build-sleep;
-      }
+            background-color: $bg-message-widget;
 
-      .FAILURE {
-        .face {
-          background-color: $bg-warning;
+            .message {
+                .content {
+                    color: $font-color--message-title;
+                }
+
+                .icon-thumbs-up {
+                    color: $color-green;
+                }
+
+                .icon-thumbs-down {
+                    color: $color-orange;
+                }
+
+                .icon-screenshot {
+                    color: $color-red;
+                }
+            }
         }
-      }
 
-      .UNSTABLE {
-        .face {
-            background-color: $color-orange;
+        &.ErrorWidget {
+            background-color: $bg-number-widget;
         }
-      }
 
-      p.change-rate {
-        color: $color-white;
-      }
+        &.GraphWidget {
+            background-color: $bg-graph-widget;
+        }
+
+        &.NumberWidget {
+            background-color: $bg-number-widget;
+        }
+
+        &.BuildWidget {
+            .face {
+                background-color: $bg-build-sleep;
+            }
+
+            .FAILURE {
+                .face {
+                    background-color: $bg-warning;
+                }
+            }
+
+            .UNSTABLE {
+                .face {
+                    background-color: $color-orange;
+                }
+            }
+
+            p.change-rate {
+                color: $color-white;
+            }
+        }
     }
-  }
 }

@@ -8,21 +8,21 @@
         margin: 10px 0;
         width: 100%;
 
-      color: $color-red;
-      .name {
-          width: 40%;
+        color: $color-red;
+        .name {
+            width: 40%;
         }
 
         .state {
-          width: 60%;
+            width: 60%;
         }
 
         &.starting {
-          color: $color-yellow;
+            color: $color-yellow;
         }
 
         &.up {
-          color: $color-green;
+            color: $color-green;
         }
     }
 }
