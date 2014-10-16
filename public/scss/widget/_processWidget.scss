@@ -10,25 +10,25 @@
 
         color: $color-red;
         &.starting {
-          color: $color-yellow;
+            color: $color-yellow;
         }
 
         &.up {
-          color: $color-green;
+            color: $color-green;
         }
 
         &.unmonitored, &.down {
-          .pid {
-            display: none;
-          }
+            .pid {
+                display: none;
+            }
         }
 
         .icon {
-          width: auto;
-          height: auto;
-          background: none;
-          font-size: 120px;
-          line-height: 126px;
+            width: auto;
+            height: auto;
+            background: none;
+            font-size: 120px;
+            line-height: 126px;
         }
 
     }

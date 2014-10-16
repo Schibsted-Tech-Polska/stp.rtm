@@ -1,27 +1,27 @@
 #dashboardBody .widget.HerokuStatusWidget {
-  h1.title {
-    margin: 0;
-  }
+    h1.title {
+        margin: 0;
+    }
 
-  i {
-    font-size: 170px;
-    height: auto;
-  }
+    i {
+        font-size: 170px;
+        height: auto;
+    }
 
-  .heroku-message {
-    font-size: 24px;
-    color: #999;
-  }
+    .heroku-message {
+        font-size: 24px;
+        color: #999;
+    }
 
-  .herokuUp {
-    color: green;
-  }
+    .herokuUp {
+        color: green;
+    }
 
-  .herokuDown {
-    color: red;
-  }
+    .herokuDown {
+        color: red;
+    }
 
-  .herokuDevDown {
-    color: #ffff00;
-  }
+    .herokuDevDown {
+        color: #ffff00;
+    }
 }

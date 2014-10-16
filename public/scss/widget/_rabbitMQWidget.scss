@@ -5,34 +5,35 @@
     overflow: hidden;
 
     .logo {
-        margin-bottom: 20px;
+        height: 4rem;
+        margin-bottom: 1rem;
     }
 
     .queues {
-        margin: 10px 0;
-
         .queue {
+            font-size: 1.3rem;
             width: 100%;
 
             .name {
-                width: 45%;
+                width: 35%;
                 text-align: right;
                 padding: 2px 4px;
                 font-weight: normal;
             }
 
             .status {
-                width: 55%;
+                line-height: 1.5rem;
+                width: 65%;
                 text-align: left;
                 padding: 2px 4px;
                 color: $color-gray;
             }
 
             .failure {
-              color: $color-red;
+                color: $color-red;
             }
             .warning {
-              color: $color-yellow;
+                color: $color-yellow;
             }
         }
     }

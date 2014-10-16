@@ -2,55 +2,55 @@
 // Widget-messages styles
 // ----------------------------------------------------------------------------
 #dashboardBody .widget.MessagesWidget {
-  overflow: hidden;
-
-  h1 {
-    font-size: 30px;
-    margin-bottom: 10px;
-  }
-
-  h5 {
-    color: #ddd;
-    text-align: left;
-    margin: 6px 0;
-  }
-
-  .message {
-    text-align: left;
-    border-bottom: 1px dotted #666;
-    margin-bottom: 0.1em;
-    padding-bottom: 0.4em;
     overflow: hidden;
 
-    .createdAt {
-      color: #aaa;
-      font-size: 0.75em;
-      margin-bottom: 2px;
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 0.6rem;
     }
 
-    .content {
-      font-size: 1.2em;
-      color: #ddd;
-      line-height: 110%;
-
-      small {
-        color: #fff;
-      }
-
+    h5 {
+        color: #ddd;
+        text-align: left;
+        margin: 6px 0;
     }
 
-    .targetAvatar {
-      position: relative;
+    .message {
+        text-align: left;
+        border-bottom: 1px dotted #666;
+        margin-bottom: 0.1em;
+        padding-bottom: 0.4em;
+        overflow: hidden;
 
-      i {
-        position: absolute;
-        top: 24px;
-        left: 36px;
-        text-shadow: 0px 0px 4px #000;
-        width: auto;
-        font-size: 34px;
-        font-weight: normal;
-      }
+        .createdAt {
+            color: #aaa;
+            font-size: 0.75em;
+            margin-bottom: 2px;
+        }
+
+        .content {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 110%;
+
+            small {
+                color: #fff;
+            }
+
+        }
+
+        .targetAvatar {
+            position: relative;
+
+            i {
+                position: absolute;
+                top: 24px;
+                left: 36px;
+                text-shadow: 0px 0px 4px #000;
+                width: auto;
+                font-size: 34px;
+                font-weight: normal;
+            }
+        }
     }
-  }
 }

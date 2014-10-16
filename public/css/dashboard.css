@@ -1,8 +1,6 @@
-/* line 12, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget .sock {
   display: none;
 }
-/* line 17, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.warning .sock {
   background-image: url(../img/sock.png);
   background-repeat: no-repeat;
@@ -11,125 +9,98 @@
   display: block;
   float: right;
 }
-/* line 30, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue {
-  background-color: #CC0C39;
+  background-color: #cc0c39;
 }
-/* line 33, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue .value {
-  color: #fff;
+  color: white;
 }
-/* line 38, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue {
-  background-color: #978C06;
+  background-color: #978c06;
 }
-/* line 41, ../scss/widget/_errorWidget.scss */
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue .value {
-  color: #fff;
+  color: white;
 }
 
-/* line 10, ../scss/widget/_textWidget.scss */
 #dashboardBody .widget.TextWidget {
-  background-color: #4D4C4C;
+  background-color: #4d4c4c;
 }
 
-/* line 15, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget {
   padding: 0;
   background: transparent;
 }
-/* line 19, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget h2 {
   font-size: 16px;
 }
-/* line 22, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget input.jenkins-build {
   color: #fff;
 }
-/* line 26, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .details {
   position: absolute;
   bottom: 5px;
   left: 0px;
   width: 100%;
 }
-/* line 33, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .title {
   color: white;
 }
-/* line 37, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .more-info {
   color: rgba(255, 255, 255, 0.3);
 }
-/* line 41, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .updated-at {
   display: none;
 }
-/* line 45, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .progress-bar {
   display: none;
   margin-top: 22px;
 }
-/* line 51, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .FAILURE .face {
   background: #cf0d4d;
 }
-/* line 57, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .UNSTABLE .face {
-  background: #F3704F;
+  background: #f3704f;
 }
-/* line 62, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face {
   padding: 14px 12px;
   background: #1693a7;
 }
-/* line 67, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.front {
   z-index: 20;
 }
-/* line 71, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.back {
   background: #a7169e;
 }
-/* line 75, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flipped-effect .face.back {
   z-index: 21;
 }
-/* line 79, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .average-health-score {
   font-family: "Icons";
-  font-size: 210px;
+  font-size: 14rem;
   line-height: 0.9;
   margin-bottom: 25px;
 }
-/* line 86, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .last-built {
-  font-size: 14px;
+  font-size: 0.7rem;
 }
-/* line 90, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .last-committer {
-  font-size: 26px;
+  font-size: 1rem;
   margin-bottom: 3px;
 }
-/* line 95, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .change-rate {
   line-height: 220%;
 }
-/* line 99, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .code-coverage {
-  line-height: 140%;
+  font-size: 0.9rem;
 }
-/* line 103, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .build-icon {
   width: 100%;
-  height: 230px;
+  height: 100%;
 }
-/* line 107, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .build-icon svg {
   width: 100%;
   height: 100%;
 }
-/* line 113, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container {
   position: relative;
   width: 100%;
@@ -140,7 +111,6 @@
   -o-perspective: 1000px;
   perspective: 1000px;
 }
-/* line 125, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-content {
   width: 100%;
   height: 100%;
@@ -153,14 +123,12 @@
   transform-style: preserve-3d;
   transition: all 1.0s linear;
 }
-/* line 138, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .flip-container.flipped-effect .flip-content {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-/* line 145, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face {
   position: absolute;
   width: 100%;
@@ -174,7 +142,6 @@
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 160, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .face.back {
   display: block;
   -webkit-transform: rotateY(180deg);
@@ -185,34 +152,28 @@
   color: white;
   text-align: center;
 }
-/* line 172, ../scss/widget/_buildWidget.scss */
 #dashboardBody .widget.BuildWidget .widget-clock h2 {
   font-size: 66px;
 }
 
-/* line 5, ../scss/widget/_numberWidget.scss */
 #dashboardBody .widget.NumberWidget .change-rate {
   font-weight: 500;
   font-size: 30px;
   margin-top: 30px;
 }
 
-/* line 4, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget {
   overflow: hidden;
 }
-/* line 7, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget h1 {
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
 }
-/* line 12, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget h5 {
   color: #ddd;
   text-align: left;
   margin: 6px 0;
 }
-/* line 18, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message {
   text-align: left;
   border-bottom: 1px dotted #666;
@@ -220,27 +181,22 @@
   padding-bottom: 0.4em;
   overflow: hidden;
 }
-/* line 25, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .createdAt {
   color: #aaa;
   font-size: 0.75em;
   margin-bottom: 2px;
 }
-/* line 31, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .content {
-  font-size: 1.2em;
+  font-size: 1rem;
   color: #ddd;
   line-height: 110%;
 }
-/* line 36, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .content small {
   color: #fff;
 }
-/* line 42, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .targetAvatar {
   position: relative;
 }
-/* line 45, ../scss/widget/_messagesWidget.scss */
 #dashboardBody .widget.MessagesWidget .message .targetAvatar i {
   position: absolute;
   top: 24px;
@@ -251,171 +207,133 @@
   font-weight: normal;
 }
 
-/* line 5, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .graph_container {
   width: 100%;
-  height: 180px;
+  height: 10rem;
   position: absolute;
   bottom: 0;
   left: 0;
 }
-/* line 13, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .graph {
   width: 100%;
-  height: 190px;
+  height: 100%;
   opacity: 0.6;
 }
-/* line 19, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .text {
   position: relative;
   z-index: 255;
 }
-/* line 24, ../scss/widget/_graphWidget.scss */
-#dashboardBody .widget.GraphWidget h1 {
-  margin-bottom: 8px;
-  line-height: 25px;
-}
-/* line 29, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget h1 small {
-  font-size: 18px;
+  font-size: 1.2rem;
 }
-/* line 33, ../scss/widget/_graphWidget.scss */
 #dashboardBody .widget.GraphWidget .value {
   margin-top: 0;
+  font-size: 4rem;
 }
 
-/* line 2, ../scss/widget/_alertWidget.scss */
 #dashboardBody .widget.AlertWidget .failure {
   color: #F3704F;
 }
-/* line 6, ../scss/widget/_alertWidget.scss */
 #dashboardBody .widget.AlertWidget small {
   font-size: 70%;
 }
-/* line 10, ../scss/widget/_alertWidget.scss */
 #dashboardBody .widget.AlertWidget h1 {
   margin-bottom: 0;
 }
 
-/* line 4, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget {
   overflow: hidden;
 }
-/* line 7, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .gearmanLogo {
   width: 30%;
 }
-/* line 11, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server {
   margin: 10px 0;
 }
-/* line 14, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server .jobsList {
   width: 100%;
 }
-/* line 17, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server .jobsList .name {
   width: 50%;
   text-align: right;
   padding: 2px 4px;
 }
-/* line 23, ../scss/widget/_gearmanWidget.scss */
 #dashboardBody .widget.GearmanWidget .server .jobsList .status {
   width: 50%;
   text-align: left;
   padding: 2px 4px;
-  color: #999;
+  color: #999999;
 }
 
-/* line 4, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget {
   overflow: hidden;
 }
-/* line 7, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .logo {
-  margin-bottom: 20px;
+  height: 4rem;
+  margin-bottom: 1rem;
 }
-/* line 11, ../scss/widget/_rabbitMQWidget.scss */
-#dashboardBody .widget.RabbitMQWidget .queues {
-  margin: 10px 0;
-}
-/* line 14, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue {
+  font-size: 1.3rem;
   width: 100%;
 }
-/* line 17, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .name {
-  width: 45%;
+  width: 35%;
   text-align: right;
   padding: 2px 4px;
   font-weight: normal;
 }
-/* line 24, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .status {
-  width: 55%;
+  line-height: 1.5rem;
+  width: 65%;
   text-align: left;
   padding: 2px 4px;
-  color: #999;
+  color: #999999;
 }
-/* line 31, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .failure {
-  color: #ED303C;
+  color: #ed303c;
 }
-/* line 34, ../scss/widget/_rabbitMQWidget.scss */
 #dashboardBody .widget.RabbitMQWidget .queues .queue .warning {
-  color: #FFF46B;
+  color: #fff46b;
 }
 
-/* line 4, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget {
   overflow: hidden;
 }
-/* line 7, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process {
   margin: 10px 0;
   width: 100%;
-  color: #ED303C;
+  color: #ed303c;
 }
-/* line 12, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process .name {
   width: 40%;
 }
-/* line 16, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process .state {
   width: 60%;
 }
-/* line 20, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process.starting {
-  color: #FFF46B;
+  color: #fff46b;
 }
-/* line 24, ../scss/widget/_eyeWidget.scss */
 #dashboardBody .widget.EyeWidget .process.up {
-  color: #70C536;
+  color: #70c536;
 }
 
-/* line 4, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget {
   overflow: hidden;
 }
-/* line 7, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process {
   margin: 10px 0;
   width: 100%;
-  color: #ED303C;
+  color: #ed303c;
 }
-/* line 12, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.starting {
-  color: #FFF46B;
+  color: #fff46b;
 }
-/* line 16, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.up {
-  color: #70C536;
+  color: #70c536;
 }
-/* line 21, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process.unmonitored .pid, #dashboardBody .widget.ProcessWidget .process.down .pid {
   display: none;
 }
-/* line 26, ../scss/widget/_processWidget.scss */
 #dashboardBody .widget.ProcessWidget .process .icon {
   width: auto;
   height: auto;
@@ -424,40 +342,32 @@
   line-height: 126px;
 }
 
-/* line 2, ../scss/widget/_weatherWidget.scss */
 #dashboardBody .widget.WeatherWidget .weather-icon {
   font-family: 'Icons';
   font-size: 210px;
   line-height: 0.9;
 }
-/* line 8, ../scss/widget/_weatherWidget.scss */
 #dashboardBody .widget.WeatherWidget .weather-info {
   font-size: 40px;
 }
 
-/* line 2, ../scss/widget/_herokuStatusWidget.scss */
 #dashboardBody .widget.HerokuStatusWidget h1.title {
   margin: 0;
 }
-/* line 6, ../scss/widget/_herokuStatusWidget.scss */
 #dashboardBody .widget.HerokuStatusWidget i {
   font-size: 170px;
   height: auto;
 }
-/* line 11, ../scss/widget/_herokuStatusWidget.scss */
 #dashboardBody .widget.HerokuStatusWidget .heroku-message {
   font-size: 24px;
   color: #999;
 }
-/* line 16, ../scss/widget/_herokuStatusWidget.scss */
 #dashboardBody .widget.HerokuStatusWidget .herokuUp {
   color: green;
 }
-/* line 20, ../scss/widget/_herokuStatusWidget.scss */
 #dashboardBody .widget.HerokuStatusWidget .herokuDown {
   color: red;
 }
-/* line 24, ../scss/widget/_herokuStatusWidget.scss */
 #dashboardBody .widget.HerokuStatusWidget .herokuDevDown {
   color: #ffff00;
 }
@@ -469,21 +379,23 @@
   font-weight: normal;
   font-style: normal;
 }
-/* line 59, ../scss/dashboard.scss */
+
+html {
+  font-size: 20px;
+}
+
 body {
-  color: #fff;
+  color: white;
   padding: 0 13px 13px;
-  background-color: #282C2E;
+  background-color: #282c2e;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.25em;
+  font-size: 1rem;
   font-weight: 300;
 }
 
-/* line 69, ../scss/dashboard.scss */
 #dashboardBody .introduction {
   position: relative;
 }
-/* line 72, ../scss/dashboard.scss */
 #dashboardBody .introduction .logo {
   font-size: 4em;
   line-height: 100px;
@@ -492,53 +404,43 @@ body {
   margin: 1em auto 1em auto;
   width: 660px;
 }
-/* line 81, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation {
   font-size: 0.85em;
   line-height: 25px;
 }
-/* line 85, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h1, #dashboardBody .introduction .documentation h2, #dashboardBody .introduction .documentation h3, #dashboardBody .introduction .documentation h4, #dashboardBody .introduction .documentation h5 {
   font-weight: 300;
 }
-/* line 89, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h2 {
   font-size: 31.5px;
   margin-top: 1em;
 }
-/* line 94, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation h3 {
   font-size: 24.5px;
   margin-top: 0.75em;
 }
-/* line 99, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation pre {
   margin: 0.8em 0;
   background-color: #4C5457;
 }
-/* line 104, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation li {
   line-height: 25px;
 }
-/* line 108, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://travis-ci.org"] {
   position: absolute;
   top: 10px;
   right: 20px;
 }
-/* line 114, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://coveralls.io"] {
   position: absolute;
   top: 40px;
   right: 20px;
 }
-/* line 120, ../scss/dashboard.scss */
 #dashboardBody .introduction .documentation a[href^="https://www.versioneye.com"] {
   position: absolute;
   top: 70px;
   right: 20px;
 }
-/* line 129, ../scss/dashboard.scss */
 #dashboardBody .widget {
   padding: 14px;
   overflow: hidden;
@@ -548,19 +450,15 @@ body {
   vertical-align: middle;
   position: relative;
 }
-/* line 138, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCriticalValue .value {
-  color: #ED303C;
+  color: #ed303c;
 }
-/* line 142, ../scss/dashboard.scss */
 #dashboardBody .widget.thresholdCautionValue .value {
-  color: #FFF46B;
+  color: #fff46b;
 }
-/* line 146, ../scss/dashboard.scss */
 #dashboardBody .widget .value {
   margin-top: 40px;
 }
-/* line 150, ../scss/dashboard.scss */
 #dashboardBody .widget .updated-at {
   display: block;
   position: absolute;
@@ -568,53 +466,43 @@ body {
   left: 0;
   right: 0;
 }
-/* line 158, ../scss/dashboard.scss */
 #dashboardBody .widget .change-rate.worse {
-  color: #ED303C !important;
+  color: #ed303c !important;
 }
-/* line 162, ../scss/dashboard.scss */
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
 }
-/* line 166, ../scss/dashboard.scss */
 #dashboardBody .widget .suffix {
   font-size: 0.5em;
 }
-/* line 170, ../scss/dashboard.scss */
 #dashboardBody .widget .row-fluid [class*=span] {
   margin-top: 5px;
 }
-/* line 178, ../scss/dashboard.scss */
 #dashboardBody .row-fluid [class*=span] {
   margin-top: 13px;
 }
-/* line 184, ../scss/dashboard.scss */
 #dashboardBody h1, #dashboardBody h2, #dashboardBody h3, #dashboardBody h4, #dashboardBody h5, #dashboardBody p {
   padding: 0;
   margin: 0;
   line-height: normal;
 }
-/* line 189, ../scss/dashboard.scss */
 #dashboardBody h1 {
-  margin-bottom: 12px;
+  margin-bottom: 0.7rem;
   text-align: center;
-  font-size: 30px;
+  font-size: 1.5rem;
   font-weight: 400;
 }
-/* line 195, ../scss/dashboard.scss */
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
-  color: #fff;
+  color: white;
 }
-/* line 201, ../scss/dashboard.scss */
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
-  color: #fff;
+  color: white;
 }
-/* line 207, ../scss/dashboard.scss */
 #dashboardBody [class^="icon-"] {
   background-image: none;
   display: inline-block;
@@ -624,12 +512,10 @@ body {
 }
 
 @media screen and (min-width: 767px) {
-  /* line 217, ../scss/dashboard.scss */
   .container {
     width: 100%;
   }
 }
-/* line 225, ../scss/dashboard.scss */
 .clearfix:before, .clearfix:after {
   content: "\0020";
   display: block;
@@ -637,12 +523,10 @@ body {
   overflow: hidden;
 }
 
-/* line 232, ../scss/dashboard.scss */
 .clearfix:after {
   clear: both;
 }
 
-/* line 236, ../scss/dashboard.scss */
 .clearfix {
   zoom: 1;
 }

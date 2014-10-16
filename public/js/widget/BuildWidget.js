@@ -108,6 +108,9 @@ $.extend(BuildWidget.prototype, {
         this.oldValue = response.data;
 
         var meter = this.$widget.find(".jenkins-build");
-        meter.knob();
+        meter.knob({
+            width: this.$widget.width()*0.7,
+            height: this.$widget.height()
+        });
     }
 });
