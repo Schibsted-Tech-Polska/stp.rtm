@@ -30,7 +30,7 @@ $bg-warning: $color-red;
 $widgets-margin: 13px;
 $widgets-padding: 14px;
 $widget-height: 366px;
-$default-font-size: 1.25em;
+$default-font-size: 20px;
 $default-font-weight-normal: 300;
 
 @import "widget/errorWidget";
@@ -56,12 +56,16 @@ $default-font-weight-normal: 300;
   font-style: normal;
 }
 
+html {
+    font-size: $default-font-size;
+}
+
 body {
   color: $default-font-color;
   padding: 0 $widgets-margin $widgets-margin;
   background-color: $body-bg-color;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: $default-font-size;
+    font-size: 1rem;
   font-weight: $default-font-weight-normal;
 }
 
@@ -187,9 +191,9 @@ body {
     line-height: normal;
   }
   h1 {
-    margin-bottom: 12px;
+    margin-bottom: 0.7rem;
     text-align: center;
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: 400;
   }
   h2 {

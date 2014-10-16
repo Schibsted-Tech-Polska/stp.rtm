@@ -1,0 +1,30 @@
+$default-font-size: 10px;
+
+.row-fluid [class*="span"] {
+    margin-left: 0.5%;
+}
+
+#dashboardBody {
+    .widget {
+        height: 253px;
+
+        &.GraphWidget {
+            .graph_container {
+                height: 14rem;
+            }
+        }
+
+        &.BuildWidget {
+            .title {
+                min-height: 6rem;
+            }
+        }
+    }
+
+}
+
+html {
+    font-size: $default-font-size;
+}
+
+

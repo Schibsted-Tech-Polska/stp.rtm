@@ -10,7 +10,12 @@
     <!-- Le styles -->
     <?php
     if ($this->theme) {
-        $this->headLink()->prependStylesheet($this->basePath() . '/css/themes/' . $this->theme . '.css');
+        if (!is_array($this->theme)) {
+            $this->theme = array($this->theme);
+        }
+        foreach ($this->theme as $theme) {
+            $this->headLink()->prependStylesheet($this->basePath() . '/css/themes/' . $theme . '.css');
+        }
     }
     echo $this->headLink()
         ->prependStylesheet($this->basePath() . '/css/dashboard.css')

@@ -78,17 +78,17 @@ $meter-background:  rgba(20, 20, 20, 1);
 
   .average-health-score {
     font-family: "Icons";
-    font-size: 210px;
+    font-size: 14rem;
     line-height: 0.9;
     margin-bottom: 25px;
   }
 
   .last-built {
-    font-size: 14px;
+    font-size: 0.7rem;
   }
 
   .last-committer {
-    font-size: 26px;
+    font-size: 1rem;
     margin-bottom: 3px;
   }
 
@@ -97,12 +97,12 @@ $meter-background:  rgba(20, 20, 20, 1);
   }
 
   .code-coverage {
-    line-height: 140%;
+      font-size: 0.9rem;
   }
 
   .build-icon {
     width: 100%;
-    height: 230px;
+    height: 100%;
 
     svg {
       width: 100%;
