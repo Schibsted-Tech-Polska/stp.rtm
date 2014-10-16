@@ -193,15 +193,27 @@ Widget.prototype = {
         end = this.isInteger(end) ? parseInt(end, 10) : parseFloat(end);
         var precission = end % 1 === 0 ? 0 : 1;
 
+        var self = this;
         $({value: start}).animate({value: end}, {
             duration: 1000,
             easing: 'swing',
             step: function () {
-                el.text(this.value.toFixed(precission));
+                el.text(self.formatNumber(this.value.toFixed(precission)));
             }
         });
     },
+    formatNumber: function(n) {
+        if (n < 1000) {
+            return n;
+        }
+        with (Math) {
+            var base = floor(log(abs(n))/log(1000));
+            var suffix = 'kmb'[base-1];
 
+            var value = String(n/pow(1000,base));
+            return suffix ? value.substring(0,(value.indexOf('.') + 2))+suffix : ''+n;
+        }
+    },
     isInteger: function (number) {
         return parseFloat(number) == parseInt(number, 10);
     }
