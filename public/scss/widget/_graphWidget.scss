@@ -2,32 +2,31 @@
 // Widget-text styles
 // ----------------------------------------------------------------------------
 #dashboardBody .widget.GraphWidget {
-  .graph_container {
-    width: 100%;
-      height: 10rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
+    .graph_container {
+        width: 100%;
+        height: 10rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
 
-  .graph {
-    width: 100%;
-    height: 100%;
-    opacity: 0.6;
-  }
+    .graph {
+        width: 100%;
+        height: 100%;
+        opacity: 0.6;
+    }
 
-  .text {
-    position: relative;
-    z-index: 255;
-  }
+    .text {
+        position: relative;
+        z-index: 255;
+    }
 
+    h1 small {
+        font-size: 1.2rem;
+    }
 
-  h1 small {
-    font-size: 1.2rem;
-  }
-
-  .value {
-    margin-top: 0;
-      font-size: 4rem;
-  }
+    .value {
+        margin-top: 0;
+        font-size: 4rem;
+    }
 }
