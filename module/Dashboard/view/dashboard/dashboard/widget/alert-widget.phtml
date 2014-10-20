@@ -1,5 +1,5 @@
 <div id="<?php echo $widgetId; ?>"
-     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
+     class="col-md-<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
      data-widget-type="<?php echo $widgetType; ?>"
      data-params='<?php echo $this->json($params) ?>'>
 </div>
@@ -13,8 +13,8 @@
                 <% _.each(value, function(item) { %>
 
 
-        <div class="message row-fluid">
-            <div class="span12 last">
+        <div class="message row">
+            <div class="col-md-12 last">
                 <div class="content">
                         <span class="failure">
                             <strong><%= item.url %></strong><br/><small> <%= item.numberOfErrors %> errors, last at <% var date = new Date(item.lastErrorTime*1000); print(date.getUTCFullYear() + '-' +

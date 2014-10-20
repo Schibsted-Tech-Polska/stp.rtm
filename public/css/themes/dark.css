@@ -1,56 +1,42 @@
-/* line 25, ../../scss/themes/dark.scss */
 #dashboardBody {
   background-color: #282c2e;
 }
-/* line 27, ../../scss/themes/dark.scss */
 #dashboardBody p.change-rate {
   color: #70c536;
 }
-/* line 35, ../../scss/themes/dark.scss */
-#dashboardBody .widget.MessagesWidget {
+#dashboardBody .widget.MessagesWidget .widgetContainer {
   background-color: #373c3f;
 }
-/* line 40, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .content {
   color: #f3704f;
 }
-/* line 44, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-thumbs-up {
   color: #70c536;
 }
-/* line 48, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-thumbs-down {
   color: #f3704f;
 }
-/* line 52, ../../scss/themes/dark.scss */
 #dashboardBody .widget.MessagesWidget .message .icon-screenshot {
   color: #ed303c;
 }
-/* line 58, ../../scss/themes/dark.scss */
-#dashboardBody .widget.ErrorWidget {
+#dashboardBody .widget.ErrorWidget .widgetContainer {
   background-color: #373c3f;
 }
-/* line 62, ../../scss/themes/dark.scss */
-#dashboardBody .widget.GraphWidget {
+#dashboardBody .widget.GraphWidget .widgetContainer {
   background-color: #373c3f;
 }
-/* line 66, ../../scss/themes/dark.scss */
-#dashboardBody .widget.NumberWidget {
+#dashboardBody .widget.NumberWidget .widgetContainer {
   background-color: #373c3f;
 }
-/* line 71, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .face {
   background-color: #248f8d;
 }
-/* line 76, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .FAILURE .face {
   background-color: #ed303c;
 }
-/* line 82, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget .UNSTABLE .face {
   background-color: #f3704f;
 }
-/* line 87, ../../scss/themes/dark.scss */
 #dashboardBody .widget.BuildWidget p.change-rate {
   color: white;
 }
