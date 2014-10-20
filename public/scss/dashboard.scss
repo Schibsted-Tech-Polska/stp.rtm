@@ -27,8 +27,8 @@ $bg-warning: $color-red;
 // ----------------------------------------------------------------------------
 // Sizes
 // ----------------------------------------------------------------------------
-$widgets-margin: 13px;
-$widgets-padding: 14px;
+$widgets-margin: 10px;
+$widgets-padding: 5px;
 $widget-height: 366px;
 $default-font-size: 20px;
 $default-font-weight-normal: 300;
@@ -67,6 +67,17 @@ body {
     font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1rem;
     font-weight: $default-font-weight-normal;
+    overflow-x:hidden;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-right: $widgets-padding;
+    padding-left: $widgets-padding;
+}
+
+.container, .row {
+    padding-right: $widgets-padding;
+    padding-left: $widgets-padding;
 }
 
 #dashboardBody {
@@ -79,12 +90,16 @@ body {
             background: url('../img/rtm-logo.png') no-repeat left top;
             padding-left: 115px;
             margin: 1em auto 1em auto;
-            width: 660px;
         }
 
         .documentation {
+            position: static;
             font-size: 0.85em;
             line-height: 25px;
+
+            img {
+                max-width: 100%;
+            }
 
             h1, h2, h3, h4, h5 {
                 font-weight: 300;
@@ -131,13 +146,17 @@ body {
     }
 
     .widget {
-        padding: $widgets-padding;
-        overflow: hidden;
         height: $widget-height;
-        background-color: $default-widget-bg-color;
-        text-align: center;
-        vertical-align: middle;
-        position: relative;
+
+        .widgetContainer {
+            background-color: $default-widget-bg-color;
+            height: $widget-height;
+            overflow: hidden;
+            text-align: center;
+            vertical-align: middle;
+            position: relative;
+            padding: 2*$widgets-padding;
+        }
 
         &.thresholdCriticalValue .value {
             color: $color-red;
@@ -179,7 +198,7 @@ body {
 
     }
 
-    .row-fluid [class*=span] {
+    .row {
         margin: {
             top: $widgets-margin;
         }

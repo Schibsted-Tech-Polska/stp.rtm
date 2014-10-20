@@ -33,8 +33,9 @@ $font-color--message-title: $color-orange;
     .widget {
 
         &.MessagesWidget {
-
-            background-color: $bg-message-widget;
+            .widgetContainer {
+                background-color: $bg-message-widget;
+            }
 
             .message {
                 .content {
@@ -56,15 +57,21 @@ $font-color--message-title: $color-orange;
         }
 
         &.ErrorWidget {
-            background-color: $bg-number-widget;
+            .widgetContainer {
+                background-color: $bg-number-widget;
+            }
         }
 
         &.GraphWidget {
-            background-color: $bg-graph-widget;
+            .widgetContainer {
+                background-color: $bg-graph-widget;
+            }
         }
 
         &.NumberWidget {
-            background-color: $bg-number-widget;
+            .widgetContainer {
+                background-color: $bg-number-widget;
+            }
         }
 
         &.BuildWidget {
