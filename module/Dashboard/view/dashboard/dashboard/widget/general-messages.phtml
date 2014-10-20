@@ -1,5 +1,5 @@
 <div id="<?php echo $widgetId; ?>"
-     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
+     class="col-md-<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
      data-widget-type="<?php echo $widgetType; ?>"
      data-params='<?php echo $this->json($params) ?>'>
 </div>
@@ -9,13 +9,13 @@
         <% _.each(value, function(item) { %>
 
 
-        <div class="message row-fluid">
+        <div class="message row">
                 <% if (item.avatar) {%>
 
-            <div class="span2 targetAvatar">
+            <div class="col-md-2 targetAvatar">
                         <%= item.avatar %>
                     </div>
-            <div class="span10 last">
+            <div class="col-md-10 last">
                 <div class="content"><%= item.content %></div>
                 <div class="createdAt"><% if (item.projectName != '') {%><span
                     class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>
@@ -24,7 +24,7 @@
                             <%} else {%>
 
 
-            <div class="span12 last">
+            <div class="col-md-12 last">
                 <div class="content"><%= item.content %></div>
                 <div class="createdAt"><% if (item.projectName != '') {%><span
                     class="label label-info"><%= item.projectName %></span> <% } %><%= item.createdAt %></div>

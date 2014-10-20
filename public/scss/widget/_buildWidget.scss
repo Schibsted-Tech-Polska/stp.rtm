@@ -13,8 +13,11 @@ $meter-background: rgba(20, 20, 20, 1);
 // Build widget styles
 // ----------------------------------------------------------------------------
 #dashboardBody .widget.BuildWidget {
-    padding: 0;
-    background: transparent;
+
+    .widgetContainer {
+        padding: 0;
+        background: transparent;
+    }
 
     h2 {
         font-size: 16px

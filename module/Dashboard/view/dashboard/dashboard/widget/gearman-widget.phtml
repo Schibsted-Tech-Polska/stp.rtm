@@ -1,5 +1,5 @@
 <div id="<?php echo $widgetId; ?>"
-     class="span<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
+     class="col-md-<?php echo $params['span']; ?> widget <?php echo $widgetType; ?>"
      data-widget-type="<?php echo $widgetType; ?>"
      data-params='<?php echo $this->json($params) ?>'
      data-threshold-caution-value="<?php echo isset($threshold['caution-value']) ? $threshold['caution-value'] : 0 ?>"

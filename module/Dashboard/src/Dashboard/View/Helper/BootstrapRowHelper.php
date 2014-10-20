@@ -33,7 +33,7 @@ class BootstrapRowHelper extends AbstractHelper
 
             $span += $widget->getParam('span');
             if ($span > 12) {
-                $html .= '</div><div class="row-fluid">';
+                $html .= '</div><div class="row">';
                 $span = $widget->getParam('span');
             }
 

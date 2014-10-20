@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php echo $this->headTitle('STP Real Time Monitor'); ?>
 
     <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
@@ -22,7 +23,11 @@
         ->prependStylesheet($this->basePath() . '/css/font-awesome.css')
         ->prependStylesheet('//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800')
         ->prependStylesheet($this->basePath() . '/css/style.css')
-        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')?>
+        ->prependStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css')
+        ->prependStylesheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    ;
+    ?>
+
     <!-- Scripts -->
     <script type="text/javascript">
         var baseUrl = <?php echo '"' . $this->basePath('/') . '"'; ?>;
@@ -43,8 +48,7 @@
     }
 
     echo $jsAssets
-        ->prependFile($this->basePath() . '/js/jquery.min.js')
-        ;
+        ->prependFile($this->basePath() . '/js/jquery.min.js');
     ?>
 
 </head>
@@ -52,7 +56,7 @@
 <?php echo $this->content; ?>
 <!-- /container -->
 <?php echo $this->inlineScript()
-    ->appendFile($this->basePath() . '/js/bootstrap.min.js')
+    ->prependFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
     ->appendFile($this->basePath() . '/js/underscore-min.js')
     ->appendFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
     ->appendFile($this->basePath() . '/js/jquery.knob.js')
