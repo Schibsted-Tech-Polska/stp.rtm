@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0c8d78d252a6a6a13bb95e2153e7c4ec",
+    "hash": "04ef52e82aed29a2111d4e3788d0d99b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1608,16 +1608,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.3.1",
+            "version": "4.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "06005259429c156c02596add91f6a59c7dc3d4af"
+                "reference": "5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/06005259429c156c02596add91f6a59c7dc3d4af",
-                "reference": "06005259429c156c02596add91f6a59c7dc3d4af",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4",
+                "reference": "5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4",
                 "shasum": ""
             },
             "require": {
@@ -1678,7 +1678,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-10-06 06:20:35"
+            "time": "2014-10-16 16:53:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2329,7 +2329,7 @@
             "source": {
                 "type": "git",
                 "url": "git.int.vgnett.no:/git/stp/cap4all.git",
-                "reference": "761662bef5c004a945d7406bf18dc627ba1f8301"
+                "reference": "7e01cd523f792ee82a51ccb9e32775decf5e55a5"
             },
             "type": "project",
             "license": [
@@ -2343,7 +2343,7 @@
                 }
             ],
             "description": "Deployment application based on capistrano",
-            "time": "2014-10-14 13:38:34"
+            "time": "2014-10-20 08:43:30"
         },
         {
             "name": "symfony/config",
