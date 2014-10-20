@@ -298,6 +298,7 @@
 }
 
 #dashboardBody .widget.EyeWidget {
+  font-size: 1.2rem;
   overflow: hidden;
 }
 #dashboardBody .widget.EyeWidget .process {
@@ -321,6 +322,9 @@
 #dashboardBody .widget.ProcessWidget {
   overflow: hidden;
 }
+#dashboardBody .widget.ProcessWidget h1 {
+  height: 4rem;
+}
 #dashboardBody .widget.ProcessWidget .process {
   margin: 10px 0;
   width: 100%;
@@ -339,8 +343,8 @@
   width: auto;
   height: auto;
   background: none;
-  font-size: 120px;
-  line-height: 126px;
+  font-size: 9rem;
+  line-height: 9rem;
 }
 
 #dashboardBody .widget.WeatherWidget .weather-icon {
