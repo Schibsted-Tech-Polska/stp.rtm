@@ -268,6 +268,17 @@ return array(
                 'span' => 1,
             ),
         ),
+        array('id' => 'vektklubbUsersCrawler',
+            'type' => 'process',
+            'params' => array(
+                'dao' => 'eye',
+                'metric' => 'info',
+                'title' => 'Vektklubb',
+                'subtitle' => 'crawler',
+                'processName' => 'vektklubb_users',
+                'span' => 1,
+            ),
+        ),
         array('id' => 'newsletterSubscriptionsCrawler',
             'type' => 'process',
             'params' => array(
