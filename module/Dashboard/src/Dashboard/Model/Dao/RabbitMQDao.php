@@ -66,6 +66,8 @@ class RabbitMQDao extends AbstractDao
                     'y' => $singleStat['sample']
                 ];
             }
+
+            $responseParsed = array_reverse($responseParsed);
         } else {
             $responseParsed = [
                 [
@@ -79,6 +81,13 @@ class RabbitMQDao extends AbstractDao
             ];
         }
 
-        return array_reverse($responseParsed);
+        return $responseParsed;
+    }
+
+    /**
+     * @param array $params
+     */
+    public function fetchNodeMemoryUsageForRabbitMemoryWidget(array $params = array()) {
+        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
 }
