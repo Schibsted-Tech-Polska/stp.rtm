@@ -31,6 +31,8 @@ $.extend(RabbitMQWidget.prototype, {
     prepareData: function (response) {
         this.dataToBind.value = response.data;
 
+        this.checkThresholds(this.dataToBind.value);
+
         this.oldValue = response.data;
 
         this.dataToBind.lastUpdate = response.updateTime;

@@ -66,6 +66,8 @@ class RabbitMQDao extends AbstractDao
                     'y' => $singleStat['sample']
                 ];
             }
+
+            $responseParsed = array_reverse($responseParsed);
         } else {
             $responseParsed = [
                 [
@@ -73,12 +75,36 @@ class RabbitMQDao extends AbstractDao
                     'y' => 0,
                 ],
                 [
-                    'x' => (int) gmdate('U') * 1000,
+                    'x' => (int)gmdate('U') * 1000,
                     'y' => 0,
                 ],
             ];
         }
 
-        return array_reverse($responseParsed);
+        return $responseParsed;
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws Exception\EndpointUrlNotDefined
+     */
+    public function fetchNodeMemoryUsageForRabbitMemoryWidget(array $params = array())
+    {
+        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+    }
+
+    /**
+     * @param $params
+     * @return array
+     */
+    public function fetchThreshold($params)
+    {
+        $threshold = array(
+            'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
+            'critical-value' => isset($params['critical-value']) ? $params['critical-value'] : 0,
+        );
+
+        return $threshold;
     }
 }
