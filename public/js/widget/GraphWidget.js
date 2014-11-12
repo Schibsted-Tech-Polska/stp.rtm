@@ -98,5 +98,7 @@ $.extend(GraphWidget.prototype, {
                 }
             ]
         });
+
+        this.checkThresholds(currentValue);
     }
 });

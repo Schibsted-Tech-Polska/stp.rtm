@@ -91,5 +91,7 @@ $.extend(RabbitMemoryWidget.prototype, {
                 data: data
             }]
         });
+
+        this.checkThresholds(currentValue);
     }
 });

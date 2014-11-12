@@ -90,4 +90,16 @@ class RabbitMQDao extends AbstractDao
     public function fetchNodeMemoryUsageForRabbitMemoryWidget(array $params = array()) {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
+
+    /**
+     * @return array
+     */
+    public function fetchThreshold($params) {
+        $threshold = array(
+            'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
+            'critical-value' => isset($params['critical-value']) ? $params['critical-value'] : 0,
+        );
+
+        return $threshold;
+    }
 }
