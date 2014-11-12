@@ -1,6 +1,6 @@
 /*global Widget */
 
-function GraphWidget(widget, configName) {
+function RabbitMemoryWidget(widget, configName) {
 
     this.widget = widget;
     this.configName = configName;
@@ -15,10 +15,10 @@ function GraphWidget(widget, configName) {
     };
 }
 
-GraphWidget.prototype = new Widget();
-GraphWidget.prototype.constructor = GraphWidget;
+RabbitMemoryWidget.prototype = new Widget();
+RabbitMemoryWidget.prototype.constructor = RabbitMemoryWidget;
 
-$.extend(GraphWidget.prototype, {
+$.extend(RabbitMemoryWidget.prototype, {
     /**
      * Invoked after each response from long polling server
      *
@@ -32,8 +32,15 @@ $.extend(GraphWidget.prototype, {
      * Updates widget's state
      */
     prepareData: function (response) {
+        var data = [];
 
-        var currentValue = response.data[response.data.length - 1].y;
+        $.each(response.data.memory, function(key, value) {
+            if (key != 'total') {
+                data.push([key, value]);
+            }
+        });
+
+        var currentValue = response.data.memory.total;
 
         /**
          * Calculating diff from last collected value
@@ -52,51 +59,37 @@ $.extend(GraphWidget.prototype, {
 
         this.chart = $('.graph', this.widget).highcharts({
             chart: {
-                type: 'area'
+                type: 'pie',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
             },
             title: {
                 text: ''
-            },
-            xAxis: {
-                title: '',
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: ''
             },
             tooltip: {
                 pointFormat: 'Value of <b>{point.y}</b> noted.'
             },
             plotOptions: {
-                area: {
-                    pointStart: 1940,
-                    marker: {
-                        enabled: false,
-                        symbol: 'circle',
-                        radius: 2,
-                        states: {
-                            hover: {
-                                enabled: true
-                            }
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        distance: -1,
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'white'
                         }
-                    }
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [
-                {
-                    title: {
-                        text: ''
                     },
-                    data: response.data
+                    size: '100%',
+                    showInLegend: false
                 }
-            ]
+            },
+            series: [{
+                type: 'pie',
+                name: 'Memory usage',
+                data: data
+            }]
         });
 
         this.checkThresholds(currentValue);
