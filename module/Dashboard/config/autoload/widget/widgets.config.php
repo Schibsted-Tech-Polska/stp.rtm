@@ -37,6 +37,14 @@ return [
             'valuePrefix' => '',
             'span' => 3,
         ],
+        'rabbitMemory' => [
+            'refreshRate' => 5,
+            'title' => '',
+            'subtitle' => '',
+            'valueSuffix' => '',
+            'valuePrefix' => '',
+            'span' => 2,
+        ],
         'eye' => [
             'refreshRate' => 5,
             'title' => '',
