@@ -4,6 +4,15 @@
  */
 return array(
     'theme' => ['tv', 'dark'],
+    'newRelic' => array(
+        'headers' => array(
+            'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30',
+        ),
+        'params' => array(
+            'serverId' => '5363150',
+            'accountId' => '',
+        ),
+    ),
     'rabbitMQ' => array(
         'params' => array(
             'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
@@ -355,19 +364,6 @@ return array(
                 'queueNameParser' => function($queueName) { return str_replace(':queue', '', str_replace('integrator:', '', $queueName));},
             ),
         ),
-        array('id' => 'integratorRabbitMemory',
-            'type' => 'rabbitMemory',
-            'params' => array(
-                'dao' => 'rabbitMQ',
-                'metric' => 'nodeMemoryUsage',
-                'title' => 'RabbitMQ',
-                'span' => 1,
-                'nodeName' => 'rabbit@vg-rabbit-s01',
-                'thresholdComparator' => 'lowerIsBetter',
-                'caution-value' => 1000000,
-                'critical-value' => 100000000,
-            ),
-        ),
         array('id' => 'integratorRawHadoopMessages',
             'type' => 'graph',
             'params' => array(
@@ -467,7 +463,6 @@ return array(
                 'critical-value' => 5000000,
             ),
         ),
-
         // MESSAGES
         array('id' => 'messagesIntegrator',
             'type' => 'messages',
@@ -481,6 +476,70 @@ return array(
                 'room' => '678235',
                 'refreshRate' => 30,
                 'fromUser' => ['jenkins', 'Cap4All'],
+            ),
+        ),
+
+        array('id' => 'integratorRabbitMemory',
+            'type' => 'usage',
+            'params' => array(
+                'dao' => 'rabbitMQ',
+                'metric' => 'nodeMemoryUsage',
+                'title' => 'RabbitMQ',
+                'subtitle' => 'memory usage',
+                'span' => 1,
+                'nodeName' => 'rabbit@vg-rabbit-s01',
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 536870912,
+                'critical-value' => 891289600,
+            ),
+        ),
+        array('id' => 'integratorRabbitDiskUsage',
+            'type' => 'usage',
+            'params' => array(
+                'dao' => 'rabbitMQ',
+                'metric' => 'nodeDiskUsage',
+                'title' => 'RabbitMQ',
+                'subtitle' => 'disk usage',
+                'span' => 1,
+                'nodeName' => 'rabbit@vg-rabbit-s01',
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 50,
+                'critical-value' => 75,
+                'valueSuffix' => '%'
+            ),
+        ),
+        array('id' => 'integratorApplicationDiskUsage',
+            'type' => 'usage',
+            'params' => array(
+                'dao' => 'newRelic',
+                'metric' => 'diskUsage',
+                'title' => 'Application',
+                'subtitle' => 'disk usage',
+                'span' => 1,
+                'beginDateTime' => '-2 minutes',
+                'endDateTime' => 'now',
+                'diskName' => '^',
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 50,
+                'critical-value' => 75,
+                'valueSuffix' => '%'
+            ),
+        ),
+        array('id' => 'integratorApplicationMemoryUsage',
+            'type' => 'usage',
+            'params' => array(
+                'dao' => 'newRelic',
+                'metric' => 'memoryUsage',
+                'title' => 'Application',
+                'subtitle' => 'memory usage',
+                'span' => 1,
+                'beginDateTime' => '-2 minutes',
+                'endDateTime' => 'now',
+                'diskName' => '^',
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 50,
+                'critical-value' => 75,
+                'valueSuffix' => '%'
             ),
         ),
     ),
