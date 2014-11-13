@@ -32,8 +32,13 @@ $.extend(GraphWidget.prototype, {
      * Updates widget's state
      */
     prepareData: function (response) {
+        console.log(response);
 
-        var currentValue = response.data[response.data.length - 1].y;
+        if (response.data.length) {
+            var currentValue = response.data[response.data.length - 1].y;
+        } else {
+            var currentValue = 0;
+        }
 
         /**
          * Calculating diff from last collected value

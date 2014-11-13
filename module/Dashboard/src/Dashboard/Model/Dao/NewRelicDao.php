@@ -7,6 +7,8 @@
 
 namespace Dashboard\Model\Dao;
 
+use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
+
 class NewRelicDao extends AbstractDao
 {
     /**
@@ -514,13 +516,19 @@ class NewRelicDao extends AbstractDao
     public function fetchThreshold(array $params = array())
     {
         $result = array();
-
-        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
-        foreach ($response->threshold as $thresholdValue) {
-            if (strtolower($params['metric']) == strtolower((string)$thresholdValue->type)) {
-                $result = (array)$thresholdValue;
-                break;
+        try {
+            $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
+            foreach ($response->threshold as $thresholdValue) {
+                if (strtolower($params['metric']) == strtolower((string)$thresholdValue->type)) {
+                    $result = (array)$thresholdValue;
+                    break;
+                }
             }
+        } catch (EndpointUrlNotAssembled $e) {
+            $result = array(
+                'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
+                'critical-value' => isset($params['critical-value']) ? $params['critical-value'] : 0,
+            );
         }
 
         return $result;
@@ -540,5 +548,42 @@ class NewRelicDao extends AbstractDao
         $convertedTime->setTimeZone(new \DateTimeZone($targetTimezone));
 
         return $convertedTime->format($format);
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws Exception\EndpointUrlNotDefined
+     */
+    public function fetchDiskUsageForUsageWidget(array $params = array())
+    {
+        $data = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $currentValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_response_time'];
+        $maximumValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_exclusive_time'];
+
+        return [
+            'current_value' => 100 * $currentValue/$maximumValue,
+            'maximum_value' => 100,
+            'minimum_value' => 0,
+        ];
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws Exception\EndpointUrlNotDefined
+     */
+    public function fetchMemoryUsageForUsageWidget(array $params = array())
+    {
+        $data = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+
+        $currentValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_response_time'];
+        $maximumValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_exclusive_time'];
+
+        return [
+            'current_value' => round(100 * $currentValue/$maximumValue, 2),
+            'maximum_value' => 100,
+            'minimum_value' => 0,
+        ];
     }
 }
