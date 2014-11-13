@@ -72,9 +72,9 @@ $.extend(UsageWidget.prototype, {
             // the value axis
             yAxis: {
                 stops: [
-                    [0.5 * response.data.maximum_value, '#55BF3B'], // green
-                    [0.7 * response.data.maximum_value, '#DDDF0D'], // yellow
-                    [0.9 * response.data.maximum_value, '#DF5353'] // red
+                    [0.25, '#55BF3B'], // green
+                    [0.5, '#DDDF0D'], // yellow
+                    [0.75, '#DF5353'] // red
                 ],
                 lineWidth: 0,
                 minorTickInterval: null,
