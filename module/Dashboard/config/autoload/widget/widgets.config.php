@@ -37,7 +37,7 @@ return [
             'valuePrefix' => '',
             'span' => 3,
         ],
-        'rabbitMemory' => [
+        'usage' => [
             'refreshRate' => 5,
             'title' => '',
             'subtitle' => '',
