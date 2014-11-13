@@ -75,7 +75,7 @@ class RabbitMQDao extends AbstractDao
                     'y' => 0,
                 ],
                 [
-                    'x' => (int) gmdate('U') * 1000,
+                    'x' => (int)gmdate('U') * 1000,
                     'y' => 0,
                 ],
             ];
@@ -86,15 +86,20 @@ class RabbitMQDao extends AbstractDao
 
     /**
      * @param array $params
+     * @return mixed
+     * @throws Exception\EndpointUrlNotDefined
      */
-    public function fetchNodeMemoryUsageForRabbitMemoryWidget(array $params = array()) {
+    public function fetchNodeMemoryUsageForRabbitMemoryWidget(array $params = array())
+    {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
 
     /**
+     * @param $params
      * @return array
      */
-    public function fetchThreshold($params) {
+    public function fetchThreshold($params)
+    {
         $threshold = array(
             'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
             'critical-value' => isset($params['critical-value']) ? $params['critical-value'] : 0,
