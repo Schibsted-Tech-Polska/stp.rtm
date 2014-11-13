@@ -359,7 +359,7 @@ return array(
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
                 'span' => 3,
-                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*'],
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*'],
                 'queueNameParser' => function($queueName) { return str_replace(':queue', '', str_replace('integrator:', '', $queueName));},
             ),
         ),
