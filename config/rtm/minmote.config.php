@@ -3,12 +3,18 @@
  * Config for rtm
  */
 return array(
+    'theme' => ['dark'],
     'newRelic' => array(
         'headers' => array(
             'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30',
         ),
         'params' => array(
             'accountId' => '100366',
+        ),
+    ),
+    'jenkins' => array(
+        'params' => array(
+            'baseUrl' => 'http://ci.vgnett.no/',
         ),
     ),
     'widgets' => array(
