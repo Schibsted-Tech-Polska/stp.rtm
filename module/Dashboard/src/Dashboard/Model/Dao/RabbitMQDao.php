@@ -69,16 +69,16 @@ class RabbitMQDao extends AbstractDao
 
             $responseParsed = array_reverse($responseParsed);
         } else {
-            $responseParsed = [
-                [
-                    'x' => 0,
-                    'y' => 0,
-                ],
-                [
-                    'x' => (int)gmdate('U') * 1000,
-                    'y' => 0,
-                ],
-            ];
+//            $responseParsed = [
+//                [
+//                    'x' => 0,
+//                    'y' => 0,
+//                ],
+//                [
+//                    'x' => (int)gmdate('U') * 1000,
+//                    'y' => 0,
+//                ],
+//            ];
         }
 
         return $responseParsed;
@@ -89,9 +89,31 @@ class RabbitMQDao extends AbstractDao
      * @return mixed
      * @throws Exception\EndpointUrlNotDefined
      */
-    public function fetchNodeMemoryUsageForRabbitMemoryWidget(array $params = array())
+    public function fetchNodeMemoryUsageForUsageWidget(array $params = array())
     {
-        return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $data = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+
+        return [
+            'current_value' => $data['mem_used'],
+            'minimum_value' => 0,
+            'maximum_value' => $data['mem_limit'],
+        ];
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * @throws Exception\EndpointUrlNotDefined
+     */
+    public function fetchNodeDiskUsageForUsageWidget(array $params = array())
+    {
+        $data = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+
+        return [
+            'current_value' => round(100 * $data['disk_free_limit']/$data['disk_free'], 2),
+            'minimum_value' => 0,
+            'maximum_value' => 100,
+        ];
     }
 
     /**

@@ -1,6 +1,10 @@
 language: php
 cache: composer
 
+os:
+  - linux
+  - osx
+
 php:
   - 5.6
   - 5.5

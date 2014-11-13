@@ -6,9 +6,9 @@
 namespace Dashboard\Model\Widget;
 
 /**
- * Class RabbitMemoryWidget
+ * Class UsageWidget
  * @package Dashboard\Model\Widget
  */
-class RabbitMemoryWidget extends GraphWidget
+class UsageWidget extends GraphWidget
 {
 }
