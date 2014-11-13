@@ -10,7 +10,6 @@ return array(
         ),
         'params' => array(
             'serverId' => '5363150',
-            'accountId' => '',
         ),
     ),
     'rabbitMQ' => array(
