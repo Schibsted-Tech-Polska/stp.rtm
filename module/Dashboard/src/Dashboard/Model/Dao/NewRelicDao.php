@@ -586,4 +586,21 @@ class NewRelicDao extends AbstractDao
             'minimum_value' => 0,
         ];
     }
+
+    public function fetchServerCpuUsageForGraphWidget(array $params = array())
+    {
+        $responseParsed = array();
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+
+        if (is_array($response['metric_data']['metrics'][0]['timeslices'])) {
+            foreach ($response['metric_data']['metrics'][0]['timeslices'] as $key => $singleStat) {
+                $responseParsed[] = array(
+                    'x' => 1000 * (strtotime($singleStat['to']) + 7200),
+                    'y' => $singleStat['values']['average_value'] + $response['metric_data']['metrics'][1]['timeslices'][$key]['values']['average_value']
+                );
+            }
+        }
+
+        return $responseParsed;
+    }
 }
