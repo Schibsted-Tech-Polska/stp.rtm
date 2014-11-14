@@ -40,6 +40,11 @@ return array(
             'baseUrl' => 'http://ci.vgnett.no/',
         ),
     ),
+    'hadoop' => array(
+        'params' => array(
+            'baseUrl' => 'http://vg-hadoop-s01:50070',
+        ),
+    ),
     'widgets' => array(
 
         // BUILDS
@@ -551,6 +556,20 @@ return array(
                 'beginDateTime' => '-2 minutes',
                 'endDateTime' => 'now',
                 'diskName' => '^',
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 50,
+                'critical-value' => 75,
+                'valueSuffix' => '%'
+            ),
+        ),
+        array('id' => 'hadoopDiskUsage',
+            'type' => 'usage',
+            'params' => array(
+                'dao' => 'hadoop',
+                'metric' => 'diskUsage',
+                'title' => 'Hadoop',
+                'subtitle' => 'disk usage',
+                'span' => 1,
                 'thresholdComparator' => 'lowerIsBetter',
                 'caution-value' => 50,
                 'critical-value' => 75,
