@@ -507,6 +507,22 @@ return array(
                 'valueSuffix' => '%'
             ),
         ),
+        array('id' => 'integratorApplicationCpuUsage',
+            'type' => 'graph',
+            'params' => array(
+                'dao' => 'newRelic',
+                'metric' => 'serverCpuUsage',
+                'title' => 'Application',
+                'subtitle' => 'CPU usage',
+                'valueSuffix' => '%',
+                'span' => 1,
+                'beginDateTime' => '-30 minutes',
+                'endDateTime' => 'now',
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 50,
+                'critical-value' => 75,
+            ),
+        ),
         array('id' => 'integratorApplicationDiskUsage',
             'type' => 'usage',
             'params' => array(
