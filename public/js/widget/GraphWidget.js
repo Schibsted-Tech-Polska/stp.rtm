@@ -32,8 +32,6 @@ $.extend(GraphWidget.prototype, {
      * Updates widget's state
      */
     prepareData: function (response) {
-        console.log(response);
-
         if (response.data.length) {
             var currentValue = response.data[response.data.length - 1].y;
         } else {
@@ -103,7 +101,6 @@ $.extend(GraphWidget.prototype, {
                 }
             ]
         });
-
         this.checkThresholds(currentValue);
     }
 });

@@ -4,11 +4,15 @@
 #dashboardBody .widget.ProcessWidget {
     overflow: hidden;
 
+    h1 {
+        height: 4rem;
+    }
+
     .process {
         margin: 10px 0;
         width: 100%;
-
         color: $color-red;
+
         &.starting {
             color: $color-yellow;
         }
@@ -27,8 +31,8 @@
             width: auto;
             height: auto;
             background: none;
-            font-size: 120px;
-            line-height: 126px;
+            font-size: 9rem;
+            line-height: 9rem;
         }
 
     }
