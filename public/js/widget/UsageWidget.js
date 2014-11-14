@@ -72,9 +72,9 @@ $.extend(UsageWidget.prototype, {
             // the value axis
             yAxis: {
                 stops: [
-                    [0.25, '#55BF3B'], // green
-                    [0.5, '#DDDF0D'], // yellow
-                    [0.75, '#DF5353'] // red
+                    [0, '#70C536'], // green
+                    [0.5, '#FFF46B'], // yellow
+                    [0.75, '#ED303C'] // red
                 ],
                 lineWidth: 0,
                 minorTickInterval: null,
