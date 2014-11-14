@@ -562,8 +562,8 @@ class NewRelicDao extends AbstractDao
         $maximumValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_exclusive_time'];
 
         return [
-            'current_value' => round(100 * $currentValue/$maximumValue, 2),
-            'maximum_value' => 100,
+            'current_value' => $currentValue,
+            'maximum_value' => $maximumValue,
             'minimum_value' => 0,
         ];
     }
@@ -577,12 +577,12 @@ class NewRelicDao extends AbstractDao
     {
         $data = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
-        $currentValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_response_time'];
-        $maximumValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_exclusive_time'];
+        $currentValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_response_time'] / 1024;
+        $maximumValue = $data['metric_data']['metrics'][0]['timeslices'][0]['values']['average_exclusive_time'] / 1024;
 
         return [
-            'current_value' => round(100 * $currentValue/$maximumValue, 2),
-            'maximum_value' => 100,
+            'current_value' => $currentValue,
+            'maximum_value' => $maximumValue,
             'minimum_value' => 0,
         ];
     }
