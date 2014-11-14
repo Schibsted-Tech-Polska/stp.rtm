@@ -17,15 +17,10 @@ class HadoopDao extends AbstractDao
         $data = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
         return [
-            'current_value' => round(100 * $data['beans'][0]['Used']/$data['beans'][0]['Total'], 2),
+            'current_value' => $data['beans'][0]['Used'],
             'minimum_value' => 0,
-            'maximum_value' => 100,
+            'maximum_value' => $data['beans'][0]['Total'],
         ];
-//        return [
-//            'current_value' => $data['beans'][0]['Used'],
-//            'minimum_value' => 0,
-//            'maximum_value' => $data['beans'][0]['Total'],
-//        ];
     }
 
     /**
