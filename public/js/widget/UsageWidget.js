@@ -55,7 +55,7 @@ $.extend(UsageWidget.prototype, {
             },
             title: null,
             pane: {
-                size: '100%',
+                size: '120%',
                 startAngle: -90,
                 endAngle: 90,
                 background: {
