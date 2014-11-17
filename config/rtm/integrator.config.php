@@ -32,7 +32,7 @@ return array(
     ),
     'eye' => array(
         'params' => array(
-            'eyeUrl' => 'http://integrator-cron-s01.int.vgnett.no:6937',
+            'eyeUrl' => 'http://vg-integrator-s01.int.vgnett.no:6937',
         ),
     ),
     'jenkins' => array(
