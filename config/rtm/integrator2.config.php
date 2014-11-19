@@ -173,6 +173,18 @@ return array(
                 'span' => 2,
             ),
         ),
+        array('id' => 'integratorWritersIntegrationBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-writers-integration',
+                'metric' => 'status',
+                'title' => 'Writers integration',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
         array('id' => 'integratorNewsletterSubscriptionsBuildStatus',
             'type' => 'build',
             'params' => array(
