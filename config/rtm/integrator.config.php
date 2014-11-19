@@ -234,8 +234,18 @@ return array(
                 'span' => 1,
             ),
         ),
+
         // MANIPULATORS
-        // none for now...
+        array('id' => 'manipulationSpidProcess',
+            'type' => 'process',
+            'params' => array(
+                'dao' => 'eye',
+                'metric' => 'info',
+                'title' => 'SPiD manipulation',
+                'processName' => 'manipulation-spid',
+                'span' => 1,
+            ),
+        ),
         // CLEANERS
         // none for now...
 
@@ -275,30 +285,30 @@ return array(
         ),
 
         // OTHER SCRIPTS
-        array('id' => 'hadoopPutProcess',
+        array('id' => 'rawHadoopPutProcess',
             'type' => 'process',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
-                'title' => 'Hadoop PUT',
+                'title' => 'RAW Hadoop PUT',
                 'subtitle' => 'script',
-                'processName' => 'put',
+                'processName' => 'raw',
+                'span' => 1,
+            ),
+        ),
+        array('id' => 'cleanHadoopPutProcess',
+            'type' => 'process',
+            'params' => array(
+                'dao' => 'eye',
+                'metric' => 'info',
+                'title' => 'CLEAN Hadoop PUT',
+                'subtitle' => 'script',
+                'processName' => 'raw',
                 'span' => 1,
             ),
         ),
 
         // QUEUES
-        array('id' => 'integratorRabbitMQQueues',
-            'type' => 'rabbitMQ',
-            'params' => array(
-                'dao' => 'rabbitMQ',
-                'metric' => 'queues',
-                'title' => 'RabbitMQ',
-                'span' => 4,
-                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*'],
-                'queueNameParser' => function($queueName) { return str_replace(':queue', '', str_replace('integrator:', '', $queueName));},
-            ),
-        ),
         array('id' => 'integratorRawHadoopMessages',
             'type' => 'graph',
             'params' => array(
@@ -492,6 +502,17 @@ return array(
                 'critical-value' => 1073741824/2,
                 'numericSystem' => 'binary',
                 'refreshRate' => 3600
+            ),
+        ),
+        array('id' => 'integratorRabbitMQQueues',
+            'type' => 'rabbitMQ',
+            'params' => array(
+                'dao' => 'rabbitMQ',
+                'metric' => 'queues',
+                'title' => 'RabbitMQ',
+                'span' => 4,
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*'],
+                'queueNameParser' => function($queueName) { return str_replace(':queue', '', str_replace('integrator:', '', $queueName));},
             ),
         ),
     ),
