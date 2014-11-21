@@ -265,6 +265,22 @@ return array(
         ),
 
         // QUEUES
+        array('id' => 'integratorSpidManipulatorMessages',
+            'type' => 'graph',
+            'params' => array(
+                'dao' => 'rabbitMQ',
+                'metric' => 'queuedMessages',
+                'title' => 'SPiD manipulation',
+                'span' => 1,
+                'queueName' => 'integrator:manipulation:spid:queue',
+                'secondsBack' => '1200',
+                'secondsIntervals' => '5',
+                'refreshRate' => 5,
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 1000000,
+                'critical-value' => 5000000,
+            ),
+        ),
         array('id' => 'integratorRawHadoopMessages',
             'type' => 'graph',
             'params' => array(
