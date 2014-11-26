@@ -302,7 +302,7 @@ return array(
                 'title' => 'SPiD useraccounts',
                 'subtitle' => 'manipulation',
                 'span' => 1,
-                'queueName' => 'integrator:manipulation:spid:queue',
+                'queueName' => 'integrator:manipulation:spid:useraccounts:queue',
                 'secondsBack' => '1200',
                 'secondsIntervals' => '5',
                 'refreshRate' => 5,
