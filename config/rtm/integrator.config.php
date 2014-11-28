@@ -214,8 +214,19 @@ return array(
                 'span' => 1,
             ),
         ),
+
         // CLEANERS
-        // none for now...
+        array('id' => 'cleaningSpidUsersProcess',
+            'type' => 'process',
+            'params' => array(
+                'dao' => 'eye',
+                'metric' => 'info',
+                'title' => 'SPiD users',
+                'subtitle' => 'cleaner',
+                'processName' => 'cleaning-spidusers',
+                'span' => 1,
+            ),
+        ),
 
         // WRITERS
         array('id' => 'rawHadoopWriterProcess',
