@@ -25,16 +25,24 @@ return array(
             'accountId' => '100366'
         )
     ),
+    'hipChat' => array(
+        'params' => array(
+            'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
+        ),
+    ),
     'widgets' => array(
         array('id' => 'messagesRose',
             'type' => 'messages',
             'params' => array(
-                'dao' => 'events',
-                'metric' => 'messages',
-                'span' => '6', // widget width, accepted values: 1-12
-                'title' => 'Rose', // string title
+                'dao' => 'hipChat',
+                'metric' => 'listRecentMessages',
+                'span' => 6,
+                'subtitle' => '',
+                'title' => 'Rose',
                 'limit' => 10,
-                'projectName' => 'rose'
+                'room' => '678527',
+                'refreshRate' => 30,
+                'fromUser' => ['jenkins', 'Cap4All'],
             ),
         ),
         array('id' => 'roseBuildStatuCore',
