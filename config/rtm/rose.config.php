@@ -30,6 +30,31 @@ return array(
             'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
         ),
     ),
+    'gearman' => array(
+        'params' => array(
+            'gearmanuiUrl' => 'https://red.vgnett.no/godt-gearmanui/web',
+        ),
+        'headers' => array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ),
+        'auth' => array(
+            'username' => 'wiskra',
+            'password' => 'DopdeDey',
+        ),
+    ),
+    'rabbitMQ' => array(
+        'params' => array(
+            'rabbitMQUrl' => 'http://vg-rabbit-01:15672',
+            'vhost' => 'rose',
+        ),
+        'headers' => array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ),
+        'auth' => array(
+            'username' => 'rose',
+            'password' => 'MxPEMso4Dni9bD',
+        ),
+    ),
     'widgets' => array(
         array('id' => 'messagesRose',
             'type' => 'messages',
@@ -209,5 +234,32 @@ return array(
                 'span' => 4,
             ),
         ),
+        array('id' => 'gearman',
+            'type' => 'gearman',
+            'params' => array(
+                'dao' => 'gearman',
+                'metric' => 'jobsWithWorkers',
+                'title' => 'Gearman queue',
+                'span' => 3,
+            ),
+        ),
+        // QUEUES
+//        array('id' => 'roseTestMessages',
+//            'type' => 'graph',
+//            'params' => array(
+//                'dao' => 'rabbitMQ',
+//                'metric' => 'queuedMessages',
+//                'title' => 'Test',
+//                'subtitle' => 'test',
+//                'span' => 1,
+//                'queueName' => 'rose:test:test:queue',
+//                'secondsBack' => '1200',
+//                'secondsIntervals' => '5',
+//                'refreshRate' => 5,
+//                'thresholdComparator' => 'lowerIsBetter',
+//                'caution-value' => 1000000,
+//                'critical-value' => 5000000,
+//            ),
+//        ),
      ),
 );
