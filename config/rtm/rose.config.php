@@ -3,6 +3,20 @@
  * Config for rtm
  */
 return array(
+    'splunk' => array(
+        'params' => array(
+            'baseUrl' => 'https://mother.int.vgnett.no:8089',
+        ),
+        'auth' => array(
+            'username' => 'wiskra',
+            'password' => 'DopdeDey',
+        ),
+    ),
+    'jenkins' => array(
+        'params' => array(
+            'baseUrl' => 'http://ci.vgnett.no/',
+        ),
+    ),
     'newRelic' => array(
         'headers' => array(
             'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30'
@@ -146,7 +160,12 @@ return array(
                 'metric' => 'Fivehundreds',
                 'title' => 'Rose (production)',
                 'subtitle' => '500 errors in last 24h',
-                'config' => 'roseStatus500',
+                'config' => [
+                    'search' => 'search sourcetype=apache_access source="/var/log/httpd/rose-app-access.log" host=vg-rose-01* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
+                    'earliest_time' => '-24h',
+                    'latest' => 'now',
+                    'output_mode' => 'json_cols',
+                ],
                 'span' => 4,
             ),
         ),
@@ -157,7 +176,12 @@ return array(
                 'metric' => 'Fivehundreds',
                 'title' => 'Rose (production E24)',
                 'subtitle' => '500 errors in last 24h',
-                'config' => 'roseE24Status500',
+                'config' => [
+                    'search' => 'search sourcetype=apache_access source="/var/log/httpd/rose-app-e24-access.log" host=vg-rose-01* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
+                    'earliest_time' => '-24h',
+                    'latest' => 'now',
+                    'output_mode' => 'json_cols',
+                ],
                 'span' => 4,
             ),
         ),
@@ -168,7 +192,12 @@ return array(
                 'metric' => 'Fivehundreds',
                 'title' => 'Rose (stage)',
                 'subtitle' => '500 errors in last 24h',
-                'config' => 'roseStageStatus500',
+                'config' => [
+                    'search' => 'search sourcetype=apache_access host=vg-rose-s01* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
+                    'earliest_time' => '-24h',
+                    'latest' => 'now',
+                    'output_mode' => 'json_cols',
+                ],
                 'span' => 4,
             ),
         ),
