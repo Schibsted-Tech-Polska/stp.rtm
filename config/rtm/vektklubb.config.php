@@ -52,7 +52,7 @@ return array(
                 'title' => 'Vektklubb API',
                 'subtitle' => '500 errors in last 24h',
                 'config' => [
-                    'search' => 'search sourcetype=apache_access NOT(toolbox) host=vektklubb-api-s* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
+                    'search' => 'search sourcetype=apache_access NOT(toolbox) host=vektklubb-api-0* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
                     'earliest_time' => '-24h',
                     'latest' => 'now',
                     'output_mode' => 'json_cols',
@@ -65,7 +65,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'cpuUsage',
-                'appId' => '3089207',
+                'appId' => '3128405',
                 'title' => 'CPU usage',
                 'valueSuffix' => '%',
                 'span' => 3,
@@ -78,7 +78,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'memory',
-                'appId' => '3089207',
+                'appId' => '3128405',
                 'title' => 'Memory',
                 'valueSuffix' => 'MB',
             ),
@@ -88,7 +88,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'averageResponseTime',
-                'appId' => '3089207',
+                'appId' => '3128405',
                 'title' => 'AVG response time',
                 'span' => 3,
                 'valueSuffix' => 'ms',
@@ -101,7 +101,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'rpm',
-                'appId' => '3089207',
+                'appId' => '3128405',
                 'span' => 3,
                 'beginDateTime' => '-60 minutes',
                 'endDateTime' => 'now',
@@ -115,7 +115,7 @@ return array(
                 'dao' => 'newRelic',
                 'valueSuffix' => '%',
                 'metric' => 'errorRate',
-                'appId' => '3089207',
+                'appId' => '3128405',
                 'title' => 'Error Rate',
             ),
         ),
@@ -146,7 +146,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'apdex',
-                'appId' => '3089207',
+                'appId' => '3128405',
                 'title' => 'apdex',
                 'thresholdComparator' => 'higherIsBetter',
             ),
