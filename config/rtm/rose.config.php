@@ -3,6 +3,7 @@
  * Config for rtm
  */
 return array(
+    'theme' => ['tv', 'dark'],
     'splunk' => array(
         'params' => array(
             'baseUrl' => 'https://mother.int.vgnett.no:8089',
