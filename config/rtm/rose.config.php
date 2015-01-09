@@ -44,7 +44,7 @@ return array(
     ),
     'rabbitMQ' => array(
         'params' => array(
-            'rabbitMQUrl' => 'http://vg-rabbit-01:15672',
+            'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
             'vhost' => 'rose',
         ),
         'headers' => array(
@@ -240,7 +240,32 @@ return array(
                 'dao' => 'gearman',
                 'metric' => 'jobsWithWorkers',
                 'title' => 'Gearman queue',
-                'span' => 3,
+                'span' => 4,
+            ),
+        ),
+        array(
+            'id' => 'integratorRabbitMQQueues',
+            'type' => 'rabbitMQ',
+            'params' => array(
+                'dao' => 'rabbitMQ',
+                'metric' => 'queues',
+                'title' => 'RabbitMQ',
+                'span' => 4,
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*'],
+                'queueNameParser' => function($queueName) { return str_replace(':management', '', $queueName);},
+            ),
+        ),
+        array(
+            'id' => 'devIntegratorRabbitMQQueues',
+            'type' => 'rabbitMQ',
+            'params' => array(
+                'rabbitMQUrl' => 'http://vg-dev-01:15672',
+                'dao' => 'rabbitMQ',
+                'metric' => 'queues',
+                'title' => 'RabbitMQ',
+                'span' => 4,
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*'],
+                'queueNameParser' => function($queueName) { return str_replace(':management', '', $queueName);},
             ),
         ),
         // QUEUES
