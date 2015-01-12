@@ -23,13 +23,6 @@ class RabbitMQDao extends AbstractDao
             $queues[$singleQueue['name']] = $singleQueue;
         }
 
-        foreach ($queues as $queueName => $queueInfo) {
-            $invalidQueueName = str_replace(':queue', ':invalid:queue', $queueInfo['name']);
-            if (isset($queues[$invalidQueueName])) {
-                $queues[$queueName]['invalidQueueInfo'] = $queues[$invalidQueueName];
-            }
-        }
-
         if (isset($params['ignoreQueues'])) {
             foreach ($queues as $key => $queue) {
                 foreach ($params['ignoreQueues'] as $regex) {

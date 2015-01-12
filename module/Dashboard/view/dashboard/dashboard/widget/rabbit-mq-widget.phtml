@@ -18,9 +18,6 @@
                         <td class="status">
                             <span class="<%= queue.messages > 0 ? "warning" : "success" %>">
                                 <%= queue.messages %> messages</span> (<%= queue.messages_details.rate %>/s)
-                                <% if (typeof(queue.invalidQueueInfo) != "undefined") { %>
-                                    <span class="<%= queue.invalidQueueInfo.messages > 0 ? "failure" : "success" %>"><%= !_.isUndefined(queue.invalidQueueInfo.messages) ? queue.invalidQueueInfo.messages : 0 %> invalid</span>
-                                <% } %>
                             <br/>
                             <span class="<%= queue.consumers > 0 ? "success" : "failure" %>"><%= queue.consumers %> workers running</span>
                         </td>
@@ -28,9 +25,6 @@
                         <td class="status">
                         <span class=success">
                             0 messages</span>
-                            <% if (typeof(queue.invalidQueueInfo) != "undefined") { %>
-                                <span class="<%= queue.invalidQueueInfo.messages > 0 ? "failure" : "success" %>"><%= queue.invalidQueueInfo.messages %> invalid</span>
-                            <% } %>
                             <br/>
                             <span class="<%= queue.consumers > 0 ? "success" : "failure" %>"><%= queue.consumers %> workers running</span>
                         </td>
