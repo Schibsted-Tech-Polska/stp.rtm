@@ -264,6 +264,17 @@ return array(
         ),
 
         // ADOBE CAMPAIGN
+        array('id' => 'acExportClientsProcess',
+            'type' => 'process',
+            'params' => array(
+                'dao' => 'eye',
+                'metric' => 'info',
+                'title' => 'AC clients',
+                'subtitle' => 'export',
+                'processName' => 'adobecampaign_clients',
+                'span' => 1,
+            ),
+        ),
         array('id' => 'acExportClientConnectionsProcess',
             'type' => 'process',
             'params' => array(
