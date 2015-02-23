@@ -58,8 +58,8 @@ $.extend(WeatherWidget.prototype, {
 
         this.dataToBind.name = response.data.name;
         this.dataToBind.icon = this.iconsMap[response.data.weather[0].icon];
-        this.dataToBind.temperature = response.data.main.temp;
-        this.dataToBind.pressure = response.data.main.pressure;
+        this.dataToBind.temperature = parseInt(response.data.main.temp, 10);
+        this.dataToBind.pressure = parseInt(response.data.main.pressure, 10);
 
         this.renderTemplate(this.dataToBind);
     }
