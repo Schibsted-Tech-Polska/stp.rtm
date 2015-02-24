@@ -350,7 +350,7 @@ return array(
                 'metric' => 'info',
                 'title' => 'CLEAN Hadoop PUT',
                 'subtitle' => 'script',
-                'processName' => 'raw',
+                'processName' => 'clean',
                 'span' => 1,
             ),
         ),
