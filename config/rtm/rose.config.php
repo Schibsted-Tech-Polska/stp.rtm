@@ -31,21 +31,9 @@ return array(
             'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
         ),
     ),
-    'gearman' => array(
-        'params' => array(
-            'gearmanuiUrl' => 'https://red.vgnett.no/godt-gearmanui/web',
-        ),
-        'headers' => array(
-            'X-Requested-With' => 'XMLHttpRequest',
-        ),
-        'auth' => array(
-            'username' => 'wiskra',
-            'password' => 'DopdeDey',
-        ),
-    ),
     'rabbitMQ' => array(
         'params' => array(
-            'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
+            'rabbitMQUrl' => 'http://vg-rabbit-01:15672',
             'vhost' => 'rose',
         ),
         'headers' => array(
@@ -235,19 +223,23 @@ return array(
                 'span' => 4,
             ),
         ),
-        array('id' => 'gearman',
-            'type' => 'gearman',
+        array(
+            'id' => 'prodRabbitMQQueues',
+            'type' => 'rabbitMQ',
             'params' => array(
-                'dao' => 'gearman',
-                'metric' => 'jobsWithWorkers',
-                'title' => 'Gearman queue',
+                'dao' => 'rabbitMQ',
+                'metric' => 'queues',
+                'title' => 'RabbitMQ',
                 'span' => 4,
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test'],
+                'queueNameParser' => function($queueName) { return str_replace(':management', '', $queueName);},
             ),
         ),
         array(
-            'id' => 'integratorRabbitMQQueues',
+            'id' => 'stagingRabbitMQQueues',
             'type' => 'rabbitMQ',
             'params' => array(
+                'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
                 'dao' => 'rabbitMQ',
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
