@@ -71,7 +71,7 @@ return array(
         'key_pattern' => null,
         'readable' => true,
         'writable' => true,
-        'servers' => 'localhost',
+        'servers' => 'vg-dev-01',
     ),
     'doctrine' => array(
         'driver' => array(
