@@ -96,6 +96,12 @@ return [
             'subtitle' => '',
             'span' => 6,
         ],
+        'slack' => [
+            'refreshRate' => 60,
+            'title' => '',
+            'subtitle' => '',
+            'span' => 6,
+        ],
         'graph' => [
             'refreshRate' => 60,
             'title' => '',

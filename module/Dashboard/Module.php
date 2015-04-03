@@ -116,6 +116,15 @@ class Module
                 'HipChatDao' => function (ServiceManager $serviceManager) {
                     return new Model\Dao\HipChatDao($serviceManager->get('HipChatDaoConfig'));
                 },
+                'SlackDaoConfig' => function (ServiceManager $serviceManager) {
+                    return $serviceManager->get('Config')['SlackDao'];
+                },
+                'SlackDao' => function (ServiceManager $serviceManager) {
+                    return new Model\Dao\SlackDao($serviceManager->get('SlackDaoConfig'));
+                },
+                'Parsedown' => function (ServiceManager $serviceManager) {
+                    return new \Parsedown();
+                },
                 'BambooDaoConfig' => function (ServiceManager $serviceManager) {
                     return $serviceManager->get('Config')['BambooDao'];
                 },
