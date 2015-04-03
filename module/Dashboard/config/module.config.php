@@ -67,7 +67,7 @@ return array(
     ),
     'dashboardCache' => array(
         'ttl' => 604800, // 7 days = 3600 * 24 * 7
-        'namespace' => 'rtm_dashboard',
+        'namespace' => 'rtm_dashboard_' . filemtime(__FILE__),
         'key_pattern' => null,
         'readable' => true,
         'writable' => true,

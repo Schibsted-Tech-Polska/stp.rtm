@@ -38,6 +38,7 @@ $default-font-weight-normal: 300;
 @import "widget/buildWidget";
 @import "widget/numberWidget";
 @import "widget/messagesWidget";
+@import "widget/slackWidget";
 @import "widget/graphWidget";
 @import "widget/alertWidget";
 @import "widget/gearmanWidget";
