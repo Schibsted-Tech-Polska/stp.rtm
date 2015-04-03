@@ -24,9 +24,9 @@ return array(
             'password' => 'DopdeDey',
         ),
     ),
-    'hipChat' => array(
+    'slack' => array(
         'params' => array(
-            'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
+            'token' => 'xoxp-3176818426-4103564791-4117485223-5606c6',
         ),
     ),
     'splunk' => array(
@@ -44,17 +44,16 @@ return array(
         ),
     ),
     'widgets' => array(
-        array('id' => 'messages',
-            'type' => 'messages',
+        array('id' => 'messagesSlack',
+            'type' => 'slack',
             'params' => array(
-                'dao' => 'hipChat',
+                'dao' => 'slack',
                 'metric' => 'listRecentMessages',
                 'span' => 6,
                 'subtitle' => '',
-                'title' => 'Food',
-                'limit' => 10,
-                'room' => '706791',
-                'fromUser' => ['jenkins'],
+                'title' => 'VK Slack',
+                'channel' => 'C044Q8M5W',
+                'count' => 8,
             ),
         ),
         array('id' => 'vgFoodSplunk500',
