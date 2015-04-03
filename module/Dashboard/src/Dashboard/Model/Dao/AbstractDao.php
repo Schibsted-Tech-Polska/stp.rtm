@@ -274,6 +274,29 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         }
     }
 
+    public function requestWithCache(
+        $url,
+        $params = array(),
+        $responseFormat = self::RESPONSE_IN_JSON,
+        $auth = null,
+        $postData = null
+    ) {
+        /**
+         * @var \Zend\Cache\Storage\Adapter\AbstractAdapter
+         */
+        $cacheAdapter = $this->getServiceLocator()->get('CacheAdapter');
+        $cacheId = md5($this->assembleUrl($url, $params));
+
+        if ($cacheAdapter->hasItem($cacheId)) {
+            $response = $cacheAdapter->getItem($cacheId);
+        } else {
+            $response = $this->request($url, $params, $responseFormat, $auth, $postData);
+            $cacheAdapter->addItem($cacheId, $response);
+        }
+
+        return $response;
+    }
+
     /**
      * Data provider setter
      * @param \Zend\Http\Client $dataProvider data provider object

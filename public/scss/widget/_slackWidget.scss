@@ -1,0 +1,48 @@
+// ----------------------------------------------------------------------------
+// Widget-messages styles
+// ----------------------------------------------------------------------------
+#dashboardBody .widget.SlackWidget {
+    overflow: hidden;
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    h5 {
+        color: #ddd;
+        text-align: left;
+        margin: 6px 0;
+    }
+
+    .message {
+        text-align: left;
+        border-bottom: 1px dotted #666;
+        margin-bottom: 0.1em;
+        padding-bottom: 0.4em;
+        overflow: hidden;
+
+        .createdAt {
+            color: #aaa;
+            font-size: 0.75em;
+            margin-bottom: 2px;
+        }
+
+        .content {
+            font-size: 0.8rem;
+            color: #ddd;
+            line-height: 110%;
+
+            small {
+                color: #fff;
+            }
+
+        }
+
+        .avatar {
+            width: 50px;
+            float: left;
+            margin-right: 5px;
+        }
+    }
+}
