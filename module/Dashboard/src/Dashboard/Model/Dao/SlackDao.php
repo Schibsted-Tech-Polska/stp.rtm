@@ -10,6 +10,13 @@ use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 class SlackDao extends AbstractDao
 {
     /**
+     * Default emoji for a message author
+     *
+     * @var string
+     */
+    const DEFAULT_EMOJI = 'slack';
+
+    /**
      * Fetch HipChat messages
      *
      * @param  array $params Params
@@ -34,6 +41,8 @@ class SlackDao extends AbstractDao
 
             if (isset($message['icons']['emoji'])) {
                 $message['user']['avatar'] = $this->fetchEmoji($params, $message['icons']['emoji']);
+            } else {
+                $message['user']['avatar'] = $this->fetchEmoji($params, static::DEFAULT_EMOJI);
             }
 
             $message = $this->parseResponse($message);
