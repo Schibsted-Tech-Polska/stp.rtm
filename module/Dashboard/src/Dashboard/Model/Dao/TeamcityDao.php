@@ -41,11 +41,11 @@ class TeamcityDao extends AbstractDao
         $result = array();
 
         $build = $this->fetchFinishedBuildStatus($params);
-        $result['currentStatus'] = $build['@attributes']['status'];
-        $result['lastBuilt'] = gmdate('Y-m-d H:i:s', strtotime($build['startDate']));
-        $result['lastCommitter'] = $this->getLastCommitter($params, $build);
-        $result['codeCoverage'] = $this->getCodeCoverage($params, $build);
-        $result['averageHealthScore'] = $this->getAverageHealthScore($params, $build);
+        $result['currentStatus'] = $build ? $build['@attributes']['status'] : 'UNKNOWN';
+        $result['lastBuilt'] = $build ? gmdate('Y-m-d H:i:s', strtotime($build['startDate'])) : 'NEVER';
+        $result['lastCommitter'] = $build ? $this->getLastCommitter($params, $build) : null;
+        $result['codeCoverage'] = $build ? $this->getCodeCoverage($params, $build) : null;
+        $result['averageHealthScore'] = $build ? $this->getAverageHealthScore($params, $build) : 100;
 
         $result['building'] = false;
         $result['percentDone'] = 0;
@@ -54,6 +54,7 @@ class TeamcityDao extends AbstractDao
         $build = $this->fetchRunningBuildStatus($params);
         if (!empty($build)) {
             $result['building'] = true;
+            $result['currentStatus'] = null;
             $result['percentDone'] = $build['@attributes']['percentageComplete'];
         }
 
@@ -119,8 +120,14 @@ class TeamcityDao extends AbstractDao
 
     private function fetchFinishedBuildStatus(array $params)
     {
-        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
-        $build = (array)$response->build[0];
+        $response = (array)$this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
+        $responseAttributes = (array)$response['@attributes'];
+
+        if ($responseAttributes['count'] == '0') {
+            return null;
+        }
+
+        $build = (array)$response['build'][0];
         $build = $build['@attributes'];
 
         return $this->fetchDetailedBuildStatusById($params, $build['id']);
