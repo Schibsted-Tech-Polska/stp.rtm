@@ -52,7 +52,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'cpuUsage',
-                'appId' => '3128405',
+                'appId' => '8006994',
                 'title' => 'CPU usage',
                 'valueSuffix' => '%',
                 'span' => 3,
@@ -65,7 +65,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'memory',
-                'appId' => '3128405',
+                'appId' => '8006994',
                 'title' => 'Memory',
                 'valueSuffix' => 'MB',
             ),
@@ -75,7 +75,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'averageResponseTime',
-                'appId' => '3128405',
+                'appId' => '8006994',
                 'title' => 'AVG response time',
                 'span' => 3,
                 'valueSuffix' => 'ms',
@@ -88,7 +88,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'rpm',
-                'appId' => '3128405',
+                'appId' => '8006994',
                 'span' => 3,
                 'beginDateTime' => '-60 minutes',
                 'endDateTime' => 'now',
@@ -102,7 +102,7 @@ return array(
                 'dao' => 'newRelic',
                 'valueSuffix' => '%',
                 'metric' => 'errorRate',
-                'appId' => '3128405',
+                'appId' => '8006994',
                 'title' => 'Error Rate',
             ),
         ),
@@ -111,7 +111,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'apdex',
-                'appId' => '3128405',
+                'appId' => '8006994',
                 'title' => 'apdex',
                 'thresholdComparator' => 'higherIsBetter',
             ),
