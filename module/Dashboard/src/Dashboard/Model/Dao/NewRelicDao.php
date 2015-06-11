@@ -524,6 +524,9 @@ class NewRelicDao extends AbstractDao
                     break;
                 }
             }
+            if (empty($result)) {
+                throw new EndpointUrlNotAssembled('Could not find requested metric thresholds');
+            }
         } catch (EndpointUrlNotAssembled $e) {
             $result = array(
                 'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
