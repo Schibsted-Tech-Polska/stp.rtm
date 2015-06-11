@@ -52,6 +52,7 @@ the repo to [Heroku](http://www.heroku.com).
 - **[Teamcity](http://www.jetbrains.com/teamcity/)** - Continuous Integration for Everybody
 - **[Http Status]** - Checks HTTP status of given URL
 - **[IMBO](http://imbo-project.org)** - IMBO Image Server database and storage status check
+- **[Graphite](http://graphite.wikidot.com/)** - Graphite - Scalable Realtime Graphing
 
 #### Custom sources ;)
  - **Events** - listing events saved in MongoDB (these can be pretty much anything you want)
