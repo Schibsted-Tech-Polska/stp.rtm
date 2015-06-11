@@ -229,7 +229,31 @@ return array(
                 'title' => 'Library Build',
             ),
         ),
-
+        array('id' => 'godtRenderRpmGraph',
+            'type' => 'graph',
+            'params' => array(
+                'dao' => 'graphite',
+                'metric' => 'data',
+                'target' => 'movingAverage(nonNegativeDerivative(vg-render-01.tail-Godt.counter-RequestsServed),5)',
+                'title' => 'Render RPM',
+                'span' => 3,
+                'from' => '-30min',
+                'until' => '-0hour',
+            ),
+        ),
+        array('id' => 'godtRenderAvgRspTimeGraph',
+            'type' => 'graph',
+            'params' => array(
+                'dao' => 'graphite',
+                'metric' => 'data',
+                'target' => 'movingAverage(vg-render-01.tail-Godt.response_time-AvgResponseTime,5)',
+                'valueSuffix' => 's',
+                'title' => 'Render Average Response time',
+                'span' => 3,
+                'from' => '-30min',
+                'until' => '-0hour',
+            ),
+        ),
 
 
     ),
