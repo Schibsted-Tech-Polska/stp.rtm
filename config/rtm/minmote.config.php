@@ -229,7 +229,7 @@ return array(
                 'dao' => 'graphite',
                 'metric' => 'data',
                 'target' => 'movingAverage(nonNegativeDerivative(vg-render-01.tail-MinMote.counter-RequestsServed),5)',
-                'title' => 'Render RRM',
+                'title' => 'Render RPM',
                 'span' => 3,
                 'from' => '-30min',
                 'until' => '-0hour',
