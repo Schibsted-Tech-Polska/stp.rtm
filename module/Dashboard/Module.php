@@ -1,6 +1,7 @@
 <?php
 namespace Dashboard;
 
+use Dashboard\Model\Dao\GraphiteDao;
 use Dashboard\Model\Dao\HerokuStatusDao;
 use Dashboard\Model\Dao\WeatherDao;
 use Zend\Cache\Storage\Adapter\Memcached;
@@ -154,7 +155,13 @@ class Module
                 },
                 'HerokuStatusDao' => function (ServiceManager $serviceManager) {
                     return new HerokuStatusDao($serviceManager->get('HerokuStatusDaoConfig'));
-                }
+                },
+                'GraphiteDao' => function (ServiceManager $serviceManager) {
+                    return new GraphiteDao($serviceManager->get('GraphiteDaoConfig'));
+                },
+                'GraphiteDaoConfig' => function (ServiceManager $serviceManager) {
+                    return $serviceManager->get('Config')['GraphiteDao'];
+                },
             ),
         );
     }
