@@ -199,7 +199,7 @@ return array(
                 'dao' => 'graphite',
                 'metric' => 'data',
                 'target' => 'nonNegativeDerivative(prerender-01.tail-Godt.counter-RequestsFailed)',
-                'title' => 'Render RPM',
+                'title' => 'Render Failed Requests',
                 'span' => 3,
                 'from' => '-30min',
                 'until' => '-0hour',
