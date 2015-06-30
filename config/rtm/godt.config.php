@@ -242,7 +242,7 @@ return array(
             'params' => array(
                 'dao' => 'graphite',
                 'metric' => 'data',
-                'target' => 'movingAverage(prerender-01.tail-Godt.response_time-AvgResponseTime,5)',
+                'target' => 'movingAverage(scale(prerender-01.tail-Godt.response_time-AvgResponseTime,0.001),5)',
                 'valueSuffix' => 's',
                 'title' => 'Render Average Response time',
                 'span' => 3,
