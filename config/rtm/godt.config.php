@@ -230,7 +230,7 @@ return array(
             'params' => array(
                 'dao' => 'graphite',
                 'metric' => 'data',
-                'target' => 'movingAverage(nonNegativeDerivative(vg-render-01.tail-Godt.counter-RequestsServed),5)',
+                'target' => 'movingAverage(nonNegativeDerivative(prerender-01.tail-Godt.counter-RequestsServed),5)',
                 'title' => 'Render RPM',
                 'span' => 3,
                 'from' => '-30min',
@@ -242,7 +242,7 @@ return array(
             'params' => array(
                 'dao' => 'graphite',
                 'metric' => 'data',
-                'target' => 'movingAverage(vg-render-01.tail-Godt.response_time-AvgResponseTime,5)',
+                'target' => 'movingAverage(prerender-01.tail-Godt.response_time-AvgResponseTime,5)',
                 'valueSuffix' => 's',
                 'title' => 'Render Average Response time',
                 'span' => 3,
