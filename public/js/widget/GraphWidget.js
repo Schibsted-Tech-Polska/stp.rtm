@@ -53,6 +53,25 @@ $.extend(GraphWidget.prototype, {
             this.chart.highcharts().destroy();
         }
 
+        var zones = [];
+
+
+        if (parseFloat(this.$widget.attr('data-threshold-caution-value')) > 0
+            && parseFloat(this.$widget.attr('data-threshold-critical-value')) > 0) {
+            zones = [
+                {
+                    value: this.$widget.attr('data-threshold-caution-value')
+                }, {
+                    value: this.$widget.attr('data-threshold-critical-value'),
+                    fillColor: '#fff46b',
+                    color: '#fffda6'
+                }, {
+                    fillColor: '#e62a34',
+                    color: '#f03542'
+                }
+            ];
+        }
+
         this.chart = $('.graph', this.widget).highcharts({
             chart: {
                 type: 'area'
@@ -97,7 +116,9 @@ $.extend(GraphWidget.prototype, {
                     title: {
                         text: ''
                     },
-                    data: response.data
+                    data: response.data,
+                    zoneAxis: 'y',
+                    zones: zones
                 }
             ]
         });
