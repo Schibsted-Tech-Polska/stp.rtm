@@ -55,4 +55,18 @@ class GraphiteDao extends AbstractDao
 
         return $responseParsed;
     }
+
+    /**
+     * @param $params
+     * @return array
+     */
+    public function fetchThreshold($params)
+    {
+        $threshold = array(
+            'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
+            'critical-value' => isset($params['critical-value']) ? $params['critical-value'] : 0,
+        );
+
+        return $threshold;
+    }
 }
