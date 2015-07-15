@@ -48,22 +48,6 @@ return array(
         ),
     ),
     'widgets' => array(
-        // MESSAGES
-        array('id' => 'messagesIntegrator',
-            'type' => 'messages',
-            'params' => array(
-                'dao' => 'hipChat',
-                'metric' => 'listRecentMessages',
-                'span' => 4,
-                'subtitle' => '',
-                'title' => 'Integrator',
-                'limit' => 10,
-                'room' => '678235',
-                'refreshRate' => 30,
-                'fromUser' => ['jenkins', 'Cap4All'],
-            ),
-        ),
-
         // BUILDS
         array('id' => 'integratorCrawlersBuildStatus',
             'type' => 'build',
