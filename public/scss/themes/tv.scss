@@ -29,6 +29,16 @@ $widgets-padding: 2px;
                 min-height: 6rem;
             }
         }
+
+        &.NumberWidget {
+            .change-rate {
+                font-size: 2*$default-font-size;
+            }
+        }
+
+        .value {
+            font-size: 6*$default-font-size;
+        }
     }
 
     .row {
