@@ -133,6 +133,28 @@ class NewRelicDao extends AbstractDao
     }
 
     /**
+     * Error rate for incremental graph widget
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return mixed
+     */
+    public function fetchErrorRateForIncrementalGraphWidget(array $params = array())
+    {
+        $thresholdValues = $this->fetchThresholdValues($params);
+
+        return array(
+            'x' => (int) $this->convertTimeBetweenTimezones(
+                $thresholdValues['Error Rate']['end_time'],
+                'UTC',
+                date_default_timezone_get(),
+                'U'
+            ),
+            'y' => $thresholdValues['Error Rate']['metric_value'],
+            'events' => $this->fetchDeploymentEvents($params),
+        );
+    }
+
+    /**
      * Apdex value
      *
      * @param  array $params - array with appId and other optional parameters for endpoint URL
