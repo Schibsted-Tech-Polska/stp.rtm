@@ -20,6 +20,12 @@
 #dashboardBody .widget.BuildWidget .title {
   min-height: 6rem;
 }
+#dashboardBody .widget.NumberWidget .change-rate {
+  font-size: 20px;
+}
+#dashboardBody .widget .value {
+  font-size: 60px;
+}
 #dashboardBody .row {
   margin-top: 4px;
 }
