@@ -569,7 +569,12 @@ class NewRelicDao extends AbstractDao
      */
     private function convertTimeBetweenTimezones($time, $originTimezone, $targetTimezone, $format = 'Y-m-d H:i:s')
     {
-        $convertedTime = new \DateTime($time, new \DateTimeZone($originTimezone));
+        try {
+            $convertedTime = new \DateTime($time, new \DateTimeZone($originTimezone));
+        } catch (\Exception $e) {
+            $date = \DateTime::createFromFormat('m DD,yy hh:MM meridian', $time);
+            $convertedTime = new \DateTime($date, new \DateTimeZone($originTimezone));
+        }
         $convertedTime->setTimeZone(new \DateTimeZone($targetTimezone));
 
         return $convertedTime->format($format);
