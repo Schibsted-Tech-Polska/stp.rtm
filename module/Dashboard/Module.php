@@ -1,11 +1,15 @@
 <?php
 namespace Dashboard;
 
+use Dashboard\EventListener\AnalyzerViolation\PushNotifier;
 use Dashboard\Model\Dao\GraphiteDao;
 use Dashboard\Model\Dao\HerokuStatusDao;
 use Dashboard\Model\Dao\WeatherDao;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
+use Zend\Console\Adapter\AdapterInterface as Console;
+use Zend\EventManager\EventInterface;
+use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceManager;
 
 class Module
@@ -87,10 +91,10 @@ class Module
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new Model\Widget\WidgetFactory($serviceManager->get('WidgetConfig'));
                 },
-                'CacheAdapter' => function ($serviceManager) {
+                'CacheAdapter' => function (ServiceManager $serviceManager) {
                     return new Memcached($serviceManager->get('CacheAdapterOptions'));
                 },
-                'CacheAdapterOptions' => function ($serviceManager) {
+                'CacheAdapterOptions' => function (ServiceManager $serviceManager) {
                     return new MemcachedOptions($serviceManager->get('Config')['dashboardCache']);
                 },
                 'SplunkDaoConfig' => function (ServiceManager $serviceManager) {
@@ -123,7 +127,7 @@ class Module
                 'SlackDao' => function (ServiceManager $serviceManager) {
                     return new Model\Dao\SlackDao($serviceManager->get('SlackDaoConfig'));
                 },
-                'Parsedown' => function (ServiceManager $serviceManager) {
+                'Parsedown' => function () {
                     return new \Parsedown();
                 },
                 'BambooDaoConfig' => function (ServiceManager $serviceManager) {
@@ -162,8 +166,25 @@ class Module
                 'GraphiteDaoConfig' => function (ServiceManager $serviceManager) {
                     return $serviceManager->get('Config')['GraphiteDao'];
                 },
+                'Dashboard\EventListener\AnalyzerViolation\PushNotifier' => function (ServiceManager $serviceManager) {
+                    return new PushNotifier($serviceManager->get('Config')['push_notification']);
+                }
             ),
         );
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param  EventInterface $e Event
+     * @return array|void
+     */
+    public function onBootstrap(MvcEvent $e)
+    {
+        $eventManager = $e->getApplication()->getEventManager();
+        $serviceManager = $e->getApplication()->getServiceManager();
+
+        $eventManager->attach($serviceManager->get('Dashboard\EventListener\AnalyzerViolation\PushNotifier'));
     }
 
     /**
@@ -193,5 +214,17 @@ class Module
         }
 
         return $config;
+    }
+
+    public function getConsoleUsage(Console $console)
+    {
+        return array(
+            // Describe available commands
+            'monitor <config> [<widget>]' => 'Reset password for a user',
+
+            // Describe expected parameters
+            array( 'config', 'config name' ),
+            array( 'widget', 'widget name to listen to'),
+        );
     }
 }
