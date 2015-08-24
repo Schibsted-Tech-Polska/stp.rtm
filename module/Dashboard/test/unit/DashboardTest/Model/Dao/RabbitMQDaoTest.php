@@ -30,7 +30,9 @@ class RabbitMQDaoTest extends AbstractDaoTestCase
                 'rabbitMQUrl' => 'http://rabbitmq-url.com',
                 'vhost' => 'integrator',
                 'ignoreQueues' => ['.*testing.*'],
-                'queueNameParser' => function($queueName) { return $queueName;},
+                'queueNameParser' => function ($queueName) {
+                    return $queueName;
+                },
             ]);
 
         $this->assertInternalType('array', $response);

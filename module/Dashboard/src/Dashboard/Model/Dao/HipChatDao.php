@@ -42,14 +42,14 @@ class HipChatDao extends AbstractDao
                         $returnArray[] = array(
                             'projectName' => $message['from']['name'],
                             'createdAt' => (new \DateTime($message['date']))->format('Y-m-d H:i:s'),
-                            'content' => str_replace($this->stripChars, '',$message['message']),
+                            'content' => str_replace($this->stripChars, '', $message['message']),
                         );
                     }
                 } else {
                     $returnArray[] = array(
                         'projectName' => $message['from']['name'],
                         'createdAt' => (new \DateTime($message['date']))->format('Y-m-d H:i:s'),
-                        'content' => str_replace($this->stripChars, '',$message['message']),
+                        'content' => str_replace($this->stripChars, '', $message['message']),
                     );
                 }
             }

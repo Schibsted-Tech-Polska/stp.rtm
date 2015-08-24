@@ -5,7 +5,6 @@
 
 namespace DashboardTest\DataProvider;
 
-
 trait BambooDaoDataProvider
 {
     /**

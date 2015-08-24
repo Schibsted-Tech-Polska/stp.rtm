@@ -24,7 +24,6 @@ class BootstrapRowHelper extends AbstractHelper
 
         /* @var $widget \Dashboard\Model\Widget\AbstractWidget */
         foreach ($widgetCollection as $widget) {
-
             if (!is_numeric($widget->getParam('span'))) {
                 throw new \Exception(
                     'Span value of ' . $widget->getId() . ' widget is not numeric or is not specified'

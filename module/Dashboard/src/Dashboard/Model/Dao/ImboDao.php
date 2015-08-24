@@ -7,21 +7,29 @@
 
 namespace Dashboard\Model\Dao;
 
-class ImboDao extends AbstractDao {
+class ImboDao extends AbstractDao
+{
+    private $fetchedData = null;
 
-
-    function fetchThreshold() {
-        $threshold = array(
+    /**
+     * @return array
+     */
+    public function fetchThreshold()
+    {
+        $threshold = [
             'caution-value' => 1,
             'critical-value' => 1,
-        );
+        ];
 
         return $threshold;
     }
 
-    private $fetchedData = null;
-
-    private function getData(array $params = array()) {
+    /**
+     * @param array $params
+     * @return mixed|null
+     */
+    private function getData(array $params = [])
+    {
         if ($this->fetchedData == null) {
             $this->fetchedData = $this->request($params['url'], $params);
         }
@@ -30,37 +38,48 @@ class ImboDao extends AbstractDao {
 
     }
 
-    function fetchImboAllForErrorWidget(array $params = array()) {
+    /**
+     * @param array $params
+     * @return int
+     */
+    public function fetchImboAllForErrorWidget(array $params = [])
+    {
         $data = $this->getData($params);
 
         if ($data['storage'] == 1 && $data['database'] == 1) {
             return 0;
-        }
-        else {
+        } else {
             return 1;
         }
     }
 
-    function fetchImboStorageForErrorWidget(array $params = array()) {
+    /**
+     * @param array $params
+     * @return int
+     */
+    public function fetchImboStorageForErrorWidget(array $params = [])
+    {
         $data = $this->getData($params);
 
         if ($data['storage'] == 1) {
             return 0;
-        }
-        else {
+        } else {
             return 1;
         }
     }
 
-    function fetchImboDatabaseForErrorWidget(array $params = array()) {
+    /**
+     * @param array $params
+     * @return int
+     */
+    public function fetchImboDatabaseForErrorWidget(array $params = [])
+    {
         $data = $this->getData($params);
 
         if ($data['database'] == 1) {
             return 0;
-        }
-        else {
+        } else {
             return 1;
         }
     }
-
 }

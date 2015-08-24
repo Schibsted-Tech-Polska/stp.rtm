@@ -626,7 +626,9 @@ class NewRelicDao extends AbstractDao
             foreach ($response['metric_data']['metrics'][0]['timeslices'] as $key => $singleStat) {
                 $responseParsed[] = array(
                     'x' => 1000 * (strtotime($singleStat['to']) + 7200),
-                    'y' => $singleStat['values']['average_value'] + $response['metric_data']['metrics'][1]['timeslices'][$key]['values']['average_value']
+                    'y' =>
+                        $singleStat['values']['average_value']
+                        + $response['metric_data']['metrics'][1]['timeslices'][$key]['values']['average_value'],
                 );
             }
         }

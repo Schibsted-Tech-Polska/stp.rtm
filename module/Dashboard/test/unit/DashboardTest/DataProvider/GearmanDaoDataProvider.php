@@ -5,7 +5,6 @@
 
 namespace DashboardTest\DataProvider;
 
-
 trait GearmanDaoDataProvider
 {
     /**
@@ -36,7 +35,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    1 =>
+                                        1 =>
                                         array(
                                             'fd' => '34',
                                             'ip' => '10.84.100.107',
@@ -46,7 +45,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    2 =>
+                                        2 =>
                                         array(
                                             'fd' => '38',
                                             'ip' => '10.84.200.208',
@@ -56,7 +55,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'rose-email',
                                                 ),
                                         ),
-                                    3 =>
+                                        3 =>
                                         array(
                                             'fd' => '43',
                                             'ip' => '10.84.100.151',
@@ -64,7 +63,7 @@ trait GearmanDaoDataProvider
                                             'abilities' =>
                                                 array(),
                                         ),
-                                    4 =>
+                                        4 =>
                                         array(
                                             'fd' => '41',
                                             'ip' => '10.84.200.208',
@@ -74,7 +73,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'rose-email',
                                                 ),
                                         ),
-                                    5 =>
+                                        5 =>
                                         array(
                                             'fd' => '37',
                                             'ip' => '10.84.100.107',
@@ -84,7 +83,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    6 =>
+                                        6 =>
                                         array(
                                             'fd' => '36',
                                             'ip' => '10.84.200.170',
@@ -95,7 +94,7 @@ trait GearmanDaoDataProvider
                                                     1 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    7 =>
+                                        7 =>
                                         array(
                                             'fd' => '42',
                                             'ip' => '10.84.100.107',
@@ -105,7 +104,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'email',
                                                 ),
                                         ),
-                                    8 =>
+                                        8 =>
                                         array(
                                             'fd' => '33',
                                             'ip' => '10.84.200.170',
@@ -115,7 +114,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'email',
                                                 ),
                                         ),
-                                    9 =>
+                                        9 =>
                                         array(
                                             'fd' => '39',
                                             'ip' => '10.84.200.170',
@@ -125,7 +124,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    10 =>
+                                        10 =>
                                         array(
                                             'fd' => '40',
                                             'ip' => '10.84.100.107',
@@ -137,7 +136,7 @@ trait GearmanDaoDataProvider
                                                 ),
                                         ),
                                 ),
-                            'status' =>
+                                'status' =>
                                 array(
                                     'email_1387181709' =>
                                         array(
@@ -145,37 +144,37 @@ trait GearmanDaoDataProvider
                                             'jobs_running' => '0',
                                             'capable_workers' => '0',
                                         ),
-                                    'uploadToImbo_1387181709' =>
+                                        'uploadToImbo_1387181709' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '0',
                                         ),
-                                    'rose-email' =>
+                                        'rose-email' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '2',
                                         ),
-                                    'uploadToImbo_1386942369' =>
+                                        'uploadToImbo_1386942369' =>
                                         array(
                                             'in_queue' => '63',
                                             'jobs_running' => '0',
                                             'capable_workers' => '0',
                                         ),
-                                    'uploadToImbo' =>
+                                        'uploadToImbo' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '6',
                                         ),
-                                    'email' =>
+                                        'email' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '4',
                                         ),
-                                    'email_1386942369' =>
+                                        'email_1386942369' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
@@ -183,7 +182,7 @@ trait GearmanDaoDataProvider
                                         ),
                                 ),
                         ),
-                    1 =>
+                        1 =>
                         array(
                             'name' => 'vg-dev-01.int.vgnett.no',
                             'addr' => 'vg-dev-01.int.vgnett.no:4730',
@@ -201,7 +200,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    1 =>
+                                        1 =>
                                         array(
                                             'fd' => '40',
                                             'ip' => '127.0.0.1',
@@ -211,7 +210,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'rose-email_1401273681',
                                                 ),
                                         ),
-                                    2 =>
+                                        2 =>
                                         array(
                                             'fd' => '36',
                                             'ip' => '127.0.0.1',
@@ -221,7 +220,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'uploadToImbo1387269207',
                                                 ),
                                         ),
-                                    3 =>
+                                        3 =>
                                         array(
                                             'fd' => '33',
                                             'ip' => '10.84.100.153',
@@ -232,7 +231,7 @@ trait GearmanDaoDataProvider
                                                     1 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    4 =>
+                                        4 =>
                                         array(
                                             'fd' => '41',
                                             'ip' => '127.0.0.1',
@@ -240,7 +239,7 @@ trait GearmanDaoDataProvider
                                             'abilities' =>
                                                 array(),
                                         ),
-                                    5 =>
+                                        5 =>
                                         array(
                                             'fd' => '38',
                                             'ip' => '10.84.100.218',
@@ -250,7 +249,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'rose-email',
                                                 ),
                                         ),
-                                    6 =>
+                                        6 =>
                                         array(
                                             'fd' => '37',
                                             'ip' => '127.0.0.1',
@@ -261,7 +260,7 @@ trait GearmanDaoDataProvider
                                                     1 => 'email1387269207',
                                                 ),
                                         ),
-                                    7 =>
+                                        7 =>
                                         array(
                                             'fd' => '34',
                                             'ip' => '10.84.100.153',
@@ -271,7 +270,7 @@ trait GearmanDaoDataProvider
                                                     0 => 'uploadToImbo',
                                                 ),
                                         ),
-                                    8 =>
+                                        8 =>
                                         array(
                                             'fd' => '39',
                                             'ip' => '127.0.0.1',
@@ -282,7 +281,7 @@ trait GearmanDaoDataProvider
                                                 ),
                                         ),
                                 ),
-                            'status' =>
+                                'status' =>
                                 array(
                                     'uploadToImbo1387269207' =>
                                         array(
@@ -290,49 +289,49 @@ trait GearmanDaoDataProvider
                                             'jobs_running' => '0',
                                             'capable_workers' => '3',
                                         ),
-                                    'rose-email_1401282314' =>
+                                        'rose-email_1401282314' =>
                                         array(
                                             'in_queue' => '12',
                                             'jobs_running' => '0',
                                             'capable_workers' => '0',
                                         ),
-                                    'rose-email' =>
+                                        'rose-email' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '1',
                                         ),
-                                    'rose-email_1401273681' =>
+                                        'rose-email_1401273681' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '1',
                                         ),
-                                    'uploadToImbo' =>
+                                        'uploadToImbo' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '3',
                                         ),
-                                    'uploadToImbo_1396943049' =>
+                                        'uploadToImbo_1396943049' =>
                                         array(
                                             'in_queue' => '1683',
                                             'jobs_running' => '0',
                                             'capable_workers' => '0',
                                         ),
-                                    'email' =>
+                                        'email' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '1',
                                         ),
-                                    'email1387269207' =>
+                                        'email1387269207' =>
                                         array(
                                             'in_queue' => '0',
                                             'jobs_running' => '0',
                                             'capable_workers' => '1',
                                         ),
-                                    'rose-email_1401353694' =>
+                                        'rose-email_1401353694' =>
                                         array(
                                             'in_queue' => '1',
                                             'jobs_running' => '0',

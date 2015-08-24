@@ -5,7 +5,6 @@
 
 namespace DashboardTest\DataProvider;
 
-
 trait SplunkDaoDataProvider
 {
     /**
@@ -24,13 +23,13 @@ trait SplunkDaoDataProvider
                             'numberOfErrors' => '8',
                             'lastErrorTime' => '1402337747',
                         ],
-                    1 =>
+                        1 =>
                         [
                             'url' => 'www.godt.no/api/search/recipes',
                             'numberOfErrors' => '4',
                             'lastErrorTime' => '1402338198',
                         ],
-                    2 =>
+                        2 =>
                         [
                             'url' => 'red.vgnett.no/godt-admin/image/upload',
                             'numberOfErrors' => '1',

@@ -5,7 +5,6 @@
 
 namespace Dashboard\Model\Dao;
 
-
 class Bamboo4Dao extends BambooDao
 {
     /**
