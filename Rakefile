@@ -123,7 +123,7 @@ namespace :composer do
     desc "Update composer's dependencies for development"
     task :dev do |task|
         puts task.comment
-        Rake::Task["composer:update"].invoke('--dev')
+        Rake::Task["composer:update"].invoke()
     end
 
     desc "Update composer's dependencies for production"
