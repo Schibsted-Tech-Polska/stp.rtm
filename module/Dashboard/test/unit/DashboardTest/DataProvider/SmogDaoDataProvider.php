@@ -5,7 +5,6 @@
 
 namespace DashboardTest\DataProvider;
 
-
 trait SmogDaoDataProvider
 {
     /**
@@ -27,7 +26,7 @@ trait SmogDaoDataProvider
                             'percent' => 1.1428571428571428,
                             'parameter' => 'SO 2',
                         ),
-                    1 =>
+                        1 =>
                         array(
                             'name' => 'Dwutlenek azotu (NO 2)',
                             'norm' => 200.0,
@@ -36,7 +35,7 @@ trait SmogDaoDataProvider
                             'percent' => 50.5,
                             'parameter' => 'NO 2',
                         ),
-                    2 =>
+                        2 =>
                         array(
                             'name' => 'Tlenek wÄgla (CO)',
                             'norm' => 10000,

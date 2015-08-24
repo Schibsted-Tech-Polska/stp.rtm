@@ -36,7 +36,9 @@ class SplunkDaoTest extends AbstractDaoTestCase
         $responseString = file_get_contents($apiResponse);
         $adapter->setResponse($responseString);
         $response = $this->testedDao->fetchFivehundredsForAlertWidget(['config' => [
-            'search' => 'search sourcetype=apache_access NOT(toolbox) host=godt-web-* OR host=red-web-* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
+            'search' => 'search sourcetype=apache_access NOT(toolbox)' .
+                ' host=godt-web-* OR host=red-web-* status=500' .
+                ' | stats count latest(_time) as latestTime by url | sort -count | head 5',
             'earliest_time' => '-1h',
             'latest' => 'now',
             'output_mode' => 'json_cols',

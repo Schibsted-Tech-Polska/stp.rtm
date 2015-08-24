@@ -14,5 +14,4 @@ class BambooDaoTest extends AbstractBambooDao
             ]
         ]);
     }
-
 }
