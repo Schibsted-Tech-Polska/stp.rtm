@@ -30,7 +30,7 @@ class SplunkDaoTest extends AbstractDaoTestCase
             'auth' => [
                 'username' => 'foo',
                 'password' => 'bar',
-            ]
+            ],
         ]);
         $adapter = $this->testedDao->getDataProvider()->getAdapter();
         $responseString = file_get_contents($apiResponse);
@@ -45,7 +45,6 @@ class SplunkDaoTest extends AbstractDaoTestCase
         ]]);
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
-
     }
 
     /**

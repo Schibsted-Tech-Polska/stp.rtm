@@ -2,16 +2,16 @@
 /**
  * This is a sample project-specific Graphite dashboard.
  */
-return array(
-    'graphite' => array(
-        'params' => array(
+return [
+    'graphite' => [
+        'params' => [
             'graphiteUrl' => '%GRAPHITE_URL%',
-        ),
-    ),
-    'widgets' => array(
-        array('id' => 'widget',
+        ],
+    ],
+    'widgets' => [
+        ['id' => 'widget',
             'type' => 'graph',
-            'params' => array(
+            'params' => [
                 'dao' => 'graphite',
                 'metric' => 'data',
                 'target' => '%GRAPHITE_TARGET_QUERY%',
@@ -19,7 +19,7 @@ return array(
                 'span' => 3,
                 'from' => '-30min', //graphite specific format
                 'until' => '-0hour', //graphite specific format
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

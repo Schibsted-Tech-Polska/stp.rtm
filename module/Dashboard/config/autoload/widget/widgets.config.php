@@ -145,13 +145,13 @@ return [
             'refreshRate' => 900,
             'title' => 'Weather',
             'subtitle' => '',
-            'span' => 3
+            'span' => 3,
         ],
         'herokuStatus' => [
             'refreshRate' => 60,
             'title' => 'Heroku Status',
             'subtitle' => '',
-            'span' => 3
-        ]
+            'span' => 3,
+        ],
     ],
 ];

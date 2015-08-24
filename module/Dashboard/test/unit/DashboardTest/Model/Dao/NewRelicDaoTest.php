@@ -5,7 +5,6 @@
 
 namespace DashboardTest\Model\Dao;
 
-use DashboardTest\Bootstrap;
 use DashboardTest\DataProvider\NewRelicDaoDataProvider;
 
 class NewRelicDaoTest extends AbstractDaoTestCase
@@ -18,14 +17,14 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     protected function getTestedDao()
     {
         $dao = parent::getTestedDao();
-        $dao->setDaoOptions(array(
-            'headers' => array(
+        $dao->setDaoOptions([
+            'headers' => [
                 'x-api-key' => 'foobar',
-            ),
-            'params' => array(
+            ],
+            'params' => [
                 'accountId' => '1111111',
-            ),
-        ));
+            ],
+        ]);
 
         return $dao;
     }
@@ -37,9 +36,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchRpmForNumberWidget(array(
+        $response = $this->testedDao->fetchRpmForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -52,9 +51,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchFeRpmForNumberWidget(array(
+        $response = $this->testedDao->fetchFeRpmForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -67,9 +66,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchErrorRateForErrorWidget(array(
+        $response = $this->testedDao->fetchErrorRateForErrorWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -82,9 +81,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchApdexForNumberWidget(array(
+        $response = $this->testedDao->fetchApdexForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -97,9 +96,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchApdexForIncrementalGraphWidget(array(
+        $response = $this->testedDao->fetchApdexForIncrementalGraphWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -112,9 +111,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchCpuUsageForNumberWidget(array(
+        $response = $this->testedDao->fetchCpuUsageForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -127,9 +126,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchAverageResponseTimeForNumberWidget(array(
+        $response = $this->testedDao->fetchAverageResponseTimeForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -142,9 +141,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchMemoryForNumberWidget(array(
+        $response = $this->testedDao->fetchMemoryForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -157,9 +156,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchMemoryForIncrementalGraphWidget(array(
+        $response = $this->testedDao->fetchMemoryForIncrementalGraphWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -172,9 +171,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchCpuFromThresholdForNumberWidget(array(
+        $response = $this->testedDao->fetchCpuFromThresholdForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -187,9 +186,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchCpuFromThresholdForIncrementalGraphWidget(array(
+        $response = $this->testedDao->fetchCpuFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -202,9 +201,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchDBFromThresholdForNumberWidget(array(
+        $response = $this->testedDao->fetchDBFromThresholdForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -217,9 +216,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchDBFromThresholdForIncrementalGraphWidget(array(
+        $response = $this->testedDao->fetchDBFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -232,9 +231,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchThroughputFromThresholdForNumberWidget(array(
+        $response = $this->testedDao->fetchThroughputFromThresholdForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -247,9 +246,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchThroughputFromThresholdForIncrementalGraphWidget(array(
+        $response = $this->testedDao->fetchThroughputFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -262,9 +261,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchResponseTimeFromThresholdForNumberWidget(array(
+        $response = $this->testedDao->fetchResponseTimeFromThresholdForNumberWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('numeric', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -277,9 +276,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchResponseTimeFromThresholdForIncrementalGraphWidget(array(
+        $response = $this->testedDao->fetchResponseTimeFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -292,11 +291,11 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchEvents(array(
+        $response = $this->testedDao->fetchEvents([
             'appId' => '1111111',
             'feed' => '2222',
             'eventType' => 'deployment',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -309,10 +308,10 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchThreshold(array(
+        $response = $this->testedDao->fetchThreshold([
             'appId' => '1111111',
             'metric' => 'Apdex',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -324,9 +323,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testImproperApiMethod()
     {
-        $this->testedDao->fetchImproperDataName(array(
+        $this->testedDao->fetchImproperDataName([
             'appId' => '1111111',
-        ));
+        ]);
     }
 
     /**
