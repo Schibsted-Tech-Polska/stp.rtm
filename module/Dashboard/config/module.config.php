@@ -45,11 +45,38 @@ return array(
             ),
         ),
     ),
+    'console' => [
+        'router' => [
+            'routes' => [
+                'monitor_aggregated' => [
+                    'type'    => 'simple',
+                    'options' => [
+                        'route'    => 'monitor <configName>',
+                        'defaults' => [
+                            'controller' => 'Dashboard\Controller\CliController',
+                            'action'     => 'listenAggregated',
+                        ],
+                    ],
+                ],
+                'monitor' => [
+                    'type'    => 'simple',
+                    'options' => [
+                        'route'    => 'monitor <configName> <widgetId>',
+                        'defaults' => [
+                            'controller' => 'Dashboard\Controller\CliController',
+                            'action'     => 'listen',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
     'controllers' => array(
         'invokables' => array(
             'Dashboard\Controller\Dashboard' => 'Dashboard\Controller\DashboardController',
             'Dashboard\Controller\LongPollingController' => 'Dashboard\Controller\LongPollingController',
             'Dashboard\Controller\EventsApiController' => 'Dashboard\Controller\EventsApiController',
+            'Dashboard\Controller\CliController' => 'Dashboard\Controller\CliController',
         ),
     ),
     'view_manager' => array(
