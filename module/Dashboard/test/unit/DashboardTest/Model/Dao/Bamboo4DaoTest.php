@@ -12,8 +12,8 @@ class Bamboo4DaoTest extends AbstractBambooDao
         parent::setUp();
         $this->testedDao->setDaoOptions([
             'params' => [
-                'baseUrl' => 'http://bamboo.aftonbladet.se:8085'
-            ]
+                'baseUrl' => 'http://bamboo.aftonbladet.se:8085',
+            ],
         ]);
     }
 

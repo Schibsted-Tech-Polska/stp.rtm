@@ -35,7 +35,6 @@ class ImboDao extends AbstractDao
         }
 
         return $this->fetchedData;
-
     }
 
     /**

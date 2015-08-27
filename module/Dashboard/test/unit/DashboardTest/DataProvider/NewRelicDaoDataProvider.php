@@ -76,7 +76,7 @@ trait NewRelicDaoDataProvider
                     'x' => 1401270766,
                     'y' => "0.99",
                     'events' => [],
-                ]
+                ],
             ],
         ];
     }
@@ -282,12 +282,12 @@ trait NewRelicDaoDataProvider
                     [
                         'title' => 'michald deployed revision 4701',
                         'date' => '1400765104',
-                        'type' => 'deployment'
+                        'type' => 'deployment',
                     ],
                     [
                         'title' => 'anmaciur deployed revision 4697',
                         'date' => '1400587640',
-                        'type' => 'deployment'
+                        'type' => 'deployment',
                     ],
                 ],
             ],

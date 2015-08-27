@@ -23,11 +23,11 @@ return [
             'fetchRecentChanges'            =>
                 ':baseUrl:/httpAuth/app/rest/changes?count=10',
             'fetchUserName'                 =>
-                ':baseUrl:/httpAuth/app/rest/users'
+                ':baseUrl:/httpAuth/app/rest/users',
         ],
         'auth' => [
             'username' => '--username--',
-            'password' => '--password--'
-        ]
-    ]
+            'password' => '--password--',
+        ],
+    ],
 ];

@@ -17,7 +17,7 @@ class JenkinsDao extends AbstractDao
      */
     public function fetchStatusForBuildWidget(array $params)
     {
-        $responseParsed = array();
+        $responseParsed = [];
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
         $responseParsed['currentStatus'] = $response['lastBuild']['result'];
@@ -30,7 +30,7 @@ class JenkinsDao extends AbstractDao
 
         if ($response['lastBuild']['building'] == true) {
             $buildStatus = $this->fetchBuildStatus(
-                array_merge($params, array('buildNumber' => $response['lastBuild']['number']))
+                array_merge($params, ['buildNumber' => $response['lastBuild']['number']])
             );
             $responseParsed['percentDone'] = $buildStatus['executor']['progress'];
         }

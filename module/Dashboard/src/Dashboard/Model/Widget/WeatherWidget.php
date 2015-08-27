@@ -9,5 +9,4 @@ namespace Dashboard\Model\Widget;
  */
 class WeatherWidget extends AbstractWidget
 {
-
 }

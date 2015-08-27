@@ -13,7 +13,7 @@ class GraphiteDao extends AbstractDao
      * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return int
      */
-    public function fetchDataForNumberWidget(array $params = array())
+    public function fetchDataForNumberWidget(array $params = [])
     {
         $rpm = 0;
 
@@ -37,18 +37,18 @@ class GraphiteDao extends AbstractDao
      * @param  array $params - array with appId and other optional parameters for endpoint URL
      * @return array
      */
-    public function fetchDataForGraphWidget(array $params = array())
+    public function fetchDataForGraphWidget(array $params = [])
     {
-        $responseParsed = array();
+        $responseParsed = [];
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_JSON, true);
         if (is_array($response)) {
             $response = reset($response);
             $timestamp = $response['start'];
             foreach ($response['data'] as $singleStat) {
-                $responseParsed[] = array(
+                $responseParsed[] = [
                     'x' => 1000 * ($timestamp + 7200),
-                    'y' => round($singleStat, 2)
-                );
+                    'y' => round($singleStat, 2),
+                ];
                 $timestamp += ($response['step']);
             }
         }
@@ -62,10 +62,10 @@ class GraphiteDao extends AbstractDao
      */
     public function fetchThreshold($params)
     {
-        $threshold = array(
+        $threshold = [
             'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
             'critical-value' => isset($params['critical-value']) ? $params['critical-value'] : 0,
-        );
+        ];
 
         return $threshold;
     }

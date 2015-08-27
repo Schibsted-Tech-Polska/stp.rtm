@@ -4,16 +4,16 @@
  * It consists of a all available NewRelic widgets for a single application.
  * All you have to do is replace variables surronded with '%' char with your data.
  */
-return array(
-    'hipChat' => array(
-        'params' => array(
+return [
+    'hipChat' => [
+        'params' => [
             'auth_token' => '%HIPCHAT_AUTH_TOKEN%',
-        ),
-    ),
-    'widgets' => array(
-        array('id' => 'messages',
+        ],
+    ],
+    'widgets' => [
+        ['id' => 'messages',
             'type' => 'messages',
-            'params' => array(
+            'params' => [
                 'dao' => 'hipChat',
                 'metric' => 'listRecentMessages',
                 'span' => 6,
@@ -21,8 +21,8 @@ return array(
                 'title' => '',
                 'limit' => 5,
                 'room' => '%ROOM_ID%',
-                'fromUser' => array('%USERNAME%'),
-            ),
-        ),
-    ),
-);
+                'fromUser' => ['%USERNAME%'],
+            ],
+        ],
+    ],
+];

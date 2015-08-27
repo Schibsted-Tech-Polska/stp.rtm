@@ -16,7 +16,7 @@ class SplunkDao extends AbstractDao
      * @param  array $params Params
      * @return array
      */
-    public function fetchFivehundredsForAlertWidget(array $params = array())
+    public function fetchFivehundredsForAlertWidget(array $params = [])
     {
         if (!isset($params['config']) || !is_array($params['config'])) {
             throw new EndpointUrlNotAssembled('You need to specify configure splunk job to use it!');
@@ -32,15 +32,16 @@ class SplunkDao extends AbstractDao
         );
 
         if ($splunkJson) {
-            $returnArray = array();
+            $returnArray = [];
             foreach ($splunkJson['columns'][1] as $key => $url) {
                 $returnArray[$key]['url'] = $url;
                 $returnArray[$key]['numberOfErrors'] = $splunkJson['columns'][0][$key];
                 $returnArray[$key]['lastErrorTime'] = $splunkJson['columns'][2][$key];
             }
+
             return $returnArray;
         } else {
-            return array();
+            return [];
         }
     }
 }

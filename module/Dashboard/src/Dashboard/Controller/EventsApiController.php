@@ -32,10 +32,10 @@ class EventsApiController extends AbstractRestfulController
 
             if (!$widget instanceof MessagesWidget) {
                 $this->getResponse()->setStatusCode(400);
-                $response = array(
+                $response = [
                     'status' => '400',
-                    'message' => 'Posting content to a widget is only available for EventsWidget objects'
-                );
+                    'message' => 'Posting content to a widget is only available for EventsWidget objects',
+                ];
 
                 return new JsonModel($response);
             }
@@ -44,10 +44,10 @@ class EventsApiController extends AbstractRestfulController
 
             if (!$dao instanceof EventsDao) {
                 $this->getResponse()->setStatusCode(400);
-                $response = array(
+                $response = [
                     'status' => '400',
-                    'message' => 'Selected EventsWidget needs to use EventsDao'
-                );
+                    'message' => 'Selected EventsWidget needs to use EventsDao',
+                ];
 
                 return new JsonModel($response);
             }
@@ -55,7 +55,7 @@ class EventsApiController extends AbstractRestfulController
             $widget->getDao()->addEvent($data['type'], $configName, $widgetId, $data);
         } catch (\Exception $e) {
             $this->getResponse()->setStatusCode(400);
-            $response = array('status' => '400', 'message' => $e->getMessage());
+            $response = ['status' => '400', 'message' => $e->getMessage()];
 
             return new JsonModel($response);
         }
