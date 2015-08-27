@@ -53,6 +53,14 @@ return [
             'valuePrefix' => '',
             'span' => 3,
         ],
+        'eyeProcess' => [
+            'refreshRate' => 5,
+            'title' => '',
+            'subtitle' => '',
+            'valueSuffix' => '',
+            'valuePrefix' => '',
+            'span' => 3,
+        ],
         'process' => [
             'refreshRate' => 5,
             'title' => '',

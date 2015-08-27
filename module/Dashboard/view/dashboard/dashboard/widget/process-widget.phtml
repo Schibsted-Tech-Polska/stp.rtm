@@ -10,23 +10,21 @@
         <h1 class="title"><?php echo $params['title']; ?> <?php if ($params['subtitle']):?><br/>
                 <small><?php echo $params['subtitle']; ?></small><?php endif?>
         </h1>
-            <div class="process <%= value.result.subtree[0].state %>">
+            <div class="process <%= value.statename %>">
                 <tr>
-                    <% if (value.result.subtree[0].state == 'up') {%>
+                    <% if (value.statename == 'RUNNING') {%>
                         <i class="icon icon-thumbs-up"></i>
-                    <% } else if (value.result.subtree[0].state == 'starting')  { %>
+                    <% } else if (value.statename == 'STARTING')  { %>
                         <i class="icon icon-refresh"></i>
                     <% } else { %>
                         <i class="icon icon-thumbs-down"></i>
                     <% } %>
 
-                    <div class="name"><span class="instances"><%= value.result.subtree.length %> instances</span></div>
+                    <div class="pid">
+                        PID: <%=value.pid%>
+                    </div>
                     <div class="state">
-                        <%= value.result.subtree[0].state %> since <% print(new Date(value.result.subtree[0].state_changed_at * 1000).format('Y-m-d H:i:s'))%><br/>
-                        <span class="resources">
-                            CPU: <%= value.result.subtree[0].resources.cpu %> <span class="delimiter">|</span>
-                            RAM: <%= Math.round(value.result.subtree[0].resources.memory/1024/1024) %>MB
-                        </span>
+                        <%= value.statename %><br/> since <% print(new Date(value.start * 1000).format('Y-m-d H:i:s'))%><br/>
                     </div>
                 </tr>
             </div>

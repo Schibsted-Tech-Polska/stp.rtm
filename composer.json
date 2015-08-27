@@ -14,7 +14,8 @@
         "ext-mongo": "*",
         "zendframework/zendframework": "~2.3",
         "erusev/parsedown": "*",
-        "doctrine/doctrine-mongo-odm-module": "dev-master"
+        "doctrine/doctrine-mongo-odm-module": "dev-master",
+        "supervisorphp/supervisor": "~3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.6",

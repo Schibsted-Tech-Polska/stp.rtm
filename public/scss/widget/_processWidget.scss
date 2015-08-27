@@ -13,6 +13,46 @@
         width: 100%;
         color: $color-red;
 
+        &.STARTING {
+            color: $color-yellow;
+        }
+
+        &.RUNNING {
+            color: $color-green;
+        }
+
+        &.unmonitored, &.down {
+            .pid {
+                display: none;
+            }
+        }
+
+        .icon {
+            width: auto;
+            height: auto;
+            background: none;
+            font-size: 9rem;
+            line-height: 9rem;
+        }
+
+    }
+}
+
+// ----------------------------------------------------------------------------
+// Widget-messages styles
+// ----------------------------------------------------------------------------
+#dashboardBody .widget.EyeProcessWidget {
+    overflow: hidden;
+
+    h1 {
+        height: 4rem;
+    }
+
+    .process {
+        margin: 10px 0;
+        width: 100%;
+        color: $color-red;
+
         &.starting {
             color: $color-yellow;
         }
@@ -37,3 +77,6 @@
 
     }
 }
+
+
+
