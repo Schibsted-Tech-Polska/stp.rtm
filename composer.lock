@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2eb9c832c7b398520fe74100c026acc1",
+    "hash": "6f3340c265db09f5c7d66634167a2991",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1647,6 +1647,66 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2015-06-21 13:59:46"
+        },
+        {
+            "name": "supervisorphp/supervisor",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/supervisorphp/supervisor.git",
+                "reference": "41b52b9e74daffd58c4993b21d59c29515a3493e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/supervisorphp/supervisor/zipball/41b52b9e74daffd58c4993b21d59c29515a3493e",
+                "reference": "41b52b9e74daffd58c4993b21d59c29515a3493e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "behat/behat": "~3.0.0",
+                "guzzlehttp/guzzle": ">=4.0.0",
+                "henrikbjorn/phpspec-code-coverage": "~1.0.0",
+                "lstrojny/fxmlrpc": "dev-master",
+                "phpspec/phpspec": "~2.1.0",
+                "rhumsaa/array_column": "~1.1.0",
+                "supervisorphp/configuration": "~0.1.0",
+                "zendframework/zend-xmlrpc": ">=2.3.3"
+            },
+            "suggest": {
+                "lstrojny/fxmlrpc": "A modern, super fast XML/RPC client for PHP >=5.4",
+                "zendframework/zend-xmlrpc": "XmlRpc component from Zend Framework 2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Supervisor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
+                }
+            ],
+            "description": "PHP library for managing Supervisor through XML-RPC API",
+            "homepage": "https://supervisorphp.com",
+            "keywords": [
+                "process manager",
+                "supervisor"
+            ],
+            "time": "2015-01-13 23:06:23"
         },
         {
             "name": "symfony/console",

@@ -3,6 +3,7 @@ namespace Dashboard;
 
 use Dashboard\Model\Dao\GraphiteDao;
 use Dashboard\Model\Dao\HerokuStatusDao;
+use Dashboard\Model\Dao\SupervisordDao;
 use Dashboard\Model\Dao\WeatherDao;
 use Zend\Cache\Storage\Adapter\Memcached;
 use Zend\Cache\Storage\Adapter\MemcachedOptions;
@@ -101,6 +102,9 @@ class Module
                 },
                 'GraphiteDao' => function (ServiceManager $serviceManager) {
                     return new GraphiteDao($serviceManager->get('Config')['GraphiteDao']);
+                },
+                'SupervisordDao' => function (ServiceManager $serviceManager) {
+                    return new SupervisordDao($serviceManager->get('Config')['SupervisordDao']);
                 },
             ],
         ];
