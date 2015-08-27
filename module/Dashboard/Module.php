@@ -20,13 +20,13 @@ class Module
 
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -37,8 +37,8 @@ class Module
      */
     public function getServiceConfig()
     {
-        return array(
-            'factories' => array(
+        return [
+            'factories' => [
                 // Common services
                 'WidgetFactory' => function (ServiceManager $serviceManager) {
                     return new Model\Widget\WidgetFactory($serviceManager->get('Config')['widgetsConfig']);
@@ -102,8 +102,8 @@ class Module
                 'GraphiteDao' => function (ServiceManager $serviceManager) {
                     return new GraphiteDao($serviceManager->get('Config')['GraphiteDao']);
                 },
-            ),
-        );
+            ],
+        ];
     }
 
     /**
