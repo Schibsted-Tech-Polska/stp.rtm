@@ -6,7 +6,7 @@
  * @see https://github.com/zendframework/ZFTool
  */
 
-if (!file_exists(__DIR__ . '/environment.config.php' )) {
+if (!file_exists(__DIR__ . '/environment.config.php')) {
     throw new \Exception('environment.config.php does not exist!');
 } else {
     require 'environment.config.php';
@@ -16,26 +16,26 @@ if (!file_exists(__DIR__ . '/environment.config.php' )) {
     }
 }
 
-$config = array(
-    'modules' => array(
+$config = [
+    'modules' => [
         'DoctrineModule',
         'DoctrineMongoODMModule',
         'Application',
         'Dashboard',
-        ),
-    'module_listener_options' => array(
-        'module_paths' => array(
+        ],
+    'module_listener_options' => [
+        'module_paths' => [
             './module',
-            './vendor'
-            ),
+            './vendor',
+            ],
 
         // An array of paths from which to glob configuration files after
         // modules are loaded. These effectively override configuration
         // provided by modules themselves. Paths may use GLOB_BRACE notation.
-        'config_glob_paths' => array(
+        'config_glob_paths' => [
             sprintf('config/autoload/{,*.}{global,%s}.php', $env),
             'config/autoload/{,*.}{local}.php',
-        ),
+        ],
 
         'config_cache_enabled' => false,
 
@@ -57,8 +57,8 @@ $config = array(
         // Enabled by default, prevents usage of modules that depend on other modules
         // that weren't loaded.
         'check_dependencies' => true,
-    ),
-);
+    ],
+];
 $envConfigPath = __DIR__ . '/' . $env . '.config.php';
 if (is_readable($envConfigPath)) {
     $envConfig = require $envConfigPath;

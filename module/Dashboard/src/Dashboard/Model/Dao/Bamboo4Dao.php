@@ -13,9 +13,9 @@ class Bamboo4Dao extends BambooDao
      * @param  array $params Params
      * @return array
      */
-    public function fetchStatusForBuildWidget(array $params = array())
+    public function fetchStatusForBuildWidget(array $params = [])
     {
-        $responseParsed = array();
+        $responseParsed = [];
 
         $auth = $this->getAuth();
         $runningBuilds = $this->fetchRunningBuilds($params, $auth);
@@ -33,7 +33,6 @@ class Bamboo4Dao extends BambooDao
             $responseParsed['currentStatus'] = $this->mapBuildStatusName($lastBuild['state']);
             $responseParsed['building'] = false;
             $responseParsed['percentDone'] = 0;
-
         }
         $buildTime = date_create_from_format(
             self::BAMBOO_DATE_FORMAT,

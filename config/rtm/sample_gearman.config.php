@@ -2,21 +2,21 @@
 /**
  * Config for rtm
  */
-return array(
-    'gearman' => array(
-        'params' => array(
+return [
+    'gearman' => [
+        'params' => [
             'gearmanuiUrl' => 'http://wiskra.vgnett.no/gearmanui',
-        ),
-    ),
-    'widgets' => array(
-        array('id' => 'gearman',
+        ],
+    ],
+    'widgets' => [
+        ['id' => 'gearman',
             'type' => 'queue',
-            'params' => array(
+            'params' => [
                 'dao' => 'gearman',
                 'metric' => 'jobsWithWorkers',
                 'title' => 'Gearman queue',
                 'span' => 6,
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

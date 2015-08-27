@@ -27,6 +27,6 @@ class DashboardController extends AbstractActionController
         $this->layout()->setVariable('widgetTypes', $dashboardManager->getWidgetTypes());
         $this->layout()->setVariable('theme', $dashboardManager->getThemeName());
 
-        return new ViewModel(array('widgets' => $dashboardManager->getWidgets(), 'configName' => $configName));
+        return new ViewModel(['widgets' => $dashboardManager->getWidgets(), 'configName' => $configName]);
     }
 }

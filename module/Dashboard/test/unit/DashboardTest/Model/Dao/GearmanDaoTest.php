@@ -27,7 +27,7 @@ class GearmanDaoTest extends AbstractDaoTestCase
 
         $response = $this->testedDao
             ->fetchJobsWithWorkersForGearmanWidget([
-                'gearmanuiUrl' => 'http://gearmanui-url.com'
+                'gearmanuiUrl' => 'http://gearmanui-url.com',
             ]);
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);

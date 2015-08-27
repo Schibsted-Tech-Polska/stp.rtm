@@ -12,7 +12,7 @@ class HadoopDao extends AbstractDao
      * @return mixed
      * @throws Exception\EndpointUrlNotDefined
      */
-    public function fetchDiskUsageForUsageWidget(array $params = array())
+    public function fetchDiskUsageForUsageWidget(array $params = [])
     {
         $data = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
@@ -29,10 +29,10 @@ class HadoopDao extends AbstractDao
      */
     public function fetchThreshold($params)
     {
-        $threshold = array(
+        $threshold = [
             'caution-value' => isset($params['caution-value']) ? $params['caution-value'] : 0,
             'critical-value' => isset($params['critical-value']) ? $params['critical-value'] : 0,
-        );
+        ];
 
         return $threshold;
     }

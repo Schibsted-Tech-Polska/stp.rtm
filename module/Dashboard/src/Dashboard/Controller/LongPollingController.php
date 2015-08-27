@@ -32,22 +32,22 @@ class LongPollingController extends AbstractRestfulController
         try {
             $responseData = $widget->fetchData();
 
-            $result = new JsonModel(array(
+            $result = new JsonModel([
                 'data' => $responseData,
                 'hash' => $widget->getResponseHash(),
                 'updateTime' => gmdate("H:i"),
-            ));
+            ]);
         } catch (\Exception $e) {
             $this->getResponse()->setStatusCode(400);
-            $result = new JsonModel(array(
-                'error' => array(
+            $result = new JsonModel([
+                'error' => [
                     'message' => $e->getMessage(),
                     'type' => $e->getCode(),
-                ),
+                ],
                 'data' => '',
                 'hash' => $widget->getResponseHash(),
                 'updateTime' => gmdate("H:i"),
-            ));
+            ]);
         }
 
         return $result;

@@ -1,8 +1,6 @@
 <?php
 namespace Dashboard\Model\Dao;
 
-use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
-
 /**
  * Class SlackDao
  * @package Dashboard\Model\Dao

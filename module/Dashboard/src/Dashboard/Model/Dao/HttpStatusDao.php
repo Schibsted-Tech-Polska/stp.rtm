@@ -8,12 +8,9 @@
 namespace Dashboard\Model\Dao;
 
 use Zend\Http\Client\Exception\RuntimeException;
-use Zend\Http\Response;
-use Zend\Http\Client;
 
 class HttpStatusDao extends AbstractDao
 {
-
     /**
      * @return array
      */
@@ -31,11 +28,12 @@ class HttpStatusDao extends AbstractDao
      * @param array $params
      * @return int|mixed
      */
-    public function fetchHttpStatusForNumberWidget(array $params = array())
+    public function fetchHttpStatusForNumberWidget(array $params = [])
     {
         try {
             $importJson = $this->request($params['url'], $params, 'plain');
             $status = $importJson->getStatusCode();
+
             return $status;
         } catch (RuntimeException $e) {
             $status = $e->getCode();

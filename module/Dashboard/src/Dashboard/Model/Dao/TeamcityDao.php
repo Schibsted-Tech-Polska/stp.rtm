@@ -13,18 +13,18 @@ class TeamcityDao extends AbstractDao
 
     public function fetchStatusForMessagesWidget(array $params)
     {
-        $result = array();
+        $result = [];
 
         $changes = $this->fetchRecentChanges($params);
 
         foreach ($changes as $change) {
-            $result[] = array(
+            $result[] = [
                 'author' => $this->fetchUserName($params, $change['@attributes']['username']),
                 'content' => $change['comment'],
                 'createdAtDate' => gmdate('Y-m-d', strtotime($change['@attributes']['date'])),
                 'createdAtTime' => gmdate('H:i:s', strtotime($change['@attributes']['date'])),
-                'revision' => $change['@attributes']['version']
-            );
+                'revision' => $change['@attributes']['version'],
+            ];
         }
 
         return $result;
@@ -38,7 +38,7 @@ class TeamcityDao extends AbstractDao
      */
     public function fetchStatusForBuildWidget(array $params)
     {
-        $result = array();
+        $result = [];
 
         $build = $this->fetchFinishedBuildStatus($params);
         $result['currentStatus'] = $build ? $build['@attributes']['status'] : 'UNKNOWN';
@@ -64,7 +64,7 @@ class TeamcityDao extends AbstractDao
     public function fetchUserName(array $params, $name)
     {
         if ($this->usersMap == null) {
-            $this->usersMap = array();
+            $this->usersMap = [];
             $response = (array) $this
                 ->request(
                     $this->getEndpointUrl(__FUNCTION__),
@@ -74,12 +74,12 @@ class TeamcityDao extends AbstractDao
                 ->xpath('//user/@href');
 
             foreach ($response as $href) {
-                $url = $params['baseUrl'] . ((string)$href);
+                $url = $params['baseUrl'] . ((string) $href);
                 $user = $this->request($url, $params, self::RESPONSE_IN_XML);
 
-                $vcsName = @(string)$user
+                $vcsName = @(string) $user
                     ->xpath('/user/properties/property[@name="plugin:vcs:tfs:anyVcsRoot"]/@value')[0];
-                $userName = @(string)$user
+                $userName = @(string) $user
                     ->xpath('/user/@name')[0];
 
                 if (!empty($vcsName) && !empty($userName)) {
@@ -97,7 +97,7 @@ class TeamcityDao extends AbstractDao
 
     public function fetchForImageWidget(array $params)
     {
-        $result = array();
+        $result = [];
         $result['url'] = $this->fetchBurnoutImgUrl($params);
 
         return $result;
@@ -120,14 +120,14 @@ class TeamcityDao extends AbstractDao
 
     private function fetchFinishedBuildStatus(array $params)
     {
-        $response = (array)$this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
-        $responseAttributes = (array)$response['@attributes'];
+        $response = (array) $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
+        $responseAttributes = (array) $response['@attributes'];
 
         if ($responseAttributes['count'] == '0') {
             return null;
         }
 
-        $build = (array)$response['build'][0];
+        $build = (array) $response['build'][0];
         $build = $build['@attributes'];
 
         return $this->fetchDetailedBuildStatusById($params, $build['id']);
@@ -136,47 +136,47 @@ class TeamcityDao extends AbstractDao
     private function fetchRunningBuildStatus(array $params)
     {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
-        $build = (array)$response->build[0];
+        $build = (array) $response->build[0];
 
         return $build;
     }
 
     private function fetchDetailedBuildStatusById(array $params, $id)
     {
-        $params = $params + array('id' => $id);
+        $params = $params + ['id' => $id];
 
-        $response = (array)$this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
-        $build = (array)$response;
+        $response = (array) $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
+        $build = (array) $response;
 
         return $build;
     }
 
     private function fetchChangeByRevision(array $params, $revision)
     {
-        $params = $params + array('revision' => $revision);
+        $params = $params + ['revision' => $revision];
 
-        $response = (array)$this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
-        $change = (array)$response;
+        $response = (array) $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
+        $change = (array) $response;
 
         return $change;
     }
 
     private function fetchCoverageById(array $params, $id)
     {
-        $params = $params + array('id' => $id);
+        $params = $params + ['id' => $id];
 
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_HTML);
         $result = $response
             ->xpath('//body//table[@class="coverageStats"][1]//tr[2]/td[4]/span[@class="percent"][1]')[0];
 
-        return trim((string)$result);
+        return trim((string) $result);
     }
 
     private function fetchAverageHealthScore(array $params)
     {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
 
-        $totalCount = (int)(string)$response->xpath('@count')[0];
+        $totalCount = (int) (string) $response->xpath('@count')[0];
         $successCount = count($response->xpath('//build[@status="SUCCESS"]'));
 
         $result = 100 * $successCount / $totalCount;
@@ -187,11 +187,11 @@ class TeamcityDao extends AbstractDao
     private function fetchRecentChanges(array $params)
     {
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params, self::RESPONSE_IN_XML);
-        $revisions = (array)$response->xpath('//change/@version');
+        $revisions = (array) $response->xpath('//change/@version');
 
-        $result = array();
+        $result = [];
         foreach ($revisions as $revision) {
-            $result[] = $this->fetchChangeByRevision($params, (string)$revision);
+            $result[] = $this->fetchChangeByRevision($params, (string) $revision);
         }
 
         return $result;
@@ -209,7 +209,7 @@ class TeamcityDao extends AbstractDao
     private function getLastCommitter(array $params, array $build)
     {
         $username = 'UNKNOWN';
-        $revision = (array)$build['revisions']->revision;
+        $revision = (array) $build['revisions']->revision;
         $revision = $revision['@attributes']['version'];
         $change = $this->fetchChangeByRevision($params, $revision);
 
@@ -243,7 +243,7 @@ class TeamcityDao extends AbstractDao
     {
         try {
             $coverage = $this->fetchCoverageById($params, $build['@attributes']['id']);
-            $coverage = (float)str_replace('%', '', $coverage);
+            $coverage = (float) str_replace('%', '', $coverage);
 
             return $coverage;
         } catch (\Exception $e) {
