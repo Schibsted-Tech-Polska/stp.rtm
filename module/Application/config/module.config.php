@@ -7,80 +7,85 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-return [
-    'router' => [
-        'routes' => [
-            'home' => [
+return array(
+    'router' => array(
+        'routes' => array(
+            'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => [
+                'options' => array(
                     'route' => '/',
-                    'defaults' => [
+                    'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action' => 'index',
-                    ],
-                ],
-            ],
+                    ),
+                ),
+            ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
-            'application' => [
+            'application' => array(
                 'type' => 'Literal',
-                'options' => [
+                'options' => array(
                     'route' => '/application',
-                    'defaults' => [
+                    'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action' => 'index',
-                    ],
-                ],
+                    ),
+                ),
                 'may_terminate' => true,
-                'child_routes' => [
-                    'default' => [
+                'child_routes' => array(
+                    'default' => array(
                         'type' => 'Segment',
-                        'options' => [
+                        'options' => array(
                             'route' => '/[:controller[/:action]]',
-                            'constraints' => [
+                            'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ],
-                            'defaults' => [],
-                        ],
-                    ],
-                ],
-            ],
-        ],
-    ],
-    'service_manager' => [
-        'abstract_factories' => [
+                            ),
+                            'defaults' => array(),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    ),
+    'service_manager' => array(
+        'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
-        ],
-    ],
-    'controllers' => [
-        'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-        ],
-    ],
-    'view_manager' => [
+        ),
+        'invokables' => array(
+            'Parsedown' => '\Parsedown',
+            'HttpStatusDao' => 'Model\Dao\HttpStatusDao',
+            'ImboDao' => 'Model\Dao\ImboDao',
+        ),
+    ),
+    'controllers' => array(
+        'invokables' => array(
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
+        ),
+    ),
+    'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions' => true,
         'doctype' => 'HTML5',
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
-        'template_map' => [
+        'template_map' => array(
             'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
-        ],
-        'json_exceptions' => [
+        ),
+        'json_exceptions' => array(
             'display' => true,
             'ajax_only' => true,
-            'show_trace' => true,
-        ],
-        'template_path_stack' => [
+            'show_trace' => true
+        ),
+        'template_path_stack' => array(
             __DIR__ . '/../view',
-        ],
-    ],
-];
+        ),
+    ),
+);

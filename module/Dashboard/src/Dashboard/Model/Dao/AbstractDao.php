@@ -103,7 +103,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      * @param array $config Dao configuration
      * @param object $dataProvider data provider object
      */
-    public function __construct($config, $dataProvider = null)
+    public function __construct($config = [], $dataProvider = null)
     {
         $this->config = $config;
 
