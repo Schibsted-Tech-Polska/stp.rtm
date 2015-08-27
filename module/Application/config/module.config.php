@@ -56,6 +56,11 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
+        'invokables' => array(
+            'Parsedown' => '\Parsedown',
+            'HttpStatusDao' => 'Model\Dao\HttpStatusDao',
+            'ImboDao' => 'Model\Dao\ImboDao',
+        ),
     ),
     'controllers' => array(
         'invokables' => array(
