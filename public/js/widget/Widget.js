@@ -209,13 +209,22 @@ Widget.prototype = {
         with (Math) {
             if (this.params.numericSystem == 'binary') {
                 var i = -1;
-                var byteUnits = [' kB', ' MB', ' GB', ' TB', ' PB', ' EB', ' ZB', ' YB'];
+                var units = [' kB', ' MB', ' GB', ' TB', ' PB', ' EB', ' ZB', ' YB'];
                 do {
                     n = n / 1024;
                     i++;
                 } while (n > 1024);
 
-                return Math.max(n, 0.1).toFixed(1) + byteUnits[i];
+                return Math.max(n, 0.1).toFixed(1) + units[i];
+            } else if (this.params.numericSystem == 'bandwidth') {
+                var i = -1;
+                var units = [' kbit', ' mbit', ' gbit', ' tbit', ' pbit', ' ebit', ' zbit', ' ybit'];
+                do {
+                    n = n / 1024;
+                    i++;
+                } while (n > 1024);
+
+                return Math.max(n, 0.1).toFixed(1) + units[i];
             } else {
                 var base = floor(log(abs(n)) / log(1000));
                 var suffix = 'kmb'[base - 1];
