@@ -617,6 +617,11 @@ class NewRelicDao extends AbstractDao
         ];
     }
 
+    /**
+     * @param array $params
+     * @return array
+     * @throws \Dashboard\Model\Dao\Exception\EndpointUrlNotDefined
+     */
     public function fetchServerCpuUsageForGraphWidget(array $params = [])
     {
         $responseParsed = [];
@@ -630,6 +635,48 @@ class NewRelicDao extends AbstractDao
                         $singleStat['values']['average_value']
                         + $response['metric_data']['metrics'][1]['timeslices'][$key]['values']['average_value'],
                 ];
+            }
+        }
+
+        return $responseParsed;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws \Dashboard\Model\Dao\Exception\EndpointUrlNotDefined
+     */
+    public function fetchServerLoadForGraphWidget(array $params = array())
+    {
+        $responseParsed = array();
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        if (is_array($response['metric_data']['metrics'][0]['timeslices'])) {
+            foreach ($response['metric_data']['metrics'][0]['timeslices'] as $key => $singleStat) {
+                $responseParsed[] = array(
+                    'x' => 1000 * (strtotime($singleStat['to']) + 7200),
+                    'y' => $singleStat['values']['average_value']
+                );
+            }
+        }
+
+        return $responseParsed;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws \Dashboard\Model\Dao\Exception\EndpointUrlNotDefined
+     */
+    public function fetchServerNetworkReceivedForGraphWidget(array $params = array())
+    {
+        $responseParsed = array();
+        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        if (is_array($response['metric_data']['metrics'][0]['timeslices'])) {
+            foreach ($response['metric_data']['metrics'][0]['timeslices'] as $key => $singleStat) {
+                $responseParsed[] = array(
+                    'x' => 1000 * (strtotime($singleStat['to']) + 7200),
+                    'y' => $singleStat['values']['per_second']
+                );
             }
         }
 

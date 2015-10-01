@@ -35,6 +35,13 @@ return [
                 'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json'
                 . '?names[]=System/CPU/System/percent&names[]=System/CPU/User/percent'
                 . '&values[]=average_value&from=:beginDateTime:&end=:endDateTime:',
+            'fetchServerLoadForGraphWidget' =>
+                'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json' .
+                '?names[]=System/Load&values[]=average_value&from=:beginDateTime:&end=:endDateTime:',
+            'fetchServerNetworkReceivedForGraphWidget' =>
+                'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json' .
+                '?names[]=System/Network/All/Received/bytes/sec&values[]=per_second' .
+                '&from=:beginDateTime:&end=:endDateTime:',
         ],
     ],
 ];
