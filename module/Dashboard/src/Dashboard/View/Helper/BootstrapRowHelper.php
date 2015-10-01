@@ -24,7 +24,6 @@ class BootstrapRowHelper extends AbstractHelper
 
         /* @var $widget \Dashboard\Model\Widget\AbstractWidget */
         foreach ($widgetCollection as $widget) {
-
             if (!is_numeric($widget->getParam('span'))) {
                 throw new \Exception(
                     'Span value of ' . $widget->getId() . ' widget is not numeric or is not specified'
@@ -40,12 +39,12 @@ class BootstrapRowHelper extends AbstractHelper
             // Using partial helper for retrieving view of each widget
             $html .= $this->view->partial(
                 $widget->getTplName(),
-                array(
+                [
                     'widgetId' => $widget->getId(),
                     'widgetType' => $widget->getWidgetTypeName(),
                     'params' => $widget->getParams(),
                     'threshold' => $widget->getThreshold(),
-                )
+                ]
             );
         }
 

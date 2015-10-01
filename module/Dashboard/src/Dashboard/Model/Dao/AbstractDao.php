@@ -103,7 +103,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      * @param array $config Dao configuration
      * @param object $dataProvider data provider object
      */
-    public function __construct($config, $dataProvider = null)
+    public function __construct($config = [], $dataProvider = null)
     {
         $this->config = $config;
 
@@ -126,24 +126,25 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
         $adapter = new Client\Adapter\Curl();
 
-        $curlOptions = array(
+        $curlOptions = [
             CURLOPT_FOLLOWLOCATION => 1,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_SSL_VERIFYHOST => 0,
-        );
+        ];
 
-        $adapter->setOptions(array(
-            'curloptions' => $curlOptions
-        ));
+        $adapter->setOptions([
+            'curloptions' => $curlOptions,
+        ]);
 
         $dataProvider->setAdapter($adapter);
 
-        $dataProvider->setOptions(array(
+        $dataProvider->setOptions([
             'maxredirects' => 1,
             'timeout' => 30,
-            'useragent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.122 Safari/537.36',
-        ));
+            'useragent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4)' .
+                ' AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.122 Safari/537.36',
+        ]);
 
         return $dataProvider;
     }
@@ -166,7 +167,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      */
     public function getDaoParams()
     {
-        return isset($this->daoOptions['params']) ? $this->daoOptions['params'] : array();
+        return isset($this->daoOptions['params']) ? $this->daoOptions['params'] : [];
     }
 
     /**
@@ -175,7 +176,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      */
     public function getDaoHeaders()
     {
-        return isset($this->daoOptions['headers']) ? $this->daoOptions['headers'] : array();
+        return isset($this->daoOptions['headers']) ? $this->daoOptions['headers'] : [];
     }
 
     /**
@@ -200,7 +201,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      */
     public function request(
         $url,
-        $params = array(),
+        $params = [],
         $responseFormat = self::RESPONSE_IN_JSON,
         $auth = null,
         $postData = null
@@ -276,7 +277,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
     public function requestWithCache(
         $url,
-        $params = array(),
+        $params = [],
         $responseFormat = self::RESPONSE_IN_JSON,
         $auth = null,
         $postData = null
@@ -343,7 +344,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      * @throws Exception\EndpointUrlNotAssembled
      * @return mixed
      */
-    protected function assembleUrl($url, $params = array())
+    protected function assembleUrl($url, $params = [])
     {
         /**
          * Merging parameters common for all dashboard widget and widget-specific

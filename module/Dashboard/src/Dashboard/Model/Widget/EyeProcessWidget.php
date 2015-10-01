@@ -1,12 +1,10 @@
 <?php
-
 namespace Dashboard\Model\Widget;
 
 /**
- * Class WeatherWidget
- *
+ * Class EyeProcessWidget
  * @package Dashboard\Model\Widget
  */
-class WeatherWidget extends AbstractWidget
+class EyeProcessWidget extends AbstractWidget
 {
 }

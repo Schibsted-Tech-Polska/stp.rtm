@@ -52,7 +52,7 @@ abstract class AbstractWidget
      *
      * @var array
      */
-    protected $threshold = array();
+    protected $threshold = [];
 
     /**
      * Constructor
@@ -164,13 +164,13 @@ abstract class AbstractWidget
     {
         // We're separating each word of a widget class name using a dash (‘-‘).
         $inflector = new Inflector(':tplName');
-        $inflector->setRules(array(
-            ':tplName' => array('Word\CamelCaseToDash')
-        ));
+        $inflector->setRules([
+            ':tplName' => ['Word\CamelCaseToDash'],
+        ]);
 
         $className = $this->getWidgetTypeName();
 
-        $tplName = $inflector->filter(array('tplName' => $className));
+        $tplName = $inflector->filter(['tplName' => $className]);
 
         return $tplName;
     }

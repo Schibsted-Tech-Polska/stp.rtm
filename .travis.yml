@@ -1,9 +1,13 @@
 language: php
-cache: composer
+sudo: false
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
 
 os:
   - linux
-  - osx
 
 php:
   - 5.6

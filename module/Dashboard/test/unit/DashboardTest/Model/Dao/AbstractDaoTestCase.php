@@ -21,6 +21,7 @@ abstract class AbstractDaoTestCase extends \PHPUnit_Framework_TestCase
     protected function getTestedDao()
     {
         $daoClass = str_replace('Test', '', str_replace(__NAMESPACE__ . '\\', '', get_class($this)));
+
         return Bootstrap::getServiceManager()->get($daoClass);
     }
 

@@ -1,8 +1,6 @@
 <?php
 namespace DashboardTest\Model\Dao;
 
-use DashboardTest\DataProvider\BambooDaoDataProvider;
-
 class BambooDaoTest extends AbstractBambooDao
 {
     protected function setUp()
@@ -10,9 +8,8 @@ class BambooDaoTest extends AbstractBambooDao
         parent::setUp();
         $this->testedDao->setDaoOptions([
             'params' => [
-                'baseUrl' => 'http://bamboo.aftonbladet.se:8085'
-            ]
+                'baseUrl' => 'http://bamboo.aftonbladet.se:8085',
+            ],
         ]);
     }
-
 }

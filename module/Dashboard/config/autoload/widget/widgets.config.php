@@ -53,6 +53,14 @@ return [
             'valuePrefix' => '',
             'span' => 3,
         ],
+        'eyeProcess' => [
+            'refreshRate' => 5,
+            'title' => '',
+            'subtitle' => '',
+            'valueSuffix' => '',
+            'valuePrefix' => '',
+            'span' => 3,
+        ],
         'process' => [
             'refreshRate' => 5,
             'title' => '',
@@ -145,13 +153,13 @@ return [
             'refreshRate' => 900,
             'title' => 'Weather',
             'subtitle' => '',
-            'span' => 3
+            'span' => 3,
         ],
         'herokuStatus' => [
             'refreshRate' => 60,
             'title' => 'Heroku Status',
             'subtitle' => '',
-            'span' => 3
-        ]
+            'span' => 3,
+        ],
     ],
 ];

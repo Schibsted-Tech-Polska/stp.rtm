@@ -14,7 +14,7 @@ class EyeDao extends AbstractDao
      * @param  array $params Params
      * @return array
      */
-    public function fetchInfoForEyeWidget(array $params = array())
+    public function fetchInfoForEyeWidget(array $params = [])
     {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }
@@ -25,7 +25,7 @@ class EyeDao extends AbstractDao
      * @param  array $params Params
      * @return array
      */
-    public function fetchInfoForProcessWidget(array $params = array())
+    public function fetchInfoForEyeProcessWidget(array $params = [])
     {
         return $this->request($this->getEndpointUrl(__FUNCTION__), $params);
     }

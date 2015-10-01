@@ -2,7 +2,6 @@
 
 namespace Dashboard\Model\Dao;
 
-
 class HerokuStatusDao extends AbstractDao
 {
     public function fetchForHerokuStatusWidget(array $params)

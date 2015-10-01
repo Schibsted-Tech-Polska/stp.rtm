@@ -8,7 +8,6 @@ namespace Dashboard\Model;
 
 use Zend\Di\ServiceLocator;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class DashboardManager
@@ -42,14 +41,14 @@ class DashboardManager
      *
      * @var array
      */
-    private $rtmConfig = array();
+    private $rtmConfig = [];
 
     /**
      * Collection of dashboard's widget
      *
      * @var array
      */
-    private $widgetsCollection = array();
+    private $widgetsCollection = [];
 
     /**
      * Name of the Dashboard instance
@@ -63,7 +62,7 @@ class DashboardManager
      *
      * @var
      */
-    private $widgetTypes = array();
+    private $widgetTypes = [];
 
     /**
      * Constructor
@@ -119,10 +118,9 @@ class DashboardManager
 
         foreach ($this->rtmConfig['widgets'] as $widgetData) {
             if (is_null($widgetId) || $widgetData['id'] == $widgetId) {
-                $daoParams = array();
+                $daoParams = [];
                 if (isset($widgetData['params']['dao']) && isset($this->rtmConfig[$widgetData['params']['dao']])) {
                     $daoParams = $this->rtmConfig[$widgetData['params']['dao']];
-
                 }
 
                 if (isset($widgetData['params']['daoOptions'])) {

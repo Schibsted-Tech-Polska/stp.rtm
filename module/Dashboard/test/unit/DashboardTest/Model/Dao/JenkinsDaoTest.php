@@ -16,8 +16,8 @@ class JenkinsDaoTest extends AbstractDaoTestCase
         $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
         $this->testedDao->setDaoOptions([
             'params' => [
-                'baseUrl' => 'http://ci.vgnett.no'
-            ]
+                'baseUrl' => 'http://ci.vgnett.no',
+            ],
         ]);
     }
 
@@ -30,10 +30,10 @@ class JenkinsDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
 
-        $response = $this->testedDao->fetchStatusForBuildWidget(array(
+        $response = $this->testedDao->fetchStatusForBuildWidget([
             'view' => 'VGTV',
             'job' => 'VGTV_front-end',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -69,7 +69,6 @@ class JenkinsDaoTest extends AbstractDaoTestCase
      */
     public function testFetchStatusForBuildWidgetBuilding($apiResponse, $expectedDaoResponse)
     {
-
         $this->testedDao->getDataProvider()->getAdapter()->setResponse(
             file_get_contents($apiResponse)
         );
@@ -77,10 +76,10 @@ class JenkinsDaoTest extends AbstractDaoTestCase
             file_get_contents(__DIR__ . '/../../Mock/Dao/Jenkins/fetchBuildStatusResponse.txt')
         );
 
-        $response = $this->testedDao->fetchStatusForBuildWidget(array(
+        $response = $this->testedDao->fetchStatusForBuildWidget([
             'view' => 'VGTV',
             'job' => 'VGTV_front-end',
-        ));
+        ]);
 
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
@@ -115,10 +114,10 @@ class JenkinsDaoTest extends AbstractDaoTestCase
      */
     public function testImproperApiMethod()
     {
-        Bootstrap::getServiceManager()->get('JenkinsDao')->fetchImproperDataName(array(
+        Bootstrap::getServiceManager()->get('JenkinsDao')->fetchImproperDataName([
             'view' => 'VGTV',
             'job' => 'VGTV_front-end',
-        ));
+        ]);
     }
 
     /**
@@ -127,8 +126,8 @@ class JenkinsDaoTest extends AbstractDaoTestCase
      */
     public function testNotAllRequiredParamsGiven()
     {
-        Bootstrap::getServiceManager()->get('JenkinsDao')->fetchStatusForBuildWidget(array(
+        Bootstrap::getServiceManager()->get('JenkinsDao')->fetchStatusForBuildWidget([
             'view' => 'VGTV',
-        ));
+        ]);
     }
 }
