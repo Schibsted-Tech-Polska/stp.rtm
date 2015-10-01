@@ -59,7 +59,7 @@ return array(
 
         // EYE CRAWLERS
         array('id' => 'xitiCrawler1',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -70,7 +70,7 @@ return array(
             ),
         ),
         array('id' => 'xitiCrawler2',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -81,7 +81,7 @@ return array(
             ),
         ),
         array('id' => 'xitiCrawler3',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -92,7 +92,7 @@ return array(
             ),
         ),
         array('id' => 'xitiCrawler4',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -103,7 +103,7 @@ return array(
             ),
         ),
         array('id' => 'spidOrdersCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -114,7 +114,7 @@ return array(
             ),
         ),
         array('id' => 'spidProductsCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -125,7 +125,7 @@ return array(
             ),
         ),
         array('id' => 'spidLoginsCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -136,7 +136,7 @@ return array(
             ),
         ),
         array('id' => 'spidSubscriptionsCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -147,7 +147,7 @@ return array(
             ),
         ),
         array('id' => 'spidCampaignsCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -158,7 +158,7 @@ return array(
             ),
         ),
         array('id' => 'spidUsersCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -169,7 +169,7 @@ return array(
             ),
         ),
         array('id' => 'vektklubbUsersCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -180,7 +180,7 @@ return array(
             ),
         ),
         array('id' => 'newsletterSubscriptionsCrawler',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -193,7 +193,7 @@ return array(
 
         // MANIPULATORS
         array('id' => 'manipulationStructureMappingProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -204,7 +204,7 @@ return array(
             ),
         ),
         array('id' => 'manipulationSpidUserAccountsProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -217,7 +217,7 @@ return array(
 
         // CLEANERS
         array('id' => 'cleaningSpidUsersProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -230,7 +230,7 @@ return array(
 
         // WRITERS
         array('id' => 'rawHadoopWriterProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -241,7 +241,7 @@ return array(
             ),
         ),
         array('id' => 'cleanHadoopWriterProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -252,7 +252,7 @@ return array(
             ),
         ),
         array('id' => 'cleanMysqlWriterProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -265,7 +265,7 @@ return array(
 
         // ADOBE CAMPAIGN
         array('id' => 'acExportClientsProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -276,7 +276,7 @@ return array(
             ),
         ),
         array('id' => 'acExportClientConnectionsProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -287,7 +287,7 @@ return array(
             ),
         ),
         array('id' => 'acExportCustomerProductsProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -298,7 +298,7 @@ return array(
             ),
         ),
         array('id' => 'acExportCustomersProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -309,7 +309,7 @@ return array(
             ),
         ),
         array('id' => 'acExportProductsProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -320,7 +320,7 @@ return array(
             ),
         ),
         array('id' => 'acExportProductsProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -334,7 +334,7 @@ return array(
 
         // OTHER SCRIPTS
         array('id' => 'rawHadoopPutProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -345,7 +345,7 @@ return array(
             ),
         ),
         array('id' => 'cleanHadoopPutProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -358,7 +358,7 @@ return array(
 
         // REGENERATION
         array('id' => 'regenerationHadoopProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -369,7 +369,7 @@ return array(
             ),
         ),
         array('id' => 'regenerationMySQLProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
@@ -380,7 +380,7 @@ return array(
             ),
         ),
         array('id' => 'regenerationHadoopPutProcess',
-            'type' => 'process',
+            'type' => 'eyeProcess',
             'params' => array(
                 'dao' => 'eye',
                 'metric' => 'info',
