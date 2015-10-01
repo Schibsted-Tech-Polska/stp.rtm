@@ -8,7 +8,6 @@ cache:
 
 os:
   - linux
-  - osx
 
 php:
   - 5.6
