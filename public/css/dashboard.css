@@ -361,6 +361,7 @@
 }
 
 #dashboardBody .widget.EyeWidget {
+  font-size: 1.2rem;
   overflow: hidden;
 }
 #dashboardBody .widget.EyeWidget .process {
@@ -392,16 +393,44 @@
   width: 100%;
   color: #ed303c;
 }
-#dashboardBody .widget.ProcessWidget .process.starting {
+#dashboardBody .widget.ProcessWidget .process.STARTING {
   color: #fff46b;
 }
-#dashboardBody .widget.ProcessWidget .process.up {
+#dashboardBody .widget.ProcessWidget .process.RUNNING {
   color: #70c536;
 }
 #dashboardBody .widget.ProcessWidget .process.unmonitored .pid, #dashboardBody .widget.ProcessWidget .process.down .pid {
   display: none;
 }
 #dashboardBody .widget.ProcessWidget .process .icon {
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 9rem;
+  line-height: 9rem;
+}
+
+#dashboardBody .widget.EyeProcessWidget {
+  overflow: hidden;
+}
+#dashboardBody .widget.EyeProcessWidget h1 {
+  height: 4rem;
+}
+#dashboardBody .widget.EyeProcessWidget .process {
+  margin: 10px 0;
+  width: 100%;
+  color: #ed303c;
+}
+#dashboardBody .widget.EyeProcessWidget .process.starting {
+  color: #fff46b;
+}
+#dashboardBody .widget.EyeProcessWidget .process.up {
+  color: #70c536;
+}
+#dashboardBody .widget.EyeProcessWidget .process.unmonitored .pid, #dashboardBody .widget.EyeProcessWidget .process.down .pid {
+  display: none;
+}
+#dashboardBody .widget.EyeProcessWidget .process .icon {
   width: auto;
   height: auto;
   background: none;
