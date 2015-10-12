@@ -37,7 +37,7 @@ return [
     ],
     'hadoop' => [
         'params' => [
-            'baseUrl' => 'http://vg-hadoop-s01:50070',
+            'baseUrl' => 'http://hdp-01:50070',
         ],
     ],
     'supervisord' => [
