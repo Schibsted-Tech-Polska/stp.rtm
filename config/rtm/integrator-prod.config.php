@@ -42,7 +42,7 @@ return array(
     ),
     'supervisord' => [
         'params' => [
-            'baseUrl' => 'http://vg-integrator-s01:9001/RPC2',
+            'baseUrl' => 'http://vg-integrator-01:9001/RPC2',
         ],
     ],
     'widgets' => array(
