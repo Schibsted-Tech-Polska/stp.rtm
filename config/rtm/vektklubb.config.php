@@ -61,8 +61,8 @@ return array(
                 'endDateTime' => 'now',
                 'useThreshold' => 1,
                 'thresholdComparator' => 'lowerIsBetter',
-                'caution-value' => 50,
-                'critical-value' => 75,
+                'caution-value' => 100,
+                'critical-value' => 150
             ),
         ),
         array('id' => 'vektklubbApiMemory',
