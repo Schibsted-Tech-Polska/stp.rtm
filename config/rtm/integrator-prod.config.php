@@ -37,7 +37,7 @@ return array(
     ),
     'hadoop' => array(
         'params' => array(
-            'baseUrl' => 'http://vg-hadoop-01:50070',
+            'baseUrl' => 'http://hdp-01:50070',
         ),
     ),
     'supervisord' => [
