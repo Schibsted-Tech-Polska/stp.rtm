@@ -1,5 +1,4 @@
 <?php
-
 $appIds = [
     'API PROD' => 10378083,
     'API STAGE' => 14768292,
@@ -9,14 +8,20 @@ $appIds = [
     'API STAGE AP' => 15075013,
     'API STAGE SA' => 15075021,
     'API STAGE BT' => 15075015,
+    'TEST' => 15075015,
+    'TEST2' => 15075015,
+    'TEST3' => 15075015,
+    'TEST4' => 15075015,
 ];
 
-function getWidgetsConfigs($appId, $label)
+function getWidgetsConfigs($appId, $label, $key)
 {
+    $span = 1;
+
     return
         [
-            [
-                'id' => 'svpApiProdCpuUsage' . $appId,
+            $key => [
+                'id' => 'svpApiProdCpuUsage' . $appId . $key,
                 'type' => 'graph',
                 'params' => [
                     'dao' => 'newRelic',
@@ -25,13 +30,13 @@ function getWidgetsConfigs($appId, $label)
                     'subtitle' => $label,
                     'title' => 'CPU USAGE',
                     'valueSuffix' => '%',
-                    'span' => 3,
+                    'span' => $span,
                     'beginDateTime' => '-30 minutes',
                     'endDateTime' => 'now',
                 ],
             ],
-            [
-                'id' => 'svpApiProdAvgResponse' . $appId,
+            $key + 100 => [
+                'id' => 'svpApiProdAvgResponse' . $appId . $key,
                 'type' => 'graph',
                 'params' => [
                     'dao' => 'newRelic',
@@ -39,14 +44,14 @@ function getWidgetsConfigs($appId, $label)
                     'appId' => $appId,
                     'title' => 'AVG RESP TIME',
                     'subtitle' => $label,
-                    'span' => 3,
+                    'span' => $span,
                     'valueSuffix' => 'ms',
                     'beginDateTime' => '-30 minutes',
                     'endDateTime' => 'now',
                 ],
             ],
-            [
-                'id' => 'svpApiRpm' . $appId,
+            $key + 200 => [
+                'id' => 'svpApiRpm' . $appId . $key,
                 'type' => 'graph',
                 'params' => [
                     'dao' => 'newRelic',
@@ -57,11 +62,11 @@ function getWidgetsConfigs($appId, $label)
                     'beginDateTime' => '-60 minutes',
                     'valueSuffix' => '&nbsp;',
                     'endDateTime' => 'now',
-                    'span' => 3
+                    'span' => $span,
                 ],
             ],
-            [
-                'id' => 'svpProdErrorRate' . $appId,
+            $key + 300 => [
+                'id' => 'svpProdErrorRate' . $appId . $key,
                 'type' => 'error',
                 'params' => [
                     'dao' => 'newRelic',
@@ -70,7 +75,7 @@ function getWidgetsConfigs($appId, $label)
                     'title' => 'ERROR RATE',
                     'subtitle' => $label,
                     'valueSuffix' => '%',
-                    'span' => 3,
+                    'span' => $span,
                     'thresholdComparator' => 'lowerIsBetter',
                 ],
             ],
@@ -78,9 +83,12 @@ function getWidgetsConfigs($appId, $label)
 }
 
 $widgets = [];
+$row = 0;
 foreach ($appIds as $label => $appId) {
-    $widgets = array_merge($widgets, getWidgetsConfigs($appId, $label));
+    $widgets += getWidgetsConfigs($appId, $label, $row++);
 }
+
+ksort($widgets);
 
 /**
  * Config for rtm
