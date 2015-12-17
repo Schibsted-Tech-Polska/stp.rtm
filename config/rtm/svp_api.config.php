@@ -86,6 +86,7 @@ foreach ($appIds as $label => $appId) {
  * Config for rtm
  */
 return [
+    'theme' => ['tv', 'dark'],
     'newRelic' => [
         'headers' => [
             'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30',
