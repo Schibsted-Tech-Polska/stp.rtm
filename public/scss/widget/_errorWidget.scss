@@ -26,7 +26,7 @@ $caution-background-color: #978C06;
         }
     }
 
-    &.thresholdCriticalValue {
+    &.thresholdCriticalValue .widgetContainer{
         background-color: $critical-background-color;
 
         .value {
@@ -34,7 +34,7 @@ $caution-background-color: #978C06;
         }
     }
 
-    &.thresholdCautionValue {
+    &.thresholdCautionValue .widgetContainer{
         background-color: $caution-background-color;
 
         .value {
