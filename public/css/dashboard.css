@@ -9,6 +9,9 @@
   display: block;
   float: right;
 }
+#dashboardBody .widget.ErrorWidget .value {
+  font-size: 4rem;
+}
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue .widgetContainer {
   background-color: #cc0c39;
 }

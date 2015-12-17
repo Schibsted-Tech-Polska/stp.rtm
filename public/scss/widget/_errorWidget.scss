@@ -26,6 +26,10 @@ $caution-background-color: #978C06;
         }
     }
 
+    .value {
+        font-size: 4rem;
+    }
+
     &.thresholdCriticalValue .widgetContainer{
         background-color: $critical-background-color;
 
