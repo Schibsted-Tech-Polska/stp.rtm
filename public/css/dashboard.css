@@ -4,6 +4,7 @@
 #dashboardBody .widget.ErrorWidget.warning .sock {
   background-image: url(../img/sock.png);
   background-repeat: no-repeat;
+  background-size: 45%;
   width: 100px;
   height: 100px;
   display: block;
