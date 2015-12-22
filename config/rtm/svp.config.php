@@ -22,7 +22,11 @@ $appIds = [
 $widgets = [
     // ROW 1
     ['id' => 'svpApiProdCpuUsage' . $prodAll['id'],'type' => 'graph','params' => ['span' => 6,'dao' => 'newRelic','metric' => 'cpuUsage','appId' => $prodAll['id'],'subtitle' => 'CPU USAGE','title' => $prodAll['label'], 'valueSuffix' => '%','beginDateTime' => '-30 minutes','endDateTime' => 'now',],],
-    ['id' => 'svpApiProdCpuUsage' . $stageAll['id'],'type' => 'graph','params' => ['span' => 6,'dao' => 'newRelic','metric' => 'cpuUsage','appId' => $stageAll['id'],'subtitle' => 'CPU USAGE','title' => $stageAll['label'], 'valueSuffix' => '%','beginDateTime' => '-30 minutes','endDateTime' => 'now',],],
+    ['id' => 'svpApiProdCpuUsage' . $stageAll['id'],'type' => 'graph','params' => ['span' => 2,'dao' => 'newRelic','metric' => 'cpuUsage','appId' => $stageAll['id'],'subtitle' => 'CPU USAGE','title' => $stageAll['label'], 'valueSuffix' => '%','beginDateTime' => '-30 minutes','endDateTime' => 'now',],],
+    ['id' => 'VGTV_v2_api_develop','type' => 'build','params' => ['span' => 1,'dao' => 'jenkins','view' => 'svp-api','job' => 'svp-api-develop','metric' => 'status','title' => 'SVP API DEVELOP',],],
+    ['id' => 'VGTV_v2_smoke_tests','type' => 'build','params' => ['span' => 1,'dao' => 'jenkins','view' => 'VGTV_v2','job' => 'svp-api-smoke-tests-STAGING','metric' => 'status','title' => 'SVP SMOKE STAGE',],],
+    ['id' => 'SVP_v2_smoke_tests','type' => 'build','params' => ['span' => 1,'dao' => 'jenkins','view' => 'SVP_v2','job' => 'svp-api-smoke-tests-PRODUCTION','metric' => 'status','title' => 'SVP SMOKE PROD',],],
+    ['id' => 'vgtv2apiProductionBuild','type' => 'build','params' => ['span' => 1,'dao' => 'jenkins','view' => 'VGTV_v2','job' => 'VGTV_v2_api_production','metric' => 'status','title' => 'API PRODUCTION',],],
 
     // ROW 2
     ['id' => 'svpApiRpm' .  $prodAll['id'],'type' => 'graph','params' => ['span' => 3,'dao' => 'newRelic','metric' => 'rpm','appId' => $prodAll['id'],'subtitle' => 'RPM','title' => $prodAll['label'],'beginDateTime' => '-60 minutes','valueSuffix' => '&nbsp;','endDateTime' => 'now'],],
