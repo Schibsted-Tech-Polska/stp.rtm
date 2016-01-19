@@ -4,15 +4,15 @@
  */
 return array(
     'theme' => ['tv', 'dark'],
-    'splunk' => array(
-        'params' => array(
+    'splunk' => [
+        'params' => [
             'baseUrl' => 'https://mother.int.vgnett.no:8089',
-        ),
-        'auth' => array(
+        ],
+        'auth' => [
             'username' => 'wiskra',
             'password' => 'DopdeDey',
-        ),
-    ),
+        ],
+    ],
     'jenkins' => array(
         'params' => array(
             'baseUrl' => 'http://ci.vgnett.no/',
@@ -25,11 +25,6 @@ return array(
         'params' => array(
             'accountId' => '100366'
         )
-    ),
-    'hipChat' => array(
-        'params' => array(
-            'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
-        ),
     ),
     'rabbitMQ' => array(
         'params' => array(
