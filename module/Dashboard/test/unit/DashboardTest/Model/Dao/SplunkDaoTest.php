@@ -25,7 +25,7 @@ class SplunkDaoTest extends AbstractDaoTestCase
     {
         $this->testedDao->setDaoOptions([
             'params' => [
-                'baseUrl' => 'https://mother.int.vgnett.no:8089',
+                'baseUrl' => 'https://splunk-01.int.vgnett.no:8089',
             ],
             'auth' => [
                 'username' => 'foo',

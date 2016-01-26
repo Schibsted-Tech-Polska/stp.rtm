@@ -20,8 +20,8 @@ return array(
             'X-Requested-With' => 'XMLHttpRequest',
         ),
         'auth' => array(
-            'username' => 'wiskra',
-            'password' => 'DopdeDey',
+            'username' => 'stprtm',
+            'password' => 'VTNAj7s8WErvR9uYhZeA',
         ),
     ),
     'slack' => array(
@@ -31,11 +31,11 @@ return array(
     ),
     'splunk' => array(
         'params' => array(
-            'baseUrl' => 'https://mother.int.vgnett.no:8089',
+            'baseUrl' => 'https://splunk-01.int.vgnett.no:8089',
         ),
         'auth' => array(
-            'username' => 'wiskra',
-            'password' => 'DopdeDey',
+            'username' => 'stprtm',
+            'password' => 'VTNAj7s8WErvR9uYhZeA',
         ),
     ),
     'jenkins' => array(

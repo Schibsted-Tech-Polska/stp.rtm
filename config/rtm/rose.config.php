@@ -6,11 +6,11 @@ return array(
     'theme' => ['tv', 'dark'],
     'splunk' => [
         'params' => [
-            'baseUrl' => 'https://mother.int.vgnett.no:8089',
+            'baseUrl' => 'https://splunk-01.int.vgnett.no:8089',
         ],
         'auth' => [
-            'username' => 'wiskra',
-            'password' => 'DopdeDey',
+            'username' => 'stprtm',
+            'password' => 'VTNAj7s8WErvR9uYhZeA',
         ],
     ],
     'jenkins' => array(
