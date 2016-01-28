@@ -14,16 +14,19 @@
     .content {
         margin: {
             top: 1rem;
-            right: 20rem;
         }
+        margin-left:auto;
+        margin-right:auto;
     }
 
     .item-name {
-        margin-right: 1.5rem;
+        padding-right: 2rem;
+        text-align: right;
     }
 
     .item-value {
         font-weight: bold;
         font-size: 1.4rem;
+        text-align: left;
     }
 }

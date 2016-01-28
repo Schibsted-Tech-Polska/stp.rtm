@@ -10,20 +10,18 @@
         </h1>
 
 
-                <% _.each(value, function(item) { %>
+        <table class="content">
 
 
-        <div class="content">
-            <div class="col-md-12 last">
-                <div class="pull-right">
-                    <span class="item-name"><%= item.name %></span> <span class="item-value"><%= item.value %></span>
-                </div>
-            </div>
+            <% _.each(value, function(item) { %>
+            <tr>
+                <td class="item-name"><%= item.name %></td>
+                <td class="item-value"><%= item.value %></td>
+            </tr>
+            <% }); %>
 
-        </div>
 
-                <% }); %>
-
+        </table>
 
 
         <p class="updated-at">Last update: <%= lastUpdate %></p>
