@@ -472,6 +472,30 @@
   color: #ffff00;
 }
 
+#dashboardBody .widget.TableWidget {
+  font-size: 1.2rem;
+}
+#dashboardBody .widget.TableWidget small {
+  font-size: 80%;
+}
+#dashboardBody .widget.TableWidget h1 {
+  margin-bottom: 0;
+}
+#dashboardBody .widget.TableWidget .content {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+#dashboardBody .widget.TableWidget .item-name {
+  padding-right: 2rem;
+  text-align: right;
+}
+#dashboardBody .widget.TableWidget .item-value {
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
 @font-face {
   font-family: 'Icons';
   src: url("fonts/artill_clean_icons-webfont.eot");
