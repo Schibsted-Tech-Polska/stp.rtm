@@ -265,7 +265,7 @@ return array(
                 'title' => 'Rose (production)',
                 'subtitle' => 'most popular URLs in last 24h',
                 'config' => [
-                    'search' => 'search host="vg-rose-01*" sourcetype=apache_access url != "rose-app.e24.no*" url != "localhost/server-status" | top limit=100 url | stats sum(count) AS NumOf by url | sort -num(NumOf) | head 8',
+                    'search' => 'search host="vg-rose-01*" sourcetype=apache_access url != "rose-app.e24.no*" url != "localhost/server-status" url != "10.84.200.208/index.html" | top limit=100 url | stats sum(count) AS NumOf by url | sort -num(NumOf) | head 8',
                     'earliest_time' => '-24h',
                     'latest' => 'now',
                     'output_mode' => 'json_cols',
