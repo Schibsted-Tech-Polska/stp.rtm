@@ -29,17 +29,6 @@ return array(
                 'limit' => 10,
             ),
         ),*/
-        array('id' => 'minmotePollPlug',
-            'type' => 'build',
-            'params' => array(
-                'dao' => 'jenkins',
-                'view' => 'minmote',
-                'job' => 'minmote-plugin-poll',
-                'metric' => 'status',
-                'title' => 'MinMote Poll plugin',
-                'span' => 2,
-            ),
-        ),
         array('id' => 'minmoteWeb',
             'type' => 'build',
             'params' => array(
