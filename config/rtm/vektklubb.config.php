@@ -2,39 +2,39 @@
 /**
  * Config for rtm
  */
-return array(
+return [
     'theme' => ['tv', 'dark'],
-    'newRelic' => array(
-        'headers' => array(
+    'newRelic' => [
+        'headers' => [
             'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30',
-        ),
-        'params' => array(
+        ],
+        'params' => [
             'accountId' => '100366',
-        ),
-    ),
-    'hipChat' => array(
-        'params' => array(
+        ],
+    ],
+    'hipChat' => [
+        'params' => [
             'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
-        ),
-    ),
-    'splunk' => array(
-        'params' => array(
+        ],
+    ],
+    'splunk' => [
+        'params' => [
             'baseUrl' => 'https://splunk-01.int.vgnett.no:8089',
-        ),
-        'auth' => array(
+        ],
+        'auth' => [
             'username' => 'stprtm',
             'password' => 'VTNAj7s8WErvR9uYhZeA',
-        ),
-    ),
-    'jenkins' => array(
-        'params' => array(
+        ],
+    ],
+    'jenkins' => [
+        'params' => [
             'baseUrl' => 'http://ci.vgnett.no/',
-        ),
-    ),
-    'widgets' => array(
-        array('id' => 'vektklubbApiSplunk500',
+        ],
+    ],
+    'widgets' => [
+        ['id' => 'vektklubbApiSplunk500',
             'type' => 'alert',
-            'params' => array(
+            'params' => [
                 'dao' => 'splunk',
                 'metric' => 'Fivehundreds',
                 'title' => 'Vektklubb API',
@@ -46,11 +46,11 @@ return array(
                     'output_mode' => 'json_cols',
                 ],
                 'span' => 3,
-            ),
-        ),
-        array('id' => 'vektklubbApiCpuUsageGraph',
+            ],
+        ],
+        ['id' => 'vektklubbApiCpuUsageGraph',
             'type' => 'graph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'cpuUsage',
                 'appId' => '8006994',
@@ -61,24 +61,24 @@ return array(
                 'endDateTime' => 'now',
                 'useThreshold' => 1,
                 'thresholdComparator' => 'lowerIsBetter',
-                'caution-value' => 100,
-                'critical-value' => 150
-            ),
-        ),
-        array('id' => 'vektklubbApiMemory',
+                'caution-value' => 200,
+                'critical-value' => 300,
+            ],
+        ],
+        ['id' => 'vektklubbApiMemory',
             'type' => 'incrementalGraph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'memory',
                 'appId' => '8006994',
                 'title' => 'Memory',
                 'span' => 3,
                 'valueSuffix' => 'MB',
-            ),
-        ),
-        array('id' => 'vektklubbApiAverageResponseTimeGraph',
+            ],
+        ],
+        ['id' => 'vektklubbApiAverageResponseTimeGraph',
             'type' => 'graph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'averageResponseTime',
                 'appId' => '8006994',
@@ -91,13 +91,13 @@ return array(
                 'thresholdComparator' => 'lowerIsBetter',
                 'caution-value' => 300,
                 'critical-value' => 400,
-            ),
-        ),
+            ],
+        ],
 
 
-        array('id' => 'vektklubbApiBeRpm',
+        ['id' => 'vektklubbApiBeRpm',
             'type' => 'graph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'rpm',
                 'appId' => '8006994',
@@ -106,33 +106,33 @@ return array(
                 'endDateTime' => 'now',
                 'title' => 'API RPM',
                 'thresholdComparator' => 'higherIsBetter',
-            ),
-        ),
-        array('id' => 'vektklubbApiErrorRate',
+            ],
+        ],
+        ['id' => 'vektklubbApiErrorRate',
             'type' => 'incrementalGraph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'valueSuffix' => '%',
                 'metric' => 'errorRate',
                 'appId' => '8006994',
                 'title' => 'Error Rate',
                 'span' => 3,
-            ),
-        ),
-        array('id' => 'vektklubbApiApdex',
+            ],
+        ],
+        ['id' => 'vektklubbApiApdex',
             'type' => 'number',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'apdex',
                 'appId' => '8006994',
                 'title' => 'apdex',
                 'thresholdComparator' => 'higherIsBetter',
                 'span' => 2,
-            ),
-        ),
-        array('id' => 'vektklubbApiBuildStatus',
+            ],
+        ],
+        ['id' => 'vektklubbApiBuildStatus',
             'type' => 'build',
-            'params' => array(
+            'params' => [
                 'dao' => 'jenkins',
                 'view' => 'vektklubb',
                 'job' => 'vektklubb-api',
@@ -140,11 +140,11 @@ return array(
                 'title' => 'Vektklubb API',
                 'refreshRate' => 5,
                 'span' => 2,
-            ),
-        ),
-        array('id' => 'vektklubbApiBehatBuildStatus',
+            ],
+        ],
+        ['id' => 'vektklubbApiBehatBuildStatus',
             'type' => 'build',
-            'params' => array(
+            'params' => [
                 'dao' => 'jenkins',
                 'view' => 'vektklubb',
                 'job' => 'vektklubb-api-behat',
@@ -152,14 +152,14 @@ return array(
                 'title' => 'Vektklubb API Behat',
                 'refreshRate' => 5,
                 'span' => 2,
-            ),
-        ),
+            ],
+        ],
 
 
         // vektklubb.no website
-        array('id' => 'vektklubbSiteSplunk500',
+        ['id' => 'vektklubbSiteSplunk500',
             'type' => 'alert',
-            'params' => array(
+            'params' => [
                 'dao' => 'splunk',
                 'metric' => 'Fivehundreds',
                 'title' => 'Vektklubb Site',
@@ -172,11 +172,11 @@ return array(
                 ],
                 'span' => 3,
                 'refreshRate' => 180,
-            ),
-        ),
-        array('id' => 'vektklubbSiteCpuUsageGraph',
+            ],
+        ],
+        ['id' => 'vektklubbSiteCpuUsageGraph',
             'type' => 'graph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'cpuUsage',
                 'appId' => '172578',
@@ -189,21 +189,21 @@ return array(
                 'thresholdComparator' => 'lowerIsBetter',
                 'caution-value' => 50,
                 'critical-value' => 75,
-            ),
-        ),
-        array('id' => 'vektklubbSiteMemory',
+            ],
+        ],
+        ['id' => 'vektklubbSiteMemory',
             'type' => 'incrementalGraph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'memory',
                 'appId' => '172578',
                 'title' => 'Memory',
                 'valueSuffix' => 'MB',
-            ),
-        ),
-        array('id' => 'vektklubbSiteAverageResponseTimeGraph',
+            ],
+        ],
+        ['id' => 'vektklubbSiteAverageResponseTimeGraph',
             'type' => 'graph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'averageResponseTime',
                 'appId' => '172578',
@@ -216,11 +216,11 @@ return array(
                 'thresholdComparator' => 'lowerIsBetter',
                 'caution-value' => 200,
                 'critical-value' => 300,
-            ),
-        ),
-        array('id' => 'vektklubbSiteBeRpm',
+            ],
+        ],
+        ['id' => 'vektklubbSiteBeRpm',
             'type' => 'graph',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'metric' => 'rpm',
                 'appId' => '172578',
@@ -229,21 +229,21 @@ return array(
                 'endDateTime' => 'now',
                 'title' => 'Backend RPM',
                 'thresholdComparator' => 'higherIsBetter',
-            ),
-        ),
-        array('id' => 'foodErrorRate',
+            ],
+        ],
+        ['id' => 'foodErrorRate',
             'type' => 'error',
-            'params' => array(
+            'params' => [
                 'dao' => 'newRelic',
                 'valueSuffix' => '%',
                 'metric' => 'errorRate',
                 'appId' => '172578',
                 'title' => 'Error Rate',
-            ),
-        ),
-        array('id' => 'vektklubbSiteBuildStatus',
+            ],
+        ],
+        ['id' => 'vektklubbSiteBuildStatus',
             'type' => 'build',
-            'params' => array(
+            'params' => [
                 'dao' => 'jenkins',
                 'view' => 'vektklubb',
                 'job' => 'vektklubb-website',
@@ -251,13 +251,13 @@ return array(
                 'title' => 'VK WWW',
                 'refreshRate' => 5,
                 'span' => 2,
-            ),
-        ),
+            ],
+        ],
 
 
-        array('id' => 'vektklubbSiteDevelopBuildStatus',
+        ['id' => 'vektklubbSiteDevelopBuildStatus',
             'type' => 'build',
-            'params' => array(
+            'params' => [
                 'dao' => 'jenkins',
                 'view' => 'vektklubb',
                 'job' => 'vektklubb-website-develop',
@@ -265,11 +265,11 @@ return array(
                 'title' => 'VK WWW develop',
                 'refreshRate' => 5,
                 'span' => 2,
-            ),
-        ),
-        array('id' => 'vektklubbSiteDevelopDeployBuildStatus',
+            ],
+        ],
+        ['id' => 'vektklubbSiteDevelopDeployBuildStatus',
             'type' => 'build',
-            'params' => array(
+            'params' => [
                 'dao' => 'jenkins',
                 'view' => 'vektklubb',
                 'job' => 'vektklubb-website-develop',
@@ -277,7 +277,7 @@ return array(
                 'title' => 'VK develop deploy',
                 'refreshRate' => 5,
                 'span' => 2,
-            ),
-        ),
-    )
-);
+            ],
+        ],
+    ],
+];
