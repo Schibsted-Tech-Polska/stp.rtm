@@ -11,7 +11,7 @@
     },
     "require": {
         "php": ">=5.4",
-        "ext-mongo": "*",
+
         "zendframework/zendframework": "~2.3",
         "erusev/parsedown": "*",
         "doctrine/doctrine-mongo-odm-module": "dev-master",
@@ -28,6 +28,9 @@
         "filp/whoops": "*",
         "fabpot/php-cs-fixer": "*@dev",
         "satooshi/php-coveralls": "dev-master"
+    },
+    "suggest": {
+        "ext-mongo": "Required for storing messages locally"
     },
     "scripts": {
         "post-install-cmd": [
