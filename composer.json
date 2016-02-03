@@ -27,7 +27,7 @@
         "squizlabs/php_codesniffer": "~2.2",
         "filp/whoops": "*",
         "fabpot/php-cs-fixer": "*@dev",
-        "satooshi/php-coveralls": "dev-master"
+        "satooshi/php-coveralls": "~1.0"
     },
     "scripts": {
         "post-install-cmd": [
