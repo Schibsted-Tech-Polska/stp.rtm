@@ -126,6 +126,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     {
         return new Client([
             'timeout' => 30,
+            'verify' => false,
         ]);
     }
 
