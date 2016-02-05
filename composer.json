@@ -10,9 +10,10 @@
         }
     },
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.5.0",
         "ext-mongo": "*",
         "zendframework/zendframework": "~2.3",
+        "guzzlehttp/guzzle": "~6.0",
         "erusev/parsedown": "*",
         "doctrine/doctrine-mongo-odm-module": "dev-master",
         "supervisorphp/supervisor": "~3.0"
