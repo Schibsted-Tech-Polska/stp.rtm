@@ -8,17 +8,6 @@ class SplunkDaoTest extends AbstractDaoTestCase
     use SplunkDaoDataProvider;
 
     /**
-     * Sets up the fixture, for example, open a network connection.
-     * This method is called before a test is executed.
-     *
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
-    }
-
-    /**
      * @dataProvider fetchFivehundredsForAlertWidgetDataProvider
      */
     public function testFetchFivehundredsForAlertWidget($apiResponse, $expectedDaoResponse)
@@ -32,9 +21,13 @@ class SplunkDaoTest extends AbstractDaoTestCase
                 'password' => 'bar',
             ],
         ]);
-        $adapter = $this->testedDao->getDataProvider()->getAdapter();
-        $responseString = file_get_contents($apiResponse);
-        $adapter->setResponse($responseString);
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
+
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
         $response = $this->testedDao->fetchFivehundredsForAlertWidget(['config' => [
             'search' => 'search sourcetype=apache_access NOT(toolbox)' .
                 ' host=godt-web-* OR host=red-web-* status=500' .

@@ -6,6 +6,8 @@
 namespace DashboardTest\Model\Dao;
 
 use DashboardTest\Bootstrap;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 
 abstract class AbstractDaoTestCase extends \PHPUnit_Framework_TestCase
 {
@@ -34,7 +36,11 @@ abstract class AbstractDaoTestCase extends \PHPUnit_Framework_TestCase
     {
         Bootstrap::getServiceManager()->setAllowOverride(true);
 
+        $client = new Client([
+            'handler' => new MockHandler()
+        ]);
+
         $this->testedDao = $this->getTestedDao();
-        $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
+        $this->testedDao->setDataProvider($client);
     }
 }
