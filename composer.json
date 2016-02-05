@@ -26,7 +26,7 @@
         "pdepend/pdepend":"~2.0",
         "sebastian/phpcpd": "~2.0",
         "squizlabs/php_codesniffer": "~2.2",
-        "filp/whoops": "*",
+        "filp/whoops": "~1.0",
         "fabpot/php-cs-fixer": "*@dev",
         "satooshi/php-coveralls": "~1.0"
     },

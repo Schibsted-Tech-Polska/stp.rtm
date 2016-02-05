@@ -10,6 +10,7 @@ use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 use Dashboard\Model\Dao\Exception\EndpointUrlNotDefined;
 use Dashboard\Model\Dao\Exception\FetchNotImplemented;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
 use Zend\Json\Json;
@@ -196,7 +197,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         $client = $this->getDataProvider();
 
         if (!is_null($this->getDaoAuth())) {
-            $requestOptions['auth'] = $this->getDaoAuth();
+            $requestOptions['auth'] = array_values($this->getDaoAuth());
         }
 
         $promise = $client->sendAsync($request, $requestOptions);
@@ -237,19 +238,14 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
                     return $responseParsed;
                 },
                 function (RequestException $e) {
-                    echo $e->getMessage() . "\n";
-                    echo $e->getRequest()->getMethod();
-
-                    echo $e->getRequest();
-                    if ($e->hasResponse()) {
-                        echo $e->getResponse();
-                    }
-    //                throw new Client\Exception\RuntimeException(
-    //                    'Request failed with status: '
-    //                    . $response->renderStatusLine()
-    //                    . ' ' . $response->getBody(),
-    //                    $response->getStatusCode()
-    //                );
+                    throw new \RuntimeException(
+                        sprintf(
+                        'Request failed with status: %s %s %s',
+                        $e->getMessage(),
+                        $e->hasResponse() ? $e->getResponseBodySummary($e->getResponse()) : '',
+                        $e->getCode()
+                        )
+                    );
                 }
             )
         ->wait();
