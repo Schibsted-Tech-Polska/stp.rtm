@@ -26,11 +26,9 @@ class Bamboo4DaoTest extends AbstractBambooDao
         $fetchStatusForBuildWidgetResponse,
         $expectedDaoResponse
     ) {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(
-            file_get_contents($runningBuildsResponse)
-        );
-        $this->testedDao->getDataProvider()->getAdapter()->addResponse(
-            file_get_contents($fetchStatusForBuildWidgetResponse)
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($runningBuildsResponse)),
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($fetchStatusForBuildWidgetResponse))
         );
 
         $response = $this->testedDao->fetchStatusForBuildWidget(['project' => 'foobar', 'plan' => 'awesome']);

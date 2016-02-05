@@ -13,7 +13,6 @@ class JenkinsDaoTest extends AbstractDaoTestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
         $this->testedDao->setDaoOptions([
             'params' => [
                 'baseUrl' => 'http://ci.vgnett.no',
@@ -28,7 +27,9 @@ class JenkinsDaoTest extends AbstractDaoTestCase
      */
     public function testFetchStatusForBuildWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchStatusForBuildWidget([
             'view' => 'VGTV',
@@ -69,11 +70,9 @@ class JenkinsDaoTest extends AbstractDaoTestCase
      */
     public function testFetchStatusForBuildWidgetBuilding($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(
-            file_get_contents($apiResponse)
-        );
-        $this->testedDao->getDataProvider()->getAdapter()->addResponse(
-            file_get_contents(__DIR__ . '/../../Mock/Dao/Jenkins/fetchBuildStatusResponse.txt')
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse)),
+            \GuzzleHttp\Psr7\parse_response(file_get_contents(__DIR__ . '/../../Mock/Dao/Jenkins/fetchBuildStatusResponse.txt'))
         );
 
         $response = $this->testedDao->fetchStatusForBuildWidget([

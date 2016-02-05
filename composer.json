@@ -10,9 +10,10 @@
         }
     },
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.5.0",
         "ext-mongo": "*",
         "zendframework/zendframework": "~2.3",
+        "guzzlehttp/guzzle": "~6.0",
         "erusev/parsedown": "*",
         "doctrine/doctrine-mongo-odm-module": "dev-master",
         "supervisorphp/supervisor": "~3.0"
@@ -25,7 +26,7 @@
         "pdepend/pdepend":"~2.0",
         "sebastian/phpcpd": "~2.0",
         "squizlabs/php_codesniffer": "~2.2",
-        "filp/whoops": "*",
+        "filp/whoops": "~1.0",
         "fabpot/php-cs-fixer": "*@dev",
         "satooshi/php-coveralls": "~1.0"
     },
