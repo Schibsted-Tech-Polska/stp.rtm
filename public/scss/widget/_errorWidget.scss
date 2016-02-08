@@ -18,6 +18,7 @@ $caution-background-color: #978C06;
             background: {
                 image: url(../img/sock.png);
                 repeat: no-repeat;
+                size: 45%;
             }
             width: 100px;
             height: 100px;
@@ -26,7 +27,11 @@ $caution-background-color: #978C06;
         }
     }
 
-    &.thresholdCriticalValue {
+    .value {
+        font-size: 4rem;
+    }
+
+    &.thresholdCriticalValue .widgetContainer{
         background-color: $critical-background-color;
 
         .value {
@@ -34,7 +39,7 @@ $caution-background-color: #978C06;
         }
     }
 
-    &.thresholdCautionValue {
+    &.thresholdCautionValue .widgetContainer{
         background-color: $caution-background-color;
 
         .value {

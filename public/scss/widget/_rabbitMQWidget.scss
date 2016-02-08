@@ -5,17 +5,17 @@
     overflow: hidden;
 
     .logo {
-        height: 4rem;
+        height: 3rem;
         margin-bottom: 1rem;
     }
 
     .queues {
         .queue {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             width: 100%;
 
             .name {
-                width: 35%;
+                width: 50%;
                 text-align: right;
                 padding: 2px 4px;
                 font-weight: normal;
@@ -23,7 +23,7 @@
 
             .status {
                 line-height: 1.5rem;
-                width: 65%;
+                width: 50%;
                 text-align: left;
                 padding: 2px 4px;
                 color: $color-gray;

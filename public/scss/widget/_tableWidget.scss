@@ -1,0 +1,32 @@
+#dashboardBody .widget.TableWidget {
+    font-size: 1.2rem;
+
+    small {
+        font-size: 80%;
+    }
+
+    h1 {
+        margin: {
+            bottom: 0;
+        }
+    }
+
+    .content {
+        margin: {
+            top: 1rem;
+            left: auto;
+            right: auto;
+        }
+    }
+
+    .item-name {
+        padding-right: 2rem;
+        text-align: right;
+    }
+
+    .item-value {
+        font-weight: bold;
+        font-size: 1.4rem;
+        text-align: left;
+    }
+}
