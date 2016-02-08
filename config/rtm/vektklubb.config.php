@@ -279,17 +279,5 @@ return [
                 'span' => 2,
             ],
         ],
-        ['id' => 'vektklubbSiteDevelopDeployBuildStatus',
-            'type' => 'build',
-            'params' => [
-                'dao' => 'jenkins',
-                'view' => 'vektklubb',
-                'job' => 'vektklubb-website-develop',
-                'metric' => 'status',
-                'title' => 'VK develop deploy',
-                'refreshRate' => 5,
-                'span' => 2,
-            ],
-        ],
     ],
 ];
