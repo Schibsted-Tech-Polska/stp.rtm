@@ -17,7 +17,7 @@
             <div class="col-md-12 last">
                 <div class="content">
                         <span class="failure">
-                            <strong><%= item.url %></strong><br/><small> <%= item.numberOfErrors %> errors, last at <% var date = new Date(item.lastErrorTime*1000); print(date.getUTCFullYear() + '-' +
+                            <strong><%= item.url %></strong><br/><small> <%= item.count %> errors, last at <% var date = new Date(item.latestTime*1000); print(date.getUTCFullYear() + '-' +
                                     ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
                                     ('00' + date.getUTCDate()).slice(-2) + ' ' +
                                     ('00' + date.getUTCHours()).slice(-2) + ':' +

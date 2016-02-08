@@ -34,7 +34,7 @@ class SplunkDaoTest extends AbstractDaoTestCase
                 ' | stats count latest(_time) as latestTime by url | sort -count | head 5',
             'earliest_time' => '-1h',
             'latest' => 'now',
-            'output_mode' => 'json_cols',
+            'output_mode' => 'json',
         ]]);
         $this->assertInternalType('array', $response);
         $this->assertEquals($expectedDaoResponse, $response);
