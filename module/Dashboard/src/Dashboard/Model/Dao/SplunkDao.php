@@ -31,15 +31,8 @@ class SplunkDao extends AbstractDao
             $params['config']
         );
 
-        if ($splunkJson) {
-            $returnArray = [];
-            foreach ($splunkJson['columns'][1] as $key => $url) {
-                $returnArray[$key]['url'] = $url;
-                $returnArray[$key]['numberOfErrors'] = $splunkJson['columns'][0][$key];
-                $returnArray[$key]['lastErrorTime'] = $splunkJson['columns'][2][$key];
-            }
-
-            return $returnArray;
+        if (is_array($splunkJson) && isset($splunkJson['results'])) {
+            return $splunkJson['results'];
         } else {
             return [];
         }
