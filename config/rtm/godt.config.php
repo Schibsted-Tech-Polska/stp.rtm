@@ -20,8 +20,8 @@ return array(
             'X-Requested-With' => 'XMLHttpRequest',
         ),
         'auth' => array(
-            'username' => 'stprtm',
-            'password' => 'VTNAj7s8WErvR9uYhZeA',
+            'username' => 'wiskra',
+            'password' => 'Eeboo4ohr.',
         ),
     ),
     'slack' => array(
