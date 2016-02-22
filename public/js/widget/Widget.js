@@ -219,6 +219,9 @@ Widget.prototype = {
             } else if (this.params.numericSystem == 'bandwidth') {
                 var i = -1;
                 var units = [' kbit', ' mbit', ' gbit', ' tbit', ' pbit', ' ebit', ' zbit', ' ybit'];
+
+                // convert from bytes to bits
+                n = 8 * n;
                 do {
                     n = n / 1024;
                     i++;
