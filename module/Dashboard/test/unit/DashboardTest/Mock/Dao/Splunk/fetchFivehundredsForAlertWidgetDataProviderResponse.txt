@@ -8,4 +8,5 @@ X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
 Server: Splunkd
 
-{"preview":false,"init_offset":0,"messages":[{"type":"DEBUG","text":"base lispy: [ AND 500 sourcetype::apache_access [ NOT toolbox ] [ OR host::godt-web-* host::red-web-* ] ]"},{"type":"DEBUG","text":"search context: user=\"wiskra\", app=\"search\", bs-pathname=\"/opt/splunk/etc\""}],"fields":["count","url","latestTime"],"columns":[["8","4","1"],["www.godt.no/svp/api/assets","www.godt.no/api/search/recipes","red.vgnett.no/godt-admin/image/upload"],["1402337747","1402338198","1402258823"]]}
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"url","groupby_rank":"0"},{"name":"count"},{"name":"latestTime"}],"results":[{"url":"www.vektklubb.no/dagbok/edit/","count":"1","latestTime":"1454874000"}], "highlighted":{}}

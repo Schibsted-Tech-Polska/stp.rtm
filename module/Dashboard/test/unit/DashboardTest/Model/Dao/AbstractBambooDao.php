@@ -8,17 +8,6 @@ abstract class AbstractBambooDao extends AbstractDaoTestCase
     use BambooDaoDataProvider;
 
     /**
-     * Sets up the fixture, for example, open a network connection.
-     * This method is called before a test is executed.
-     *
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
-    }
-
-    /**
      * @dataProvider fetchStatusForBuildWidgetDataProvider
      */
     public function testFetchStatusForBuildWidget(
@@ -26,11 +15,9 @@ abstract class AbstractBambooDao extends AbstractDaoTestCase
         $fetchStatusForBuildWidgetResponse,
         $expectedDaoResponse
     ) {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(
-            file_get_contents($runningBuildsResponse)
-        );
-        $this->testedDao->getDataProvider()->getAdapter()->addResponse(
-            file_get_contents($fetchStatusForBuildWidgetResponse)
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($runningBuildsResponse)),
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($fetchStatusForBuildWidgetResponse))
         );
 
         $response = $this->testedDao->fetchStatusForBuildWidget(['project' => 'foobar', 'plan' => 'awesome']);

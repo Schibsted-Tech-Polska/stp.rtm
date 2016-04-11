@@ -34,7 +34,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchRpmForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchRpmForNumberWidget([
             'appId' => '1111111',
@@ -49,7 +51,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchFeRpmForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchFeRpmForNumberWidget([
             'appId' => '1111111',
@@ -64,7 +68,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchErrorRateForErrorWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchErrorRateForErrorWidget([
             'appId' => '1111111',
@@ -79,7 +85,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchApdexForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchApdexForNumberWidget([
             'appId' => '1111111',
@@ -94,7 +102,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchApdexForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchApdexForIncrementalGraphWidget([
             'appId' => '1111111',
@@ -109,7 +119,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchCpuUsageForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchCpuUsageForNumberWidget([
             'appId' => '1111111',
@@ -124,7 +136,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchAverageResponseTimeForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchAverageResponseTimeForNumberWidget([
             'appId' => '1111111',
@@ -139,7 +153,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchMemoryForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchMemoryForNumberWidget([
             'appId' => '1111111',
@@ -154,7 +170,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchMemoryForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchMemoryForIncrementalGraphWidget([
             'appId' => '1111111',
@@ -169,7 +187,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchCpuFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchCpuFromThresholdForNumberWidget([
             'appId' => '1111111',
@@ -184,7 +204,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchCpuFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchCpuFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
@@ -199,7 +221,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchDBFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchDBFromThresholdForNumberWidget([
             'appId' => '1111111',
@@ -214,7 +238,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchDBFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchDBFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
@@ -229,7 +255,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchThroughputFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchThroughputFromThresholdForNumberWidget([
             'appId' => '1111111',
@@ -244,7 +272,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchThroughputFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchThroughputFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
@@ -259,7 +289,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchResponseTimeFromThresholdForNumberWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchResponseTimeFromThresholdForNumberWidget([
             'appId' => '1111111',
@@ -274,7 +306,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchResponseTimeFromThresholdForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchResponseTimeFromThresholdForIncrementalGraphWidget([
             'appId' => '1111111',
@@ -289,7 +323,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchEvents($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchEvents([
             'appId' => '1111111',
@@ -306,7 +342,9 @@ class NewRelicDaoTest extends AbstractDaoTestCase
      */
     public function testFetchThreshold($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchThreshold([
             'appId' => '1111111',

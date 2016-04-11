@@ -19,21 +19,9 @@ trait SplunkDaoDataProvider
                 '$expectedDaoResponse' => [
                     0 =>
                         [
-                            'url' => 'www.godt.no/svp/api/assets',
-                            'numberOfErrors' => '8',
-                            'lastErrorTime' => '1402337747',
-                        ],
-                        1 =>
-                        [
-                            'url' => 'www.godt.no/api/search/recipes',
-                            'numberOfErrors' => '4',
-                            'lastErrorTime' => '1402338198',
-                        ],
-                        2 =>
-                        [
-                            'url' => 'red.vgnett.no/godt-admin/image/upload',
-                            'numberOfErrors' => '1',
-                            'lastErrorTime' => '1402258823',
+                            'url' => 'www.vektklubb.no/dagbok/edit/',
+                            'count' => '1',
+                            'latestTime' => '1454874000',
                         ],
                 ],
             ],

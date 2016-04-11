@@ -78,6 +78,15 @@ return [
             'span' => 3,
             'useThreshold' => 0,
         ],
+        'table' => [
+            'refreshRate' => 60,
+            'title' => '',
+            'subtitle' => '',
+            'valueSuffix' => '',
+            'valuePrefix' => '',
+            'span' => 3,
+            'useThreshold' => 0,
+        ],
         'build' => [
             'refreshRate' => 10,
             'title' => '',

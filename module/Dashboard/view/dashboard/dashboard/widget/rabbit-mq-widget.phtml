@@ -17,14 +17,14 @@
                     <% if (!_.isUndefined(queue.messages)) { %>
                         <td class="status">
                             <span class="<%= queue.messages > 0 ? "warning" : "success" %>">
-                                <%= queue.messages %> messages</span> (<%= queue.messages_details.rate %>/s)
-                            <span class="<%= queue.consumers > 0 ? "success" : "failure" %>"><%= queue.consumers %> workers up</span>
+                                <%= queue.messages %> msgs</span> (<%= queue.messages_details.rate %>/s)
+                            <span class="<%= queue.consumers > 0 ? "success" : "failure" %>"><%= queue.consumers %> workers</span>
                         </td>
                     <% } else { %>
                         <td class="status">
                         <span class=success">
                             0 messages</span>
-                            <span class="<%= queue.consumers > 0 ? "success" : "failure" %>"><%= queue.consumers %> workers up</span>
+                            <span class="<%= queue.consumers > 0 ? "success" : "failure" %>"><%= queue.consumers %> workers</span>
                         </td>
                     <% } %>
                 </tr>

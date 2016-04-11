@@ -8,22 +8,13 @@ class SmogDaoTest extends AbstractDaoTestCase
     use SmogDaoDataProvider;
 
     /**
-     * Sets up the fixture, for example, open a network connection.
-     * This method is called before a test is executed.
-     *
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->testedDao->getDataProvider()->setAdapter(new \Zend\Http\Client\Adapter\Test());
-    }
-
-    /**
      * @dataProvider fetchForSmogWidgetDataProvider
      */
     public function testFetchForSmogWidget($apiResponse, $expectedDaoResponse)
     {
-        $this->testedDao->getDataProvider()->getAdapter()->setResponse(file_get_contents($apiResponse));
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
 
         $response = $this->testedDao->fetchForSmogWidget();
         $this->assertInternalType('array', $response);

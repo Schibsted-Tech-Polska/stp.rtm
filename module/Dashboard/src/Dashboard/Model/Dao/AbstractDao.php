@@ -9,8 +9,10 @@ namespace Dashboard\Model\Dao;
 use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
 use Dashboard\Model\Dao\Exception\EndpointUrlNotDefined;
 use Dashboard\Model\Dao\Exception\FetchNotImplemented;
-use Zend\Http\Client;
-use Zend\Http\Request;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
 use Zend\Json\Json;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -122,31 +124,10 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
      */
     protected function setDefaultDataProvider()
     {
-        $dataProvider = new Client();
-
-        $adapter = new Client\Adapter\Curl();
-
-        $curlOptions = [
-            CURLOPT_FOLLOWLOCATION => 1,
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_SSL_VERIFYHOST => 0,
-        ];
-
-        $adapter->setOptions([
-            'curloptions' => $curlOptions,
-        ]);
-
-        $dataProvider->setAdapter($adapter);
-
-        $dataProvider->setOptions([
-            'maxredirects' => 1,
+        return new Client([
             'timeout' => 30,
-            'useragent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4)' .
-                ' AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.122 Safari/537.36',
+            'verify' => false,
         ]);
-
-        return $dataProvider;
     }
 
     /**
@@ -191,7 +172,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
     /**
      * Executes a request to a given URL using injected Data Provider
      *
-     * @param  string|\Zend\Uri\HttpUri $url endpoint destination URL
+     * @param  string $url endpoint destination URL
      * @param  array|null $params request params values
      * @param  int $responseFormat Format of the response - needed to execute a proper parser
      * @param  string|null $auth Auth data login:password
@@ -206,73 +187,69 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
         $auth = null,
         $postData = null
     ) {
-        $request = new Request();
-        $request->setUri($this->assembleUrl($url, $params));
-        // Auth data
-        if ($auth && !$this->getDataProvider()->getAdapter() instanceof \Zend\Http\Client\Adapter\Test) {
-            $this->setDataProvider($this->setDefaultDataProvider());
-        }
+        $requestOptions = [];
+        $request = new Request(($postData ? 'POST' : 'GET'), $this->assembleUrl($url, $params), $this->getDaoHeaders());
 
         // Use POST method
         if ($postData) {
-            $request->setMethod('POST');
-            $request->setContent(http_build_query($postData));
+            $requestOptions['form_params'] = $postData;
         }
 
         $client = $this->getDataProvider();
 
         if (!is_null($this->getDaoAuth())) {
-            $client->setAuth($this->getDaoAuth()['username'], $this->getDaoAuth()['password'], Client::AUTH_BASIC);
+            $requestOptions['auth'] = array_values($this->getDaoAuth());
         }
 
-        $headers = $request->getHeaders();
-        $headers->addHeaders($this->getDaoHeaders());
+        $promise = $client->sendAsync($request, $requestOptions);
 
-        /**
-         * @var \Zend\Http\Response
-         */
-        $response = $client->dispatch($request);
-        if ($response->isSuccess()) {
-            switch ($responseFormat) {
-                case self::RESPONSE_IN_JSON:
-                    $responseParsed = Json::decode($response->getBody(), Json::TYPE_ARRAY);
-                    break;
-                case self::RESPONSE_IN_XML:
-                    try {
-                        $responseParsed = simplexml_load_string($response->getBody());
-                    } catch (Exception $e) {
-                        throw new Client\Exception\RuntimeException('Parsing XML from request response failed');
+        return $promise
+            ->then(
+                function (ResponseInterface $response) use ($responseFormat) {
+                    switch ($responseFormat) {
+                        case self::RESPONSE_IN_JSON:
+                            $responseParsed = Json::decode((string) $response->getBody(), Json::TYPE_ARRAY);
+                            break;
+                        case self::RESPONSE_IN_XML:
+                            try {
+                                $responseParsed = simplexml_load_string((string) $response->getBody());
+                            } catch (\Exception $e) {
+                                throw new \RuntimeException('Parsing XML from request response failed');
+                            }
+                            break;
+                        case self::RESPONSE_IN_HTML:
+                            try {
+                                // load as HTML, supress any error and pass it to XML parser
+                                $doc = new \DOMDocument();
+                                $doc->recover = true;
+                                $doc->strictErrorChecking = false;
+                                @$doc->loadHTML((string) $response->getBody());
+                                $responseParsed = simplexml_load_string($doc->saveXML());
+                            } catch (\Exception $e) {
+                                throw new \RuntimeException('Parsing XML from request response failed');
+                            }
+                            break;
+                        case self::RESPONSE_AS_IS:
+                            $responseParsed = $response;
+                            break;
+                        default:
+                            throw new \RuntimeException('Parser for request response not found.');
+                            break;
                     }
-                    break;
-                case self::RESPONSE_IN_HTML:
-                    try {
-                        // load as HTML, supress any error and pass it to XML parser
-                        $doc = new \DOMDocument();
-                        $doc->recover = true;
-                        $doc->strictErrorChecking = false;
-                        @$doc->loadHTML($response->getBody());
-                        $responseParsed = simplexml_load_string($doc->saveXML());
-                    } catch (Exception $e) {
-                        throw new Client\Exception\RuntimeException('Parsing XML from request response failed');
-                    }
-                    break;
-                case self::RESPONSE_AS_IS:
-                    $responseParsed = $response;
-                    break;
-                default:
-                    throw new Client\Exception\RuntimeException('Parser for request response not found.');
-                    break;
-            }
-
-            return $responseParsed;
-        } else {
-            throw new Client\Exception\RuntimeException(
-                'Request failed with status: '
-                . $response->renderStatusLine()
-                . ' ' . $response->getBody(),
-                $response->getStatusCode()
-            );
-        }
+                    return $responseParsed;
+                },
+                function (RequestException $e) {
+                    throw new \RuntimeException(
+                        sprintf(
+                        'Request failed with status: %s %s %s',
+                        $e->getMessage(),
+                        $e->hasResponse() ? $e->getResponseBodySummary($e->getResponse()) : '',
+                        $e->getCode()
+                        )
+                    );
+                }
+            )
+        ->wait();
     }
 
     public function requestWithCache(
@@ -300,7 +277,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
     /**
      * Data provider setter
-     * @param \Zend\Http\Client $dataProvider data provider object
+     * @param Client $dataProvider data provider object
      */
     public function setDataProvider($dataProvider)
     {
@@ -309,7 +286,7 @@ abstract class AbstractDao implements ServiceLocatorAwareInterface
 
     /**
      * Data provider getter
-     * @return \Zend\Http\Client
+     * @return Client
      */
     public function getDataProvider()
     {

@@ -4,15 +4,15 @@
  */
 return array(
     'theme' => ['tv', 'dark'],
-    'splunk' => array(
-        'params' => array(
-            'baseUrl' => 'https://mother.int.vgnett.no:8089',
-        ),
-        'auth' => array(
-            'username' => 'wiskra',
-            'password' => 'DopdeDey',
-        ),
-    ),
+    'splunk' => [
+        'params' => [
+            'baseUrl' => 'https://splunk-01.int.vgnett.no:8089',
+        ],
+        'auth' => [
+            'username' => 'stprtm',
+            'password' => 'VTNAj7s8WErvR9uYhZeA',
+        ],
+    ],
     'jenkins' => array(
         'params' => array(
             'baseUrl' => 'http://ci.vgnett.no/',
@@ -25,11 +25,6 @@ return array(
         'params' => array(
             'accountId' => '100366'
         )
-    ),
-    'hipChat' => array(
-        'params' => array(
-            'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
-        ),
     ),
     'rabbitMQ' => array(
         'params' => array(
@@ -45,20 +40,6 @@ return array(
         ),
     ),
     'widgets' => array(
-        array('id' => 'messagesRose',
-            'type' => 'messages',
-            'params' => array(
-                'dao' => 'hipChat',
-                'metric' => 'listRecentMessages',
-                'span' => 6,
-                'subtitle' => '',
-                'title' => 'Rose',
-                'limit' => 10,
-                'room' => '678527',
-                'refreshRate' => 30,
-                'fromUser' => ['jenkins', 'Cap4All'],
-            ),
-        ),
         array('id' => 'roseBuildStatuCore',
             'type' => 'build',
             'params' => array(
@@ -68,7 +49,7 @@ return array(
                 'metric' => 'status',
                 'title' => 'Core',
                 'refreshRate' => 5,
-                'span' => '1',
+                'span' => '2',
             ),
         ),
         array('id' => 'roseBuildStatusDevelop',
@@ -92,7 +73,7 @@ return array(
                 'metric' => 'status',
                 'title' => 'Integration',
                 'refreshRate' => 5,
-                'span' => '1',
+                'span' => '2',
             ),
         ),
         array('id' => 'roseBuildStatusQuality',
@@ -104,7 +85,7 @@ return array(
                 'metric' => 'status',
                 'title' => 'Code quality',
                 'refreshRate' => 5,
-                'span' => '1',
+                'span' => '2',
             ),
         ),
         array('id' => 'roseBuildStatusJS',
@@ -112,11 +93,11 @@ return array(
             'params' => array(
                 'dao' => 'jenkins',
                 'view' => 'Rose_v2',
-                'job' => 'Rose_v2_develop-mocha',
+                'job' => 'Rose_v2_develop - Karma',
                 'metric' => 'status',
                 'title' => 'JavaScript',
                 'refreshRate' => 5,
-                'span' => '1',
+                'span' => '4',
             ),
         ),
         array(
@@ -127,7 +108,7 @@ return array(
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
                 'span' => 2,
-                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'geo-targeting*', 'placement:*', 'rose:*'],
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'querystring:*', 'entity:*', 'rose:*', 'availability', 'ims:*'],
                 'queueNameParser' => function($queueName) { return str_replace([':management', 'rose:'], '', $queueName);},
             ),
         ),
@@ -139,7 +120,7 @@ return array(
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
                 'span' => 2,
-                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'campaign:*', 'customer:*', 'ims:*'],
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'changelog:*', 'campaign:*', 'customer:*', 'sync:*', 'booking:inventory'],
                 'queueNameParser' => function($queueName) { return str_replace([':management', 'rose:'], '', $queueName);},
             ),
         ),
@@ -169,7 +150,7 @@ return array(
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
                 'span' => 2,
-                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'geo-targeting*', 'placement:*', 'rose:*'],
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'querystring:*', 'entity:*', 'rose:*', 'availability', 'ims:*'],
                 'queueNameParser' => function($queueName) { return str_replace([':management', 'rose:'], '', $queueName);},
             ),
         ),
@@ -182,7 +163,7 @@ return array(
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
                 'span' => 2,
-                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'campaign:*', 'customer:*', 'notification:*', 'ims:*'],
+                'ignoreQueues' => ['.*testing.*', '.*:invalid:.*', '.*:not-existing:.*', 'aliveness-test', 'email:send', 'changelog:*', 'campaign:*', 'customer:*', 'sync:*', 'booking:inventory'],
                 'queueNameParser' => function($queueName) { return str_replace([':management', 'rose:'], '', $queueName);},
             ),
         ),
@@ -271,23 +252,25 @@ return array(
                     'search' => 'search sourcetype=apache_access source="/var/log/httpd/rose-app-access.log" host=vg-rose-01* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
                     'earliest_time' => '-24h',
                     'latest' => 'now',
-                    'output_mode' => 'json_cols',
+                    'output_mode' => 'json',
+                    'exec_mode' => 'oneshot',
                 ],
                 'span' => 4,
             ),
         ),
-         array('id' => 'roseE24Splunk500',
-            'type' => 'alert',
+        array('id' => 'roseSplunkTopUrls',
+            'type' => 'table',
             'params' => array(
                 'dao' => 'splunk',
-                'metric' => 'Fivehundreds',
-                'title' => 'Rose (production E24)',
-                'subtitle' => '500 errors in last 24h',
+                'metric' => 'TopUrls',
+                'title' => 'Rose (production)',
+                'subtitle' => 'most popular URLs in last 24h',
                 'config' => [
-                    'search' => 'search sourcetype=apache_access source="/var/log/httpd/rose-app-e24-access.log" host=vg-rose-01* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
+                    'search' => 'search host="vg-rose-01*" sourcetype=apache_access url != "rose-app.e24.no*" url != "localhost/server-status" url != "10.84.200.208/index.html" | top limit=100 url | stats sum(count) AS NumOf by url | sort -num(NumOf) | head 8',
                     'earliest_time' => '-24h',
                     'latest' => 'now',
                     'output_mode' => 'json_cols',
+                    'preview' => 0,
                 ],
                 'span' => 4,
             ),
@@ -303,7 +286,8 @@ return array(
                     'search' => 'search sourcetype=apache_access host=vg-rose-s01* status=500 | stats count latest(_time) as latestTime by url | sort -count | head 5',
                     'earliest_time' => '-24h',
                     'latest' => 'now',
-                    'output_mode' => 'json_cols',
+                    'output_mode' => 'json',
+                    'exec_mode' => 'oneshot',
                 ],
                 'span' => 4,
             ),
