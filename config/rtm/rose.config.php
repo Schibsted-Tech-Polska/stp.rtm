@@ -20,15 +20,15 @@ return array(
     ),
     'newRelic' => array(
         'headers' => array(
-            'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30'
+            'x-api-key' => '0f7f1b8738a7597496687c5a64a556c65207ae0812fcbbb'
         ),
         'params' => array(
-            'accountId' => '100366'
+            'accountId' => '225167'
         )
     ),
     'rabbitMQ' => array(
         'params' => array(
-            'rabbitMQUrl' => 'http://vg-rabbit-01:15672',
+            'rabbitMQUrl' => 'http://rose-rabbitmq-prod1.prod.schibsted.tech:15672',
             'vhost' => 'rose',
         ),
         'headers' => array(
@@ -40,6 +40,7 @@ return array(
         ),
     ),
     'widgets' => array(
+/*
         array('id' => 'roseBuildStatuCore',
             'type' => 'build',
             'params' => array(
@@ -100,6 +101,7 @@ return array(
                 'span' => '4',
             ),
         ),
+*/
         array(
             'id' => 'prodRabbitMQQueues',
             'type' => 'rabbitMQ',
@@ -145,7 +147,7 @@ return array(
             'id' => 'stagingRabbitMQQueues',
             'type' => 'rabbitMQ',
             'params' => array(
-                'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
+                'rabbitMQUrl' => 'http://rose-rabbitmq-dev1.dev.schibsted.tech:15672',
                 'dao' => 'rabbitMQ',
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
@@ -158,7 +160,7 @@ return array(
             'id' => 'stagingRabbitMQQueuesAdditional',
             'type' => 'rabbitMQ',
             'params' => array(
-                'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
+                'rabbitMQUrl' => 'http://rose-rabbitmq-dev1.dev.schibsted.tech:15672',
                 'dao' => 'rabbitMQ',
                 'metric' => 'queues',
                 'title' => 'RabbitMQ',
@@ -170,7 +172,7 @@ return array(
         array('id' => 'roseStagingEmails',
             'type' => 'graph',
             'params' => array(
-                'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
+                'rabbitMQUrl' => 'http://rose-rabbitmq-dev1.dev.schibsted.tech:15672',
                 'dao' => 'rabbitMQ',
                 'metric' => 'queuedMessages',
                 'title' => 'Emails',
@@ -191,7 +193,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'averageResponseTime',
-                'appId' => '4678474',
+                'appId' => '16549903',
                 'title' => 'Avg response time (vg-rose-01)',
                 'span' => 3,
                 'valueSuffix' => 'ms',
@@ -205,7 +207,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'cpuUsage',
-                'appId' => '4678474',
+                'appId' => '16549903',
                 'title' => 'CPU usage (vg-rose-01)',
                 'span' => 3,
                 'valueSuffix' => '%',
@@ -219,7 +221,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'memory',
-                'appId' => '4678474',
+                'appId' => '16549903',
                 'title' => 'Memory usage (vg-rose-01)',
                 'span' => 3,
                 'valueSuffix' => 'MB',
@@ -233,7 +235,7 @@ return array(
             'params' => array(
                 'dao' => 'newRelic',
                 'metric' => 'rpm',
-                'appId' => '4678474',
+                'appId' => '16549903',
                 'title' => 'Backend RPM (vg-rose-01)',
                 'span' => 3,
                 'valueSuffix' => 'hits',
@@ -241,6 +243,7 @@ return array(
                 'endDateTime' => 'now'
             )
         ),
+/*
         array('id' => 'roseSplunk500',
             'type' => 'alert',
             'params' => array(
@@ -292,5 +295,6 @@ return array(
                 'span' => 4,
             ),
         ),
+*/
      ),
 );
