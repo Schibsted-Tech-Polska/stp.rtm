@@ -106,6 +106,9 @@ class Module
                 'SupervisordDao' => function (ServiceManager $serviceManager) {
                     return new SupervisordDao($serviceManager->get('Config')['SupervisordDao']);
                 },
+                'GoCDDao' => function (ServiceManager $serviceManager) {
+                    return new Model\Dao\GoCDDao($serviceManager->get('Config')['GoCDDao']);
+                },
             ],
         ];
     }
