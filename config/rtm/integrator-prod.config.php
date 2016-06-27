@@ -626,6 +626,9 @@ return array(
                 'beginDateTime' => '-30 minutes',
                 'endDateTime' => 'now',
                 'numericSystem' => 'bandwidth',
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 75 * 104857600, // 75 mbit
+                'critical-value' => 100 * 104857600, // 100 mbit
             ],
         ],
         [
@@ -641,8 +644,8 @@ return array(
                 'endDateTime' => 'now',
                 'diskName' => '^',
                 'thresholdComparator' => 'lowerIsBetter',
-                'caution-value' => 20 * 1073741824,
-                'critical-value' => 25 * 1073741824,
+                'caution-value' => 100 * 1073741824,
+                'critical-value' => 150 * 1073741824,
                 'numericSystem' => 'binary',
             ],
         ],
@@ -673,9 +676,9 @@ return array(
                 'title' => 'Hadoop',
                 'subtitle' => 'disk usage',
                 'span' => 1,
-                'thresholdComparator' => 'higherIsBetter',
-                'caution-value' => 1073741824,
-                'critical-value' => 1073741824 / 2,
+                'thresholdComparator' => 'lowerIsBetter',
+                'caution-value' => 21990232555520, // 20TB
+                'critical-value' => 32985348833280, // 30TB
                 'numericSystem' => 'binary',
                 'refreshRate' => 3600,
             ],
