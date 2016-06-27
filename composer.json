@@ -5,9 +5,8 @@
     "prefer-stable": true,
     "config": {
         "preferred-install": "dist",
-        "github-oauth": {
-            "github.com": "0f1045ecff9d1a2d6260f501ac1ffcfa5370550c"
-        }
+        "secure-http": false
+
     },
     "repositories": [
         { "type": "vcs", "url": "git.int.vgnett.no:/git/stp/cap4all.git" }
@@ -15,10 +14,10 @@
     "require": {
         "php": ">=5.5.0",
         "ext-mongo": "*",
-        "zendframework/zendframework": "~2.3",
+        "zendframework/zendframework": "~2.4.0",
         "guzzlehttp/guzzle": "~6.0",
         "erusev/parsedown": "*",
-        "doctrine/doctrine-mongo-odm-module": "dev-master",
+        "doctrine/doctrine-mongo-odm-module": "~0.9.0",
         "supervisorphp/supervisor": "~3.0"
     },
     "require-dev": {

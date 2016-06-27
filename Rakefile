@@ -91,51 +91,39 @@ task :phpcpd do |task|
     system_check "vendor/bin/phpcpd  #{srcPath}"
 end
 
+##### Composer #####
 namespace :composer do
-
     desc "Install composer's dependencies"
     task :install, [:params] do |task, args|
-        if is_composer_installed
-            system_check "composer install #{args.params}"
-        else
-            unless File.exist?('composer.phar')
-                system "curl -s http://getcomposer.org/installer | php -d \"apc.enable_cli=off\" "
-            end
-
-            system_check "php -d \"apc.enable_cli=off\" composer.phar install #{args.params}"
+        puts task.comment
+        unless File.exist?('composer.phar')
+            system "curl -s http://getcomposer.org/installer | php -d \"apc.enable_cli=off\" "
         end
 
+        system_check "php -d \"apc.enable_cli=off\" composer.phar self-update"
+        system_check "if [ -n \"$GITHUB_OAUTH_TOKEN\" ]; then php composer.phar config github-oauth.github.com $GITHUB_OAUTH_TOKEN; php -d \"apc.enable_cli=off\" composer.phar install #{args.params} --prefer-dist; else php -d \"apc.enable_cli=off\" composer.phar install #{args.params} --prefer-source; fi"
     end
 
-    desc "Update composer's dependencies"
-    task :update, [:params] do |task, args|
-        if is_composer_installed
-            system_check "composer update #{args.params}"
-        else
-            unless File.exist?('composer.phar')
-                system "curl -s http://getcomposer.org/installer | php -d \"apc.enable_cli=off\" "
-            end
-
-            system_check "php -d \"apc.enable_cli=off\" composer.phar update #{args.params} --prefer-dist"
-        end
-    end
-
-    desc "Update composer's dependencies for development"
+    desc "Install composer's dependencies for development"
     task :dev do |task|
         puts task.comment
-        Rake::Task["composer:update"].invoke()
+        Rake::Task["composer:install"].invoke()
     end
 
-    desc "Update composer's dependencies for production"
+    desc "Install composer's dependencies for production"
     task :prod do |task|
         puts task.comment
-        Rake::Task["composer:update"].invoke('--no-dev')
+        Rake::Task["composer:install"].invoke('--no-dev -o --prefer-dist')
     end
 end
-
 desc "Install composer's dependencies"
-task :composer do |task|
-    Rake::Task['composer:prod'].invoke
+task :composer, :env do |task, args|
+    env = args.env || "development"
+    if env == "production"
+        Rake::Task['composer:prod'].invoke
+    else
+        Rake::Task['composer:dev'].invoke
+    end
 end
 
 desc "Run tests on given type (unit|integration)"
