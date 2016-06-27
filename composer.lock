@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "065f2b964c5079832eb6c5141e78ccbe",
-    "content-hash": "c73f0384f7f341fd0a869a6037a9eaf5",
+    "hash": "b9b0e315e76b50eb0b8554354c1b3242",
+    "content-hash": "957dfe28d71998d559a8083b643493c0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -286,16 +286,16 @@
         },
         {
             "name": "doctrine/doctrine-module",
-            "version": "1.0.1",
+            "version": "0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineModule.git",
-                "reference": "ade6c1667283e3d8131d40e79c427b8a8100e7d3"
+                "reference": "8684c0bbee97d2d1477a9ac802e8b9df307671df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineModule/zipball/ade6c1667283e3d8131d40e79c427b8a8100e7d3",
-                "reference": "ade6c1667283e3d8131d40e79c427b8a8100e7d3",
+                "url": "https://api.github.com/repos/doctrine/DoctrineModule/zipball/8684c0bbee97d2d1477a9ac802e8b9df307671df",
+                "reference": "8684c0bbee97d2d1477a9ac802e8b9df307671df",
                 "shasum": ""
             },
             "require": {
@@ -360,38 +360,38 @@
                 "module",
                 "zf2"
             ],
-            "time": "2016-03-21 22:50:01"
+            "time": "2016-03-21 23:55:21"
         },
         {
             "name": "doctrine/doctrine-mongo-odm-module",
-            "version": "dev-master",
+            "version": "0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMongoODMModule.git",
-                "reference": "d17194c5e28f1d69ca6758c18e1e1b068d2882cf"
+                "reference": "4d21c0b01e7ad12f34a48de67bc606a7f63c406b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMongoODMModule/zipball/d17194c5e28f1d69ca6758c18e1e1b068d2882cf",
-                "reference": "d17194c5e28f1d69ca6758c18e1e1b068d2882cf",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMongoODMModule/zipball/4d21c0b01e7ad12f34a48de67bc606a7f63c406b",
+                "reference": "4d21c0b01e7ad12f34a48de67bc606a7f63c406b",
                 "shasum": ""
             },
             "require": {
-                "doctrine/doctrine-module": "~1.0",
-                "doctrine/mongodb-odm": "~1.0",
-                "php": "~5.5 || ~7.0",
+                "doctrine/doctrine-module": "~0.8",
+                "doctrine/mongodb-odm": "1.0.*@dev",
+                "php": ">=5.4",
                 "zendframework/zend-mvc": "2.*",
                 "zendframework/zend-servicemanager": "2.*",
                 "zendframework/zend-stdlib": "2.*"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8 || ~5.0",
                 "zendframework/zendframework": "2.*"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "DoctrineMongoODMModule\\": "src/"
+                    "DoctrineMongoODMModule\\": "src/",
+                    "DoctrineMongoODMModuleTest\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -433,7 +433,7 @@
                 "odm",
                 "zf2"
             ],
-            "time": "2016-03-28 20:06:43"
+            "time": "2015-07-21 01:02:13"
         },
         {
             "name": "doctrine/inflector",
@@ -688,16 +688,16 @@
         },
         {
             "name": "doctrine/mongodb-odm",
-            "version": "1.1.0",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "1137922032d098a2e284575f2ce30e83abbecea2"
+                "reference": "df0771f572dc3deefa5b36b7509440ce3d791ba6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/1137922032d098a2e284575f2ce30e83abbecea2",
-                "reference": "1137922032d098a2e284575f2ce30e83abbecea2",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/df0771f572dc3deefa5b36b7509440ce3d791ba6",
+                "reference": "df0771f572dc3deefa5b36b7509440ce3d791ba6",
                 "shasum": ""
             },
             "require": {
@@ -707,8 +707,8 @@
                 "doctrine/common": "~2.4",
                 "doctrine/inflector": "~1.0",
                 "doctrine/instantiator": "~1.0.1",
-                "doctrine/mongodb": "~1.3",
-                "php": "^5.6 || ^7.0",
+                "doctrine/mongodb": "~1.2",
+                "php": ">=5.3.2",
                 "symfony/console": "~2.3|~3.0"
             },
             "require-dev": {
@@ -721,7 +721,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -767,7 +767,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2016-06-09 14:21:30"
+            "time": "2016-06-09 13:23:17"
         },
         {
             "name": "erusev/parsedown",
@@ -3560,7 +3560,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "doctrine/doctrine-mongo-odm-module": 20,
         "fabpot/php-cs-fixer": 20
     },
     "prefer-stable": true,
