@@ -24,7 +24,7 @@ class GoCDDao extends AbstractDao
      *
      * @param  array $params parameters for assembling proper endpoint URL
      * @return array
-     * @throws EndpointUrlNotAssembled
+     * @throws \RuntimeException
      */
     public function fetchStatusForBuildWidget(array $params)
     {
@@ -32,13 +32,42 @@ class GoCDDao extends AbstractDao
             throw new \RuntimeException('Invalid job configuration');
         }
 
-        $responseParsed = [];
-        $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
+        $page = 0;
+
+        do {
+            // adding /:offset indicating the number of pipeline instances to be skipped
+            $endpointUrl = sprintf('%s/%d', $this->getEndpointUrl(__FUNCTION__), $page * 10);
+            $responseParsed = $this->getPipelineHistory($endpointUrl, $params);
+            $page++;
+        } while ($page < 10 && !$responseParsed);
+
+        if (!$responseParsed) {
+            $msg = sprintf(
+                'Job \'%s\'defined in configuration not found in response', json_encode($params['job'])
+            );
+            throw new \RuntimeException($msg);
+        }
+
+        return $responseParsed;
+    }
+
+    /**
+     * Get pipeline history for page number given in $endpointUrl
+     *
+     * @param   string $endpointUrl Endpoint URL with pagination
+     * @param   array $params parameters for assembling proper endpoint URL
+     * @return  array
+     * @throws  EndpointUrlNotAssembled
+     */
+    private function getPipelineHistory($endpointUrl, array $params)
+    {
+        $response = $this->request($endpointUrl, $params);
 
         if (!isset($response['pipelines']) || !isset($response['pipelines'][0])) {
             throw new EndpointUrlNotAssembled('No pipeline data in response');
         }
 
+        $responseParsed = [];
 
         foreach ($response['pipelines'] as $pipeline) {
             foreach ($pipeline['stages'] as $stage) {
@@ -63,13 +92,6 @@ class GoCDDao extends AbstractDao
                     }
                 }
             }
-        }
-
-        if (!$responseParsed) {
-            $msg = sprintf(
-                'Job \'%s\'defined in configuration not found in response', json_encode($params['job'])
-            );
-            throw new \RuntimeException($msg);
         }
 
         return $responseParsed;
