@@ -218,7 +218,7 @@ return array(
             'type' => 'number',
             'params' => array(
                 'dao' => 'newRelic',
-                'metric' => 'memory',
+                'metric' => 'memoryAvg',
                 'appId' => '16549903',
                 'title' => 'Memory usage',
                 'span' => 3,
