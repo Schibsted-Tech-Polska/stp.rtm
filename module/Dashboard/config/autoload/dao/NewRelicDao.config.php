@@ -31,6 +31,10 @@ return [
                 'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json'
                 . '?names[]=System/Memory/Used/bytes&values[]=average_response_time'
                 . '&values[]=average_exclusive_time&from=:beginDateTime:&end=:endDateTime:&summarize=true',
+            'fetchMemoryAvgForNumberWidget' =>
+                'https://api.newrelic.com/v2/applications/:appId:/metrics/data.json'
+                . '?names[]=Memory/Physical&values[]=used_mb_by_host&summarize=true'
+                . '&from=:beginDateTime:&end=:endDateTime:',
             'fetchServerCpuUsageForGraphWidget' =>
                 'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json'
                 . '?names[]=System/CPU/System/percent&names[]=System/CPU/User/percent'
