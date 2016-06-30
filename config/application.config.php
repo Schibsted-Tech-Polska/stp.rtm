@@ -6,6 +6,8 @@
  * @see https://github.com/zendframework/ZFTool
  */
 
+date_default_timezone_set('Europe/Oslo');
+
 if (!file_exists(__DIR__ . '/environment.config.php')) {
     throw new \Exception('environment.config.php does not exist!');
 } else {

@@ -8,6 +8,7 @@
 namespace Dashboard\Model\Dao;
 
 use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
+use Dashboard\Model\Utils;
 
 class GoCDDao extends AbstractDao
 {
@@ -80,7 +81,7 @@ class GoCDDao extends AbstractDao
                                 ? self::SUCCESS : self::FAILURE;
                         }
                         $responseParsed['building'] = self::BUILDING == $job['state'];
-                        $responseParsed['lastBuilt'] = gmdate('Y-m-d H:i:s', $job['scheduled_date'] / 1000);
+                        $responseParsed['lastBuilt'] = Utils::timestampToDate($job['scheduled_date'] / 1000);
                         $responseParsed['lastCommitter'] = $this->getLastCommitter($pipeline['build_cause']['material_revisions']);
 
                         // not supported by GoCD
