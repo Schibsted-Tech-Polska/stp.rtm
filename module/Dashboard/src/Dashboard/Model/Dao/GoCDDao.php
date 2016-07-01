@@ -17,6 +17,7 @@ class GoCDDao extends AbstractDao
     const PASSED = 'Passed';
     const ASSIGNED = 'Assigned';
     const SCHEDULED = 'Scheduled';
+    const PREPARING = 'Preparing';
     const CANCELLED = 'Cancelled';
 
     /**
@@ -73,7 +74,8 @@ class GoCDDao extends AbstractDao
             foreach ($pipeline['stages'] as $stage) {
                 foreach ($stage['jobs'] as $job) {
                     if ($params['job'] == $job['name']) {
-                        if (in_array($job['state'], [self::BUILDING, self::ASSIGNED, self::SCHEDULED])) {
+                        $inProgressStates = [self::BUILDING, self::ASSIGNED, self::SCHEDULED, self::PREPARING];
+                        if (in_array($job['state'], $inProgressStates)) {
                             $responseParsed['currentStatus'] = null; // in progress
                         } else {
                             $responseParsed['currentStatus'] = self::PASSED == $job['result']
