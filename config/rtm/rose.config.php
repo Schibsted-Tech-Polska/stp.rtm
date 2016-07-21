@@ -40,8 +40,8 @@ return array(
             'params' => array(
                 'dao' => 'GoCD',
                 'view' => 'Rose_v2',
-                'pipeline' => 'rose',
-                'job' => 'JS_tests',
+                'pipeline' => 'rose-front',
+                'job' => 'Tests',
                 'metric' => 'status',
                 'title' => 'JS Unit Tests',
                 'refreshRate' => 5,
