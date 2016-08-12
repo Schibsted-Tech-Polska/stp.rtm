@@ -14,20 +14,20 @@
   font-size: 4rem;
 }
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue .widgetContainer {
-  background-color: #cc0c39;
+  background-color: #CC0C39;
 }
 #dashboardBody .widget.ErrorWidget.thresholdCriticalValue .widgetContainer .value {
-  color: white;
+  color: #fff;
 }
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue .widgetContainer {
-  background-color: #978c06;
+  background-color: #978C06;
 }
 #dashboardBody .widget.ErrorWidget.thresholdCautionValue .widgetContainer .value {
-  color: white;
+  color: #fff;
 }
 
 #dashboardBody .widget.TextWidget {
-  background-color: #4d4c4c;
+  background-color: #4D4C4C;
 }
 
 #dashboardBody .widget.BuildWidget .widgetContainer {
@@ -63,7 +63,7 @@
   background: #cf0d4d;
 }
 #dashboardBody .widget.BuildWidget .UNSTABLE .face {
-  background: #f3704f;
+  background: #F3704F;
 }
 #dashboardBody .widget.BuildWidget .face {
   padding: 14px 12px;
@@ -305,7 +305,7 @@
   width: 50%;
   text-align: left;
   padding: 2px 4px;
-  color: #999999;
+  color: #999;
 }
 
 #dashboardBody .widget.RabbitMQWidget {
@@ -330,13 +330,13 @@
   width: 50%;
   text-align: left;
   padding: 2px 4px;
-  color: #999999;
+  color: #999;
 }
 #dashboardBody .widget.RabbitMQWidget .queues .queue .failure {
-  color: #ed303c;
+  color: #ED303C;
 }
 #dashboardBody .widget.RabbitMQWidget .queues .queue .warning {
-  color: #fff46b;
+  color: #FFF46B;
 }
 
 #dashboardBody .widget.UsageWidget .graph_container {
@@ -371,7 +371,7 @@
 #dashboardBody .widget.EyeWidget .process {
   margin: 10px 0;
   width: 100%;
-  color: #ed303c;
+  color: #ED303C;
 }
 #dashboardBody .widget.EyeWidget .process .name {
   width: 40%;
@@ -380,10 +380,10 @@
   width: 60%;
 }
 #dashboardBody .widget.EyeWidget .process.starting {
-  color: #fff46b;
+  color: #FFF46B;
 }
 #dashboardBody .widget.EyeWidget .process.up {
-  color: #70c536;
+  color: #70C536;
 }
 
 #dashboardBody .widget.ProcessWidget {
@@ -395,13 +395,13 @@
 #dashboardBody .widget.ProcessWidget .process {
   margin: 10px 0;
   width: 100%;
-  color: #ed303c;
+  color: #ED303C;
 }
 #dashboardBody .widget.ProcessWidget .process.STARTING {
-  color: #fff46b;
+  color: #FFF46B;
 }
 #dashboardBody .widget.ProcessWidget .process.RUNNING {
-  color: #70c536;
+  color: #70C536;
 }
 #dashboardBody .widget.ProcessWidget .process.unmonitored .pid, #dashboardBody .widget.ProcessWidget .process.down .pid {
   display: none;
@@ -423,13 +423,13 @@
 #dashboardBody .widget.EyeProcessWidget .process {
   margin: 10px 0;
   width: 100%;
-  color: #ed303c;
+  color: #ED303C;
 }
 #dashboardBody .widget.EyeProcessWidget .process.starting {
-  color: #fff46b;
+  color: #FFF46B;
 }
 #dashboardBody .widget.EyeProcessWidget .process.up {
-  color: #70c536;
+  color: #70C536;
 }
 #dashboardBody .widget.EyeProcessWidget .process.unmonitored .pid, #dashboardBody .widget.EyeProcessWidget .process.down .pid {
   display: none;
@@ -503,15 +503,14 @@
   font-weight: normal;
   font-style: normal;
 }
-
 html {
   font-size: 20px;
 }
 
 body {
-  color: white;
+  color: #fff;
   padding: 0 10px 10px;
-  background-color: #282c2e;
+  background-color: #282C2E;
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 300;
@@ -592,10 +591,10 @@ body {
   padding: 10px;
 }
 #dashboardBody .widget.thresholdCriticalValue .value {
-  color: #ed303c;
+  color: #ED303C;
 }
 #dashboardBody .widget.thresholdCautionValue .value {
-  color: #fff46b;
+  color: #FFF46B;
 }
 #dashboardBody .widget .value {
   margin-top: 40px;
@@ -608,7 +607,7 @@ body {
   right: 0;
 }
 #dashboardBody .widget .change-rate.worse {
-  color: #ed303c !important;
+  color: #ED303C !important;
 }
 #dashboardBody .widget .prefix {
   font-size: 0.5em;
@@ -633,16 +632,20 @@ body {
   font-size: 1.5rem;
   font-weight: 400;
 }
+#dashboardBody h1 small {
+  font-size: 1.4rem;
+  color: #ccc;
+}
 #dashboardBody h2 {
   text-transform: uppercase;
   font-size: 76px;
   font-weight: 700;
-  color: white;
+  color: #fff;
 }
 #dashboardBody h3 {
   font-size: 25px;
   font-weight: 600;
-  color: white;
+  color: #fff;
 }
 #dashboardBody [class^="icon-"] {
   background-image: none;
