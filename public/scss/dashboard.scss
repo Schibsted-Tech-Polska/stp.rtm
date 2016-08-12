@@ -217,6 +217,11 @@ body {
         text-align: center;
         font-size: 1.5rem;
         font-weight: 400;
+
+        small {
+            font-size: 1.4rem;
+            color: #ccc;
+        }
     }
     h2 {
         text-transform: uppercase;
