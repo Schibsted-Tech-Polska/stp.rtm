@@ -7,6 +7,8 @@
 
 namespace Dashboard\Model\Dao;
 
+use Dashboard\Model\Utils;
+
 class JenkinsDao extends AbstractDao
 {
     /**
@@ -21,7 +23,7 @@ class JenkinsDao extends AbstractDao
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
 
         $responseParsed['currentStatus'] = $response['lastBuild']['result'];
-        $responseParsed['lastBuilt'] = gmdate('Y-m-d H:i:s', $response['lastBuild']['timestamp'] / 1000);
+        $responseParsed['lastBuilt'] = Utils::timestampToDate($response['lastBuild']['timestamp'] / 1000);
         $responseParsed['lastCommitter'] = $this->getLastCommitter($response['lastBuild']);
         $responseParsed['codeCoverage'] = $this->getCodeCoverage($response['healthReport']);
         $responseParsed['averageHealthScore'] = $this->getAverageHealthScore($response);

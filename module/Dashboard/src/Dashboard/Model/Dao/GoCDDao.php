@@ -8,6 +8,7 @@
 namespace Dashboard\Model\Dao;
 
 use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
+use Dashboard\Model\Utils;
 
 class GoCDDao extends AbstractDao
 {
@@ -17,6 +18,7 @@ class GoCDDao extends AbstractDao
     const PASSED = 'Passed';
     const ASSIGNED = 'Assigned';
     const SCHEDULED = 'Scheduled';
+    const PREPARING = 'Preparing';
     const CANCELLED = 'Cancelled';
 
     /**
@@ -73,14 +75,15 @@ class GoCDDao extends AbstractDao
             foreach ($pipeline['stages'] as $stage) {
                 foreach ($stage['jobs'] as $job) {
                     if ($params['job'] == $job['name']) {
-                        if (in_array($job['state'], [self::BUILDING, self::ASSIGNED, self::SCHEDULED])) {
+                        $inProgressStates = [self::BUILDING, self::ASSIGNED, self::SCHEDULED, self::PREPARING];
+                        if (in_array($job['state'], $inProgressStates)) {
                             $responseParsed['currentStatus'] = null; // in progress
                         } else {
                             $responseParsed['currentStatus'] = self::PASSED == $job['result']
                                 ? self::SUCCESS : self::FAILURE;
                         }
                         $responseParsed['building'] = self::BUILDING == $job['state'];
-                        $responseParsed['lastBuilt'] = gmdate('Y-m-d H:i:s', $job['scheduled_date'] / 1000);
+                        $responseParsed['lastBuilt'] = Utils::timestampToDate($job['scheduled_date'] / 1000);
                         $responseParsed['lastCommitter'] = $this->getLastCommitter($pipeline['build_cause']['material_revisions']);
 
                         // not supported by GoCD

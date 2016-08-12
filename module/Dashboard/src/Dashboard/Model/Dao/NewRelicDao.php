@@ -8,6 +8,7 @@
 namespace Dashboard\Model\Dao;
 
 use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
+use Dashboard\Model\Utils;
 
 class NewRelicDao extends AbstractDao
 {
@@ -87,7 +88,7 @@ class NewRelicDao extends AbstractDao
         if (is_array($response)) {
             foreach ($response as $singleStat) {
                 $responseParsed[] = [
-                    'x' => 1000 * (strtotime($singleStat['begin']) + 7200),
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($singleStat['begin']),
                     'y' => round($singleStat['requests_per_minute']),
                 ];
             }
@@ -110,7 +111,7 @@ class NewRelicDao extends AbstractDao
         if (is_array($response)) {
             foreach ($response as $singleStat) {
                 $responseParsed[] = [
-                    'x' => 1000 * (strtotime($singleStat['begin']) + 7200),
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($singleStat['begin']),
                     'y' => round($singleStat['requests_per_minute']),
                 ];
             }
@@ -226,7 +227,7 @@ class NewRelicDao extends AbstractDao
         if (is_array($response)) {
             foreach ($response as $singleStat) {
                 $responseParsed[] = [
-                    'x' => 1000 * (strtotime($singleStat['begin']) + 7200),
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($singleStat['begin']),
                     'y' => $singleStat['percent'],
                 ];
             }
@@ -271,7 +272,7 @@ class NewRelicDao extends AbstractDao
         if (is_array($response)) {
             foreach ($response as $singleStat) {
                 $responseParsed[] = [
-                    'x' => 1000 * (strtotime($singleStat['begin']) + 7200),
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($singleStat['begin']),
                     'y' => round($singleStat['average_response_time'] * 1000),
                 ];
             }
@@ -643,7 +644,7 @@ class NewRelicDao extends AbstractDao
         if (is_array($response['metric_data']['metrics'][0]['timeslices'])) {
             foreach ($response['metric_data']['metrics'][0]['timeslices'] as $key => $singleStat) {
                 $responseParsed[] = [
-                    'x' => 1000 * (strtotime($singleStat['to']) + 7200),
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($singleStat['to']),
                     'y' =>
                         $singleStat['values']['average_value']
                         + $response['metric_data']['metrics'][1]['timeslices'][$key]['values']['average_value'],
@@ -666,7 +667,7 @@ class NewRelicDao extends AbstractDao
         if (is_array($response['metric_data']['metrics'][0]['timeslices'])) {
             foreach ($response['metric_data']['metrics'][0]['timeslices'] as $key => $singleStat) {
                 $responseParsed[] = array(
-                    'x' => 1000 * (strtotime($singleStat['to']) + 7200),
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($singleStat['to']),
                     'y' => $singleStat['values']['average_value']
                 );
             }
@@ -688,7 +689,7 @@ class NewRelicDao extends AbstractDao
             foreach ($response['metric_data']['metrics'][0]['timeslices'] as $key => $singleStat) {
                 // convert bytes to bits
                 $responseParsed[] = array(
-                    'x' => 1000 * (strtotime($singleStat['to']) + 7200),
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($singleStat['to']),
                     'y' => 8 * $singleStat['values']['per_second']
                 );
             }
