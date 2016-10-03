@@ -101,7 +101,7 @@ namespace :composer do
         end
 
         system_check "php -d \"apc.enable_cli=off\" composer.phar self-update"
-        system_check "if [ -n \"$GITHUB_OAUTH_TOKEN\" ]; then php composer.phar config github-oauth.github.com $GITHUB_OAUTH_TOKEN; php -d \"apc.enable_cli=off\" composer.phar update #{args.params} --prefer-dist; else php -d \"apc.enable_cli=off\" composer.phar update #{args.params} --prefer-source; fi"
+        system_check "if [ -n \"$GITHUB_OAUTH_TOKEN\" ]; then php composer.phar config github-oauth.github.com $GITHUB_OAUTH_TOKEN; php -d \"apc.enable_cli=off\" composer.phar install #{args.params} --prefer-dist; else php -d \"apc.enable_cli=off\" composer.phar install #{args.params} --prefer-source; fi"
     end
 
     desc "Install composer's dependencies for development"
