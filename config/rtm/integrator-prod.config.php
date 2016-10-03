@@ -580,23 +580,6 @@ return array(
             ],
         ],
         [
-            'id' => 'integratorServerCpuUsage',
-            'type' => 'graph',
-            'params' => [
-                'dao' => 'newRelic',
-                'metric' => 'serverCpuUsage',
-                'title' => 'Server',
-                'subtitle' => 'CPU usage',
-                'valueSuffix' => '%',
-                'span' => 1,
-                'beginDateTime' => '-30 minutes',
-                'endDateTime' => 'now',
-                'thresholdComparator' => 'lowerIsBetter',
-                'caution-value' => 50,
-                'critical-value' => 75,
-            ],
-        ],
-        [
             'id' => 'integratorServerLoad',
             'type' => 'graph',
             'params' => [
