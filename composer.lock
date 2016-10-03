@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a5c30d51c728528eb279424753b08cae",
-    "content-hash": "ae686820458f0db5587a3925358349e3",
+    "hash": "d7156fe80592af3a134ecbf7bd82e6e7",
+    "content-hash": "9df203e04db4895d256a35994e30a9a1",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1028,81 +1028,6 @@
                 "response"
             ],
             "time": "2016-08-06 14:39:51"
-        },
-        {
-            "name": "satooshi/php-coveralls",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/satooshi/php-coveralls.git",
-                "reference": "2fbf803803d179ab1082807308a67bbd5a760c70"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/satooshi/php-coveralls/zipball/2fbf803803d179ab1082807308a67bbd5a760c70",
-                "reference": "2fbf803803d179ab1082807308a67bbd5a760c70",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-simplexml": "*",
-                "guzzlehttp/guzzle": "^6.0",
-                "php": ">=5.5",
-                "psr/log": "^1.0",
-                "symfony/config": "^2.1|^3.0",
-                "symfony/console": "^2.1|^3.0",
-                "symfony/stopwatch": "^2.0|^3.0",
-                "symfony/yaml": "^2.0|^3.0"
-            },
-            "require-dev": {
-                "apigen/apigen": "2.8.*@stable",
-                "pdepend/pdepend": "dev-master as 2.0.0",
-                "phpmd/phpmd": "dev-master",
-                "phpunit/php-invoker": ">=1.1.0,<1.2.0",
-                "phpunit/phpunit": "3.7.*@stable",
-                "sebastian/finder-facade": "dev-master",
-                "sebastian/phpcpd": "1.4.*@stable",
-                "squizlabs/php_codesniffer": "1.4.*@stable",
-                "theseer/fdomdocument": "dev-master"
-            },
-            "suggest": {
-                "symfony/http-kernel": "Allows Symfony integration"
-            },
-            "bin": [
-                "composer/bin/coveralls"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Satooshi\\Component": "src/",
-                    "Satooshi\\Bundle": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kitamura Satoshi",
-                    "email": "with.no.parachute@gmail.com",
-                    "homepage": "https://www.facebook.com/satooshi.jp"
-                }
-            ],
-            "description": "PHP client library for Coveralls API",
-            "homepage": "https://github.com/satooshi/php-coveralls",
-            "keywords": [
-                "ci",
-                "coverage",
-                "github",
-                "test"
-            ],
-            "time": "2014-11-11 15:35:34"
         },
         {
             "name": "supervisorphp/supervisor",
@@ -3137,28 +3062,6 @@
             "time": "2016-09-01 23:53:02"
         },
         {
-            "name": "stp/cap4all",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git.int.vgnett.no:/git/stp/cap4all.git",
-                "reference": "5e1386ba42b8685c571c11ea67c3cc1865f83b10"
-            },
-            "type": "project",
-            "license": [
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Mateusz Cyburt",
-                    "email": "mateusz.cyburt@schibsted.pl",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Deployment application based on capistrano",
-            "time": "2016-10-03 08:03:27"
-        },
-        {
             "name": "symfony/config",
             "version": "v3.1.4",
             "source": {
@@ -3670,8 +3573,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "fabpot/php-cs-fixer": 20,
-        "stp/cap4all": 20
+        "fabpot/php-cs-fixer": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
