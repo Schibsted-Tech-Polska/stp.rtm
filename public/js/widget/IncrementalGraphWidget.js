@@ -76,11 +76,11 @@ $.extend(IncrementalGraphWidget.prototype, {
             .show()
             .removeClass('better worse').addClass(this.dataToBind.trend)
             .find('i')
-                .removeClass().addClass(this.dataToBind.arrowClass).parent()
+            .removeClass().addClass(this.dataToBind.arrowClass).parent()
             .find('.percentageDiff')
-                .html(this.dataToBind.percentageDiff).parent()
+            .html(this.dataToBind.percentageDiff).parent()
             .find('.old-value')
-                .html(this.dataToBind.oldValue);
+            .html(this.dataToBind.oldValue);
     },
 
     updateValue: function() {
@@ -88,6 +88,24 @@ $.extend(IncrementalGraphWidget.prototype, {
     },
 
     setupGraph: function() {
+        var zones = [];
+        if (parseFloat(this.$widget.attr('data-threshold-caution-value')) > 0
+            && parseFloat(this.$widget.attr('data-threshold-critical-value')) > 0) {
+            zones = [
+                {
+                    value: this.$widget.attr('data-threshold-caution-value')
+                }, {
+                    value: this.$widget.attr('data-threshold-critical-value'),
+                    fillColor: '#fff46b',
+                    color: '#fffda6'
+                }, {
+                    fillColor: '#e62a34',
+                    color: '#f03542'
+                }
+            ];
+        }
+
+
         Highcharts.setOptions({
             global: {
                 useUTC: false
@@ -142,7 +160,8 @@ $.extend(IncrementalGraphWidget.prototype, {
                     title: {
                         text: ''
                     },
-                    data: []
+                    data: [],
+                    zones: zones
                 }
             ]
         });
