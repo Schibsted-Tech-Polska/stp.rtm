@@ -17,18 +17,12 @@ return array(
             'baseUrl' => 'http://ci.vgnett.no/',
         ),
     ),
+    'graphite' => array(
+        'params' => array(
+            'graphiteUrl' => 'graphite.vgnett.no',
+        ),
+    ),
     'widgets' => array(
-/*
-    	array('id' => 'messages',
-            'type' => 'messages',
-            'params' => array(
-                'dao' => 'events',
-                'metric' => 'messages',
-                'span' => 6,
-                'title' => 'minmote',
-                'limit' => 10,
-            ),
-        ),*/
         array('id' => 'minmoteWeb',
             'type' => 'build',
             'params' => array(
@@ -154,6 +148,19 @@ return array(
                 'critical-value' => 5,
             ),
         ),
+        array('id' => 'minmoteApdex',
+            'type' => 'incrementalGraph',
+            'params' => array(
+                'dao' => 'newRelic',
+                'metric' => 'apdex',
+                'appId' => '3662612',
+                'title' => 'apdex',
+                'span' => 2,
+                'thresholdComparator' => 'higherIsBetter',
+                'caution-value' => 0.97,
+                'critical-value' => 0.95,
+            ),
+        ),
         array('id' => 'minmoteFeRpm',
             'type' => 'graph',
             'params' => array(
@@ -208,16 +215,6 @@ return array(
                 'thresholdComparator' => 'lowerIsBetter',
                 'caution-value' => 100,
                 'critical-value' => 150,
-            ),
-        ),
-        array('id' => 'minmoteApdex',
-            'type' => 'number',
-            'params' => array(
-                'dao' => 'newRelic',
-                'metric' => 'apdex',
-                'appId' => '3662612',
-                'title' => 'apdex',
-                'span' => 2,
             ),
         ),
         array('id' => 'minmoteRenderRpmGraph',
