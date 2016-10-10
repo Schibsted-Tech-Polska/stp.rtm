@@ -156,6 +156,7 @@ return array(
                 'appId' => '3662612',
                 'title' => 'apdex',
                 'span' => 2,
+                'useThreshold' => 1,
                 'thresholdComparator' => 'higherIsBetter',
                 'caution-value' => 0.97,
                 'critical-value' => 0.95,
