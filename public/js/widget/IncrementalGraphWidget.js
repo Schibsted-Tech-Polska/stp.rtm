@@ -93,16 +93,43 @@ $.extend(IncrementalGraphWidget.prototype, {
             && parseFloat(this.$widget.attr('data-threshold-critical-value')) > 0) {
             zones = [
                 {
-                    value: this.$widget.attr('data-threshold-caution-value')
+                    value: this.$widget.attr('data-threshold-caution-value'),
+                    className: 'value-normal'
                 }, {
                     value: this.$widget.attr('data-threshold-critical-value'),
                     fillColor: '#fff46b',
-                    color: '#fffda6'
+                    color: '#fffda6',
+                    className: 'value-caution'
                 }, {
                     fillColor: '#e62a34',
-                    color: '#f03542'
+                    color: '#f03542',
+                    className: 'value-critical'
                 }
             ];
+
+            if (
+                typeof(this.params.thresholdComparator) !== 'undefined'
+                && this.params.thresholdComparator === 'higherIsBetter'
+            ) {
+                console.log(this.$widget);
+                zones = [
+                    {
+                        value: this.$widget.attr('data-threshold-critical-value'),
+                        className: 'value-critical',
+                        fillColor: '#e62a34',
+                        color: '#f03542'
+                    },
+                    {
+                        value: this.$widget.attr('data-threshold-caution-value'),
+                        className: 'value-caution',
+                        fillColor: '#fff46b',
+                        color: '#fffda6'
+                    },
+                    {
+                        className: 'value-normal'
+                    }
+                ];
+            }
         }
 
 
