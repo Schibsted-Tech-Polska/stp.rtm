@@ -5,7 +5,10 @@
     "prefer-stable": true,
     "config": {
         "preferred-install": "dist",
-        "secure-http": false
+        "secure-http": false,
+        "platform": {
+            "ext-mongo": "1.6"
+        }
 
     },
     "require": {
