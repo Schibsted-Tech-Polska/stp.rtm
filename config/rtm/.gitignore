@@ -1,4 +1,0 @@
-# Ignore all configs but the sample ones
-
-*.config.php
-!sample*.config.php

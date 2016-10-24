@@ -1,0 +1,185 @@
+
+
+<?php
+/**
+ * Config for rtm
+ */
+return array(
+    'theme' => ['tv', 'dark'],
+    'newRelic' => array(
+        'headers' => array(
+            'x-api-key' => '0116c7512e1efa28a39116312e9640edb90f1f52bb6ab30',
+        ),
+        'params' => array(
+            'serverId' => '5363150',
+        ),
+    ),
+    'rabbitMQ' => array(
+        'params' => array(
+            'rabbitMQUrl' => 'http://vg-rabbit-s01:15672',
+            'vhost' => 'integrator',
+        ),
+        'headers' => array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ),
+        'auth' => array(
+            'username' => 'integrator',
+            'password' => 'QO;A=h}[',
+        ),
+    ),
+    'hipChat' => array(
+        'params' => array(
+            'auth_token' => 'd5e182ac9d356cbc72b9f9c2fc119f',
+        ),
+    ),
+    'eye' => array(
+        'params' => array(
+            'eyeUrl' => 'http://integrator-cron-s01.int.vgnett.no:6937',
+        ),
+    ),
+    'jenkins' => array(
+        'params' => array(
+            'baseUrl' => 'http://ci.vgnett.no/',
+        ),
+    ),
+    'hadoop' => array(
+        'params' => array(
+            'baseUrl' => 'http://vg-hadoop-s01:50070',
+        ),
+    ),
+    'widgets' => array(
+        // BUILDS
+        array('id' => 'integratorCrawlersBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-crawlers',
+                'metric' => 'status',
+                'title' => 'Crawlers',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorCrawlersIntegrationBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-crawlers-integration',
+                'metric' => 'status',
+                'title' => 'Crawlers integration',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorInputDataManipulatorsBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-input-data-manipulators',
+                'metric' => 'status',
+                'title' => 'Manipulators',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorInputDataManipulatorsIntegrationBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-input-data-manipulators-integration',
+                'metric' => 'status',
+                'title' => 'Manipulators integration',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorDataCleanersBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-data-cleaners',
+                'metric' => 'status',
+                'title' => 'Cleaners',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorDataCleanersIntegrationBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-data-cleaners-integration',
+                'metric' => 'status',
+                'title' => 'Cleaners integration',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorDestinationWritersBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-destination-writers',
+                'metric' => 'status',
+                'title' => 'Destination writers',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorManipulatorsCommonBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-manipulators-common',
+                'metric' => 'status',
+                'title' => 'Manipulators COMMON',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorWritersBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-writers',
+                'metric' => 'status',
+                'title' => 'Writers',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorNewsletterSubscriptionsBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-newsletter-subscriptions',
+                'metric' => 'status',
+                'title' => 'Subscriptions',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+        array('id' => 'integratorNewsletterSubscriptionsIntegrationBuildStatus',
+            'type' => 'build',
+            'params' => array(
+                'dao' => 'jenkins',
+                'view' => 'integrator',
+                'job' => 'integrator-newsletter-subscriptions-integration',
+                'metric' => 'status',
+                'title' => 'Subscriptions integration',
+                'refreshRate' => 5,
+                'span' => 2,
+            ),
+        ),
+    ),
+);
