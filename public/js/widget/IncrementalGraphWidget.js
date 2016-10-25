@@ -69,6 +69,20 @@ $.extend(IncrementalGraphWidget.prototype, {
                 zIndex: 5
             });
         }
+
+        /**
+         * Animate and format main value
+         */
+        this.animateNumber(this.$widget.find('.value .content'), this.oldValue, this.dataToBind.value);
+
+        /**
+         * Animate and format numeric difference if that exists
+         */
+        var oldValueElement = this.$widget.find('.difference .old-value');
+
+        if ($.isNumeric(oldValueElement[0].innerText)) {
+            this.animateNumber(oldValue, this.oldValue, this.dataToBind.value);
+        }
     },
 
     handleChangeRate: function() {
