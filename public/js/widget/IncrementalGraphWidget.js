@@ -78,8 +78,9 @@ $.extend(IncrementalGraphWidget.prototype, {
         /**
          * Animate and format numeric difference if that exists
          */
-        var oldValue = this.$widget.find('.difference .old-value');
-        if (oldValue != 'undefined') {
+        var oldValueElement = this.$widget.find('.difference .old-value');
+
+        if ($.isNumeric(oldValueElement[0].innerText)) {
             this.animateNumber(oldValue, this.oldValue, this.dataToBind.value);
         }
     },
