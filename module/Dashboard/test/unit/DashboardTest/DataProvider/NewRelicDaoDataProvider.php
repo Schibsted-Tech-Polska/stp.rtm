@@ -141,6 +141,39 @@ trait NewRelicDaoDataProvider
         ];
     }
 
+
+    /**
+     * @return array
+     */
+    public function fetchTotalMemoryForNumberWidgetDataProvider()
+    {
+        return [
+            'proper result' => [
+                '$apiResponse' =>
+                    __DIR__ . '/../Mock/Dao/NewRelic/fetchTotalMemoryResponse.txt',
+                '$expectedDaoResponse' => 8420000,
+            ],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function fetchTotalMemoryForIncrementalGraphWidgetDataProvider()
+    {
+        return [
+            'proper result' => [
+                '$apiResponse' =>
+                    __DIR__ . '/../Mock/Dao/NewRelic/fetchTotalMemoryResponse.txt',
+                '$expectedDaoResponse' => [
+                    'x' => 1477387896,
+                    'y' => 8420000,
+                    'events' => [],
+                ],
+            ],
+        ];
+    }
+
     /**
      * @return array
      */
