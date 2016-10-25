@@ -2,6 +2,12 @@
 /**
  * @author: Wojciech Iskra <wojciech.iskra@schibsted.pl>
  */
+namespace Dashboard\Model\Dao;
+
+final class NewRelicAddresses {
+    const TOTAL_MEMORY = 'fetchTotalMemory';
+    const AVG_HOST_MEMORY = 'fetchMemoryAvg';
+}
 
 return [
     'NewRelicDao' => [
@@ -31,9 +37,13 @@ return [
                 'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json'
                 . '?names[]=System/Memory/Used/bytes&values[]=average_response_time'
                 . '&values[]=average_exclusive_time&from=:beginDateTime:&end=:endDateTime:&summarize=true',
-            'fetchMemoryAvgForNumberWidget' =>
+            NewRelicAddresses::AVG_HOST_MEMORY =>
                 'https://api.newrelic.com/v2/applications/:appId:/metrics/data.json'
                 . '?names[]=Memory/Physical&values[]=used_mb_by_host&summarize=true'
+                . '&from=:beginDateTime:&end=:endDateTime:',
+            NewRelicAddresses::TOTAL_MEMORY =>
+                'https://api.newrelic.com/v2/applications/:appId:/metrics/data.json'
+                . '?names[]=Memory/Physical&values[]=total_used_mb&summarize=true'
                 . '&from=:beginDateTime:&end=:endDateTime:',
             'fetchServerCpuUsageForGraphWidget' =>
                 'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json'
