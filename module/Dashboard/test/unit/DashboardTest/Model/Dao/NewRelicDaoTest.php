@@ -5,6 +5,7 @@
 
 namespace DashboardTest\Model\Dao;
 
+use Dashboard\Model\Dao\NewRelicDao;
 use DashboardTest\DataProvider\NewRelicDaoDataProvider;
 
 class NewRelicDaoTest extends AbstractDaoTestCase
@@ -12,7 +13,12 @@ class NewRelicDaoTest extends AbstractDaoTestCase
     use NewRelicDaoDataProvider;
 
     /**
-     * @return \Dashboard\Model\Dao\NewRelicDao
+     * @var NewRelicDao
+     */
+    protected $testedDao;
+
+    /**
+     * @return NewRelicDao
      */
     protected function getTestedDao()
     {
@@ -176,6 +182,47 @@ class NewRelicDaoTest extends AbstractDaoTestCase
 
         $response = $this->testedDao->fetchMemoryForIncrementalGraphWidget([
             'appId' => '1111111',
+        ]);
+
+        $this->assertInternalType('array', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchTotalMemoryForNumberWidgetDataProvider
+     */
+    public function testFetchTotalMemoryForNumberWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
+
+        $response = $this->testedDao->fetchTotalMemoryForNumberWidget([
+            'appId' => '1111111',
+            'beginDateTime' => '-30 minutes',
+            'endDateTime' => 'now',
+        ]);
+
+        $this->assertInternalType('numeric', $response);
+        $this->assertEquals($expectedDaoResponse, $response);
+    }
+
+    /**
+     * @dataProvider fetchTotalMemoryForIncrementalGraphWidgetDataProvider
+     *
+     * @param $apiResponse
+     * @param $expectedDaoResponse
+     */
+    public function testFetchTotalMemoryForIncrementalGraphWidget($apiResponse, $expectedDaoResponse)
+    {
+        $this->testedDao->getDataProvider()->getConfig('handler')->append(
+            \GuzzleHttp\Psr7\parse_response(file_get_contents($apiResponse))
+        );
+
+        $response = $this->testedDao->fetchTotalMemoryForIncrementalGraphWidget([
+            'appId' => '1111111',
+            'beginDateTime' => 'does not matter',
+            'endDateTime' => 'does not matter',
         ]);
 
         $this->assertInternalType('array', $response);

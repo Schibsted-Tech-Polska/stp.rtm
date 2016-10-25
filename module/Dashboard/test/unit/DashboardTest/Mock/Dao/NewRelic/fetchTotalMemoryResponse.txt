@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Server: openresty
+Date: Tue, 25 Oct 2016 09:31:36 GMT
+Content-Type: application/json
+Content-Length: 303
+Connection: keep-alive
+Status: 200 OK
+X-UA-Compatible: IE=Edge,chrome=1
+ETag: "07b96a9c04c73c179d8660329655cc97"
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: edf06c990117bf219956346d55a5c56c
+X-Runtime: 0.061604
+X-Rack-Cache: miss
+
+{"metric_data":{"from":"2016-10-25T09:01:36+00:00","to":"2016-10-25T09:31:36+00:00","metrics_not_found":[],"metrics_found":["Memory/Physical"],"metrics":[{"name":"Memory/Physical","timeslices":[{"from":"2016-10-25T09:00:00+00:00","to":"2016-10-25T09:30:00+00:00","values":{"total_used_mb":8420000}}]}]}}
