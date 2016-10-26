@@ -151,7 +151,7 @@ trait NewRelicDaoDataProvider
             'proper result' => [
                 '$apiResponse' =>
                     __DIR__ . '/../Mock/Dao/NewRelic/fetchTotalMemoryResponse.txt',
-                '$expectedDaoResponse' => 8420000,
+                '$expectedDaoResponse' => 8420000 * 1024,
             ],
         ];
     }
@@ -167,7 +167,7 @@ trait NewRelicDaoDataProvider
                     __DIR__ . '/../Mock/Dao/NewRelic/fetchTotalMemoryResponse.txt',
                 '$expectedDaoResponse' => [
                     'x' => 1477387896,
-                    'y' => 8420000,
+                    'y' => 8420000 * 1024,
                     'events' => [],
                 ],
             ],
