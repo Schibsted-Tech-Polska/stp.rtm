@@ -362,7 +362,12 @@ class NewRelicDao extends AbstractDao
 
     /**
      * Fetches the total memory usage for all hosts of the application. Plots it as a number
+     *
      * @see https://docs.newrelic.com/docs/apis/rest-api-v2/application-examples-v2/get-host-memory-used-application#api-call
+     *
+     * It looks like total_used_mb field returns values in kb (instead of expected mb). Value is normalized to bytes
+     * as it works nice with number widget formatting. If you don't use formatting and want to preserve original value
+     * use useOriginalValue flag in your cfg
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL
      *
@@ -371,14 +376,19 @@ class NewRelicDao extends AbstractDao
     public function fetchTotalMemoryForNumberWidget(array $params = [])
     {
         $response = $this->fetchTotalMemory($params);
+        $totalUsedMb = $response['metric_data']['metrics'][0]['timeslices'][0]['values']['total_used_mb'];
 
-        return $response['metric_data']['metrics'][0]['timeslices'][0]['values']['total_used_mb'];
+        return $totalUsedMb;
     }
 
     /**
      * Fetches the total memory usage for all hosts of the application. Plots it as an incremental graph
      *
      * @see https://docs.newrelic.com/docs/apis/rest-api-v2/application-examples-v2/get-host-memory-used-application#api-call
+     *
+     * It looks like total_used_mb field returns values in kb (instead of expected mb). Value is normalized to bytes
+     * as it works nice with number widget formatting. If you don't use formatting and want to preserve original value
+     * use useOriginalValue flag in your cfg
      *
      * @param array $params - array with appId and other optional parameters for endpoint URL
      *
@@ -387,6 +397,7 @@ class NewRelicDao extends AbstractDao
     public function fetchTotalMemoryForIncrementalGraphWidget(array $params = [])
     {
         $response = $this->fetchTotalMemory($params);
+        $totalUsedMb = $response['metric_data']['metrics'][0]['timeslices'][0]['values']['total_used_mb'];
 
         return [
             'x' => (int)$this->convertTimeBetweenTimezones(
@@ -395,7 +406,7 @@ class NewRelicDao extends AbstractDao
                 date_default_timezone_get(),
                 'U'
             ),
-            'y' => $response['metric_data']['metrics'][0]['timeslices'][0]['values']['total_used_mb'],
+            'y' => $totalUsedMb,
             'events' => $this->fetchDeploymentEvents($params),
         ];
     }
@@ -407,11 +418,21 @@ class NewRelicDao extends AbstractDao
      */
     private function fetchTotalMemory(array $params = [])
     {
-        return $this->request(
+        $response = $this->request(
             $this->getEndpointUrl(NewRelicAddresses::TOTAL_MEMORY),
             $params,
             self::RESPONSE_IN_JSON
         );
+
+
+        $shouldUseOriginalValue = array_key_exists('useOriginalValue', $params) && true === $params['useOriginalValue'];
+        if (!$shouldUseOriginalValue) {
+            $totalUsedMb = $response['metric_data']['metrics'][0]['timeslices'][0]['values']['total_used_mb'];
+            $response['metric_data']['metrics'][0]['timeslices'][0]['values']['total_used_mb'] = $totalUsedMb * 1024;
+        }
+
+
+        return $response;
     }
 
     /**
