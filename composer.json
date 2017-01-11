@@ -18,6 +18,7 @@
         "guzzlehttp/guzzle": "~6.0",
         "erusev/parsedown": "*",
         "doctrine/annotations": "~1.2.0",
+        "doctrine/mongodb": "~1.2.0",
         "doctrine/doctrine-mongo-odm-module": "~0.8.0",
         "supervisorphp/supervisor": "~3.0"
     },
