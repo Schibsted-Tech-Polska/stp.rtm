@@ -412,6 +412,27 @@ class NewRelicDao extends AbstractDao
     }
 
     /**
+     * Fetches memory usage by your app
+     *
+     * @param  array $params - array with appId and other optional parameters for endpoint URL
+     * @return float
+     */
+    public function fetchMemoryUsageForGraphWidget(array $params = [])
+    {
+        $response = $this->request($this->getEndpointUrl(NewRelicAddresses::HOST_MEMORY), $params, self::RESPONSE_IN_JSON);
+        return array_map(
+            function ($timeslice) use ($params) {
+                return [
+                    'x' => 1000 * Utils::dateStringToLocalSeconds($timeslice['to']),
+                    'y' => $timeslice['values']['used_mb_by_host'],
+                    'events' => $this->fetchDeploymentEvents($params),
+                ];
+            },
+            $response['metric_data']['metrics'][0]['timeslices']
+        );
+    }
+
+    /**
      * @param array $params
      *
      * @return mixed
