@@ -7,6 +7,7 @@ namespace Dashboard\Model\Dao;
 final class NewRelicAddresses {
     const TOTAL_MEMORY = 'fetchTotalMemory';
     const AVG_HOST_MEMORY = 'fetchMemoryAvg';
+    const HOST_MEMORY = 'fetchMemoryUsage';
 }
 
 return [
@@ -44,6 +45,10 @@ return [
             NewRelicAddresses::TOTAL_MEMORY =>
                 'https://api.newrelic.com/v2/applications/:appId:/metrics/data.json'
                 . '?names[]=Memory/Physical&values[]=total_used_mb&summarize=true'
+                . '&from=:beginDateTime:&end=:endDateTime:',
+            NewRelicAddresses::HOST_MEMORY =>
+                'https://api.newrelic.com/v2/applications/:appId:/metrics/data.json'
+                . '?names[]=Memory/Physical&values[]=used_mb_by_host&summarize=false'
                 . '&from=:beginDateTime:&end=:endDateTime:',
             'fetchServerCpuUsageForGraphWidget' =>
                 'https://api.newrelic.com/v2/servers/:serverId:/metrics/data.json'
