@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "514bd2c20447033a8f61d3a1bf79504c",
-    "content-hash": "e88a7f04774cba0af69ef5d2acdf579d",
+    "hash": "3f0a614ee764e1403cb325b2df08f45c",
+    "content-hash": "fa4d0261b34cbe09481152e332fb1303",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -621,37 +621,30 @@
         },
         {
             "name": "doctrine/mongodb",
-            "version": "1.4.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb.git",
-                "reference": "293ad1ee54b507e269d6a1309dbeb8c00621b00e"
+                "reference": "9fa84e26943a654a278b477d8d341c9916cc8e8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/293ad1ee54b507e269d6a1309dbeb8c00621b00e",
-                "reference": "293ad1ee54b507e269d6a1309dbeb8c00621b00e",
+                "url": "https://api.github.com/repos/doctrine/mongodb/zipball/9fa84e26943a654a278b477d8d341c9916cc8e8c",
+                "reference": "9fa84e26943a654a278b477d8d341c9916cc8e8c",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "^2.2",
-                "ext-mongo": "^1.5",
-                "php": "^5.6 || ^7.0"
+                "ext-mongo": "^1.2.12",
+                "php": ">=5.3.2"
             },
             "require-dev": {
-                "jmikola/geojson": "^1.0",
-                "phpunit/phpunit": "~4.8|~5.0"
+                "jmikola/geojson": "^1.0"
             },
             "suggest": {
-                "alcaeus/mongo-php-adapter": "Allows usage of PHP 7",
                 "jmikola/geojson": "Support GeoJSON geometry objects in 2dsphere queries"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4.x-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\MongoDB": "lib/"
@@ -694,7 +687,7 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2016-11-22 19:01:59"
+            "time": "2016-03-19 18:20:33"
         },
         {
             "name": "doctrine/mongodb-odm",
