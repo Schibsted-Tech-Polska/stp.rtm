@@ -52,7 +52,7 @@ class JenkinsDaoTest extends AbstractDaoTestCase
                     __DIR__ . '/../../Mock/Dao/Jenkins/fetchStatusForBuildWidgetResponse.txt',
                 '$expectedDaoResponse' => [
                     'currentStatus' => 'SUCCESS',
-                    'lastBuilt' => '2014-04-13 09:01:11',
+                    'lastBuilt' => '2014-04-13 07:01:11',
                     'lastCommitter' => 'UNKNOWN',
                     'codeCoverage' => null,
                     'averageHealthScore' => 100,
@@ -96,7 +96,7 @@ class JenkinsDaoTest extends AbstractDaoTestCase
                     __DIR__ . '/../../Mock/Dao/Jenkins/fetchStatusForBuildWidgetBuildingResponse.txt',
                 '$expectedDaoResponse' => [
                     'currentStatus' => null,
-                    'lastBuilt' => '2014-05-22 09:34:58',
+                    'lastBuilt' => '2014-05-22 07:34:58',
                     'lastCommitter' => 'arp',
                     'codeCoverage' => null,
                     'averageHealthScore' => 69.5,
