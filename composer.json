@@ -17,7 +17,8 @@
         "zendframework/zendframework": "~2.4.0",
         "guzzlehttp/guzzle": "~6.0",
         "erusev/parsedown": "*",
-        "doctrine/doctrine-mongo-odm-module": "~0.9.0",
+        "doctrine/annotations": "~1.2.0",
+        "doctrine/doctrine-mongo-odm-module": "~0.8.0",
         "supervisorphp/supervisor": "~3.0"
     },
     "require-dev": {
