@@ -7,14 +7,10 @@
 
 namespace Dashboard\Model\Dao;
 
-use Dashboard\Model\Dao\Exception\EndpointUrlNotAssembled;
-use Dashboard\Model\Utils;
-
 class VarnishDao extends AbstractDao
 {
     /**
-     * Fetch array of requests per minute values from beginDateTime to endDateTime
-     * with constant intervals.
+     * Fetch current RPM that reaches varnish on a given key
      *
      * @param  array $params - array with appId and other optional parameters for endpoint URL
      *
@@ -62,7 +58,7 @@ class VarnishDao extends AbstractDao
     }
 
     private function calculateHitRate($singleStat) {
-        return round(100*(1 - $singleStat['n_miss']/$singleStat['n_req']), 2);
+        return round(100 * (1 - $singleStat['n_miss']/$singleStat['n_req']), 2);
     }
 
     /**
