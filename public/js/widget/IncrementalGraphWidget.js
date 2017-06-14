@@ -83,6 +83,8 @@ $.extend(IncrementalGraphWidget.prototype, {
         if ($.isNumeric(oldValueElement[0].innerText)) {
             this.animateNumber(oldValue, this.oldValue, this.dataToBind.value);
         }
+
+        this.checkThresholds(currentValue);
     },
 
     handleChangeRate: function() {
@@ -103,14 +105,14 @@ $.extend(IncrementalGraphWidget.prototype, {
 
     setupGraph: function() {
         var zones = [];
-        if (parseFloat(this.$widget.attr('data-threshold-caution-value')) > 0
-            && parseFloat(this.$widget.attr('data-threshold-critical-value')) > 0) {
+        if (parseFloat(this.params['caution-value']) > 0
+            && parseFloat(this.params['critical-value']) > 0) {
             zones = [
                 {
-                    value: this.$widget.attr('data-threshold-caution-value'),
+                    value: this.params['caution-value'],
                     className: 'value-normal'
                 }, {
-                    value: this.$widget.attr('data-threshold-critical-value'),
+                    value: this.params['critical-value'],
                     fillColor: '#fff46b',
                     color: '#fffda6',
                     className: 'value-caution'
@@ -125,16 +127,15 @@ $.extend(IncrementalGraphWidget.prototype, {
                 typeof(this.params.thresholdComparator) !== 'undefined'
                 && this.params.thresholdComparator === 'higherIsBetter'
             ) {
-                console.log(this.$widget);
                 zones = [
                     {
-                        value: this.$widget.attr('data-threshold-critical-value'),
+                        value: this.params['critical-value'],
                         className: 'value-critical',
                         fillColor: '#e62a34',
                         color: '#f03542'
                     },
                     {
-                        value: this.$widget.attr('data-threshold-caution-value'),
+                        value: this.params['caution-value'],
                         className: 'value-caution',
                         fillColor: '#fff46b',
                         color: '#fffda6'
