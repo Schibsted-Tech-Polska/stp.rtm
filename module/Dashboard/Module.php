@@ -109,6 +109,9 @@ class Module
                 'GoCDDao' => function (ServiceManager $serviceManager) {
                     return new Model\Dao\GoCDDao($serviceManager->get('Config')['GoCDDao']);
                 },
+                'VarnishDao' => function (ServiceManager $serviceManager) {
+                    return new Model\Dao\VarnishDao($serviceManager->get('Config')['VarnishDao']);
+                },
             ],
         ];
     }
