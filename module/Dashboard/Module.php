@@ -56,7 +56,7 @@ class Module
                     return new Model\Dao\JenkinsDao($serviceManager->get('Config')['JenkinsDao']);
                 },
                 'NewRelicDao' => function (ServiceManager $serviceManager) {
-                    return new Model\Dao\NewRelicDao($serviceManager->get('Config')['NewRelicDao']);
+                    return new Model\Dao\VarnishDao($serviceManager->get('Config')['NewRelicDao']);
                 },
                 'EventsDao' => function (ServiceManager $serviceManager) {
                     return new Model\Dao\EventsDao($serviceManager->get('Config')['EventsDao']);
@@ -108,6 +108,9 @@ class Module
                 },
                 'GoCDDao' => function (ServiceManager $serviceManager) {
                     return new Model\Dao\GoCDDao($serviceManager->get('Config')['GoCDDao']);
+                },
+                'VarnishDao' => function (ServiceManager $serviceManager) {
+                    return new Model\Dao\VarnishDao($serviceManager->get('Config')['VarnishDao']);
                 },
             ],
         ];
