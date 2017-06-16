@@ -21,10 +21,10 @@ class VarnishDao extends AbstractDao
         $responseParsed = [];
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response[$params['key']])) {
-            $singleStat = $response[$params['key']][0];
+            $statsFromLastMinute = $this->groupResults(array_slice($response[$params['key']], 0, 6));
             $responseParsed = [
-                'x' => strtotime($singleStat['timestamp']),
-                'y' => round($singleStat['n_req']),
+                'x' => strtotime($statsFromLastMinute['timestamp']),
+                'y' => $statsFromLastMinute['n_req'],
                 'events' => [],
             ];
         }
@@ -32,15 +32,20 @@ class VarnishDao extends AbstractDao
         return $responseParsed;
     }
 
+    /**
+     * Fetch cache hit ratio on a given key
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
     public function fetchHitRateForIncrementalGraphWidget(array $params = [])
     {
         $responseParsed = [];
         $response = $this->request($this->getEndpointUrl(__FUNCTION__), $params);
         if (is_array($response[$params['key']])) {
-            $singleStat = $response[$params['key']][0];
+            $statsFromLastMinute = $this->groupResults(array_slice($response[$params['key']], 0, 6));
             $responseParsed = [
-                'x' => strtotime($singleStat['timestamp']),
-                'y' => $this->calculateHitRate($singleStat),
+                'x' => strtotime($statsFromLastMinute['timestamp']),
+                'y' => $this->calculateHitRate($statsFromLastMinute),
                 'events' => [],
             ];
         }
@@ -48,6 +53,11 @@ class VarnishDao extends AbstractDao
         return $responseParsed;
     }
 
+    /**
+     * Fetch cache hit ratio on a given key
+     * @param array $params - array with appId and other optional parameters for endpoint URL
+     * @return array
+     */
     public function fetchHitRateForUsageWidget(array $params = [])
     {
         return [
@@ -55,10 +65,6 @@ class VarnishDao extends AbstractDao
             'maximum_value' => 100,
             'minimum_value' => 0,
         ];
-    }
-
-    private function calculateHitRate($singleStat) {
-        return round(100 * (1 - $singleStat['n_miss']/$singleStat['n_req']), 2);
     }
 
     /**
@@ -73,5 +79,40 @@ class VarnishDao extends AbstractDao
         ];
 
         return $threshold;
+    }
+
+    /**
+     * Calculate hit rate as percentage of misses out of total results
+     * @param array $stats
+     * @return float
+     */
+    private function calculateHitRate(array $stats)
+    {
+        return round(100 * (1 - $stats['n_miss'] / $stats['n_req']), 2);
+    }
+
+    /**
+     * Aggregate given stats timesamples into one
+     * @param array $timesamples
+     * @return array
+     */
+    private function groupResults(array $timesamples)
+    {
+        return array_reduce(
+            $timesamples,
+            function ($result, $timesample) {
+                $result['timestamp'] = $timesample['timestamp'];
+                $result['n_req'] += $timesample['n_req'];
+                $result['n_miss'] += $timesample['n_miss'];
+                $result['timesamples']++;
+
+                return $result;
+            },
+            [
+                'timestamp' => null,
+                'n_req' => 0,
+                'n_miss' => 0,
+                'timesamples' => 0
+            ]);
     }
 }
