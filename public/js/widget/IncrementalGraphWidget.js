@@ -165,8 +165,8 @@ $.extend(IncrementalGraphWidget.prototype, {
                 title: '',
                 type: 'datetime',
                 dateTimeLabelFormats: {
-                    millisecond: '%H:%M',
-                    second: '%H:%M'
+                    millisecond: '%H:%M:%S',
+                    second: '%H:%M:%S'
                 },
                 tickPixelInterval: this.params.graphTickPixelInterval
             },
